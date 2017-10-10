@@ -1,0 +1,32 @@
+= Writing I-Ds and RFCs Using AsciiDoc
+Ronald Henry Tse <ronald.tse@ribose.com>; Nick Nicholas; Paolo Brasolin
+:category: std
+:doc-name: draft-asciidoc-rfc-00
+:ipr: trust200902
+:date: 2017-10-10T00:00:00Z
+:area: Internet
+:workgroup: Network Working Group
+:lastname: Tse
+:fullname: Ronald Henry Tse
+:forename_initials: R. H.
+:organization: Ribose
+:email: ronald.tse@ribose.com
+:uri: https://www.ribose.com
+:street: Suite 1111, 1 Pedder Street
+:city: Central
+:region: Hong Kong
+:country: Hong Kong
+:lastname_2: Nicholas
+:fullname_2: Nick Nicholas
+:forename_initials_2: N.
+:organization_2: Ribose
+:email_2:
+:uri: https://www.ribose.com
+:country_2: Australia
+:lastname_3: Brasolin
+:fullname_3: Paolo Brasolin
+:forename_initials_3: P.
+:organization_3: Ribose
+:uri_3: https://www.ribose.com
+:country_3: United States of America
+:stem:

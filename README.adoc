@@ -1,0 +1,61 @@
+= Internet Draft: Writing I-Ds and RFCs Using AsciiDoc
+
+== Fetching the document
+
+[source,sh]
+----
+git clone https://github.com/riboseinc/rfc-asciidoc-rfc
+----
+
+== Prerequisites
+
+You will need `asciidoctor-rfc`, `xml2rfc` and `idnits` (for submission preflight).
+
+If you're on macOS you can run:
+
+[source,sh]
+----
+gem install asciidoctor-rfc
+brew install idnits
+----
+
+[source,sh]
+----
+brew install python
+easy_install pip
+pip install xml2rfc
+----
+
+
+== Building the document
+
+[source,sh]
+----
+make all
+# or
+export ID_NAME=asciidoc-rfc
+make draft-${ID_NAME}.txt
+----
+
+== Checking against idnits
+
+https://tools.ietf.org/tools/idnits/[idnits] is the RFC checking tool prior to
+submissions.
+
+[source,sh]
+----
+export ID_NAME=asciidoc-rfc
+export ID_VERSION=00
+make draft-${ID_NAME}.txt
+mv draft-${ID_NAME}{,-${ID_VERSION}}.txt
+idnits --verbose draft-${ID_NAME}-${ID_VERSION}.txt
+----
+
+
+== Iterating the document
+
+[source,sh]
+----
+export ID_NAME=asciidoc-rfc
+make clean all; open draft-${ID_NAME}.txt
+----
