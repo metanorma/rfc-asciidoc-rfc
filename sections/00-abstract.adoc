@@ -1,2 +1,14 @@
 [abstract]
-This document ...
+== Abstract
+
+This document describes an AsciiDoc language extension, called asciidoctor-rfc,
+whose syntax is specifically designed for writing IETF Internet-Drafts and
+RFCs.
+
+The asciidoctor-rfc syntax is designed to allow the author to entirely focus
+on text, providing the full power of the resulting XML RFC through the AsciiDoc
+language, while abstracting away the need to manually edit XML, including for
+references.
+
+This document itself was written and generated into XML RFC v2 <<RFC7749>> and
+XML RFC v3 <<RFC7991>> directly through asciidoctor-rfc.

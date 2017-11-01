@@ -1,5 +1,8 @@
 [bibliography]
 == References
+
 ++++
-TODO.
+include::../reference.RFC.2119.xml[lines=3..-1]
+include::../reference.RFC.7749.xml[lines=3..-1]
+include::../reference.RFC.7991.xml[lines=3..-1]
 ++++
