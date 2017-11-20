@@ -1,0 +1,286 @@
+=== Inclusions
+The http://asciidoctor.org/docs/user-manual/#include-directive[Asciidoctor "include" directive] is used to include external files in a master Asciidoctor document. The directive is capable of sophisticated document merging, including adjusting the heading levels of the included text, selecting text within specified tags or line numbers to be included, and adjusting the indentation of code snippets in merged text:
+
+[source,asciidoc]
+----
+\include::path[leveloffset=_offset_,lines=_ranges_,tag(s)=_name(s)_,indent=_depth_]
+----
+
+
+=== Encoding and Entities
+
+XML accepted the full range of characters in the world's languages through UTF-8 character encoding, and one of the motivations for the move from plain text to RFC XML has been to allow non-ASCII characters to be included in RFCs. However, current RFC XML v2 tools still do not support UTF-8, and other tool support for UTF-8  also remains patchy. Out of an abundance of caution, the RFC XML converter uses US-ASCII for its character encoding, and renders any non-ASCII characters as entities.
+
+The converter accepts HTML entities in Asciidoctor, even though they are not part of the XML specification; HTML entities such as `&nbsp;` feature in examples of RFC XML provided by the IETF. In order to prevent dependence of the XML output from extraneous entity definitions, any such entities are rendered in the XML as decimal character entities.
+
+== Bibliography
+
+Asciidoctor has a simple encoding of bibliographies, but it is not adequate for the complexity of bibliographic markup supported in RFC XML. RFC documents overwhelmingly cite other RFC documents, and canonical RFC XML bibliographic entries are available at http://xml.resource.org/public/rfc/bibxml/ ; so it would be inefficient to encode those entries in Asciidoctor, only to have them converted back to RFC XML.
+
+The converter provides two means of incorporating bibliographies into RFC documents authored in Asciidoctor: using raw RFC XML, and assembling bibliographies in preprocessing.
+
+In either case, the RFC XML needs to be well-formed; missing closing tags can lead to erratic behaviour in the converter.
+
+=== Using raw RFC XML
+
+In the first, bibliographic citations are handled like all other cross-references. The bibliographic entries for normative and informative references are given in the Asciidoctor as passthrough blocks, which contain the raw RFC XML for all references; document conversion leaves the raw RFC XML in place. This approach requires authors to maintain the normative and informative bibliographies within the document, to update them as citations are added and removed, and to sort them manually.
+
+
+[source,asciidoc]
+----
+Some datagram padding may be needed.<<RFC7253>>
+
+[bibliography]
+== Normative References
+++++
+<reference anchor='RFC7253' 
+  target='https://tools.ietf.org/html/rfc7253'>
+  <front>
+    <title>Guidelines for Writing an IANA Considerations 
+      Section in RFCs</title>
+    <author initials="T." surname="Krovetz">
+      <organization>Sacramento State</organization>
+    </author>
+    <author initials="P." surname="Rogaway">
+      <organization>UC Davis</organization>
+    </author>
+    <date month='May' year='2014'/>
+  </front>
+  <seriesInfo name="RFC" value="7253"/>
+</reference>
+++++
+----
+
+[source,xml]
+----
+<t>Some datagram padding may be needed <xref target="RFC7253"/></t>
+
+</middle><back>
+<references anchor="_references">
+<name>Normative References</name>
+<reference anchor='RFC7253' target='https://tools.ietf.org/html/rfc7253'>
+  <front>
+    <title>Guidelines for Writing an IANA Considerations 
+      Section in RFCs</title>
+    <author initials="T." surname="Krovetz">
+      <organization>Sacramento State</organization>
+    </author>
+    <author initials="P." surname="Rogaway">
+      <organization>UC Davis</organization>
+    </author>
+    <date month='May' year='2014'/>
+  </front>
+  <seriesInfo name="RFC" value="7253"/>
+</reference>
+</references>
+----
+
+=== Using preprocessing
+
+The alternative method is to use a preprocessing tool, https://github.com/riboseinc/asciidoctor-bibliography[asciidoc-bibliography], to import citations into the Asciidoctor document from an external file of references. The references file consists of RFC XML reference entries, and still needs to be managed manually; however the bibliographies are assembled from that file, sorted, and inserted into the normative and informative references in preprocessing. Citations in the document itself are given as macros to be interpreted by the preprocessor; this allows them to be split into normative and informative references. (The MMark tool likewise splits reference citations into normative and informative.)
+
+Integration with the asciidoc-bibliography gem proceeds as follows:
+
+. Create an RFC XML references file, consisting of a `<references>` element with individual `<reference>` elements inserted, 
+as would be done for the informative and normative references normally. The references file will contain all possible 
+references to be used
+in the file; the bibliography gem will select which references have actually been cited in the document. 
+.. Rather than hand crafting RFC XML references for RFC documents, you should download them from an authoritative
+source; e.g. http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml
+.. Unlike the case for RFC XML documents created manually, the references file does not recognise XML entities 
+and will not attempt to download them during processing. 
+Any references to http://xml.resource.org/public/rfc/bibxml/ will need to be downloaded and inserted into the references file.
+.. The RFC XML in the references file will need to be appropriate to the version of RFC XML used in the main document, as
+usual. Note that RFC XML v2 references are forward compatible with v3; v3 contains a couple of additional elements.
+. Add to the main document header attributes referencing the references file (`:bibliography-database:`), and the bibliography style (`:bibliography-style: rfc-v3`).
+. References to a normative reference are inserted with the macro `cite:norm[id]` instead of ``<````id````>``, where `id` is
+the anchor of the reference.
+. References to an infomrative reference are inserted with the macro `cite:info[id]` instead of ``<````id````>``, where `id` is
+the anchor of the reference.
+. Normative and Informative References are inserted in the document through a macro, which occurs where the RFC XML
+references would be inserted:
+
+[source,asciidoc]
+--
+[bibliography]
+== Normative References
+
+++++
+bibliography::norm[]
+++++
+
+[bibliography]
+== Informative References
+
+++++
+bibliography::info[]
+++++
+--
+
+== RFC XML features not supported in Asciidoctor
+
+The following features of  RFC XML are not supported by the Asciidoctor converter, and would need to be adjusted manually:
+
+|===
+| RFC XML element                  | RFC XML v3 | RFC XML v2
+
+| `front/boilerplate`              | Not added by the converter  | N/A
+| `iref@primary`                   | N          | N
+| `reference` (and all children)   | As Raw XML | As Raw XML
+| `table/preamble`                 | Deprecated | N
+| `table/postamble`                | Deprecated | N
+| `artwork@width`                  | Only on images | Only on images
+| `artwork@height`                 | Only on images | Only on images
+|===
+
+
+== Authoring
+
+To author an Asciidoctor RFC document, you should familiarise yourself with the http://asciidoctor.org/docs/user-manual[Asciidoctor specification]. The converter Ruby gem source code distribution also has https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/asciidoctor/rfc[samples of individual RFC XML features], in v2 and v3, and https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/examples[examples of self-standing Asciidoctor RFC XML documents], along with their RFC XML renderings. (This includes round-tripped RFC XML documents.)
+
+In addition, you can clone the `rfc-in-asciidoc-template` github repository as a template, and populate it for your Asciidoc RFCs and Internet drafts:
+
+[source,console]
+----
+$ git clone https://github.com/riboseinc/rfc-in-asciidoc-template.git
+----
+
+Converting your AsciiDoc to RFC XML is a simple as installing asciidoctor (see http://asciidoctor.org/#installation) and the asciidoctor-rfc gem in Ruby, then running the asciidoctor executable on the document, specifying the asciidoctor-rfc gem as a library:
+
+[source,console]
+----
+$ git clone https://github.com/riboseinc/asciidoctor-rfc.git
+$ cd asciidoctor-rfc
+$ bundle install
+$ gem build asciidoctor-rfc.gemspec
+$ gem install asciidoctor-rfc
+$ asciidoctor -b rfc3 -r 'asciidoctor-rfc' a.adoc  # RFC XML v3 output
+$ asciidoctor -b rfc2 -r 'asciidoctor-rfc' a.adoc  # RFC XML v2 output
+----
+
+As you author Asciidoctor content, you should iterate through running the Asciidoctor conversion frequently, to ensure that you are still generating valid XML through your markup. The converter makes an effort to ensure that its XML output is valid, and it issues warnings about likely issues; it also validates its own XML output against the Asciidoctor schema, and reports errors in the XML output in the following format:
+
+[source,console]
+----
+V3 RELAXNG Validation: 12:0: ERROR: Invalid attribute 
+  sortRefs for element rfc
+----
+
+Note  that validation against the RELAXNG RFC XML schema includes confirming the referential integrity of all cross-references in the document.
+
+It may be necessary to intervene in the XML output generated by the converter, either because the block model of Asciidoctor does not conform with the intended RFC XML (e.g. lists embedded in paragraphs), or because RFC XML features are required that are not supported within Asciidoctor.
+
+[bibliography]
+== Normative References
+++++
+<reference anchor="RFC7749" target="https://www.rfc-editor.org/info/rfc7749">
+<front>
+<title>The "xml2rfc" Version 2 Vocabulary</title>
+<author initials="J." surname="Reschke" fullname="J. Reschke">
+<organization/>
+</author>
+<date year="2016" month="February"/>
+<abstract>
+<t>
+This document defines the "xml2rfc" version 2 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.
+</t>
+<t>
+Version 2 represents the state of the vocabulary (as implemented by several tools and as used by the RFC Editor) around 2014.
+</t>
+<t>This document obsoletes RFC 2629.</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="7749"/>
+<seriesInfo name="DOI" value="10.17487/RFC7749"/>
+</reference>
+<reference anchor="RFC7991" target="https://www.rfc-editor.org/info/rfc7991">
+<front>
+<title>The "xml2rfc" Version 3 Vocabulary</title>
+<author initials="P." surname="Hoffman" fullname="P. Hoffman">
+<organization/>
+</author>
+<date year="2016" month="December"/>
+<abstract>
+<t>
+This document defines the "xml2rfc" version 3 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts. It is heavily derived from the version 2 vocabulary that is also under discussion. This document obsoletes the v2 grammar described in RFC 7749.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="7991"/>
+<seriesInfo name="DOI" value="10.17487/RFC7991"/>
+</reference>
+++++
+
+[bibliography]
+== Informative References
+++++
+<reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
+<front>
+<title>
+Key words for use in RFCs to Indicate Requirement Levels
+</title>
+<author initials="S." surname="Bradner" fullname="S. Bradner">
+<organization/>
+</author>
+<date year="1997" month="March"/>
+<abstract>
+<t>
+In many standards track documents several words are used to signify the requirements in the specification. These words are often capitalized. This document defines these words as they should be interpreted in IETF documents. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.
+</t>
+</abstract>
+</front>
+<seriesInfo name="BCP" value="14"/>
+<seriesInfo name="RFC" value="2119"/>
+<seriesInfo name="DOI" value="10.17487/RFC2119"/>
+</reference>
+<reference anchor="RFC7763" target="https://www.rfc-editor.org/info/rfc7763">
+<front>
+<title>The text/markdown Media Type</title>
+<author initials="S." surname="Leonard" fullname="S. Leonard">
+<organization/>
+</author>
+<date year="2016" month="March"/>
+<abstract>
+<t>
+This document registers the text/markdown media type for use with Markdown, a family of plain-text formatting syntaxes that optionally can be converted to formal markup languages such as HTML.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="7763"/>
+<seriesInfo name="DOI" value="10.17487/RFC7763"/>
+</reference>
+<reference anchor="RFC7764" target="https://www.rfc-editor.org/info/rfc7764">
+<front>
+<title>
+Guidance on Markdown: Design Philosophies, Stability Strategies, and Select Registrations
+</title>
+<author initials="S." surname="Leonard" fullname="S. Leonard">
+<organization/>
+</author>
+<date year="2016" month="March"/>
+<abstract>
+<t>
+This document elaborates upon the text/markdown media type for use with Markdown, a family of plain-text formatting syntaxes that optionally can be converted to formal markup languages such as HTML. Background information, local storage strategies, and additional syntax registrations are supplied.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="7764"/>
+<seriesInfo name="DOI" value="10.17487/RFC7764"/>
+</reference>
+<reference anchor="RFC7990" target="https://www.rfc-editor.org/info/rfc7990">
+<front>
+<title>RFC Format Framework</title>
+<author initials="H." surname="Flanagan" fullname="H. Flanagan">
+<organization/>
+</author>
+<date year="2016" month="December"/>
+<abstract>
+<t>
+In order to improve the readability of RFCs while supporting their archivability, the canonical format of the RFC Series will be transitioning from plain-text ASCII to XML using the xml2rfc version 3 vocabulary; different publication formats will be rendered from that base document. With these changes comes an increase in complexity for authors, consumers, and the publisher of RFCs. This document serves as the framework that provides the problem statement, lays out a road map of the documents that capture the specific requirements, and describes the transition plan.
+</t>
+</abstract>
+</front>
+<seriesInfo name="RFC" value="7990"/>
+<seriesInfo name="DOI" value="10.17487/RFC7990"/>
+</reference>
+++++
