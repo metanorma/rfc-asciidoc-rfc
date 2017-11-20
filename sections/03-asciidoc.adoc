@@ -1,5 +1,5 @@
 
-== Document Structure And General AsciiDoctor Syntax
+== Document Structure And AsciiDoctor Syntax
 
 The syntax of Asciidoctor is presented in the
 http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Asciidoctor user manual].

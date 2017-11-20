@@ -1,4 +1,4 @@
-=== Links
+== Links
 
 Common URL formats are recognised automatically as hyperlinks, and are rendered
 as such; any hyperlinked text is appended after the hyperlink in square

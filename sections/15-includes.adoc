@@ -1,4 +1,4 @@
-=== Inclusions
+== Inclusions
 
 The http://asciidoctor.org/docs/user-manual/#include-directive[Asciidoctor "include" directive]
 is used to include external files in a master Asciidoctor document. The

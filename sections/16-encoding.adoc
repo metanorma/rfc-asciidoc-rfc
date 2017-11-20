@@ -1,5 +1,5 @@
 
-=== Encoding and Entities
+== Encoding and Entities
 
 XML accepted the full range of characters in the world's languages through
 UTF-8 character encoding, and one of the motivations for the move from plain

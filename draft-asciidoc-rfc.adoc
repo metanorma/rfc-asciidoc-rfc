@@ -1,7 +1,7 @@
-= Preparing Internet-Drafts And RFCs In AsciiDoc
+= Writing Internet-Drafts And RFCs In AsciiDoc (AsciiRFC)
 Ronald Henry Tse; Nick Nicholas; Paolo Brasolin
 :doctype: internet-draft
-:abbrev: AsciiRFC
+:abbrev: AsciiRFC Specifications
 :name: draft-ribose-asciirfc-00
 :status: informational
 :ipr: trust200902
@@ -27,13 +27,24 @@ Ronald Henry Tse; Nick Nicholas; Paolo Brasolin
 :email_2: nick.nicholas@ribose.com
 :uri_2: https://www.ribose.com
 :country_2: Australia
-:lastname_3: Brasolin
-:fullname_3: Paolo Brasolin
-:forename_initials_3: P.
+:lastname_3: Lau
+:fullname_3: Jeffrey Lau
+:forename_initials_3: J.
 :organization_3: Ribose
-:email_3: paolo.brasolin@ribose.com
+:email_3: jeffrey.lau@ribose.com
 :uri_3: https://www.ribose.com
-:country_3: Italy
+:street_3: Suite 1111, 1 Pedder Street
+:city_3: Central
+:region_3: Hong Kong
+:country_3: Hong Kong
+:lastname_4: Brasolin
+:fullname_4: Paolo Brasolin
+:forename_initials_4: P.
+:organization_4: Ribose
+:email_4: paolo.brasolin@ribose.com
+:uri_4: https://www.ribose.com
+:country_4: Italy
+
 
 include::sections/00-abstract.adoc[]
 include::sections/01-intro.adoc[]
