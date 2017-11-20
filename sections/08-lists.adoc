@@ -79,23 +79,23 @@ Note 3.
 [source,xml]
 ----
 <ul>
-    <li>List Entry 1</li>
-    <li>
-        <t>
-            List Entry 2
-        </t>
-        <t>
-            Note 2.
-        </t>
-        <figure>
-            <artwork type="ascii-art">
-                Literal
-            </artwork>
-        </figure>
-        <t>
-            Note 3.
-        </t>
-    </li>
+  <li>List Entry 1</li>
+  <li>
+    <t>
+      List Entry 2
+    </t>
+    <t>
+      Note 2.
+    </t>
+    <figure>
+      <artwork type="ascii-art">
+        Literal
+      </artwork>
+    </figure>
+    <t>
+      Note 3.
+    </t>
+  </li>
 </ul>
 ----
 
@@ -104,20 +104,20 @@ Asciidoctor considers paragraphs to be the basic level of blocks, and does not p
 [source,xml]
 ----
 <t>
-    This is the start of a paragraph. 
-    <ul>
-        <li>List Entry 1</li>
-        <li>
-            <t>List Entry 2</t>
-            <t>Note 2.</t>
-            <figure>
-                <artwork type="ascii-art">
-                    Literal
-                </artwork>
-            </figure>
-            <t>Note 3.</t>
-        </li>
-    </ul>
+  This is the start of a paragraph. 
+  <ul>
+    <li>List Entry 1</li>
+    <li>
+      <t>List Entry 2</t>
+      <t>Note 2.</t>
+      <figure>
+        <artwork type="ascii-art">
+          Literal
+        </artwork>
+      </figure>
+      <t>Note 3.</t>
+    </li>
+  </ul>
 ----
 
 
