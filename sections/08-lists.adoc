@@ -33,7 +33,10 @@ ordered lists:
 </ol>
 ----
 
-A list item by default spans a single paragraph. A following paragraph or other block element can be appended to the current list item by prefixing it with `+` in a separate line (http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoc list continuation].) 
+A list item by default spans a single paragraph. A following paragraph or other
+block element can be appended to the current list item by prefixing it with `+`
+in a separate line
+(http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoc list continuation].) 
 
 [source,asciidoc]
 ----
@@ -56,9 +59,12 @@ Note 3.
 </dl>
 ----
 
-NOTE: Multiple paragraphs are not permitted within a list item in RFC XML v2. The RFC XML converter deals with this by converting paragraph breaks into line breaks within a list item.
+NOTE: Multiple paragraphs are not permitted within a list item in RFC XML v2.
+The RFC XML converter deals with this by converting paragraph breaks into line
+breaks within a list item.
 
-List continuations can also be embed to populate a list item with a sequence of blocks as a unit (in an Asciidoc open block):
+List continuations can also be embed to populate a list item with a sequence of
+blocks as a unit (in an Asciidoc open block):
 
 [source,asciidoc]
 ----
@@ -99,7 +105,10 @@ Note 3.
 </ul>
 ----
 
-Asciidoctor considers paragraphs to be the basic level of blocks, and does not permit lists to be nested within them: text after a list is considered to be a new paragraph. So markup like the following cannot be generated via Asciidoctor:
+Asciidoctor considers paragraphs to be the basic level of blocks, and does not
+permit lists to be nested within them: text after a list is considered to be a
+new paragraph. So markup like the following cannot be generated via
+Asciidoctor:
 
 [source,xml]
 ----
