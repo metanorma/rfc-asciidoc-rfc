@@ -1,0 +1,51 @@
+
+== Figures
+
+AsciiDoc Examples (corresponding to RFC XML figures), source code listings, and
+literals (preformatted text) are all delimited blocks. Listings and literals
+can occur nested within examples. If an Asciidoctor listing or literal occurs
+outside of an example, the RFC XML converter will supply the surrounding figure
+element:
+
+[source,asciidoc]
+--
+.Figure 1
+====
+.figure1.txt
+....
+Figures are only permitted to contain listings 
+(sourcecode), images (artwork), or literal (artwork)
+....
+
+[source,ruby]
+----
+def listing(node)
+  result = []
+  if node.parent.context != :example
+    result << "<figure>" 
+  end
+end
+----
+====
+--
+
+
+[source,xml]
+----
+<figure>
+  <name>Figure 1</name>
+  <artwork type="ascii-art" name="figure1.txt">
+    Figures are only permitted to contain listings 
+    (sourcecode), images (artwork), or literal (artwork)
+  </artwork>
+  <sourcecode type="ruby">
+    def listing(node) 
+      result = [] 
+      if node.parent.context != :example 
+        result &lt;&lt; "&lt;figure&gt;" 
+      end
+    end
+  </sourcecode>
+</figure>
+----
+

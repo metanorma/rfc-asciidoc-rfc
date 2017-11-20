@@ -1,0 +1,19 @@
+=== Links
+
+Common URL formats are recognised automatically as hyperlinks, and are rendered
+as such; any hyperlinked text is appended after the hyperlink in square
+brackets:
+
+[source,asciidoc]
+----
+http://example.com/[linktext]
+----
+
+[source,xml]
+----
+<t><eref target="http://example.com/">linktext</eref></t>
+----
+
+To prevent hyperlinking of a URL, prefix it with a backslash.
+
+

@@ -1,0 +1,124 @@
+== Lists
+
+Asciidoctor supports ordered, unordered, and definition lists. Indentation of
+ordered and unordered lists is indicated by repeating the list item prefix (`*`
+and `.` respectively.) List attributes specify the type of symbol used for
+ordered lists:
+
+[source,asciidoc]
+----
+[loweralpha]
+. First
+. Second
+[upperalpha]
+.. Third
+.. Fourth
+. Fifth
+. Sixth
+----
+
+[source,xml]
+----
+<ol anchor="id" type="a">
+    <li>First</li>
+    <li>
+        <t>Second</t>
+        <ol type="A">
+            <li>Third</li>
+            <li>Fourth</li>
+        </ol>
+    </li>
+    <li>Fifth</li>
+    <li>Sixth</li>
+</ol>
+----
+
+A list item by default spans a single paragraph. A following paragraph or other block element can be appended to the current list item by prefixing it with `+` in a separate line (http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoc list continuation].) 
+
+[source,asciidoc]
+----
+Notes::  Note 1.
++
+Note 2.
++
+Note 3.
+----
+
+[source,xml]
+----
+<dl>
+    <dt>Notes</dt>
+    <dd>
+        <t>Note 1.</t>
+        <t>Note 2.</t>
+        <t>Note 3.</t>
+    </dd>
+</dl>
+----
+
+NOTE: Multiple paragraphs are not permitted within a list item in RFC XML v2. The RFC XML converter deals with this by converting paragraph breaks into line breaks within a list item.
+
+List continuations can also be embed to populate a list item with a sequence of blocks as a unit (in an Asciidoc open block):
+
+[source,asciidoc]
+----
+* List Entry 1
+* List Entry 2
++
+--
+Note 2.
+
+....
+Literal
+....
+
+Note 3.
+--
+----
+
+[source,xml]
+----
+<ul>
+    <li>List Entry 1</li>
+    <li>
+        <t>
+            List Entry 2
+        </t>
+        <t>
+            Note 2.
+        </t>
+        <figure>
+            <artwork type="ascii-art">
+                Literal
+            </artwork>
+        </figure>
+        <t>
+            Note 3.
+        </t>
+    </li>
+</ul>
+----
+
+Asciidoctor considers paragraphs to be the basic level of blocks, and does not permit lists to be nested within them: text after a list is considered to be a new paragraph. So markup like the following cannot be generated via Asciidoctor:
+
+[source,xml]
+----
+<t>
+    This is the start of a paragraph. 
+    <ul>
+        <li>List Entry 1</li>
+        <li>
+            <t>List Entry 2</t>
+            <t>Note 2.</t>
+            <figure>
+                <artwork type="ascii-art">
+                    Literal
+                </artwork>
+            </figure>
+            <t>Note 3.</t>
+        </li>
+    </ul>
+----
+
+
+

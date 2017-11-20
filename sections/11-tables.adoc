@@ -1,0 +1,80 @@
+== Tables
+
+Asciidoctor tables, like RFC XML v3, support distinct table heads, bodies and
+feet, cells spanning multiple rows and columns, and horizontal alignment. The
+larger range of formatting options available in RFC XML v2 is also supported.
+
+[source,asciidoc]
+----
+.Table Title
+|===
+|head | head
+
+h|header cell | body cell
+| | body cell
+2+| colspan of 2
+.2+|rowspan of 2 | cell
+|cell
+^|centre aligned cell | cell
+<|left aligned cell | cell
+>|right aligned cell | cell
+
+|foot | foot
+|===
+----
+
+[source,xml]
+----
+<table>
+  <name>Table Title</name>
+  <thead>
+    <tr>
+      <th align="left">head</th>
+      <th align="left">head</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th align="left">header cell</th>
+      <td align="left">body cell</td>
+    </tr>
+    <tr>
+      <td align="left"></td>
+      <td align="left">body cell</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left">colspan of 2</td>
+    </tr>
+    <tr>
+      <td rowspan="2" align="left">rowspan of 2</td>
+      <td align="left">cell</td>
+    </tr>
+    <tr>
+      <td align="left">cell</td>
+    </tr>
+    <tr>
+      <td align="center">centre aligned cell</td>
+      <td align="left">cell</td>
+    </tr>
+    <tr>
+      <td align="left">left aligned cell</td>
+      <td align="left">cell</td>
+    </tr>
+    <tr>
+      <td align="right">right aligned cell</td>
+      <td align="left">cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="left">foot</td>
+      <td align="left">foot</td>
+    </tr>
+  </tfoot>
+</table>
+----
+
+Neither version of RFC XML is as expressive in its table structure as
+Asciidoctor; RFC XML for example does not permit blocks within table
+cells.
+

@@ -1,19 +1,20 @@
 GIT
   remote: https://github.com/riboseinc/asciidoctor-bibliography
-  revision: bb5ea4aa1c6b23c4e1bbb5bb6e88169c2479b132
+  revision: f31ee9b250bf30968095880127a018679508b3b2
   specs:
-    asciidoctor-bibliography (0.5.0)
+    asciidoctor-bibliography (0.6.0)
       asciidoctor (~> 1.5.6)
       bibtex-ruby (~> 4.4.4)
       citeproc-ruby (~> 1.1.7)
       csl-styles (~> 1.0.1)
       latex-decode (~> 0.2.2)
+      nokogiri (~> 1.8.1)
 
 GIT
   remote: https://github.com/riboseinc/asciidoctor-rfc
-  revision: 699d00fbb1029378ee48eed75de3ceeb3dceb8bd
+  revision: 7f184ed304e0f90a6ceff897bda48951ed613cbc
   specs:
-    asciidoctor-rfc (0.2.0)
+    asciidoctor-rfc (0.8.0)
       asciidoctor (~> 1.5.6)
       htmlentities (~> 4.3.4)
       nokogiri (~> 1.8.1)
@@ -25,9 +26,9 @@ GEM
     asciidoctor (1.5.6.1)
     bibtex-ruby (4.4.4)
       latex-decode (~> 0.0)
-    citeproc (1.0.5)
+    citeproc (1.0.6)
       namae (~> 0.8)
-    citeproc-ruby (1.1.7)
+    citeproc-ruby (1.1.8)
       citeproc (>= 1.0.4, < 2.0)
       csl (~> 1.4)
     csl (1.4.5)
@@ -52,4 +53,4 @@ DEPENDENCIES
   asciidoctor-rfc!
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

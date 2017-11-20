@@ -1,0 +1,61 @@
+== Preamble
+
+The preamble in Asciidoctor is the text between the end of the document header
+(which terminates with a blank line) and the first section of text. Any
+paragraphs of text in the preamble are treated as an abstract, and may
+optionally be tagged with the `abstract` style attribute. Any notes in the
+preamble are treated as a `note` element. For example:
+
+[source,asciidoc]
+----
+= A Standard for the Transmission of IP Datagrams on Avian Carriers
+David Waitzman <dwaitzman@BBN.COM>
+:doctype: internet-draft 
+:abbrev: IP Datagrams on Avian Carriers
+:status: informational
+:name: internet-draft-avian-transmission-00
+
+Preamble content.
+
+More Preamble content.
+
+NOTE: This is a note.
+
+[NOTE]
+.Title of Note
+====
+This is another note.
+====
+----
+
+[source,xml]
+----
+<rfc submissionType="IETF" prepTime="2017-11-18T02:55:47Z" version="3">
+<front>
+  <title abbrev="IP Datagrams on Avian Carriers">
+    A Standard for the Transmission of IP Datagrams on Avian Carriers
+  </title>
+  <seriesInfo name="Internet-Draft" status="informational" stream="IETF" 
+  value="internet-draft-avian-transmission-00"/>
+  <author fullname="David Waitzman" surname="Waitzman">
+    <address>
+      <email>dwaitzman@BBN.COM</email>
+    </address>
+  </author>
+  <date day="18" month="November" year="2017"/>
+
+  <abstract><t>Preamble content.</t>
+    <t>More Preamble content.</t>
+  </abstract>
+  <note>
+    <t>This is a note.</t>
+  </note>
+  <note>
+    <name>Title of Note</name>
+    <t>This is another note.</t>
+  </note>
+</front>
+----
+
+//TODO: add abstract example
+

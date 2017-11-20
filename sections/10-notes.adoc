@@ -1,0 +1,67 @@
+
+== Notes And Asides
+
+Asciidoctor supports a range of "admonitions", including notes, warnings, and
+tips. They are indicated by a paragraph prefix (e.g. `WARNING:`), or as a block
+with an admonition style attribute. All admonitions are converted to `note` elements in the document preamble, and `cref` documents in the main document.
+RFC XML v3 also supports asides (Asciidoctor sidebars):
+
+[source,asciidoc]
+----
+== Section 1
+[NOTE,source=GBS]
+.Note Title
+====
+Any admonition inside the body of the text is a comment.
+====
+
+****
+Sidebar
+
+Another sidebar
+
+* This is a list
+
+....
+And this is ascii-art
+....
+****
+----
+
+[source,xml]
+----
+<section anchor="_section_1" numbered="false">
+  <name>Section 1</name>
+  <t>
+    <cref display="true" source="GBS">
+      Any admonition inside the body of the text is a comment.
+    </cref>
+  </t>
+  <aside>
+    <t>Sidebar</t>
+    <t>Another sidebar</t>
+    <ul>
+      <li>This is a list</li>
+    </ul>
+    <figure>
+      <artwork type="ascii-art">
+        And this is ascii-art
+      </artwork>
+    </figure>
+  </aside>
+----
+
+Note that no inline formatting is permitted in RFC XML v2, and it is stripped
+for v2 by the converter.
+
+Because paragraphs in Asciidoctor cannot contain any other blocks, a comment at
+the end of a paragraph is treated as a new block. In the document converter,
+any such comments are moved inside the preceding RFC XML paragraph; if the
+comment is at the start of a section, as in the example above, it is wrapped
+inside a paragraph.
+
+While Asciidoctor has comments proper, notated with initial `//`, they are
+ignore by the document converter, so they will not appear as XML comments in
+the converter output.
+
+

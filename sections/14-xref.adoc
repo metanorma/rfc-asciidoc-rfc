@@ -1,0 +1,98 @@
+
+== Crossreferences
+
+Anchors for crossreferences are notated as `[[...]]` or `[#...]`. Anchors can
+be inserted on their own line in front of most blocks. Asciidoctor supports
+anchors in a much wider range of contexts than is supported than RFC XML v3
+(let alone v2); anchors that are not supported for that version of RFC XML are
+simply ignored by the converter. Note that anchors in RFC XML are constrained
+to the format `[A-Za-z_:][[A-Za-z0-9_:.-]*`.
+
+Cross-references to anchors are notated as ``<````...````>``; cross-references
+with custom text as ``<````reference,text````>``. Asciidoctor does not
+otherwise support attributes on cross-references, but the converter extracts
+format information from templated text within cross-references: `format=x:
+text` populates the `xref@format` attribute, while a section number followed by
+one of the words `of, parens, bare, text` is treated as a `relref` reference to
+an external document.
+
+[source,asciidoc]
+----
+[[crossreference]]
+== Section 1
+
+== Section 2
+See <<crossreference>>.
+
+== Section 3
+See <<crossreference,text>>
+
+== Section 4
+See <<crossreference,format=counter: text>>
+
+== Section 5
+See <<crossreference,format=title>>
+
+See <<crossreference,1.3 of>>
+<<crossreference,1.4 comma: text>>
+<<crossreference#fragment1,2.5.3 parens>>
+<<crossreference#fragment2,6.2a bare: text>>
+----
+
+[source,xml]
+----
+<section anchor="crossreference" numbered="false">
+  <name>Section 1</name>
+</section>
+<section anchor="_section_2" numbered="false">
+  <name>Section 2</name>
+  <t>
+    See 
+    <xref target="crossreference">
+    </xref>.
+  </t>
+</section>
+<section anchor="_section_3" numbered="false">
+  <name>Section 3</name>
+  <t>
+    See 
+    <xref target="crossreference">
+      text
+    </xref>
+  </t>
+</section>
+<section anchor="_section_4" numbered="false">
+  <name>Section 4</name>
+  <t>
+    See 
+    <xref format="counter" target="crossreference">
+      text
+    </xref>
+  </t>
+</section>
+<section anchor="_section_5" numbered="false">
+  <name>
+    Section 5
+  </name>
+  <t>
+    See 
+    <xref format="title" target="crossreference" />
+  </t>
+  <t>
+    See 
+    <relref section="1.3" displayformat="of" 
+     target="crossreference" />
+    <relref section="1.4" displayformat="comma" 
+     target="crossreference">
+      text
+    </relref>
+    <relref relative="fragment1" section="2.5.3" 
+     displayformat="parens" target="crossreference" />
+    <relref relative="fragment2" section="6.2a" 
+     displayformat="bare" target="crossreference">
+      text
+    </relref>
+  </t>
+</section>
+----
+

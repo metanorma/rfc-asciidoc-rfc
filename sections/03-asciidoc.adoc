@@ -1,0 +1,96 @@
+
+== Document Structure And General AsciiDoctor Syntax
+
+The syntax of Asciidoctor is presented in the
+http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Asciidoctor user manual].
+
+Asciidoctor consists of:
+
+* A document header, containing a title, a list of authors, and document
+attributes in lines prefixed with ":"
+
+* An optional document preamble, separated from document header by a blank line
+
+* A number of sections, set off by a section title (a line prefixed with two or
+more "=". A section may contain:
+
+** Other sections, whose level of nesting is indicated by the number of "=" in
+their header
+
+** Blocks of text. Blocks can have metadata (including a title, an anchor for
+cross-references, and attributes.) Blocks can be:
+
+*** Paragraphs, which are terminated by blank lines.
+
+*** Lists. List items are by default paragraphs, but can span over multiple
+paragraphs.
+
+*** Delimited blocks (with a line delimiter on either side of them); these
+include tables, notes, sidebars, source code, block quotes, examples, and
+unprocessed content (e.g. raw XML). Delimited blocks contain by default one or
+more paragraphs.
+
+*** List items can contain other blocks, including both nested lists and
+delimited blocks.
+
+*** Some delimited blocks can contain other delimited blocks; for example,
+examples can contain source code as well as discussion in paragraphs.
+
+** Blocks of text consist of inline text, which themselves can contain markup.
+
+
+Inline markup includes:
+
+*** Text formatting: bold, italic, superscript, subscript, monospace
+
+*** Custom markup macros
+
+*** URLs, including display text
+
+*** Inline anchors 
+
+*** Cross-references to anchors (IDs of blocks or spans of text), including
+display text
+
+*** Images, audio, and visual files
+
+*** Index terms
+
+*** Equations (native support for
+http://docs.mathjax.org/en/latest/asciimath.html[AsciiMathML] and
+http://docs.mathjax.org/en/latest/tex.html[TeX/LaTeX], via the
+https://www.mathjax.org[MathJax] tool
+
+*** Footnotes
+
+
+The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
+In the following, v3 equivalences are given:
+
+* Header: `<rfc>` attributes, most `front` elements
+
+* Preamble: `front/abstract` and `front/note`
+
+* Sections: `middle/section` elements
+
+* Sections with `bibliography` style attributes: `back/references` elements.
+
+* Sections with `appendix` style attributes: `back/section` elements.
+
+* Paragraphs: `t` elements
+
+* Lists: `ul`, `ol`, `dl` elements
+
+* Delimited blocks: `artwork`, `aside`, `blockquote`, `figure`, `note`,
+`sourcecode`, `table`
+
+* Inline markup: `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`,
+`strong`, `sub`, `sup`, `tt`, `xref`
+
+Full details of the  mapping of Asciidoctor elements to RFC XML v2 and v3
+elements, and of how to convert Asciidoctor documents to RFC XML, are given in
+https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc. The
+following gives an overview of how to create an RFC XML document in
+Asciidoctor, with some pitfalls to be aware of. Illustrations are in RFC XML
+v3, although the converter deals with both versions of RFC XML.
+

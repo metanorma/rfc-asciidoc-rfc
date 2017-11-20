@@ -1,0 +1,46 @@
+== Sections and Paragraphs
+
+Section headers are given with a sequence of `=`, the number of `=` giving the
+header level. Section numbering is toggled with the in-document attribute
+`:sectnums:` (on), `:sectnums!:` (off)
+
+[source,asciidoc]
+----
+:sectnums:
+[toc=exclude]
+== Section 1
+Para 1
+
+=== Subsection 1.1
+Para 1a
+
+:sectnums!:
+[toc=default]
+
+=== Subsection 1.2
+Para 2
+
+==== Subsection 1.2.1
+Para 3
+----
+
+[source,xml]
+----
+<section anchor="_section_1" toc="exclude" numbered="true">
+    <name>Section 1</name>
+    <t>Para 1</t>
+    <section anchor="_subsection_1_1" numbered="true">
+        <name>Subsection 1.1</name>
+        <t>Para 1a</t>
+    </section>
+    <section anchor="_subsection_1_2" toc="default" numbered="false">
+        <name>Subsection 1.2</name>
+        <t>Para 2</t>
+        <section anchor="_subsection_1_2_1" numbered="false">
+            <name>Subsection 1.2.1</name>
+            <t>Para 3</t>
+        </section>
+    </section>
+</section>
+----
+
