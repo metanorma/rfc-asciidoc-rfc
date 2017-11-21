@@ -1,12 +1,12 @@
 == RFC XML features not supported in Asciidoctor
 
 The following features of  RFC XML are not supported by the Asciidoctor
-converter, and would need to be adjusted manually:
+converter, and would need to be adjusted manually after RFC XML is generated::
 
 |===
 | RFC XML element                  | RFC XML v3 | RFC XML v2
 
-| `front/boilerplate`              | Not added by the converter  | N/A
+| `front/boilerplate`              | Not added by the converter  | Not added by the converter
 | `iref@primary`                   | N          | N
 | `reference` (and all children)   | As Raw XML | As Raw XML
 | `table/preamble`                 | Deprecated | N

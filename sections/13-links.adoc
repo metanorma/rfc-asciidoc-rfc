@@ -16,4 +16,13 @@ http://example.com/[linktext]
 
 To prevent hyperlinking of a URL, prefix it with a backslash.
 
+[source,asciidoc]
+----
+\http://example.com/[linktext]
+----
+
+[source,xml]
+----
+<t>http://example.com/[linktext]</t>
+----
 

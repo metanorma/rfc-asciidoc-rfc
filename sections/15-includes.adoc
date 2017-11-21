@@ -9,7 +9,7 @@ merged text:
 
 [source,asciidoc]
 ----
-\include::path[
+include::path[
   leveloffset=_offset_,
   lines=_ranges_,
   tag(s)=_name(s)_,
@@ -20,3 +20,4 @@ merged text:
 If a file is included in an Asciidoc document, ensure it ends with a blank line.
 An inclusion that results in its final block not being delimited with a blank line
 from what follows can lead to unpredictable results.
+

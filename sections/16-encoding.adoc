@@ -1,7 +1,7 @@
 
 == Encoding and Entities
 
-XML accepted the full range of characters in the world's languages through
+XML accepts the full range of characters in the world's languages through
 UTF-8 character encoding, and one of the motivations for the move from plain
 text to RFC XML has been to allow non-ASCII characters to be included in RFCs.
 However, current RFC XML v2 tools still do not support UTF-8, and other tool
@@ -14,4 +14,20 @@ part of the XML specification; HTML entities such as `&nbsp;` feature in
 examples of RFC XML provided by the IETF. In order to prevent dependence of the
 XML output from extraneous entity definitions, any such entities are rendered
 in the XML as decimal character entities.
+
+[source,asciidoc]
+----
+Это 
+Русский 
+Язык. 
+&mdash; This is not George&apos;s.&#x2020;
+----
+
+[source,xml]
+----
+<t>&#1069;&#1090;&#1086; 
+&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081; 
+&#1071;&#1079;&#1099;&#1082;. &#8212; 
+This is not George's.&#8224;</t>
+----
 

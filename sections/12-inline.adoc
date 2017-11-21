@@ -37,8 +37,9 @@ Any spans of BCP14 text delimited by inline formatting delimiters needs to be
 contained within a single line of text; the Asciidoctor API breaks up
 formatting spans across line breaks.
 
-Formatting delimiters like `\*` can be escaped with backslash (`\\*`); double formatting
-delimiters, like ``{dblstar}`` and `__`, need to be escaped with double backslash
+[subs="quotes,attributes"]
+Formatting delimiters like `\*` can be escaped with backslash (`\*`); double formatting
+delimiters, like `{dblstar}` and `__`, need to be escaped with double backslash
 (`\\**`). Escaping delimiters is not always reliable, and for double delimiters
 it is preferable to use HTML entities (`&#42;&#42;`), or attribute references
 (references to the value of attributes set in the document header):
@@ -53,3 +54,4 @@ it is preferable to use HTML entities (`&#42;&#42;`), or attribute references
 In extreme circumstances (such as quoting Asciidoc syntax), you may need to resort to
 altering the substitutions behaviour within a given block of of Asciidoc; see
 http://asciidoctor.org/docs/user-manual/#applying-substitutions
+

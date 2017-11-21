@@ -1,10 +1,10 @@
 == Bibliography
 
-Asciidoctor has a simple encoding of bibliographies, but it is not adequate for
-the complexity of bibliographic markup supported in RFC XML. RFC documents
+Asciidoctor has a simple encoding of bibliographies, which is not adequate for
+the complexity of bibliographic markup required by RFC XML. RFC documents
 overwhelmingly cite other RFC documents, and canonical RFC XML bibliographic
 entries are available at http://xml.resource.org/public/rfc/bibxml/ ; so it
-would be inefficient to encode those entries in Asciidoctor, only to have them
+would be inefficient to encode those entries in AsciiRFC, only to have them
 converted back to RFC XML.
 
 The converter provides two means of incorporating bibliographies into RFC
@@ -19,14 +19,13 @@ lead to erratic behaviour in the converter.
 
 === Using Raw RFC XML
 
-In the first, bibliographic citations are handled like all other
+In the first method, bibliographic citations are handled like all other Asciidoctor
 cross-references. The bibliographic entries for normative and informative
 references are given in the Asciidoctor as passthrough blocks, which contain
 the raw RFC XML for all references; document conversion leaves the raw RFC XML
 in place. This approach requires authors to maintain the normative and
 informative bibliographies within the document, to update them as citations are
-added and removed, and to sort them manually.
-
+added and removed, and to sort them manually. For example:
 
 [source,asciidoc]
 ----
