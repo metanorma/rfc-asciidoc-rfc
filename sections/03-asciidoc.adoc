@@ -126,7 +126,8 @@ Avian carriers can provide high delay, low throughput, and low
 altitude service.  The connection topology is limited to a single
 point-to-point path for each carrier, used with standard carriers,
 but many carriers can be used without significant interference with
-each other, outside of early spring. <<frame>> This is because of the 3D ether
+each other, outside of early spring. <<frame>> 
+This is because of the 3D ether
 space available to the carriers, in contrast to the 1D ether used by
 IEEE802.3.  
 
@@ -141,14 +142,17 @@ The scroll of paper is wrapped around one leg of the avian carrier.
 A band of duct tape is used to secure the datagram's edges.  The
 bandwidth is limited to the leg length.  The MTU is variable, and
 paradoxically, generally increases with increased carrier age.  A
-typical MTU is 256 milligrams.  Some datagram padding may be needed.<<RFC7253>>
+typical MTU is 256 milligrams.  Some datagram padding may be 
+needed.<<RFC7253>>
 
 [bibliography]
 == Normative References
 ++++
-<reference anchor='RFC7253' target='https://tools.ietf.org/html/rfc7253'>
+<reference anchor='RFC7253' 
+  target='https://tools.ietf.org/html/rfc7253'>
   <front>
-    <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
+    <title>Guidelines for Writing an IANA Considerations 
+      Section in RFCs</title>
     <author initials="T." surname="Krovetz">
       <organization>Sacramento State</organization>
     </author>
@@ -173,19 +177,19 @@ document preamble. They are treated by the document converter as containing the 
 abstract (`abstract`), followed by any notes (`note`, identified above by the `NOTE:` heading).
 
 The first section header (`==Frame Format`) is preceded by an anchor for that section
-(`[[frame]]`). There is a cross-reference to that anchor already in place in the abstract
-(`<<frame>>`). The document converter treats the first section of the document as the start of
+(``{dblopenbracket}````frame````{dblclosebracket}``). There is a cross-reference to that anchor already in place in the abstract
+(`{dblopenangle}frame{dblcloseangle}`). The document converter treats the first section of the document as the start of
 the `middle` section of the document.
 
 The first section header is followed by a paragraph, which contains some inline formatting
-(italics: `_datagram_`; boldface: `*printed*`). The paragraph also contains a citation of
+(italics: `\_datagram_`; boldface: `\*printed*`). The paragraph also contains a citation of
 a reference, which in this version of AsciiRef is treated identically to a cross-reference
-(`<<RFC7253>>`). (If the bibliography preprocessor were used, it would be encoded differently.)
+(`{dblopenangle}RFC7253{dblcloseangle}`). (If the bibliography preprocessor were used, it would be encoded differently.)
 
 The following section is tagged with the style attribute `[bibliography]`, which identifies
 it as a references container; the document converter accordingly inserts this into the `back`
 element of the document. The contents of the references section are in this instance raw XML,
-delimited as a passthrough block (with `++++`), which the converter does not alter.
+delimited as a passthrough block (with ``+````+````+````+``), which the converter does not alter.
 
 The RFC XML v3 document generated from this AsciiRFC document is:
 
@@ -254,16 +258,18 @@ needed.<xref target="RFC7253"/></t>
 </middle><back>
 <references anchor="_normative_references">
   <name>Normative References</name>
-  <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+<reference anchor='RFC7253' 
+  target='https://tools.ietf.org/html/rfc7253'>
   <front>
-    <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
+    <title>Guidelines for Writing an IANA Considerations 
+      Section in RFCs</title>
     <author initials="T." surname="Krovetz">
       <organization>Sacramento State</organization>
     </author>
     <author initials="P." surname="Rogaway">
       <organization>UC Davis</organization>
     </author>
-    <date month="May" year="2014"/>
+    <date month='May' year='2014'/>
   </front>
   <seriesInfo name="RFC" value="7253"/>
 </reference>
@@ -290,7 +296,8 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
-  category="info" submissionType="IETF" docName="internet-draft-avian-transmission-00">
+  category="info" submissionType="IETF" 
+  docName="internet-draft-avian-transmission-00">
 <front>
   <title abbrev="IP Datagrams on Avian Carriers">A Standard for the 
   Transmission of IP Datagrams on Avian Carriers</title>
@@ -339,16 +346,18 @@ needed.<xref target="RFC7253"/></t>
 </section>
 </middle><back>
 <references title="Normative References">
-  <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+<reference anchor='RFC7253' 
+  target='https://tools.ietf.org/html/rfc7253'>
   <front>
-    <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
+    <title>Guidelines for Writing an IANA Considerations 
+      Section in RFCs</title>
     <author initials="T." surname="Krovetz">
       <organization>Sacramento State</organization>
     </author>
     <author initials="P." surname="Rogaway">
       <organization>UC Davis</organization>
     </author>
-    <date month="May" year="2014"/>
+    <date month='May' year='2014'/>
   </front>
   <seriesInfo name="RFC" value="7253"/>
 </reference>

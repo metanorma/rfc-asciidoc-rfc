@@ -15,6 +15,14 @@ element:
 ....
 Figures are only permitted to contain listings 
 (sourcecode), images (artwork), or literal (artwork)
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _   
+|  ___|_ _/ ___| | ___| |_ 
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_ 
+|_|   |___\____|_|\___|\__|
 ....
 
 [source,ruby]
@@ -37,7 +45,14 @@ end
   <artwork type="ascii-art" name="figure1.txt">
     Figures are only permitted to contain listings 
     (sourcecode), images (artwork), or literal (artwork)
-  </artwork>
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|</artwork>
   <sourcecode type="ruby">
     def listing(node) 
       result = [] 
