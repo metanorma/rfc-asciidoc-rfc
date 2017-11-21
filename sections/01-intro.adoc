@@ -27,7 +27,8 @@ required by RFC XML (including notes, tables, bibliographies, source-code
 blocks, and definition lists), without resorting to embedded HTML or Markdown
 "flavours".
 
-* Asciidoctor is extensible, with a well-defined API.
+* Asciidoctor is extensible, with a well-defined API. (Extensions have been harnessed
+to deal with bibliographic preprocessing for our RFC XML converter.)
 
 * Asciidoctor allows granular control of rendering, including user-specified
 attribute of text blocks.
