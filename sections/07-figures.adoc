@@ -1,11 +1,9 @@
 
 == Figures
 
-AsciiDoc Examples (corresponding to RFC XML figures), source code listings, and
-literals (preformatted text) are all delimited blocks. Listings and literals
-can occur nested within examples. If an Asciidoctor listing or literal occurs
-outside of an example, the RFC XML converter will supply the surrounding figure
-element:
+AsciiDoc examples (corresponding to RFC XML Figures), source code Listings, and
+Literals (preformatted text) are all delimited blocks. Listings and Literals
+can occur nested within Examples:
 
 [source,asciidoc]
 --
@@ -64,3 +62,32 @@ This is some ASCII Art:
 </figure>
 ----
 
+If an Asciidoctor Listing or Literal occurs
+outside of an Example, the RFC XML converter will supply the surrounding Figure
+element:
+
+[source,asciidoc]
+----
+....
+This is some ASCII Art:
+
+ _____ ___ ____ _      _   
+|  ___|_ _/ ___| | ___| |_ 
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_ 
+|_|   |___\____|_|\___|\__|
+....
+----
+
+[source,xml]
+----
+<figure>
+  <artwork type="ascii-art">This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|</artwork>
+</figure>
+----

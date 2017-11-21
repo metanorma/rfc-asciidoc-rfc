@@ -1,8 +1,8 @@
 == Tables
 
 Asciidoctor tables, like RFC XML v3, support distinct table heads, bodies and
-feet, cells spanning multiple rows and columns, and horizontal alignment. The
-larger range of formatting options available in RFC XML v2 is also supported.
+feet; cells spanning multiple rows and columns; and horizontal alignment. The
+larger range of table formatting options available in RFC XML v2 is also supported.
 
 [source,asciidoc]
 ----
@@ -75,6 +75,6 @@ h|header cell | body cell
 ----
 
 Neither version of RFC XML is as expressive in its table structure as
-Asciidoctor; RFC XML for example does not permit blocks within table
+Asciidoctor. RFC XML, for example, does not permit blocks within table
 cells.
 

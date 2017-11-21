@@ -47,7 +47,7 @@ Inline markup includes:
 
 *** URLs, including display text.
 
-*** Inline anchors .
+*** Inline anchors.
 
 *** Cross-references to anchors (IDs of blocks or spans of text), including
 display text.
@@ -67,25 +67,25 @@ https://www.mathjax.org[MathJax] tool).
 The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
 In the following, v3 equivalences are given:
 
-* Header: `<rfc>` attributes, most `front` elements
+* Header: `<rfc>` attributes, most `front` elements.
 
-* Preamble: `front/abstract` and `front/note`
+* Preamble: `front/abstract` and `front/note`.
 
-* Sections: `middle/section` elements
+* Sections: `middle/section` elements.
 
 * Sections with `bibliography` style attributes: `back/references` elements.
 
 * Sections with `appendix` style attributes: `back/section` elements.
 
-* Paragraphs: `t` elements
+* Paragraphs: `t` elements.
 
-* Lists: `ul`, `ol`, `dl` elements
+* Lists: `ul`, `ol`, `dl` elements.
 
 * Delimited blocks: `artwork`, `aside`, `blockquote`, `figure`, `note`,
-`sourcecode`, `table`
+`sourcecode`, `table`.
 
 * Inline markup: `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`,
-`strong`, `sub`, `sup`, `tt`, `xref`
+`strong`, `sub`, `sup`, `tt`, `xref`.
 
 Full details of the  mapping of Asciidoctor elements to RFC XML v2 and v3
 elements, and of how to convert Asciidoctor documents to RFC XML, are given in
@@ -133,7 +133,7 @@ IEEE802.3.
 
 NOTE: Yes, this is an April Fool's RFC.
 
-[[frame]]
+[#frame]
 == Frame Format
 
 The IP _datagram_ is *printed*, on a small scroll of paper, in
@@ -169,27 +169,29 @@ needed.<<RFC7253>>
 The first block of text, from `= A Standard for the Transmission` through to `:code: MA 02238`,
 is the document header. It contains a title in the first line, an author attribution, and then
 a set of document attributes, conveying information about the document as well as information
-about its authors, and ends up either as attributes of the root `rfc` tag, elements of the `front`
+about its authors. This information ends up either as attributes of the root `rfc` tag, elements of the `front`
 tag, or processing instructions.
 
 The following blocks of text, up until the first section header (`==Frame Format`), are the 
 document preamble. They are treated by the document converter as containing the document
 abstract (`abstract`), followed by any notes (`note`, identified above by the `NOTE:` heading).
 
+[subs="quotes"]
 The first section header (`==Frame Format`) is preceded by an anchor for that section
-(``{dblopenbracket}````frame````{dblclosebracket}``). There is a cross-reference to that anchor already in place in the abstract
-(`{dblopenangle}frame{dblcloseangle}`). The document converter treats the first section of the document as the start of
+(`[#frame]`). There is a cross-reference to that anchor already in place in the abstract
+(`<<frame>>`). The document converter treats the first section of the document as the start of
 the `middle` section of the document.
 
+[subs="quotes"]
 The first section header is followed by a paragraph, which contains some inline formatting
 (italics: `\_datagram_`; boldface: `\*printed*`). The paragraph also contains a citation of
 a reference, which in this version of AsciiRef is treated identically to a cross-reference
-(`{dblopenangle}RFC7253{dblcloseangle}`). (If the bibliography preprocessor were used, it would be encoded differently.)
+(`<<RFC7253>>`). (If the bibliography preprocessor were used, it would be encoded differently.)
 
 The following section is tagged with the style attribute `[bibliography]`, which identifies
 it as a references container; the document converter accordingly inserts this into the `back`
 element of the document. The contents of the references section are in this instance raw XML,
-delimited as a passthrough block (with ``+````+````+````+``), which the converter does not alter.
+delimited as a passthrough block (with `{fourpluses}`), which the converter does not alter.
 
 The RFC XML v3 document generated from this AsciiRFC document is:
 

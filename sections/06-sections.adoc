@@ -2,7 +2,9 @@
 
 Section headers are given with a sequence of `=`, the number of `=` giving the
 header level. Section numbering is toggled with the in-document attribute
-`:sectnums:` (on), `:sectnums!:` (off)
+`:sectnums:` (on), `:sectnums!:` (off). The `toc` attribute can also be set
+on sections, indicating whether the section can be included in the document's
+table of contents.
 
 [source,asciidoc]
 ----
@@ -16,7 +18,6 @@ Para 1a
 
 :sectnums!:
 [toc=default]
-
 === Subsection 1.2
 Para 2
 

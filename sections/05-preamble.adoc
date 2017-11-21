@@ -15,9 +15,19 @@ David Waitzman <dwaitzman@BBN.COM>
 :status: informational
 :name: internet-draft-avian-transmission-00
 
-Preamble content.
+Avian carriers can provide high delay, low throughput, and low
+altitude service.  The connection topology is limited to a single
+point-to-point path for each carrier, used with standard carriers,
+but many carriers can be used without significant interference with
+each other, outside of early spring.  This is because of the 3D ether
+space available to the carriers, in contrast to the 1D ether used by
+IEEE802.3.
 
-More Preamble content.
+The carriers have an intrinsic collision avoidance
+system, which increases availability.  Unlike some network
+technologies, such as packet radio, communication is not limited to
+line-of-sight distance.  Connection oriented service is available in
+some cities, usually based upon a central hub topology.
 
 NOTE: This is a note.
 
@@ -36,7 +46,7 @@ This is another note.
     A Standard for the Transmission of IP Datagrams on Avian Carriers
   </title>
   <seriesInfo name="Internet-Draft" status="informational" stream="IETF" 
-  value="internet-draft-avian-transmission-00"/>
+    value="internet-draft-avian-transmission-00"/>
   <author fullname="David Waitzman" surname="Waitzman">
     <address>
       <email>dwaitzman@BBN.COM</email>
@@ -44,9 +54,22 @@ This is another note.
   </author>
   <date day="18" month="November" year="2017"/>
 
-  <abstract><t>Preamble content.</t>
-    <t>More Preamble content.</t>
+  <abstract>
+  <t>Avian carriers can provide high delay, low throughput, and low
+  altitude service.  The connection topology is limited to a single
+  point-to-point path for each carrier, used with standard carriers,
+  but many carriers can be used without significant interference with
+  each other, outside of early spring.  This is because of the 3D ether
+  space available to the carriers, in contrast to the 1D ether used by
+  IEEE802.3.</t>
+
+  <t>The carriers have an intrinsic collision avoidance
+  system, which increases availability.  Unlike some network
+  technologies, such as packet radio, communication is not limited to
+  line-of-sight distance.  Connection oriented service is available in
+  some cities, usually based upon a central hub topology.</t>
   </abstract>
+
   <note>
     <t>This is a note.</t>
   </note>
@@ -56,6 +79,4 @@ This is another note.
   </note>
 </front>
 ----
-
-//TODO: add abstract example
 

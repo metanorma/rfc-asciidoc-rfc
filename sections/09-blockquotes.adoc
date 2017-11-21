@@ -2,7 +2,7 @@
 
 Asciidoctor supports blockquotes and quotations of verse; its block quotations
 permit arbitrary levels of quote nesting. RFC XML v3 only supports one level of
-blockquotes. RFC XML v3 does not support line breaks outside of tables, so
+blockquotes. Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of tables; so
 verse quotations are converted to prose.
 
 [source,asciidoc]

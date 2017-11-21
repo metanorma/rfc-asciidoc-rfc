@@ -44,10 +44,11 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :email_4: paolo.brasolin@ribose.com
 :uri_4: https://www.ribose.com
 :country_4: Italy
-:dblopenbracket: [[
-:dblclosebracket: ]]
+:brackethash: [#
 :dblopenangle: <<
-:dblcloseangle: <<
+:dblcloseangle: >>
+:fourpluses: ++++
+:dblstar: **
 
 include::sections/00-abstract.adoc[]
 include::sections/01-intro.adoc[]

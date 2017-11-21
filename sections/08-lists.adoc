@@ -59,9 +59,9 @@ Note 3.
 </dl>
 ----
 
-NOTE: Multiple paragraphs are not permitted within a list item in RFC XML v2.
+(Multiple paragraphs are not permitted within a list item in RFC XML v2.
 The RFC XML converter deals with this by converting paragraph breaks into line
-breaks within a list item.
+breaks within a list item.)
 
 List continuations can also be embed to populate a list item with a sequence of
 blocks as a unit (in an Asciidoc open block):
@@ -119,14 +119,10 @@ Asciidoctor:
     <li>
       <t>List Entry 2</t>
       <t>Note 2.</t>
-      <figure>
-        <artwork type="ascii-art">
-          Literal
-        </artwork>
-      </figure>
-      <t>Note 3.</t>
     </li>
   </ul>
+  And this is the continuation of the paragraph.
+</t>
 ----
 
 
