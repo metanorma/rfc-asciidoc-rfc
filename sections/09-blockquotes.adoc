@@ -7,7 +7,7 @@ verse quotations are converted to prose.
 
 [source,asciidoc]
 ----
-[quote,attribution="Monty Python",citetitle="http://foo.bar"]
+[quote,attribution="Monty Python",citetitle="http://example.com"]
 ____
 Dennis: Come and see the violence inherent in the system. 
 Help! Help! I'm being repressed!
@@ -25,7 +25,7 @@ ____
 
 [source,xml]
 ----
-<blockquote quotedfrom="Monty Python" cite="http://foo.bar">
+<blockquote quotedfrom="Monty Python" cite="http://example.com">
   <t>Dennis: Come and see the violence inherent in the system. 
   Help! Help! I&#8217;m being repressed!</t>
   <t>King Arthur: Bloody peasant!</t>
