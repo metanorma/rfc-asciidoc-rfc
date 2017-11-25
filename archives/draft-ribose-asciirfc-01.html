@@ -1,0 +1,2164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>Writing Internet-Drafts And RFCs In AsciiDoc (AsciiRFC)</title>
+
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
+
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.2" rel="Chapter" title="2 Conventions Used in This Document">
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Definitions">
+<link href="#rfc.section.3" rel="Chapter" title="3 Document Structure And AsciiDoctor Syntax">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Simple illustration">
+<link href="#rfc.section.4" rel="Chapter" title="4 Header And Document Attributes">
+<link href="#rfc.section.5" rel="Chapter" title="5 Preamble">
+<link href="#rfc.section.6" rel="Chapter" title="6 Sections and Paragraphs">
+<link href="#rfc.section.7" rel="Chapter" title="7 Figures">
+<link href="#rfc.section.8" rel="Chapter" title="8 Lists">
+<link href="#rfc.section.9" rel="Chapter" title="9 Blockquotes">
+<link href="#rfc.section.10" rel="Chapter" title="10 Notes And Asides">
+<link href="#rfc.section.11" rel="Chapter" title="11 Tables">
+<link href="#rfc.section.12" rel="Chapter" title="12 Inline Formatting">
+<link href="#rfc.section.13" rel="Chapter" title="13 Links">
+<link href="#rfc.section.14" rel="Chapter" title="14 Crossreferences">
+<link href="#rfc.section.15" rel="Chapter" title="15 Inclusions">
+<link href="#rfc.section.16" rel="Chapter" title="16 Encoding and Entities">
+<link href="#rfc.section.17" rel="Chapter" title="17 Bibliography">
+<link href="#rfc.section.17.1" rel="Chapter" title="17.1 Using Raw RFC XML">
+<link href="#rfc.section.17.2" rel="Chapter" title="17.2 Using preprocessing">
+<link href="#rfc.section.18" rel="Chapter" title="18 RFC XML features not supported in Asciidoctor">
+<link href="#rfc.section.19" rel="Chapter" title="19 Authoring">
+<link href="#rfc.section.20" rel="Chapter" title="20 Security Considerations">
+<link href="#rfc.section.21" rel="Chapter" title="21 IANA Considerations">
+<link href="#rfc.section.22" rel="Chapter" title="22 Examples">
+<link href="#rfc.section.22.1" rel="Chapter" title="22.1 Example 1">
+<link href="#rfc.references" rel="Chapter" title="23 References">
+<link href="#rfc.references.1" rel="Chapter" title="23.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="23.2 Informative References">
+<link href="#rfc.appendix.A" rel="Chapter" title="A Acknowledgements">
+<link href="#rfc.authors" rel="Chapter">
+
+
+  <meta name="generator" content="xml2rfc version 2.8.0 - https://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Tse, R., Nicholas, N., Lau, J., and P. Brasolin" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-ribose-asciirfc-01" />
+  <meta name="dct.issued" scheme="ISO8601" content="2017-11-25" />
+  <meta name="dct.abstract" content="This document describes the AsciiDoc syntax extension called AsciiRFC designed for authoring IETF Internet-Drafts and RFCs." />
+  <meta name="description" content="This document describes the AsciiDoc syntax extension called AsciiRFC designed for authoring IETF Internet-Drafts and RFCs." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+<td class="left">Network Working Group</td>
+<td class="right">R. Tse</td>
+</tr>
+<tr>
+<td class="left">Internet-Draft</td>
+<td class="right">N. Nicholas</td>
+</tr>
+<tr>
+<td class="left">Intended status: Informational</td>
+<td class="right">J. Lau</td>
+</tr>
+<tr>
+<td class="left">Expires: May 29, 2018</td>
+<td class="right">P. Brasolin</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Ribose</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">November 25, 2017</td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">Writing Internet-Drafts And RFCs In AsciiDoc (AsciiRFC)<br />
+  <span class="filename">draft-ribose-asciirfc-01</span></p>
+  
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>This document describes the AsciiDoc syntax extension called AsciiRFC designed for authoring IETF Internet-Drafts and RFCs.</p>
+<p>AsciiDoc is a human readable document markup language which affords more granular control over markup than comparable schemes such as Markdown.</p>
+<p>The AsciiRFC syntax is designed to allow the author to entirely focus on text, providing the full power of the resulting XML RFC through the AsciiDoc language, while abstracting away the need to manually edit XML, including references.</p>
+<p>This document itself was written and generated into XML RFC v2 (RFC7749) and XML RFC v3 (RFC7991) directly through asciidoctor-rfc, an AsciiRFC generator.</p>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on May 29, 2018.</p>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+<p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a>
+</li>
+<li>2.   <a href="#rfc.section.2">Conventions Used in This Document</a>
+</li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">Definitions</a>
+</li>
+</ul><li>3.   <a href="#rfc.section.3">Document Structure And AsciiDoctor Syntax</a>
+</li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Simple illustration</a>
+</li>
+</ul><li>4.   <a href="#rfc.section.4">Header And Document Attributes</a>
+</li>
+<li>5.   <a href="#rfc.section.5">Preamble</a>
+</li>
+<li>6.   <a href="#rfc.section.6">Sections and Paragraphs</a>
+</li>
+<li>7.   <a href="#rfc.section.7">Figures</a>
+</li>
+<li>8.   <a href="#rfc.section.8">Lists</a>
+</li>
+<li>9.   <a href="#rfc.section.9">Blockquotes</a>
+</li>
+<li>10.   <a href="#rfc.section.10">Notes And Asides</a>
+</li>
+<li>11.   <a href="#rfc.section.11">Tables</a>
+</li>
+<li>12.   <a href="#rfc.section.12">Inline Formatting</a>
+</li>
+<li>13.   <a href="#rfc.section.13">Links</a>
+</li>
+<li>14.   <a href="#rfc.section.14">Crossreferences</a>
+</li>
+<li>15.   <a href="#rfc.section.15">Inclusions</a>
+</li>
+<li>16.   <a href="#rfc.section.16">Encoding and Entities</a>
+</li>
+<li>17.   <a href="#rfc.section.17">Bibliography</a>
+</li>
+<ul><li>17.1.   <a href="#rfc.section.17.1">Using Raw RFC XML</a>
+</li>
+<li>17.2.   <a href="#rfc.section.17.2">Using preprocessing</a>
+</li>
+</ul><li>18.   <a href="#rfc.section.18">RFC XML features not supported in Asciidoctor</a>
+</li>
+<li>19.   <a href="#rfc.section.19">Authoring</a>
+</li>
+<li>20.   <a href="#rfc.section.20">Security Considerations</a>
+</li>
+<li>21.   <a href="#rfc.section.21">IANA Considerations</a>
+</li>
+<li>22.   <a href="#rfc.section.22">Examples</a>
+</li>
+<ul><li>22.1.   <a href="#rfc.section.22.1">Example 1</a>
+</li>
+</ul><li>23.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>23.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>23.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Acknowledgements</a>
+</li>
+<li><a href="#rfc.authors">Authors' Addresses</a>
+</li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> <a href="#_introduction" id="_introduction">Introduction</a>
+</h1>
+<p id="rfc.section.1.p.1">Internet-Drafts and RFCs intended for publication submission to the IETF can be written in a multitude of formats today, including:</p>
+<p></p>
+
+<ul>
+<li>XML: RFC XML v2 <a href="#RFC7749" class="xref">[RFC7749]</a> and v3 <a href="#RFC7991" class="xref">[RFC7991]</a>
+</li>
+<li>nroff: through "NroffEdit" <a href="#NroffEdit" class="xref">[NroffEdit]</a>
+</li>
+<li>Microsoft Word: through usage of <a href="#RFC5385" class="xref">[RFC5385]</a>
+</li>
+<li>Lyx: through <a href="#lyx2rfc" class="xref">[lyx2rfc]</a>
+</li>
+<li>Pandoc: <a href="#RFC7328" class="xref">[RFC7328]</a>, through <a href="#pandoc2rfc" class="xref">[pandoc2rfc]</a> or <a href="#draftr" class="xref">[draftr]</a>
+</li>
+<li>Kramdown: through <a href="#kramdown-rfc2629" class="xref">[kramdown-rfc2629]</a>
+</li>
+<li>mmark: through <a href="#mmark" class="xref">[mmark]</a>
+</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.1.p.3">Interestingly, the last three are Markdown <a href="#RFC7763" class="xref">[RFC7763]</a> variants.</p>
+<p id="rfc.section.1.p.4">As specified in <a href="#RFC7990" class="xref">[RFC7990]</a>, the IETF intends for the canonical format of RFCs to transition from plain-text ASCII to RFC XML v3 <a href="#RFC7991" class="xref">[RFC7991]</a>. While plain-text will continue to be accepted from authors by the IETF, at least in the short- to medium-term, XML will be preferred for submission, and any plain-text submissions will need to be converted to RFC XML v3.</p>
+<p id="rfc.section.1.p.5">While this need is already met for RFC XML v2 <a href="#RFC7749" class="xref">[RFC7749]</a> by the tools specified above, the transition to RFC XML v3 <a href="#RFC7991" class="xref">[RFC7991]</a> places added onus on authors to generate compliant XML.</p>
+<p><a href="#AsciiDoc" class="xref">[AsciiDoc]</a> is an alternative markup language to Markdown, with features that make it attractive as a markup language for RFC with XML output. This document describes the use of <a href="#Asciidoctor" class="xref">[Asciidoctor]</a>, a Ruby-based enhancement of the original AsciiDoc markup language, for RFC XML markup, with a Ruby gem written by the authors used to render Asciidoctor documents as RFC XML.  The markup language used specifically for the purpose of generating RFC XML document is called "AsciiRFC".</p>
+<p id="rfc.section.1.p.7">Section 1.2 of <a href="#RFC7764" class="xref">[RFC7764]</a> famously states that "there is no such thing as "invalid" Markdown, there is no standard demanding adherence to the Markdown syntax, and there is no governing body that guides or impedes its development." While there are contexts where that lack of rigour is helpful, the authoring of RFCs does have a standard and a governing body, and there is such a thing as invalid RFC XML. A more rigorous counterpart to Markdown, which still preserves its basic approach to formatting, is useful in generating RFC XML that encompasses a fuller subset of the specification, and preempting malformed RFC XML output.</p>
+<p><a href="http://asciidoctor.org/docs/user-manual/#compared-to-markdown">Compared to Markdown</a>,</p>
+<p></p>
+
+<ul>
+<li>AsciiDoc was designed from the beginning as a publishing language: it was initially intended as a plain-text alternative to the DocBook XML schema. For that reason, Asciidoctor natively supports the full range of formatting required by RFC XML (including notes, tables, bibliographies, source-code blocks, and definition lists), without resorting to embedded HTML or Markdown "flavours".</li>
+<li>AsciiDoc in its Ruby-based Asciidoctor implementation is extensible, with a well-defined API. (Extensions have been harnessed to deal with bibliographic preprocessing for AsciiRFC.)</li>
+<li>AsciiRFC allows granular control of rendering, including user-specified attributes of text blocks.</li>
+<li>The Asciidoctor implementation allows document inclusion, for managing large-scale documentation projects.</li>
+<li>AsciiRFC allows granular control of permutations of block nesting, such as source code within lists or definition lists within unordered lists.</li>
+<li>As a more formal counterpart to Markdown, AsciiDoc is well-suited to generating XML that needs to conform to a specified schema.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.1.p.10">As with Markdown, there is a wide range of tools that can render AsciiDoc; so AsciiRFC drafts of RFC documents can be previewed and accessed without depending on the RFC tools ecosystem. Our realisation of RFC XML in AsciiRFC has aimed to ensure that, as much as possible, the markup language can be can be processed by generic Asciidoctor tools.  (The only exception to this as an add-on is the optional bibliography module, which allows bibliographies to be assembled on the fly based on citations in a document: see <a href="#asciidoctor_bibliography" class="xref">Section 17.2</a>.)</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#_conventions_used_in_this_document" id="_conventions_used_in_this_document">Conventions Used in This Document</a>
+</h1>
+<p id="rfc.section.2.p.1">The key words "<strong>MUST</strong>", "<strong>MUST NOT</strong>", "<strong>REQUIRED</strong>", "<strong>SHALL</strong>", "<strong>SHALL NOT</strong>", "<strong>SHOULD</strong>", "<strong>SHOULD NOT</strong>", "<strong>RECOMMENDED</strong>", "<strong>MAY</strong>", and "<strong>OPTIONAL</strong>" in this document are to be interpreted as described in <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
+<h1 id="rfc.section.2.1">
+<a href="#rfc.section.2.1">2.1.</a> <a href="#_definitions" id="_definitions">Definitions</a>
+</h1>
+<p id="rfc.section.2.1.p.1">In this document, <em>AsciiDoc</em> refers to the markup language generically.  <em>Asciidoctor</em> refers specifically to the Ruby-based implementation of the markup language, which has enhanced the original markup language.  The RFC XML document converter contributed by the authors uses a subset of <em>Asciidoctor</em>, with some minor additions (a few document attributes specific to RFC XML, some macros specific to citation processing, and some templated use of <em>Asciidoctor</em> crossreferences). This variant of <em>Asciidoctor</em> markup is referred to as <em>AsciiRFC</em>.</p>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#_document_structure_and_asciidoctor_syntax" id="_document_structure_and_asciidoctor_syntax">Document Structure And AsciiDoctor Syntax</a>
+</h1>
+<p id="rfc.section.3.p.1">The syntax of Asciidoctor is presented in the <a href="http://asciidoctor.org/docs/user-manual/#compared-to-markdown">Asciidoctor user manual</a>.  AsciiRFC is a subset of Asciidoctor syntax, with the addition of bibliographic macros (<a href="#asciidoctor_bibliography" class="xref">Section 17.2</a>).</p>
+<p id="rfc.section.3.p.2">Asciidoctor consists of:</p>
+<p></p>
+
+<ul>
+<li>A document header, containing a title, a list of authors, and document attributes in lines prefixed with <samp>:</samp>.</li>
+<li>An optional document preamble, separated from document header by a blank line.</li>
+<li>A number of sections, set off by a section title (a line prefixed with two or more <samp>=</samp>. A section may contain:<ul>
+<li>Other sections, whose level of nesting is indicated by the number of <samp>=</samp> in their header.</li>
+<li>Blocks of text. Blocks can have metadata (including a title, an anchor for cross-references, and attributes.) Blocks can be:<ul>
+<li>Paragraphs, which are terminated by blank lines.</li>
+<li>Lists. List items are by default paragraphs, but can span over multiple paragraphs.</li>
+<li>Delimited blocks (with a line delimiter on either side of them); these include tables, notes, sidebars, source code, block quotes, examples, and unprocessed content (e.g. raw XML). Delimited blocks contain by default one or more paragraphs.</li>
+<li>List items can contain other blocks, including both nested lists and delimited blocks.</li>
+<li>Some delimited blocks can contain other delimited blocks; for example, examples can contain source code as well as discussion in paragraphs.</li>
+</ul>
+</li>
+<li>Blocks of text consist of inline text, which themselves can contain markup.</li>
+</ul>
+</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.3.p.4">Inline markup includes:</p>
+<p></p>
+
+<ul>
+<li>Text formatting: bold, italic, superscript, subscript, monospace.</li>
+<li>Custom markup macros. (AsciiRFC uses one: <samp>bcp14</samp>.)</li>
+<li>URLs, including display text.</li>
+<li>Inline anchors.</li>
+<li>Cross-references to anchors (IDs of blocks or spans of text), including display text.</li>
+<li>Images, audio, and visual files. (AsciiRFC only supports images.)</li>
+<li>Index terms.</li>
+<li>Equations (native support for <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMathML</a> and <a href="http://docs.mathjax.org/en/latest/tex.html">TeX/LaTeX</a>, via the <a href="https://www.mathjax.org">MathJax</a> tool). (Not supported in AsciiRFC, since there is no RFC XML equivalent.)</li>
+<li>Footnotes. (Not supported in AsciiRFC.)</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.3.p.6">The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.  In the following, v3 equivalences are given:</p>
+<p></p>
+
+<ul>
+<li>Header: <samp>&lt;rfc&gt;</samp> attributes, most <samp>front</samp> elements.</li>
+<li>Preamble: <samp>front/abstract</samp> and <samp>front/note</samp>.</li>
+<li>Sections: <samp>middle/section</samp> elements.</li>
+<li>Sections with <samp>bibliography</samp> style attributes: <samp>back/references</samp> elements.</li>
+<li>Sections with <samp>appendix</samp> style attributes: <samp>back/section</samp> elements.</li>
+<li>Paragraphs: <samp>t</samp> elements.</li>
+<li>Lists: <samp>ul</samp>, <samp>ol</samp>, <samp>dl</samp> elements.</li>
+<li>Delimited blocks: <samp>artwork</samp>, <samp>aside</samp>, <samp>blockquote</samp>, <samp>figure</samp>, <samp>note</samp>, <samp>sourcecode</samp>, <samp>table</samp>.</li>
+<li>Inline markup: <samp>bcp14</samp>, <samp>br</samp>, <samp>cref</samp>, <samp>em</samp>, <samp>eref</samp>, <samp>iref</samp>, <samp>relref</samp>, <samp>strong</samp>, <samp>sub</samp>, <samp>sup</samp>, <samp>tt</samp>, <samp>xref</samp>.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.3.p.8">Full details of the  mapping of AsciiRFC elements to RFC XML v2 and v3 elements, and of how to convert AsciiRFC documents to RFC XML, are given in <span>&lt;</span><a href="https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc">https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc</a><span>&gt;</span>. The following gives an overview of how to create an RFC XML document in AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML v3, although the converter deals with both versions of RFC XML.</p>
+<h1 id="rfc.section.3.1">
+<a href="#rfc.section.3.1">3.1.</a> <a href="#_simple_illustration" id="_simple_illustration">Simple illustration</a>
+</h1>
+<p id="rfc.section.3.1.p.1">The following is an illustration of a simple AsciiRFC document, and its corresponding rendering in RFC XML v3:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://example.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238
+:email: tbt@example.com
+:email_2: jc@example.com
+:email_3: gc@example.com
+:email_4: mf@bcc.co.uk
+:smart-quotes: false
+:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby
+
+[abstract]
+The sketch is a parody of nostalgic conversations about humble
+beginnings or difficult childhoods, featuring four men from Yorkshire
+who reminisce about their upbringing. As the conversation progresses
+they try to outdo one another, and their accounts of deprived
+childhoods become increasingly absurd. &lt;&lt;michaelpalin&gt;&gt; &lt;&lt;ericidle&gt;&gt;
+
+NOTE: See also Wikipedia summary
+
+[#michaelpalin]
+== Claim: Michael Palin
+You were lucky. We lived for three months in a brown paper bag in a septic
+tank. We used to have to get up at six o'clock in the morning, clean the
+bag, eat a crust of stale bread, go to work down mill for fourteen hours
+a day week in-week out. When we got home, out Dad would thrash us to
+sleep with his belt! &lt;&lt;RFC7253&gt;&gt;
+
+=== Response: Graham Chapman
+Luxury. We used to have to get out of the lake at three o'clock in the morning,
+clean the lake, eat a handful of hot gravel, go to work at the mill every day
+for tuppence a month, come home, and Dad would beat us around the head and
+neck with a broken bottle, if we were *lucky*!
+
+=== Response: Terry Gilliam
+Well we had it tough. We used to have to get up out of the shoebox at
+twelve o'clock at night, and *lick* the road clean with our tongues. We had
+half a handful of freezing cold gravel, worked twenty-four hours a day at the
+mill for fourpence every six years, and when we got home, our Dad would
+slice us in two with a bread knife.
+
+[#ericidle]
+=== Response: Eric Idle
+Right.
+
+I had to get up in the morning at ten o'clock at night, half an hour
+before I went to bed, (_pause for laughter_), eat a lump of cold poison,
+work twenty-nine hours a day down mill, and pay mill owner for permission to come
+to work, and when we got home, our Dad would kill us, and dance about on our
+graves singing "Hallelujah."
+
+[bibliography]
+== Normative References
+++++
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt;
+    &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+++++
+
+[appendix]
+== Addendum
+But you try and tell the young people today that... and they won't believe ya'.</pre>
+<p id="rfc.section.3.1.p.2">The first block of text, from <samp>= Four Yorkshiremen Sketch</samp> through to <samp>:link: https ://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby</samp>, is the document header. It contains a title in the first line, an author attribution, and then a set of document attributes, conveying information about the document as well as information about its authors. This information ends up either as attributes of the root <samp>rfc</samp> tag, elements of the <samp>front</samp> tag, or processing instructions.</p>
+<p id="rfc.section.3.1.p.3">The following blocks of text, up until the first section header (<samp>== Claim: Michael Palin</samp>), are the document preamble. They are treated by the document converter as containing the document abstract (<samp>abstract</samp>), followed by any notes (<samp>note</samp>, identified above by the <samp>NOTE:</samp> heading).</p>
+<p id="rfc.section.3.1.p.4">The first section header (<samp>== Claim: Michael Palin</samp>) is preceded by an anchor for that section (<samp>[#michaelpalin]</samp>). There is a cross-reference to that anchor already in place in the abstract (<samp>&lt;&lt;michaelpalin&gt;&gt;</samp>). The document converter treats the first section of the document as the start of the <samp>middle</samp> section of the document.</p>
+<p id="rfc.section.3.1.p.5">The first section header is followed by a paragraph, and other sections and paragraphs. The number of <samp>=</samp> signs are one higher than the initial section header, which indicates that they are subsections of that section. The paragraphs contains some inline formatting (italics: <samp>_pause for laughter_</samp>; boldface: <samp>*lick*</samp>). The first paragraph also contains a citation of a reference, which in this version of AsciiRFC is treated identically to a cross-reference (<samp>&lt;&lt;RFC7253&gt;&gt;</samp>). (If the bibliography preprocessor were used, it would be encoded differently.)</p>
+<p id="rfc.section.3.1.p.6">The second last section is tagged with the style attribute <samp>[bibliography]</samp>, which identifies it as a references container; the document converter accordingly inserts this into the <samp>back</samp> element of the document. The contents of the references section are in this instance raw XML, delimited as a passthrough block (with <samp>++++</samp>), which the converter does not alter.  The final section is tagged with the style attribute <samp>[appendix]</samp>, and is treated as such.</p>
+<p id="rfc.section.3.1.p.7">The RFC XML v3 document generated from this AsciiRFC document is:</p>
+<pre>&lt;?xml version="1.0" encoding="US-ASCII"?&gt;
+&lt;!DOCTYPE rfc SYSTEM "rfc2629.dtd"&gt;
+&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T09:54:54Z" version="3"&gt;
+  &lt;link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"
+    rel="describedby" /&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+      stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese"&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Graham Chapman" surname="Chapman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;gc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Marty Feldman" surname="Feldman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;mf@bcc.co.uk&lt;email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;keyword&gt;
+    &lt;keyword&gt;memory&lt;keyword&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+      beginnings or difficult childhoods, featuring four men from Yorkshire who
+      reminisce about their upbringing. As the conversation progresses they try
+      to outdo one another, and their accounts of deprived childhoods become
+      increasingly absurd. &lt;xref target="michaelpalin" /&gt;
+      &lt;xref target="ericidle" /&gt;&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note&gt;
+      &lt;t&gt;See also Wikipedia summary&lt;t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="michaelpalin" numbered="false"&gt;
+      &lt;name&gt;Claim: Michael Palin&lt;name&gt;
+      &lt;t&gt;You were lucky. We lived for three months in a brown paper bag in a
+        septic tank. We used to have to get up at six o'clock in the morning,
+        clean the bag, eat a crust of stale bread, go to work down mill for
+        fourteen hours a day week in-week out. When we got home, out Dad would
+        thrash us to sleep with his belt! &lt;xref target="RFC7253" /&gt;&lt;/t&gt;
+      &lt;section anchor="_response_graham_chapman" numbered="false"&gt;
+        &lt;name&gt;Response: Graham Chapman&lt;name&gt;
+        &lt;t&gt;Luxury. We used to have to get out of the lake at three o'clock in
+          the morning, clean the lake, eat a handful of hot gravel, go to work
+          at the mill every day for tuppence a month, come home, and Dad would
+          beat us around the head and neck with a broken bottle, if we were
+          &lt;strong&gt;lucky&lt;/strong&gt;!&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="_response_terry_gilliam" numbered="false"&gt;
+        &lt;name&gt;Response: Terry Gilliam&lt;name&gt;
+        &lt;t&gt;Well we had it tough. We used to have to get up out of the shoebox at
+          twelve o'clock at night, and &lt;strong&gt;lick&lt;strong&gt;
+          the road clean with our tongues. We had half a handful of freezing
+          cold gravel, worked twenty-four hours a day at the mill for fourpence
+          every six years, and when we got home, our Dad would slice us in two
+          with a bread knife.&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="ericidle" numbered="false"&gt;
+        &lt;name&gt;Response: Eric Idle&lt;name&gt;
+        &lt;t&gt;Right.&lt;t&gt;
+        &lt;t&gt;I had to get up in the morning at ten o'clock at night, half an hour
+          before I went to bed, (&lt;em&gt;pause for laughter&lt;/em&gt;), eat a lump of
+          cold poison, work twenty-nine hours a day down mill, and pay mill
+          owner for permission to come to work, and when we got home, our Dad
+          would kill us, and dance about on our graves singing "Hallelujah."&lt;/t&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+  &lt;back&gt;
+    &lt;references anchor="_normative_references"&gt;
+      &lt;name&gt;Normative References&lt;name&gt;
+      &lt;reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253"&gt;
+        &lt;front&gt;
+          &lt;title&gt;Guidelines for Writing an IANA Considerations Section
+            in RFCs&lt;title&gt;
+          &lt;author initials="T." surname="Krovetz"&gt;
+            &lt;organization&gt;Sacramento State&lt;organization&gt;
+          &lt;/author&gt;
+          &lt;author initials="P." surname="Rogaway"&gt;
+            &lt;organization&gt;UC Davis&lt;organization&gt;
+          &lt;/author&gt;
+          &lt;date month="May" year="2014" /&gt;
+        &lt;/front&gt;
+        &lt;seriesInfo name="RFC" value="7253" /&gt;
+      &lt;/reference&gt;
+    &lt;/references&gt;
+    &lt;section anchor="_addendum" numbered="false"&gt;
+      &lt;name&gt;Addendum&lt;name&gt;
+      &lt;t&gt;But you try and tell the young people today that&amp;#8230;&amp;#8203;
+        and they won't believe ya'.&lt;t&gt;
+    &lt;/section&gt;
+  &lt;/back&gt;
+&lt;/rfc&gt;
+</pre>
+<p id="rfc.section.3.1.p.8">Some default processing instructions have already been prefixed to the XML.</p>
+<p id="rfc.section.3.1.p.9">Although we do not describe it extensively in this document, our AsciiRFC converter also generates RFC XML v2 from the same source AsciiRFC. For illustration, the foregoing AsciiRFC document generates the following RFC XML v2 output:</p>
+<pre>&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+  category="info" submissionType="IETF"
+  docName="draft-four-yorkshiremen-00"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;title&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese"&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Graham Chapman" surname="Chapman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;gc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Marty Feldman" surname="Feldman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;mf@bcc.co.uk&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived
+        childhoods become increasingly absurd. &lt;xref target="michaelpalin" /&gt;
+        &lt;xref target="ericidle" /&gt;&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note title="NOTE"&gt;
+      &lt;t&gt;See also Wikipedia summary&lt;/t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="michaelpalin" title="Claim: Michael Palin"&gt;
+      &lt;t&gt;You were lucky. We lived for three months in a brown paper bag in a
+        septic tank. We used to have to get up at six o'clock in the morning,
+        clean the bag, eat a crust of stale bread, go to work down mill for
+        fourteen hours a day week in-week out. When we got home, out Dad would
+        thrash us to sleep with his belt! &lt;xref target="RFC7253" /&gt; &lt;/t&gt;
+      &lt;section anchor="_response_graham_chapman"
+          title="Response: Graham Chapman"&gt;
+        &lt;t&gt;Luxury. We used to have to get out of the lake at three o'clock in
+          the morning, clean the lake, eat a handful of hot gravel, go to work
+          at the mill every day for tuppence a month, come home, and Dad would
+          beat us around the head and neck with a broken bottle, if we were
+          &lt;spanx style="strong"&gt;lucky&lt;/spanx&gt;!&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="_response_terry_gilliam" title="Response: Terry Gilliam"&gt;
+        &lt;t&gt;Well we had it tough. We used to have to get up out of the shoebox at
+          twelve o'clock at night, and &lt;spanx style="strong"&gt;lick&lt;/spanx&gt; the
+          road clean with our tongues. We had half a handful of freezing cold
+          gravel, worked twenty-four hours a day at the mill for fourpence every
+          six years, and when we got home, our Dad would slice us in two with a
+          bread knife.&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="ericidle" title="Response: Eric Idle"&gt;
+        &lt;t&gt;Right.&lt;/t&gt;
+        &lt;t&gt;I had to get up in the morning at ten o'clock at night, half an hour
+          before I went to bed, (&lt;spanx style="emph"&gt;pause for
+          laughter&lt;/spanx&gt;), eat a lump of cold poison, work twenty-nine hours a
+          day down mill, and pay mill owner for permission to come to work, and
+          when we got home, our Dad would kill us, and dance about on our graves
+          singing "Hallelujah."&lt;/t&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+  &lt;back&gt;
+    &lt;references title="Normative References"&gt;
+      &lt;reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253"&gt;
+        &lt;front&gt;
+          &lt;title&gt;Guidelines for Writing an IANA Considerations Section in
+            RFCs&lt;/title&gt;
+          &lt;author initials="T." surname="Krovetz"&gt;
+            &lt;organization&gt;Sacramento State&lt;/organization&gt;
+          &lt;/author&gt;
+          &lt;author initials="P." surname="Rogaway"&gt;
+            &lt;organization&gt;UC Davis&lt;/organization&gt;
+          &lt;/author&gt;
+          &lt;date month="May" year="2014" /&gt;
+        &lt;/front&gt;
+        &lt;seriesInfo name="RFC" value="7253" /&gt;
+      &lt;/reference&gt;
+    &lt;/references&gt;
+    &lt;section anchor="_addendum" title="Addendum"&gt;
+      &lt;t&gt;But you try and tell the young people today that&amp;#8230;&amp;#8203;
+        and they won't believe ya'.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/back&gt;
+&lt;/rfc&gt;</pre>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#_header_and_document_attributes" id="_header_and_document_attributes">Header And Document Attributes</a>
+</h1>
+<p id="rfc.section.4.p.1">The header gives the document title, followed by an optional author attribution, and a series of document attributes, with no carriage return breaks.</p>
+<p id="rfc.section.4.p.2">For example:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z</pre>
+<p id="rfc.section.4.p.3">The document attributes are used to populate attributes of the root <samp>rfc</samp> element, <samp>front</samp> elements, and document-level processing instructions.</p>
+<p></p>
+
+<ul>
+<li>
+<samp>:doctype:</samp> determines  whether the document will be considered <samp>rfc</samp> or <samp>internet-draft</samp>, and interprets other attributes accordingly.</li>
+<li>Certain attributes (<samp>workgroup</samp>, <samp>area</samp>, <samp>keyword</samp>) are comma delimited, and result in repeated RFC XML elements.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.4.p.5">The foregoing AsciiRFC renders into RFC XML v3 as:</p>
+<pre>&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T10:13:46Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;</pre>
+<p id="rfc.section.4.p.6">The document header can spell out further information about authors, including contact details:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://bbn.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238</pre>
+<pre>&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T10:15:02Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://bbn.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;</pre>
+<p id="rfc.section.4.p.7">Details of a second, third etc. author, including their organization and contact details, are provided by suffixing the relevant author attributes with <samp>_2</samp>, <samp>_3</samp>  etc.:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;; John Cleese &lt;jc@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://example.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238
+:forename_initials: T.
+:lastname: Brooke-Taylor
+:street: 12 Moulton Street
+:city: London
+:country: United Kingdom
+:forename_initials_2: J.
+:lastname_2: Cleese
+:uri_2: https://twitter.com/johncleese</pre>
+<pre>&lt;rfc ipr="trust200902" submissionType="IETF"
+    prepTime="2017-11-25T10:19:32Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor"
+        surname="Brooke-Taylor" initials="T."&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;12 Moulton Street&lt;/street&gt;
+          &lt;city&gt;London&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+          &lt;country&gt;United Kingdom&lt;/country&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese" initials="J."&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+        &lt;uri&gt;https://twitter.com/johncleese&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;</pre>
+<p id="rfc.section.4.p.8">The initial author attribution in AsciiRFC, e.g.  <samp>Tim Brooke-Taylor &lt;tbt @ example.com&gt;; John Cleese &lt;jc @ example.com&gt;</samp> in the example above, expects a strict format of First Name, zero or more Middle Names, Last name, and cannot process honorifics like "Dr." or suffixes like "Jr.".</p>
+<p id="rfc.section.4.p.9">Name attributes with any degree of complexity should be overriden by using the <samp>:fullname:</samp> and <samp>:lastname:</samp> attributes. The AsciiRFC <samp>:forename_initials:</samp> attribute replaces the built-in Asciidoctor <samp>:initials:</samp> attribute (which includes the surname initial), and is not automatically populated from the name attribution.</p>
+<p id="rfc.section.4.p.10">A document header may also contain attribute headers which are treated as XML processing instructions:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:revdate: 1990-04-01T00:00:00Z
+:rfcedstyle: yes
+:text-list-symbols: yes
+:rfc2629xslt: true</pre>
+<pre>&lt;rfc ipr="trust200902" submissionType="IETF"
+    prepTime="2017-11-25T10:21:56Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;</pre>
+<p id="rfc.section.4.p.11">A few document attributes are specific to the operation of the RFC XML document converter:</p>
+<p></p>
+
+<dl>
+<dt>:no-rfc-bold-bcp14: false </dt>
+<dd style="margin-left: 8">
+<br><br>overrides the wrapping by default of boldface uppercase BCP14 <a href="#RFC2119" class="xref">[RFC2119]</a> words (e.g. <samp>*MUST NOT*</samp>) with the <samp>bcp14</samp> element.</dd>
+<dt>:smart-quotes: false </dt>
+<dd style="margin-left: 8">
+<br><br>overrides Asciidoctor&#8217;s conversion of straight quotes and apostrophes to smart quotes and apostrophes.</dd>
+<dt>:inline-definition-lists: true </dt>
+<dd style="margin-left: 8">
+<br><br>overrides the RFC XML v2 <samp>idnits</samp> requirement that a blank line be inserted between a definition list term and its definition.</dd>
+</dl>
+
+<p> </p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.</pre>
+<pre>&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="_section_1" numbered="false"&gt;
+      &lt;name&gt;Section 1&lt;/name&gt;
+      &lt;t&gt;The specification  &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt;
+        use the word &lt;em&gt; doesn&amp;#8217;t&lt;/em&gt;.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+&lt;/rfc&gt;
+</pre>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:no-rfc-bold-bcp14: false
+:smart-quotes: false
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.</pre>
+<pre>&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="_section_1" numbered="false"&gt;
+      &lt;name&gt;Section 1&lt;/name&gt;
+      &lt;t&gt;The specification &lt;strong&gt;MUST NOT&lt;/strong&gt;
+        use the word &lt;em&gt; doesn't&lt;/em&gt;.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+&lt;/rfc&gt;</pre>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#_preamble" id="_preamble">Preamble</a>
+</h1>
+<p id="rfc.section.5.p.1">The preamble in AsciiRFC is the text between the end of the document header (which terminates with a blank line) and the first section of text.</p>
+<p id="rfc.section.5.p.2">Any paragraphs of text in the preamble are treated as an abstract, and may optionally be tagged with the <samp>abstract</samp> style attribute.</p>
+<p id="rfc.section.5.p.3">Any notes in the preamble are treated as a <samp>note</samp> element.</p>
+<p id="rfc.section.5.p.4">For example:</p>
+<pre>= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+
+The "Four Yorkshiremen" sketch is a comedy sketch written by
+Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and
+originally performed on their TV series _At Last the 1948 Show_ in 1967.
+It later became associated with the comedy group Monty Python
+(which included Cleese and Chapman), who performed it in their live shows,
+including _Monty Python Live at the Hollywood Bowl_.
+
+The sketch is a parody of nostalgic conversations about humble
+beginnings or difficult childhoods, featuring four men from Yorkshire
+who reminisce about their upbringing. As the conversation progresses
+they try to outdo one another, and their accounts of deprived
+childhoods become increasingly absurd.
+
+NOTE:  Barry Cryer is the wine waiter in the original performance
+and may have contributed to the writing.
+
+[NOTE]
+.Original Recording
+====
+The original performance of the sketch by the four creators is one of the
+surviving sketches from the programme and can be seen on the
+_At Last the 1948 Show_ DVD.
+====</pre>
+<pre>&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:32:27Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The "Four Yorkshiremen" sketch is a comedy sketch written by
+        Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and
+        originally performed on their TV series &lt;em&gt;At Last the 1948 Show&lt;/em&gt;
+        in 1967. It later became associated with the comedy group Monty Python
+        (which included Cleese and Chapman), who performed it in their live
+        shows, including &lt;em&gt;Monty Python Live at the Hollywood Bowl&lt;/em&gt;.&lt;/t&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived childhoods
+        become increasingly absurd.&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note&gt;
+      &lt;t&gt;Barry Cryer is the wine waiter in the original performance and may
+        have contributed to the writing.&lt;/t&gt;
+    &lt;/note&gt;
+    &lt;note&gt;
+      &lt;name&gt;Original Recording&lt;/name&gt;
+        &lt;t&gt;The original performance of the sketch by the four creators is one of
+          the surviving sketches from the programme and can be seen on the
+          &lt;em&gt;At Last the 1948 Show&lt;/em&gt; DVD.&lt;/t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;</pre>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#_sections_and_paragraphs" id="_sections_and_paragraphs">Sections and Paragraphs</a>
+</h1>
+<p id="rfc.section.6.p.1">Section headers are given with a sequence of <samp>=</samp>, the number of <samp>=</samp> giving the header level. Section numbering is toggled with the in-document attribute <samp>:sectnums:</samp> (on), <samp>:sectnums!:</samp> (off). The <samp>toc</samp> attribute can also be set on sections, indicating whether the section can be included in the document&#8217;s table of contents.</p>
+<pre>:sectnums:
+[toc=exclude]
+== Section 1
+Para 1
+
+=== Subsection 1.1
+Para 1a
+
+:sectnums!:
+[toc=default]
+=== Subsection 1.2
+Para 2
+
+==== Subsection 1.2.1
+Para 3</pre>
+<pre>&lt;section anchor="_section_1" toc="exclude" numbered="true"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;t&gt;Para 1&lt;/t&gt;
+  &lt;section anchor="_subsection_1_1" numbered="true"&gt;
+    &lt;name&gt;Subsection 1.1&lt;/name&gt;
+    &lt;t&gt;Para 1a&lt;/t&gt;
+  &lt;/section&gt;
+  &lt;section anchor="_subsection_1_2" toc="default" numbered="false"&gt;
+    &lt;name&gt;Subsection 1.2&lt;/name&gt;
+    &lt;t&gt;Para 2&lt;/t&gt;
+    &lt;section anchor="_subsection_1_2_1" numbered="false"&gt;
+      &lt;name&gt;Subsection 1.2.1&lt;/name&gt;
+      &lt;t&gt;Para 3&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</pre>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> <a href="#_figures" id="_figures">Figures</a>
+</h1>
+<p id="rfc.section.7.p.1">AsciiRFC examples (corresponding to RFC XML Figures), source code Listings, and Literals (preformatted text) are all delimited blocks. Listings and Literals can occur nested within Examples:</p>
+<pre>.Figure 1
+====
+.figure1.txt
+....
+Figures are only permitted to contain listings
+(sourcecode), images (artwork), or literal (artwork)
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|
+....
+
+[source,ruby]
+----
+def listing(node)
+  result = []
+  if node.parent.context != :example
+    result &lt;&lt; "&lt;figure&gt;"
+  end
+end
+----
+====</pre>
+<pre>&lt;figure&gt;
+  &lt;name&gt;Figure 1&lt;/name&gt;
+  &lt;artwork type="ascii-art" name="figure1.txt"&gt;
+    Figures are only permitted to contain listings
+    (sourcecode), images (artwork), or literal (artwork)
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|&lt;/artwork&gt;
+  &lt;sourcecode type="ruby"&gt;
+    def listing(node)
+      result = []
+      if node.parent.context != :example
+        result &amp;lt;&amp;lt; "&amp;lt;figure&amp;gt;"
+      end
+    end
+  &lt;/sourcecode&gt;
+&lt;/figure&gt;</pre>
+<p id="rfc.section.7.p.2">If an AsciiRFC Listing or Literal occurs outside of an Example, the RFC XML converter will supply the surrounding Figure element:</p>
+<pre>....
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|
+....</pre>
+<pre>&lt;figure&gt;
+  &lt;artwork type="ascii-art"&gt;This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|&lt;/artwork&gt;
+&lt;/figure&gt;</pre>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#_lists" id="_lists">Lists</a>
+</h1>
+<p id="rfc.section.8.p.1">AsciiRFC supports ordered, unordered, and definition lists. Indentation of ordered and unordered lists is indicated by repeating the list item prefix (<samp>*</samp> and <samp>.</samp> respectively.) List attributes specify the type of symbol used for ordered lists:</p>
+<pre>[loweralpha]
+. First
+. Second
+[upperalpha]
+.. Third
+.. Fourth
+. Fifth
+. Sixth</pre>
+<pre>&lt;ol anchor="id" type="a"&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;
+        &lt;t&gt;Second&lt;/t&gt;
+        &lt;ol type="A"&gt;
+            &lt;li&gt;Third&lt;/li&gt;
+            &lt;li&gt;Fourth&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Fifth&lt;/li&gt;
+    &lt;li&gt;Sixth&lt;/li&gt;
+&lt;/ol&gt;</pre>
+<p id="rfc.section.8.p.2">A list item by default spans a single paragraph. A following paragraph or other block element can be appended to the current list item by prefixing it with <samp>+</samp> in a separate line (<a href="http://asciidoctor.org/docs/user-manual/#complex-list-content">Asciidoctor list continuation</a>.)</p>
+<pre>Notes::  Note 1.
++
+Note 2.
++
+Note 3.</pre>
+<pre>&lt;dl&gt;
+  &lt;dt&gt;Notes&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;t&gt;Note 1.&lt;/t&gt;
+    &lt;t&gt;Note 2.&lt;/t&gt;
+    &lt;t&gt;Note 3.&lt;/t&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;</pre>
+<p id="rfc.section.8.p.3">(Multiple paragraphs are not permitted within a list item in RFC XML v2.  The RFC XML converter deals with this by converting paragraph breaks into line breaks within a list item.)</p>
+<p id="rfc.section.8.p.4">List continuations can also be embed to populate a list item with a sequence of blocks as a unit (in an Asciidoctor open block):</p>
+<pre>* List Entry 1
+* List Entry 2
++
+--
+Note 2.
+
+....
+Literal
+....
+
+Note 3.
+--</pre>
+<pre>&lt;ul&gt;
+  &lt;li&gt;List Entry 1&lt;/li&gt;
+  &lt;li&gt;
+    &lt;t&gt;
+      List Entry 2
+    &lt;/t&gt;
+    &lt;t&gt;
+      Note 2.
+    &lt;/t&gt;
+    &lt;figure&gt;
+      &lt;artwork type="ascii-art"&gt;
+        Literal
+      &lt;/artwork&gt;
+    &lt;/figure&gt;
+    &lt;t&gt;
+      Note 3.
+    &lt;/t&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+<p id="rfc.section.8.p.5">AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic level of blocks, and does not permit lists to be nested within them: text after a list is considered to be a new paragraph. So markup like the following cannot be generated via AsciiRFC:</p>
+<pre>&lt;t&gt;
+  This is the start of a paragraph.
+  &lt;ul&gt;
+    &lt;li&gt;List Entry 1&lt;/li&gt;
+    &lt;li&gt;
+      &lt;t&gt;List Entry 2&lt;/t&gt;
+      &lt;t&gt;Note 2.&lt;/t&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  And this is the continuation of the paragraph.
+&lt;/t&gt;</pre>
+<h1 id="rfc.section.9">
+<a href="#rfc.section.9">9.</a> <a href="#_blockquotes" id="_blockquotes">Blockquotes</a>
+</h1>
+<p id="rfc.section.9.p.1">Asciidoctor supports blockquotes and quotations of verse; its block quotations permit arbitrary levels of quote nesting. RFC XML v3, and thus AsciiRFC, only supports one level of blockquotes. Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of tables; so verse quotations are converted to prose in the v3 converter.</p>
+<pre>[quote,attribution="Monty Python",citetitle="http://example.com"]
+____
+Dennis: Come and see the violence inherent in the system.
+Help! Help! I'm being repressed!
+
+King Arthur: Bloody peasant!
+
+Dennis: Oh, what a giveaway!
+* Did you hear that?
+* Did you hear that, eh?
+* That's what I'm on about!
+** Did you see him repressing me?
+** You saw him, Didn't you?
+____</pre>
+<pre>&lt;blockquote quotedfrom="Monty Python" cite="http://example.com"&gt;
+  &lt;t&gt;Dennis: Come and see the violence inherent in the system.
+  Help! Help! I&amp;#8217;m being repressed!&lt;/t&gt;
+  &lt;t&gt;King Arthur: Bloody peasant!&lt;/t&gt;
+  &lt;t&gt;Dennis: Oh, what a giveaway!&lt;/t&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Did you hear that?&lt;/li&gt;
+    &lt;li&gt;Did you hear that, eh?&lt;/li&gt;
+    &lt;li&gt;
+      &lt;t&gt;That&amp;#8217;s what I&amp;#8217;m on about!&lt;/t&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Did you see him repressing me?&lt;/li&gt;
+        &lt;li&gt;You saw him, Didn&amp;#8217;t you?&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</pre>
+<h1 id="rfc.section.10">
+<a href="#rfc.section.10">10.</a> <a href="#_notes_and_asides" id="_notes_and_asides">Notes And Asides</a>
+</h1>
+<p id="rfc.section.10.p.1">Asciidoctor supports a range of "admonitions", including notes, warnings, and tips. They are indicated by a paragraph prefix (e.g. <samp>WARNING:</samp>), or as a block with an admonition style attribute. All admonitions are conflated in AsciiRFC, being converted to <samp>note</samp> elements in the document preamble, and <samp>cref</samp> documents in the main document.</p>
+<pre>== Section 1
+[NOTE,source=GBS]
+.Note Title
+====
+Any admonition inside the body of the text is a comment.
+====</pre>
+<pre>&lt;section anchor="_section_1" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;t&gt;
+    &lt;cref display="true" source="GBS"&gt;
+      Any admonition inside the body of the text is a comment.
+    &lt;/cref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</pre>
+<p id="rfc.section.10.p.2">Note that no inline formatting is permitted in RFC XML v2 <samp>cref</samp> elements, and it is stripped for v2 by the converter.</p>
+<p id="rfc.section.10.p.3">Because paragraphs in AsciiRFC cannot contain any other blocks, a comment at the end of a paragraph is treated as a new block. In the document converter, any such comments are moved inside the preceding RFC XML paragraph; if the comment is at the start of a section, as in the example above, it is wrapped inside a paragraph.</p>
+<p id="rfc.section.10.p.4">The RFC XML v3 converter also supports asides (Asciidoctor sidebars):</p>
+<pre>== Section 1
+****
+Sidebar
+
+Another sidebar
+
+* This is a list
+
+....
+And this is ascii-art
+....
+****</pre>
+<pre>&lt;section anchor="_section_1" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;aside&gt;
+    &lt;t&gt;Sidebar&lt;/t&gt;
+    &lt;t&gt;Another sidebar&lt;/t&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This is a list&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;figure&gt;
+      &lt;artwork type="ascii-art"&gt;
+        And this is ascii-art
+      &lt;/artwork&gt;
+    &lt;/figure&gt;
+  &lt;/aside&gt;
+&lt;/section&gt;</pre>
+<p id="rfc.section.10.p.5">While AsciiDoc has comments proper, notated with initial <samp>//</samp>, they are ignored by the Asciidoctor document converter; so they will not appear as XML comments in the converter output.</p>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#_tables" id="_tables">Tables</a>
+</h1>
+<p id="rfc.section.11.p.1">AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies and feet; cells spanning multiple rows and columns; and horizontal alignment. The larger range of table formatting options available in RFC XML v2 is also supported.</p>
+<pre>.Table Title
+|===
+|head | head
+
+h|header cell | body cell
+| | body cell
+2+| colspan of 2
+.2+|rowspan of 2 | cell
+|cell
+^|centre aligned cell | cell
+&lt;|left aligned cell | cell
+&gt;|right aligned cell | cell
+
+|foot | foot
+|===</pre>
+<pre>&lt;table&gt;
+  &lt;name&gt;Table Title&lt;/name&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th align="left"&gt;head&lt;/th&gt;
+      &lt;th align="left"&gt;head&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th align="left"&gt;header cell&lt;/th&gt;
+      &lt;td align="left"&gt;body cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;&lt;/td&gt;
+      &lt;td align="left"&gt;body cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" align="left"&gt;colspan of 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan="2" align="left"&gt;rowspan of 2&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="center"&gt;centre aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;left aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="right"&gt;right aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;foot&lt;/td&gt;
+      &lt;td align="left"&gt;foot&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+<p id="rfc.section.11.p.2">Neither version of RFC XML is as expressive in its table structure as Asciidoctor. RFC XML, for example, does not permit blocks within table cells.</p>
+<h1 id="rfc.section.12">
+<a href="#rfc.section.12">12.</a> <a href="#_inline_formatting" id="_inline_formatting">Inline Formatting</a>
+</h1>
+<p id="rfc.section.12.p.1">Like RFC XML v3, AsciiRFC supports italics, boldface, monospace, subscripts and superscripts:</p>
+<pre>_Text_ *Text* `Text`  ^Superscript^ ~Subscript~</pre>
+<pre>&lt;t&gt;&lt;em&gt;Text&lt;/em&gt; &lt;strong&gt;Text&lt;/strong&gt; &lt;tt&gt;Text&lt;/tt&gt;
+&lt;sup&gt;Superscript&lt;/sup&gt; &lt;sub&gt;Subscript&lt;/sub&gt;&lt;/t&gt;</pre>
+<p id="rfc.section.12.p.2">RFC XML v3 also supports tagging of BCP14 keywords <a href="#RFC2119" class="xref">[RFC2119]</a>; this is done in AsciiRFC either by tagging them with a custom formatting span (<samp>bcp14#must not#</samp>), or by converting BCP14 boldface all-caps words (unless the <samp>:no-rfc-bold-bcp14: false</samp> document attribute is set):</p>
+<pre>This [bcp14]#must not# stand
+
+This *MUST NOT* stand</pre>
+<pre>&lt;t&gt;This &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt; stand&lt;/t&gt;
+
+&lt;t&gt;This &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt; stand&lt;/t&gt;</pre>
+<p id="rfc.section.12.p.3">Any spans of BCP14 text delimited by inline formatting delimiters needs to be contained within a single line of text; the Asciidoctor API breaks up formatting spans across line breaks.</p>
+<p id="rfc.section.12.p.4">Formatting delimiters like <samp>*</samp> can be escaped with backslash (<samp>\*</samp>); double formatting delimiters, like <samp>**</samp> and <samp>__</samp>, need to be escaped with double backslash (<samp>\\**</samp>). Escaping delimiters is not always reliable, and for double delimiters it is preferable to use HTML entities (<samp>&amp;#42;&amp;#42;</samp>), or attribute references (references to the value of attributes set in the document header):</p>
+<pre>:dblast: **
+
+`{dblast}`</pre>
+<p id="rfc.section.12.p.5">In extreme circumstances (such as quoting AsciiDoc syntax), you may need to resort to altering the substitutions behaviour within a given block of of AsciiDoc; see <span>&lt;</span><a href="http://asciidoctor.org/docs/user-manual/#applying-substitutions">http://asciidoctor.org/docs/user-manual/#applying-substitutions</a><span>&gt;</span></p>
+<h1 id="rfc.section.13">
+<a href="#rfc.section.13">13.</a> <a href="#_links" id="_links">Links</a>
+</h1>
+<p id="rfc.section.13.p.1">Common URL formats are recognised automatically as hyperlinks, and are rendered as such; any hyperlinked text is appended after the hyperlink in square brackets:</p>
+<pre>http://example.com/[linktext]</pre>
+<pre>&lt;t&gt;&lt;eref target="http://example.com/"&gt;linktext&lt;/eref&gt;&lt;/t&gt;</pre>
+<p id="rfc.section.13.p.2">To prevent hyperlinking of a URL, prefix it with a backslash.</p>
+<pre>\http://example.com/[linktext]</pre>
+<pre>&lt;t&gt;http://example.com/[linktext]&lt;/t&gt;</pre>
+<h1 id="rfc.section.14">
+<a href="#rfc.section.14">14.</a> <a href="#_crossreferences" id="_crossreferences">Crossreferences</a>
+</h1>
+<p id="rfc.section.14.p.1">Anchors for crossreferences are notated as <samp>[[&#8230;&#8203;]]</samp> or <samp>[#&#8230;&#8203;]</samp>. Anchors can be inserted on their own line in front of most blocks. Asciidoctor supports anchors in a much wider range of contexts than is supported than RFC XML v3 (let alone v2); anchors that are not supported for that version of RFC XML are simply ignored by the converter. Note that anchors in RFC XML are constrained to the format <samp>[A-Za-z_:][[A-Za-z0-9_:.-]*</samp>.</p>
+<p id="rfc.section.14.p.2">Cross-references to anchors are notated as <samp>&lt;&lt;...&gt;&gt;</samp>; cross-references with custom text as <samp>&lt;&lt;reference,text&gt;&gt;</samp>.</p>
+<pre>[[crossreference]]
+== Section 1
+
+== Section 2
+See &lt;&lt;crossreference&gt;&gt;.
+
+== Section 3
+See &lt;&lt;crossreference,text&gt;&gt;</pre>
+<pre>&lt;section anchor="crossreference" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_2" numbered="false"&gt;
+  &lt;name&gt;Section 2&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref target="crossreference"&gt;
+    &lt;/xref&gt;.
+  &lt;/t&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_3" numbered="false"&gt;
+  &lt;name&gt;Section 3&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref target="crossreference"&gt;
+      text
+    &lt;/xref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</pre>
+<p id="rfc.section.14.p.3">Asciidoctor natively does not otherwise support attributes on cross-references. AsciiRFC works around that by embedding formatting information as templated text within cross-references: <samp>format=x: text</samp> populates the <samp>xref@format</samp> attribute, while a section number followed by one of the words <samp>of, parens, bare, text</samp> is treated as a <samp>relref</samp> reference to an external document.</p>
+<pre>== Section 4
+See &lt;&lt;crossreference,format=counter: text&gt;&gt;
+
+== Section 5
+See &lt;&lt;crossreference,format=title&gt;&gt;
+
+See &lt;&lt;crossreference,1.3 of&gt;&gt;
+&lt;&lt;crossreference,1.4 comma: text&gt;&gt;
+&lt;&lt;crossreference#fragment1,2.5.3 parens&gt;&gt;
+&lt;&lt;crossreference#fragment2,6.2a bare: text&gt;&gt;</pre>
+<pre>&lt;section anchor="_section_4" numbered="false"&gt;
+  &lt;name&gt;Section 4&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref format="counter" target="crossreference"&gt;
+      text
+    &lt;/xref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_5" numbered="false"&gt;
+  &lt;name&gt;
+    Section 5
+  &lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref format="title" target="crossreference" /&gt;
+  &lt;/t&gt;
+  &lt;t&gt;
+    See
+    &lt;relref section="1.3" displayformat="of"
+     target="crossreference" /&gt;
+    &lt;relref section="1.4" displayformat="comma"
+     target="crossreference"&gt;
+      text
+    &lt;/relref&gt;
+    &lt;relref relative="fragment1" section="2.5.3"
+     displayformat="parens" target="crossreference" /&gt;
+    &lt;relref relative="fragment2" section="6.2a"
+     displayformat="bare" target="crossreference"&gt;
+      text
+    &lt;/relref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</pre>
+<h1 id="rfc.section.15">
+<a href="#rfc.section.15">15.</a> <a href="#_inclusions" id="_inclusions">Inclusions</a>
+</h1>
+<p id="rfc.section.15.p.1">The <a href="http://asciidoctor.org/docs/user-manual/#include-directive">Asciidoctor "include" directive</a> is used to include external files in a master AsciiRFC document. The directive is capable of sophisticated document merging, including adjusting the heading levels of the included text, selecting text within specified tags or line numbers to be included, and adjusting the indentation of code snippets in merged text:</p>
+<pre>include::path[
+  leveloffset=_offset_,
+  lines=_ranges_,
+  tag(s)=_name(s)_,
+  indent=_depth_
+]</pre>
+<p id="rfc.section.15.p.2">If a file is included in an AsciiRFC document, ensure it ends with a blank line.  An inclusion that results in its final block not being delimited with a blank line from what follows can lead to unpredictable results.</p>
+<h1 id="rfc.section.16">
+<a href="#rfc.section.16">16.</a> <a href="#_encoding_and_entities" id="_encoding_and_entities">Encoding and Entities</a>
+</h1>
+<p id="rfc.section.16.p.1">XML accepts the full range of characters in the world&#8217;s languages through UTF-8 character encoding, and one of the motivations for the move from plain text to RFC XML has been to allow non-ASCII characters to be included in RFCs.  However, current RFC XML v2 tools still do not support UTF-8, and other tool support for UTF-8 also remains patchy. Out of an abundance of caution, the RFC XML converter uses US-ASCII for its character encoding, and renders any non-ASCII characters as entities.</p>
+<p id="rfc.section.16.p.2">The converter accepts HTML entities in AsciiRFC, even though they are not part of the XML specification; HTML entities such as <samp>&amp;nbsp;</samp> feature in examples of RFC XML provided by the IETF. In order to prevent dependence of the XML output from extraneous entity definitions, any such entities are rendered in the XML as decimal character entities.</p>
+<pre>&#1069;&#1090;&#1086;
+&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;
+&#1071;&#1079;&#1099;&#1082;.
+&amp;mdash; This is not George&amp;apos;s.&amp;#x2020;</pre>
+<pre>&lt;t&gt;&amp;#1069;&amp;#1090;&amp;#1086;
+&amp;#1056;&amp;#1091;&amp;#1089;&amp;#1089;&amp;#1082;&amp;#1080;&amp;#1081;
+&amp;#1071;&amp;#1079;&amp;#1099;&amp;#1082;. &amp;#8212;
+This is not George's.&amp;#8224;&lt;/t&gt;</pre>
+<h1 id="rfc.section.17">
+<a href="#rfc.section.17">17.</a> <a href="#_bibliography" id="_bibliography">Bibliography</a>
+</h1>
+<p id="rfc.section.17.p.1">Asciidoctor natively has a simple encoding of bibliographies, which is not adequate for the complexity of bibliographic markup required by RFC XML. RFC documents overwhelmingly cite other RFC documents, and canonical RFC XML bibliographic entries are available at <span>&lt;</span><a href="http://xml.resource.org/public/rfc/bibxml/">http://xml.resource.org/public/rfc/bibxml/</a><span>&gt;</span> ; so it would be inefficient to encode those entries in AsciiRFC, only to have them converted back to RFC XML.</p>
+<p id="rfc.section.17.p.2">The converter provides two means of incorporating bibliographies into RFC documents authored in AsciiRFC:</p>
+<p></p>
+
+<ul>
+<li>using raw RFC XML; and</li>
+<li>assembling bibliographies in preprocessing.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.17.p.4">In either case, the RFC XML needs to be well-formed; missing closing tags can lead to erratic behaviour in the converter.</p>
+<h1 id="rfc.section.17.1">
+<a href="#rfc.section.17.1">17.1.</a> <a href="#_using_raw_rfc_xml" id="_using_raw_rfc_xml">Using Raw RFC XML</a>
+</h1>
+<p id="rfc.section.17.1.p.1">In the first method, bibliographic citations are handled like all other AsciiRFC cross-references. The bibliographic entries for normative and informative references are given in the AsciiRFC as passthrough blocks, which contain the raw RFC XML for all references; document conversion leaves the raw RFC XML in place. This approach requires authors to maintain the normative and informative bibliographies within the document, to update them as citations are added and removed, and to sort them manually. For example:</p>
+<pre>Some datagram padding may be needed.&lt;&lt;RFC7253&gt;&gt;
+
+[bibliography]
+== Normative References
+++++
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt;
+    &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+++++</pre>
+<pre>&lt;t&gt;Some datagram padding may be needed &lt;xref target="RFC7253"/&gt;&lt;/t&gt;
+
+&lt;/middle&gt;&lt;back&gt;
+&lt;references anchor="_references"&gt;
+&lt;name&gt;Normative References&lt;/name&gt;
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt; &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+&lt;/references&gt;</pre>
+<h1 id="rfc.section.17.2">
+<a href="#rfc.section.17.2">17.2.</a> <a href="#asciidoctor_bibliography" id="asciidoctor_bibliography">Using preprocessing</a>
+</h1>
+<p id="rfc.section.17.2.p.1">The alternative method is to use a preprocessing tool, <a href="https://github.com/riboseinc/asciidoctor-bibliography">asciidoc-bibliography</a>, to import citations into the AsciiRFC document from an external file of references.</p>
+<p id="rfc.section.17.2.p.2">The references file consists of RFC XML reference entries, and still needs to be managed manually; however the bibliographies are assembled from that file, sorted, and inserted into the normative and informative references in preprocessing. Citations in the document itself are given as macros to be interpreted by the preprocessor; this allows them to be split into normative and informative references. (The MMark tool likewise splits reference citations into normative and informative.)</p>
+<p id="rfc.section.17.2.p.3">Integration with the asciidoc-bibliography gem proceeds as follows:</p>
+<p></p>
+
+<ol>
+<li>Create an RFC XML references file, consisting of a <samp>&lt;references&gt;</samp> element with individual <samp>&lt;reference&gt;</samp> elements inserted, as would be done for the informative and normative references normally. The references file will contain all possible references to be used in the file; the bibliography gem will select which references have actually been cited in the document.<ol style="list-style-type: upper-alpha">
+<li>Rather than hand crafting RFC XML references for RFC documents, you should download them from an authoritative source; e.g.  <span>&lt;</span><a href="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml</a><span>&gt;</span>
+</li>
+<li>Unlike the case for RFC XML documents created manually, the references file does not recognise XML entities and will not attempt to download them during processing.  Any references to <span>&lt;</span><a href="http://xml.resource.org/public/rfc/bibxml/">http://xml.resource.org/public/rfc/bibxml/</a><span>&gt;</span> will need to be downloaded and inserted into the references file.</li>
+<li>The RFC XML in the references file will need to be appropriate to the version of RFC XML used in the main document, as usual. Note that RFC XML v2 references are forward compatible with v3; v3 contains a couple of additional elements.</li>
+</ol>
+</li>
+<li>Add to the main document header attributes referencing the references file (<samp>:bibliography-database:</samp>), and the bibliography style (<samp>:bibliography-style:rfc-v3</samp>).</li>
+<li>References to a normative reference are inserted with the macro <samp>cite:norm[id]</samp> instead of <samp>&lt;&lt;id&gt;&gt;</samp>, where <samp>id</samp> is the anchor of the reference.</li>
+<li>References to an infomrative reference are inserted with the macro <samp>cite:info[id]</samp> instead of <samp>&lt;&lt;id&gt;&gt;</samp>, where <samp>id</samp> is the anchor of the reference.</li>
+<li>Formatted crossreferences and <samp>relref</samp> crossreferences are entered by inserting the expected raw XML in the <samp>text</samp> attribute. Do not use the <samp>{cite}</samp> interpolation of the citation.  For example:<ul>
+<li>
+<samp>&lt;&lt;id,words&gt;&gt;</samp> = <samp>cite:norm[id, text="&lt;xref target='id'&gt;words&lt;/xref&gt;"]</samp>
+</li>
+<li>
+<samp>&lt;&lt;id,format=counter: words&gt;&gt;</samp> (processed as a formatted crossreference) = <samp>cite:norm[id, text="&lt;xref format='counter' target='id'&gt;words&lt;/xref&gt;"]</samp>
+</li>
+<li>
+<samp>&lt;&lt;id,2.4 comma: words&gt;&gt;</samp> (processed as relref) = <samp>cite:norm[id, text="&lt;relref displayFormat='comma' section='2.4' target='id'}/&gt;"]</samp>
+</li>
+<li>
+<samp>&lt;&lt;id#section2_4,2.4 comma: words&gt;&gt;</samp> (processed as relref with a cross-document internal reference) = <samp>cite:norm[id, text="&lt;relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/&gt;"]</samp>
+</li>
+</ul>
+</li>
+<li>Normative and Informative References are inserted in the document through a macro, which occurs where the RFC XML references would be inserted:</li>
+</ol>
+
+<p> </p>
+<pre>[bibliography]
+== Normative References
+
+++++
+bibliography::norm[]
+++++
+
+[bibliography]
+== Informative References
+
+++++
+bibliography::info[]
+++++</pre>
+<h1 id="rfc.section.18">
+<a href="#rfc.section.18">18.</a> <a href="#_rfc_xml_features_not_supported_in_asciidoctor" id="_rfc_xml_features_not_supported_in_asciidoctor">RFC XML features not supported in Asciidoctor</a>
+</h1>
+<p id="rfc.section.18.p.1">The following features of  RFC XML are not supported by the AsciiRFC converter, and would need to be adjusted manually after RFC XML is generated:</p>
+<table cellpadding="3" cellspacing="0" class="tt full center">
+<thead><tr>
+<th class="left">RFC XML element</th>
+<th class="left">RFC XML v3</th>
+<th class="left">RFC XML v2</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="left">
+<samp>front/boilerplate</samp> </td>
+<td class="left">Not added by the converter</td>
+<td class="left">Not added by the converter</td>
+</tr>
+<tr>
+<td class="left">
+<samp>iref@primary</samp> </td>
+<td class="left">N</td>
+<td class="left">N</td>
+</tr>
+<tr>
+<td class="left">
+<samp>reference</samp> (and all children)</td>
+<td class="left">As Raw XML</td>
+<td class="left">As Raw XML</td>
+</tr>
+<tr>
+<td class="left">
+<samp>table/preamble</samp> </td>
+<td class="left">Deprecated</td>
+<td class="left">N</td>
+</tr>
+<tr>
+<td class="left">
+<samp>table/postamble</samp> </td>
+<td class="left">Deprecated</td>
+<td class="left">N</td>
+</tr>
+<tr>
+<td class="left">
+<samp>artwork@width</samp> </td>
+<td class="left">Only on images</td>
+<td class="left">Only on images</td>
+</tr>
+<tr>
+<td class="left">
+<samp>artwork@height</samp> </td>
+<td class="left">Only on images</td>
+<td class="left">Only on images</td>
+</tr>
+</tbody>
+</table>
+<h1 id="rfc.section.19">
+<a href="#rfc.section.19">19.</a> <a href="#_authoring" id="_authoring">Authoring</a>
+</h1>
+<p id="rfc.section.19.p.1">To author an AsciiRFC document, you should familiarise yourself with the <a href="http://asciidoctor.org/docs/user-manual">Asciidoctor specification</a>. The converter Ruby gem source code distribution also has <a href="https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/asciidoctor/rfc">samples of individual RFC XML features</a>, in v2 and v3, and <a href="https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/examples">examples of self-standing AsciiRFC documents</a>, along with their RFC XML renderings. (This includes round-tripped RFC XML documents.)</p>
+<p id="rfc.section.19.p.2">In addition, you can clone the sample <samp>rfc-in-asciidoc-template</samp> repository as a template, and populate it for your AsciiRFC documents:</p>
+<pre>$ git clone https://github.com/riboseinc/rfc-in-asciidoc-template</pre>
+<p id="rfc.section.19.p.3">Converting your AsciiRFC to RFC XML is a simple as installing Asciidoctor (see <span>&lt;</span><a href="http://asciidoctor.org/#installation">http://asciidoctor.org/#installation</a><span>&gt;</span>) and the <samp>asciidoctor-rfc</samp> gem in Ruby, then running the asciidoctor executable on the document, specifying the asciidoctor-rfc gem as a library:</p>
+<pre>$ git clone https://github.com/riboseinc/asciidoctor-rfc
+$ cd asciidoctor-rfc
+$ bundle install
+$ gem build asciidoctor-rfc.gemspec
+$ gem install asciidoctor-rfc
+$ asciidoctor -b rfc3 -r 'asciidoctor-rfc' a.adoc  # RFC XML v3 output
+$ asciidoctor -b rfc2 -r 'asciidoctor-rfc' a.adoc  # RFC XML v2 output</pre>
+<p id="rfc.section.19.p.4">As you author AsciiRFC content, you should iterate through running the Asciidoctor conversion frequently, to ensure that you are still generating valid XML through your markup. The converter makes an effort to ensure that its XML output is valid, and it issues warnings about likely issues; it also validates its own XML output against the Asciidoctor schema, and reports errors in the XML output in the following format:</p>
+<pre>V3 RELAXNG Validation: 12:0: ERROR: Invalid attribute
+  sortRefs for element rfc</pre>
+<p id="rfc.section.19.p.5">Note that validation against the RELAXNG RFC XML schema includes confirming the referential integrity of all cross-references in the document.</p>
+<p id="rfc.section.19.p.6">It may be necessary to intervene in the XML output generated by the converter, either because the block model of AsciiRFC does not conform with the intended RFC XML (e.g. lists embedded in paragraphs), or because RFC XML features are required that are not supported within AsciiRFC.</p>
+<h1 id="rfc.section.20">
+<a href="#rfc.section.20">20.</a> <a href="#_security_considerations" id="_security_considerations">Security Considerations</a>
+</h1>
+<p></p>
+
+<ul>
+<li>Ensure your AsciiRFC generator comes from a geniune and trustworthy source.  This protects your own machine and also prevents injection of malicious content in your document.</li>
+<li>An AsciiRFC generator may cause errors in textual rendering or link generation that may lead to security issues.</li>
+<li>Creating cross-references (and also bibliographic references) to external documents may pose risks since the external document&#8217;s location may become controlled by a malicious party.</li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.21">
+<a href="#rfc.section.21">21.</a> <a href="#_iana_considerations" id="_iana_considerations">IANA Considerations</a>
+</h1>
+<p id="rfc.section.21.p.1">This document does not require any action by IANA.</p>
+<h1 id="rfc.section.22">
+<a href="#rfc.section.22">22.</a> <a href="#appendix-a" id="appendix-a">Examples</a>
+</h1>
+<h1 id="rfc.section.22.1">
+<a href="#rfc.section.22.1">22.1.</a> <a href="#_example_1" id="_example_1">Example 1</a>
+</h1>
+<p id="rfc.section.22.1.p.1">TODO.</p>
+<h1 id="rfc.references">
+<a href="#rfc.references">23.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">23.1.</a> Normative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC2119">[RFC2119]</b></td>
+<td class="top">
+<a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7991">[RFC7991]</b></td>
+<td class="top">
+<a>Hoffman, P.</a>, "<a href="https://tools.ietf.org/html/rfc7991">The "xml2rfc" Version 3 Vocabulary</a>", RFC 7991, DOI 10.17487/RFC7991, December 2016.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">23.2.</a> Informative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="AsciiDoc">[AsciiDoc]</b></td>
+<td class="top">
+<a>Rackham, S.</a>, "<a href="http://www.methods.co.nz/asciidoc/">AsciiDoc: Text based document generation</a>", November 2013.</td>
+</tr>
+<tr>
+<td class="reference"><b id="Asciidoctor">[Asciidoctor]</b></td>
+<td class="top">
+<a>Allen, D.</a>, <a>Waldron, R.</a> and <a>S. White</a>, "<a href="http://asciidoctor.org">Asciidoctor: A fast text processor &amp; publishing toolchain for converting AsciiDoc to HTML5, DocBook &amp; more.</a>", November 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="draftr">[draftr]</b></td>
+<td class="top">
+<a>Barnes, R.</a>, "<a href="https://ipv.sx/draftr/">draftr: an HTML front-end to pandoc2rfc</a>", Nov 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="kramdown-rfc2629">[kramdown-rfc2629]</b></td>
+<td class="top">
+<a>Bormann, C.</a>, "<a href="https://github.com/cabo/kramdown-rfc2629">kramdown-rfc2629: An RFC2629 (XML2RFC) backend for Thomas Leitner's kramdown markdown parser</a>", Nov 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="lyx2rfc">[lyx2rfc]</b></td>
+<td class="top">
+<a>Williams, N.</a>, "<a href="https://github.com/nicowilliams/lyx2rfc">LyX to I-D/RFC export by way of Lyx export to XHTML and XSLT conversion to xml2rfc schema</a>", 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="mmark">[mmark]</b></td>
+<td class="top">
+<a>Gieben, R.</a>, "<a href="https://github.com/miekg/mmark">Using mmark to create I-Ds and RFCs</a>", June 2015.</td>
+</tr>
+<tr>
+<td class="reference"><b id="NroffEdit">[NroffEdit]</b></td>
+<td class="top">
+<a>Santesson, S.</a>, "<a href="http://aaa-sec.com/nroffedit/">WYSIWYG Internet-Draft Nroff Editor</a>", May 2011.</td>
+</tr>
+<tr>
+<td class="reference"><b id="pandoc2rfc">[pandoc2rfc]</b></td>
+<td class="top">
+<a>Gieben, R.</a>, "<a href="https://github.com/miekg/pandoc2rfc">pandoc2rfc: Use pandoc to create XML suitable for xml2rfc</a>", 2012.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5385">[RFC5385]</b></td>
+<td class="top">
+<a>Touch, J.</a>, "<a href="https://tools.ietf.org/html/rfc5385">Version 2.0 Microsoft Word Template for Creating Internet Drafts and RFCs</a>", RFC 5385, DOI 10.17487/RFC5385, February 2010.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7328">[RFC7328]</b></td>
+<td class="top">
+<a>Gieben, R.</a>, "<a href="https://tools.ietf.org/html/rfc7328">Writing I-Ds and RFCs Using Pandoc and a Bit of XML</a>", RFC 7328, DOI 10.17487/RFC7328, August 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7749">[RFC7749]</b></td>
+<td class="top">
+<a>Reschke, J.</a>, "<a href="https://tools.ietf.org/html/rfc7749">The "xml2rfc" Version 2 Vocabulary</a>", RFC 7749, DOI 10.17487/RFC7749, February 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7763">[RFC7763]</b></td>
+<td class="top">
+<a>Leonard, S.</a>, "<a href="https://tools.ietf.org/html/rfc7763">The text/markdown Media Type</a>", RFC 7763, DOI 10.17487/RFC7763, March 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7764">[RFC7764]</b></td>
+<td class="top">
+<a>Leonard, S.</a>, "<a href="https://tools.ietf.org/html/rfc7764">Guidance on Markdown: Design Philosophies, Stability Strategies, and Select Registrations</a>", RFC 7764, DOI 10.17487/RFC7764, March 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7990">[RFC7990]</b></td>
+<td class="top">
+<a>Flanagan, H.</a>, "<a href="https://tools.ietf.org/html/rfc7990">RFC Format Framework</a>", RFC 7990, DOI 10.17487/RFC7990, December 2016.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.appendix.A">
+<a href="#rfc.appendix.A">Appendix A.</a> <a href="#_acknowledgements" id="_acknowledgements">Acknowledgements</a>
+</h1>
+<p id="rfc.section.A.p.1">The authors would like to thank the following persons for their valuable advice and input.</p>
+<p></p>
+
+<ul><li>TODO.</li></ul>
+
+<p> </p>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Ronald Henry Tse</span> 
+	  <span class="n hidden">
+		<span class="family-name">Tse</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Ribose</span>
+	<span class="adr">
+	  <span class="vcardline">Suite 1111, 1 Pedder Street</span>
+
+	  <span class="vcardline">
+		<span class="locality">Central</span>,  
+		<span class="region">Hong Kong</span> 
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Hong Kong</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:ronald.tse@ribose.com">ronald.tse@ribose.com</a></span>
+
+<span class="vcardline">URI: <a href="https://www.ribose.com">https://www.ribose.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Nick Nicholas</span> 
+	  <span class="n hidden">
+		<span class="family-name">Nicholas</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Ribose</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Australia</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:nick.nicholas@ribose.com">nick.nicholas@ribose.com</a></span>
+
+<span class="vcardline">URI: <a href="https://www.ribose.com">https://www.ribose.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Jeffrey Lau</span> 
+	  <span class="n hidden">
+		<span class="family-name">Lau</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Ribose</span>
+	<span class="adr">
+	  <span class="vcardline">Suite 1111, 1 Pedder Street</span>
+
+	  <span class="vcardline">
+		<span class="locality">Central</span>,  
+		<span class="region">Hong Kong</span> 
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Hong Kong</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:jeffrey.lau@ribose.com">jeffrey.lau@ribose.com</a></span>
+
+<span class="vcardline">URI: <a href="https://www.ribose.com">https://www.ribose.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Paolo Brasolin</span> 
+	  <span class="n hidden">
+		<span class="family-name">Brasolin</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Ribose</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">Italy</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:paolo.brasolin@ribose.com">paolo.brasolin@ribose.com</a></span>
+
+<span class="vcardline">URI: <a href="https://www.ribose.com">https://www.ribose.com</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>

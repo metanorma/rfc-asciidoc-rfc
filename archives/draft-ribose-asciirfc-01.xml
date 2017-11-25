@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc strict="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<?rfc toc="yes"?>
+<?rfc tocdepth="4"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<rfc ipr="trust200902" category="info" submissionType="IETF" docName="draft-ribose-asciirfc-01">
+<front>
+  <title abbrev="AsciiRFC Specifications">Writing Internet-Drafts And RFCs In AsciiDoc (AsciiRFC)</title>
+  <author fullname="Ronald Henry Tse" surname="Tse" initials="R. H.">
+    <organization>Ribose</organization>
+    <address>
+      <postal>
+        <street>Suite 1111, 1 Pedder Street</street>
+        <city>Central</city>
+        <region>Hong Kong</region>
+        <country>Hong Kong</country>
+      </postal>
+      <email>ronald.tse@ribose.com</email>
+      <uri>https://www.ribose.com</uri>
+    </address>
+  </author>
+  <author fullname="Nick Nicholas" surname="Nicholas" initials="N.">
+    <organization>Ribose</organization>
+    <address>
+      <postal>
+        <street/>
+        <country>Australia</country>
+      </postal>
+      <email>nick.nicholas@ribose.com</email>
+      <uri>https://www.ribose.com</uri>
+    </address>
+  </author>
+  <author fullname="Jeffrey Lau" surname="Lau" initials="J.">
+    <organization>Ribose</organization>
+    <address>
+      <postal>
+        <street>Suite 1111, 1 Pedder Street</street>
+        <city>Central</city>
+        <region>Hong Kong</region>
+        <country>Hong Kong</country>
+      </postal>
+      <email>jeffrey.lau@ribose.com</email>
+      <uri>https://www.ribose.com</uri>
+    </address>
+  </author>
+  <author fullname="Paolo Brasolin" surname="Brasolin" initials="P.">
+    <organization>Ribose</organization>
+    <address>
+      <postal>
+        <street/>
+        <country>Italy</country>
+      </postal>
+      <email>paolo.brasolin@ribose.com</email>
+      <uri>https://www.ribose.com</uri>
+    </address>
+  </author>
+  <date day="25" month="November" year="2017"/>
+  <area>Internet</area>
+  <workgroup>Network Working Group</workgroup>
+
+<abstract><t>This document describes the AsciiDoc syntax extension called AsciiRFC
+designed for authoring IETF Internet-Drafts and RFCs.</t>
+<t>AsciiDoc is a human readable document markup language which affords more
+granular control over markup than comparable schemes such as Markdown.</t>
+<t>The AsciiRFC syntax is designed to allow the author to entirely focus
+on text, providing the full power of the resulting XML RFC through the AsciiDoc
+language, while abstracting away the need to manually edit XML, including
+references.</t>
+<t>This document itself was written and generated into XML RFC v2 (RFC7749) and
+XML RFC v3 (RFC7991) directly through asciidoctor-rfc, an AsciiRFC generator.</t></abstract>
+</front><middle>
+<section anchor="_introduction" title="Introduction"><t>Internet-Drafts and RFCs intended for publication submission to the IETF can be
+written in a multitude of formats today, including:</t>
+<t>
+  <list style="symbols">
+    <t>XML: RFC XML v2 <xref target="RFC7749"/> and v3 <xref target="RFC7991"/></t>
+    <t>nroff: through "NroffEdit" <xref target="NroffEdit"/></t>
+    <t>Microsoft Word: through usage of <xref target="RFC5385"/></t>
+    <t>Lyx: through <xref target="lyx2rfc"/></t>
+    <t>Pandoc: <xref target="RFC7328"/>, through <xref target="pandoc2rfc"/> or <xref target="draftr"/></t>
+    <t>Kramdown: through <xref target="kramdown-rfc2629"/></t>
+    <t>mmark: through <xref target="mmark"/></t>
+  </list>
+</t>
+<t>Interestingly, the last three are Markdown <xref target="RFC7763"/> variants.</t>
+<t>As specified in <xref target="RFC7990"/>, the IETF intends for the canonical format of RFCs
+to transition from plain-text ASCII to RFC XML v3 <xref target="RFC7991"/>. While plain-text
+will continue to be accepted from authors by the IETF, at least in the short-
+to medium-term, XML will be preferred for submission, and any plain-text
+submissions will need to be converted to RFC XML v3.</t>
+<t>While this need is already met for RFC XML v2 <xref target="RFC7749"/> by the tools
+specified above, the transition to RFC XML v3 <xref target="RFC7991"/> places added onus on
+authors to generate compliant XML.</t>
+<t><xref target="AsciiDoc"/> is an alternative markup language to Markdown, with features that
+make it attractive as a markup language for RFC with XML output. This document
+describes the use of <xref target="Asciidoctor"/>, a Ruby-based enhancement of the original
+AsciiDoc markup language, for RFC XML markup, with a Ruby gem written by the
+authors used to render Asciidoctor documents as RFC XML.  The markup language
+used specifically for the purpose of generating RFC XML document is called
+"AsciiRFC".</t>
+<t>Section 1.2 of <xref target="RFC7764"/> famously states that "there is no such thing as "invalid"
+Markdown, there is no standard demanding adherence to the Markdown syntax, and
+there is no governing body that guides or impedes its development." While there
+are contexts where that lack of rigour is helpful, the authoring of RFCs does
+have a standard and a governing body, and there is such a thing as invalid RFC
+XML. A more rigorous counterpart to Markdown, which still preserves its basic
+approach to formatting, is useful in generating RFC XML that encompasses a
+fuller subset of the specification, and preempting malformed RFC XML output.</t>
+<t><eref target="http://asciidoctor.org/docs/user-manual/#compared-to-markdown">Compared to Markdown</eref>,</t>
+<t>
+  <list style="symbols">
+    <t>AsciiDoc was designed from the beginning as a publishing language: it was
+initially intended as a plain-text alternative to the DocBook XML schema. For
+that reason, Asciidoctor natively supports the full range of formatting
+required by RFC XML (including notes, tables, bibliographies, source-code
+blocks, and definition lists), without resorting to embedded HTML or Markdown
+"flavours".</t>
+    <t>AsciiDoc in its Ruby-based Asciidoctor implementation is extensible,
+with a well-defined API. (Extensions have been harnessed
+to deal with bibliographic preprocessing for AsciiRFC.)</t>
+    <t>AsciiRFC allows granular control of rendering, including user-specified
+attributes of text blocks.</t>
+    <t>The Asciidoctor implementation allows document inclusion, for managing
+large-scale documentation projects.</t>
+    <t>AsciiRFC allows granular control of permutations of block nesting, such as
+source code within lists or definition lists within unordered lists.</t>
+    <t>As a more formal counterpart to Markdown, AsciiDoc is well-suited to
+generating XML that needs to conform to a specified schema.</t>
+  </list>
+</t>
+<t>As with Markdown, there is a wide range of tools that can render AsciiDoc; so
+AsciiRFC drafts of RFC documents can be previewed and accessed without
+depending on the RFC tools ecosystem. Our realisation of RFC XML in AsciiRFC
+has aimed to ensure that, as much as possible, the markup language can be can
+be processed by generic Asciidoctor tools.  (The only exception to this as an
+add-on is the optional bibliography module, which allows bibliographies to be
+assembled on the fly based on citations in a document: see
+<xref target="asciidoctor_bibliography"/>.)</t></section>
+<section anchor="_conventions_used_in_this_document" title="Conventions Used in This Document"><t>The key words "<spanx style="strong">MUST</spanx>", "<spanx style="strong">MUST NOT</spanx>", "<spanx style="strong">REQUIRED</spanx>", "<spanx style="strong">SHALL</spanx>",
+"<spanx style="strong">SHALL NOT</spanx>", "<spanx style="strong">SHOULD</spanx>", "<spanx style="strong">SHOULD NOT</spanx>", "<spanx style="strong">RECOMMENDED</spanx>",
+"<spanx style="strong">MAY</spanx>", and "<spanx style="strong">OPTIONAL</spanx>" in this document are to be interpreted
+as described in <xref target="RFC2119"/>.</t>
+<section anchor="_definitions" title="Definitions">
+  <t>In this document, <spanx style="emph">AsciiDoc</spanx> refers to the markup language generically.
+<spanx style="emph">Asciidoctor</spanx> refers specifically to the Ruby-based implementation of
+the markup language, which has enhanced the original markup language.
+The RFC XML document converter contributed by the authors uses a subset of
+<spanx style="emph">Asciidoctor</spanx>, with some minor additions (a few document attributes
+specific to RFC XML, some macros specific to citation processing,
+and some templated use of <spanx style="emph">Asciidoctor</spanx> crossreferences). This variant
+of <spanx style="emph">Asciidoctor</spanx> markup is referred to as <spanx style="emph">AsciiRFC</spanx>.</t>
+</section></section>
+<section anchor="_document_structure_and_asciidoctor_syntax" title="Document Structure And AsciiDoctor Syntax"><t>The syntax of Asciidoctor is presented in the
+<eref target="http://asciidoctor.org/docs/user-manual/#compared-to-markdown">Asciidoctor user manual</eref>.
+AsciiRFC is a subset of Asciidoctor syntax, with the addition of
+bibliographic macros (<xref target="asciidoctor_bibliography"/>).</t>
+<t>Asciidoctor consists of:</t>
+<t>
+  <list style="symbols">
+    <t>A document header, containing a title, a list of authors, and document
+attributes in lines prefixed with <spanx style="verb">:</spanx>.</t>
+    <t>An optional document preamble, separated from document header by a blank line.</t>
+    <t>A number of sections, set off by a section title (a line prefixed with two or
+more <spanx style="verb">=</spanx>. A section may contain:<list style="symbols">
+  <t>Other sections, whose level of nesting is indicated by the number of <spanx style="verb">=</spanx> in
+their header.</t>
+  <t>Blocks of text. Blocks can have metadata (including a title, an anchor for
+cross-references, and attributes.) Blocks can be:<list style="symbols">
+  <t>Paragraphs, which are terminated by blank lines.</t>
+  <t>Lists. List items are by default paragraphs, but can span over multiple
+paragraphs.</t>
+  <t>Delimited blocks (with a line delimiter on either side of them); these
+include tables, notes, sidebars, source code, block quotes, examples, and
+unprocessed content (e.g. raw XML). Delimited blocks contain by default one or
+more paragraphs.</t>
+  <t>List items can contain other blocks, including both nested lists and
+delimited blocks.</t>
+  <t>Some delimited blocks can contain other delimited blocks; for example,
+examples can contain source code as well as discussion in paragraphs.</t>
+</list></t>
+  <t>Blocks of text consist of inline text, which themselves can contain markup.</t>
+</list></t>
+  </list>
+</t>
+<t>Inline markup includes:</t>
+<t>
+  <list style="symbols">
+    <t>Text formatting: bold, italic, superscript, subscript, monospace.</t>
+    <t>Custom markup macros. (AsciiRFC uses one: <spanx style="verb">bcp14</spanx>.)</t>
+    <t>URLs, including display text.</t>
+    <t>Inline anchors.</t>
+    <t>Cross-references to anchors (IDs of blocks or spans of text), including
+display text.</t>
+    <t>Images, audio, and visual files. (AsciiRFC only supports images.)</t>
+    <t>Index terms.</t>
+    <t>Equations (native support for
+<eref target="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMathML</eref> and
+<eref target="http://docs.mathjax.org/en/latest/tex.html">TeX/LaTeX</eref>, via the
+<eref target="https://www.mathjax.org">MathJax</eref> tool). (Not supported in AsciiRFC, since
+there is no RFC XML equivalent.)</t>
+    <t>Footnotes. (Not supported in AsciiRFC.)</t>
+  </list>
+</t>
+<t>The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
+In the following, v3 equivalences are given:</t>
+<t>
+  <list style="symbols">
+    <t>Header: <spanx style="verb">&lt;rfc&gt;</spanx> attributes, most <spanx style="verb">front</spanx> elements.</t>
+    <t>Preamble: <spanx style="verb">front/abstract</spanx> and <spanx style="verb">front/note</spanx>.</t>
+    <t>Sections: <spanx style="verb">middle/section</spanx> elements.</t>
+    <t>Sections with <spanx style="verb">bibliography</spanx> style attributes: <spanx style="verb">back/references</spanx> elements.</t>
+    <t>Sections with <spanx style="verb">appendix</spanx> style attributes: <spanx style="verb">back/section</spanx> elements.</t>
+    <t>Paragraphs: <spanx style="verb">t</spanx> elements.</t>
+    <t>Lists: <spanx style="verb">ul</spanx>, <spanx style="verb">ol</spanx>, <spanx style="verb">dl</spanx> elements.</t>
+    <t>Delimited blocks: <spanx style="verb">artwork</spanx>, <spanx style="verb">aside</spanx>, <spanx style="verb">blockquote</spanx>, <spanx style="verb">figure</spanx>, <spanx style="verb">note</spanx>,
+<spanx style="verb">sourcecode</spanx>, <spanx style="verb">table</spanx>.</t>
+    <t>Inline markup: <spanx style="verb">bcp14</spanx>, <spanx style="verb">br</spanx>, <spanx style="verb">cref</spanx>, <spanx style="verb">em</spanx>, <spanx style="verb">eref</spanx>, <spanx style="verb">iref</spanx>, <spanx style="verb">relref</spanx>,
+<spanx style="verb">strong</spanx>, <spanx style="verb">sub</spanx>, <spanx style="verb">sup</spanx>, <spanx style="verb">tt</spanx>, <spanx style="verb">xref</spanx>.</t>
+  </list>
+</t>
+<t>Full details of the  mapping of AsciiRFC elements to RFC XML v2 and v3
+elements, and of how to convert AsciiRFC documents to RFC XML, are given in
+<eref target="https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc"/>. The
+following gives an overview of how to create an RFC XML document in
+AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML
+v3, although the converter deals with both versions of RFC XML.</t>
+<section anchor="_simple_illustration" title="Simple illustration"><t>The following is an illustration of a simple AsciiRFC document, and its
+corresponding rendering in RFC XML v3:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://example.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238
+:email: tbt@example.com
+:email_2: jc@example.com
+:email_3: gc@example.com
+:email_4: mf@bcc.co.uk
+:smart-quotes: false
+:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby
+
+[abstract]
+The sketch is a parody of nostalgic conversations about humble
+beginnings or difficult childhoods, featuring four men from Yorkshire
+who reminisce about their upbringing. As the conversation progresses
+they try to outdo one another, and their accounts of deprived
+childhoods become increasingly absurd. &lt;&lt;michaelpalin&gt;&gt; &lt;&lt;ericidle&gt;&gt;
+
+NOTE: See also Wikipedia summary
+
+[#michaelpalin]
+== Claim: Michael Palin
+You were lucky. We lived for three months in a brown paper bag in a septic
+tank. We used to have to get up at six o'clock in the morning, clean the
+bag, eat a crust of stale bread, go to work down mill for fourteen hours
+a day week in-week out. When we got home, out Dad would thrash us to
+sleep with his belt! &lt;&lt;RFC7253&gt;&gt;
+
+=== Response: Graham Chapman
+Luxury. We used to have to get out of the lake at three o'clock in the morning,
+clean the lake, eat a handful of hot gravel, go to work at the mill every day
+for tuppence a month, come home, and Dad would beat us around the head and
+neck with a broken bottle, if we were *lucky*!
+
+=== Response: Terry Gilliam
+Well we had it tough. We used to have to get up out of the shoebox at
+twelve o'clock at night, and *lick* the road clean with our tongues. We had
+half a handful of freezing cold gravel, worked twenty-four hours a day at the
+mill for fourpence every six years, and when we got home, our Dad would
+slice us in two with a bread knife.
+
+[#ericidle]
+=== Response: Eric Idle
+Right.
+
+I had to get up in the morning at ten o'clock at night, half an hour
+before I went to bed, (_pause for laughter_), eat a lump of cold poison,
+work twenty-nine hours a day down mill, and pay mill owner for permission to come
+to work, and when we got home, our Dad would kill us, and dance about on our
+graves singing "Hallelujah."
+
+[bibliography]
+== Normative References
+++++
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt;
+    &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+++++
+
+[appendix]
+== Addendum
+But you try and tell the young people today that... and they won't believe ya'.</artwork>
+</figure>
+<t>The first block of text, from <spanx style="verb">= Four Yorkshiremen Sketch</spanx> through to
+<spanx style="verb">:link: https ://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby</spanx>,
+is the document header. It contains a title in the first line, an author attribution, and then
+a set of document attributes, conveying information about the document as well as information
+about its authors. This information ends up either as attributes of the root <spanx style="verb">rfc</spanx> tag, elements of the <spanx style="verb">front</spanx>
+tag, or processing instructions.</t>
+<t>The following blocks of text, up until the first section header (<spanx style="verb">== Claim: Michael Palin</spanx>), are the
+document preamble. They are treated by the document converter as containing the document
+abstract (<spanx style="verb">abstract</spanx>), followed by any notes (<spanx style="verb">note</spanx>, identified above by the <spanx style="verb">NOTE:</spanx> heading).</t>
+<t>The first section header (<spanx style="verb">== Claim: Michael Palin</spanx>) is preceded by an anchor for that section
+(<spanx style="verb">[#michaelpalin]</spanx>). There is a cross-reference to that anchor already in place in the abstract
+(<spanx style="verb">&lt;&lt;michaelpalin&gt;&gt;</spanx>). The document converter treats the first section of the document as the start of
+the <spanx style="verb">middle</spanx> section of the document.</t>
+<t>The first section header is followed by a paragraph, and other sections and paragraphs. The
+number of <spanx style="verb">=</spanx> signs are one higher than the initial section header, which indicates that they
+are subsections of that section. The paragraphs contains some inline formatting
+(italics: <spanx style="verb">_pause for laughter_</spanx>; boldface: <spanx style="verb">*lick*</spanx>). The first paragraph also contains a citation of
+a reference, which in this version of AsciiRFC is treated identically to a cross-reference
+(<spanx style="verb">&lt;&lt;RFC7253&gt;&gt;</spanx>). (If the bibliography preprocessor were used, it would be encoded differently.)</t>
+<t>The second last section is tagged with the style attribute <spanx style="verb">[bibliography]</spanx>, which identifies
+it as a references container; the document converter accordingly inserts this into the <spanx style="verb">back</spanx>
+element of the document. The contents of the references section are in this instance raw XML,
+delimited as a passthrough block (with <spanx style="verb">++++</spanx>), which the converter does not alter.
+The final section is tagged with the style attribute <spanx style="verb">[appendix]</spanx>, and is treated as such.</t>
+<t>The RFC XML v3 document generated from this AsciiRFC document is:</t>
+<figure>
+  <artwork type="xml">&lt;?xml version="1.0" encoding="US-ASCII"?&gt;
+&lt;!DOCTYPE rfc SYSTEM "rfc2629.dtd"&gt;
+&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T09:54:54Z" version="3"&gt;
+  &lt;link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"
+    rel="describedby" /&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+      stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese"&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Graham Chapman" surname="Chapman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;gc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Marty Feldman" surname="Feldman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;mf@bcc.co.uk&lt;email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;keyword&gt;
+    &lt;keyword&gt;memory&lt;keyword&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+      beginnings or difficult childhoods, featuring four men from Yorkshire who
+      reminisce about their upbringing. As the conversation progresses they try
+      to outdo one another, and their accounts of deprived childhoods become
+      increasingly absurd. &lt;xref target="michaelpalin" /&gt;
+      &lt;xref target="ericidle" /&gt;&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note&gt;
+      &lt;t&gt;See also Wikipedia summary&lt;t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="michaelpalin" numbered="false"&gt;
+      &lt;name&gt;Claim: Michael Palin&lt;name&gt;
+      &lt;t&gt;You were lucky. We lived for three months in a brown paper bag in a
+        septic tank. We used to have to get up at six o'clock in the morning,
+        clean the bag, eat a crust of stale bread, go to work down mill for
+        fourteen hours a day week in-week out. When we got home, out Dad would
+        thrash us to sleep with his belt! &lt;xref target="RFC7253" /&gt;&lt;/t&gt;
+      &lt;section anchor="_response_graham_chapman" numbered="false"&gt;
+        &lt;name&gt;Response: Graham Chapman&lt;name&gt;
+        &lt;t&gt;Luxury. We used to have to get out of the lake at three o'clock in
+          the morning, clean the lake, eat a handful of hot gravel, go to work
+          at the mill every day for tuppence a month, come home, and Dad would
+          beat us around the head and neck with a broken bottle, if we were
+          &lt;strong&gt;lucky&lt;/strong&gt;!&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="_response_terry_gilliam" numbered="false"&gt;
+        &lt;name&gt;Response: Terry Gilliam&lt;name&gt;
+        &lt;t&gt;Well we had it tough. We used to have to get up out of the shoebox at
+          twelve o'clock at night, and &lt;strong&gt;lick&lt;strong&gt;
+          the road clean with our tongues. We had half a handful of freezing
+          cold gravel, worked twenty-four hours a day at the mill for fourpence
+          every six years, and when we got home, our Dad would slice us in two
+          with a bread knife.&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="ericidle" numbered="false"&gt;
+        &lt;name&gt;Response: Eric Idle&lt;name&gt;
+        &lt;t&gt;Right.&lt;t&gt;
+        &lt;t&gt;I had to get up in the morning at ten o'clock at night, half an hour
+          before I went to bed, (&lt;em&gt;pause for laughter&lt;/em&gt;), eat a lump of
+          cold poison, work twenty-nine hours a day down mill, and pay mill
+          owner for permission to come to work, and when we got home, our Dad
+          would kill us, and dance about on our graves singing "Hallelujah."&lt;/t&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+  &lt;back&gt;
+    &lt;references anchor="_normative_references"&gt;
+      &lt;name&gt;Normative References&lt;name&gt;
+      &lt;reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253"&gt;
+        &lt;front&gt;
+          &lt;title&gt;Guidelines for Writing an IANA Considerations Section
+            in RFCs&lt;title&gt;
+          &lt;author initials="T." surname="Krovetz"&gt;
+            &lt;organization&gt;Sacramento State&lt;organization&gt;
+          &lt;/author&gt;
+          &lt;author initials="P." surname="Rogaway"&gt;
+            &lt;organization&gt;UC Davis&lt;organization&gt;
+          &lt;/author&gt;
+          &lt;date month="May" year="2014" /&gt;
+        &lt;/front&gt;
+        &lt;seriesInfo name="RFC" value="7253" /&gt;
+      &lt;/reference&gt;
+    &lt;/references&gt;
+    &lt;section anchor="_addendum" numbered="false"&gt;
+      &lt;name&gt;Addendum&lt;name&gt;
+      &lt;t&gt;But you try and tell the young people today that&amp;#8230;&amp;#8203;
+        and they won't believe ya'.&lt;t&gt;
+    &lt;/section&gt;
+  &lt;/back&gt;
+&lt;/rfc&gt;
+</artwork>
+</figure>
+<t>Some default processing instructions have already been prefixed to the XML.</t>
+<t>Although we do not describe it extensively in this document, our AsciiRFC
+converter also generates RFC XML v2 from the same source AsciiRFC. For illustration,
+the foregoing AsciiRFC document generates the following RFC XML v2 output:</t>
+<figure>
+  <artwork type="xml">&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+  category="info" submissionType="IETF"
+  docName="draft-four-yorkshiremen-00"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;title&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese"&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Graham Chapman" surname="Chapman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;gc@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="Marty Feldman" surname="Feldman"&gt;
+      &lt;address&gt;
+        &lt;email&gt;mf@bcc.co.uk&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived
+        childhoods become increasingly absurd. &lt;xref target="michaelpalin" /&gt;
+        &lt;xref target="ericidle" /&gt;&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note title="NOTE"&gt;
+      &lt;t&gt;See also Wikipedia summary&lt;/t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="michaelpalin" title="Claim: Michael Palin"&gt;
+      &lt;t&gt;You were lucky. We lived for three months in a brown paper bag in a
+        septic tank. We used to have to get up at six o'clock in the morning,
+        clean the bag, eat a crust of stale bread, go to work down mill for
+        fourteen hours a day week in-week out. When we got home, out Dad would
+        thrash us to sleep with his belt! &lt;xref target="RFC7253" /&gt; &lt;/t&gt;
+      &lt;section anchor="_response_graham_chapman"
+          title="Response: Graham Chapman"&gt;
+        &lt;t&gt;Luxury. We used to have to get out of the lake at three o'clock in
+          the morning, clean the lake, eat a handful of hot gravel, go to work
+          at the mill every day for tuppence a month, come home, and Dad would
+          beat us around the head and neck with a broken bottle, if we were
+          &lt;spanx style="strong"&gt;lucky&lt;/spanx&gt;!&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="_response_terry_gilliam" title="Response: Terry Gilliam"&gt;
+        &lt;t&gt;Well we had it tough. We used to have to get up out of the shoebox at
+          twelve o'clock at night, and &lt;spanx style="strong"&gt;lick&lt;/spanx&gt; the
+          road clean with our tongues. We had half a handful of freezing cold
+          gravel, worked twenty-four hours a day at the mill for fourpence every
+          six years, and when we got home, our Dad would slice us in two with a
+          bread knife.&lt;/t&gt;
+      &lt;/section&gt;
+      &lt;section anchor="ericidle" title="Response: Eric Idle"&gt;
+        &lt;t&gt;Right.&lt;/t&gt;
+        &lt;t&gt;I had to get up in the morning at ten o'clock at night, half an hour
+          before I went to bed, (&lt;spanx style="emph"&gt;pause for
+          laughter&lt;/spanx&gt;), eat a lump of cold poison, work twenty-nine hours a
+          day down mill, and pay mill owner for permission to come to work, and
+          when we got home, our Dad would kill us, and dance about on our graves
+          singing "Hallelujah."&lt;/t&gt;
+      &lt;/section&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+  &lt;back&gt;
+    &lt;references title="Normative References"&gt;
+      &lt;reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253"&gt;
+        &lt;front&gt;
+          &lt;title&gt;Guidelines for Writing an IANA Considerations Section in
+            RFCs&lt;/title&gt;
+          &lt;author initials="T." surname="Krovetz"&gt;
+            &lt;organization&gt;Sacramento State&lt;/organization&gt;
+          &lt;/author&gt;
+          &lt;author initials="P." surname="Rogaway"&gt;
+            &lt;organization&gt;UC Davis&lt;/organization&gt;
+          &lt;/author&gt;
+          &lt;date month="May" year="2014" /&gt;
+        &lt;/front&gt;
+        &lt;seriesInfo name="RFC" value="7253" /&gt;
+      &lt;/reference&gt;
+    &lt;/references&gt;
+    &lt;section anchor="_addendum" title="Addendum"&gt;
+      &lt;t&gt;But you try and tell the young people today that&amp;#8230;&amp;#8203;
+        and they won't believe ya'.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/back&gt;
+&lt;/rfc&gt;</artwork>
+</figure></section></section>
+<section anchor="_header_and_document_attributes" title="Header And Document Attributes"><t>The header gives the document title, followed by an optional author
+attribution, and a series of document attributes, with no carriage return
+breaks.</t>
+<t>For example:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z</artwork>
+</figure>
+<t>The document attributes are used to populate attributes of the root <spanx style="verb">rfc</spanx>
+element, <spanx style="verb">front</spanx> elements, and document-level processing instructions.</t>
+<t>
+  <list style="symbols">
+    <t><spanx style="verb">:doctype:</spanx> determines  whether the document will be considered <spanx style="verb">rfc</spanx> or
+<spanx style="verb">internet-draft</spanx>, and interprets other attributes accordingly.</t>
+    <t>Certain attributes (<spanx style="verb">workgroup</spanx>, <spanx style="verb">area</spanx>, <spanx style="verb">keyword</spanx>) are comma delimited, and
+result in repeated RFC XML elements.</t>
+  </list>
+</t>
+<t>The foregoing AsciiRFC renders into RFC XML v3 as:</t>
+<figure>
+  <artwork type="xml">&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T10:13:46Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;</artwork>
+</figure>
+<t>The document header can spell out further information about authors, including
+contact details:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:abbrev: 4 Yorkshiremen
+:obsoletes: 10, 120
+:updates: 2010, 2120
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
+:revdate: 1990-04-01T00:00:00Z
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://bbn.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T10:15:02Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title abbrev="4 Yorkshiremen"&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;10 Moulton Street&lt;/street&gt;
+          &lt;city&gt;Cambridge&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://bbn.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;
+    &lt;area&gt;Internet&lt;/area&gt;
+    &lt;workgroup&gt;Network Working Group&lt;/workgroup&gt;
+    &lt;keyword&gt;yorkshire&lt;/keyword&gt;
+    &lt;keyword&gt;memory&lt;/keyword&gt;</artwork>
+</figure>
+<t>Details of a second, third etc. author, including their organization and
+contact details, are provided by suffixing the relevant author attributes with
+<spanx style="verb">_2</spanx>, <spanx style="verb">_3</spanx>  etc.:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;; John Cleese &lt;jc@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://example.com
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238
+:forename_initials: T.
+:lastname: Brooke-Taylor
+:street: 12 Moulton Street
+:city: London
+:country: United Kingdom
+:forename_initials_2: J.
+:lastname_2: Cleese
+:uri_2: https://twitter.com/johncleese</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc ipr="trust200902" submissionType="IETF"
+    prepTime="2017-11-25T10:19:32Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor"
+        surname="Brooke-Taylor" initials="T."&gt;
+      &lt;organization&gt;BBC&lt;/organization&gt;
+      &lt;address&gt;
+        &lt;postal&gt;
+          &lt;street&gt;12 Moulton Street&lt;/street&gt;
+          &lt;city&gt;London&lt;/city&gt;
+          &lt;code&gt;MA 02238&lt;/code&gt;
+          &lt;country&gt;United Kingdom&lt;/country&gt;
+        &lt;/postal&gt;
+        &lt;phone&gt;(555) 555-5555&lt;/phone&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+        &lt;uri&gt;http://example.com&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;author fullname="John Cleese" surname="Cleese" initials="J."&gt;
+      &lt;address&gt;
+        &lt;email&gt;jc@example.com&lt;/email&gt;
+        &lt;uri&gt;https://twitter.com/johncleese&lt;/uri&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;</artwork>
+</figure>
+<t>The initial author attribution in AsciiRFC, e.g.
+<spanx style="verb">Tim Brooke-Taylor &lt;tbt @ example.com&gt;; John Cleese &lt;jc @ example.com&gt;</spanx>
+in the example above, expects a strict format of First Name, zero or
+more Middle Names, Last name, and cannot process honorifics like "Dr."
+or suffixes like "Jr.".</t>
+<t>Name attributes with any degree of complexity should be overriden by using the
+<spanx style="verb">:fullname:</spanx> and <spanx style="verb">:lastname:</spanx> attributes. The AsciiRFC <spanx style="verb">:forename_initials:</spanx>
+attribute replaces the built-in Asciidoctor <spanx style="verb">:initials:</spanx> attribute (which
+includes the surname initial), and is not automatically populated from the name
+attribution.</t>
+<t>A document header may also contain attribute headers which are treated
+as XML processing instructions:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:ipr: trust200902
+:revdate: 1990-04-01T00:00:00Z
+:rfcedstyle: yes
+:text-list-symbols: yes
+:rfc2629xslt: true</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc ipr="trust200902" submissionType="IETF"
+    prepTime="2017-11-25T10:21:56Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="1" month="April" year="1990" /&gt;</artwork>
+</figure>
+<t>A few document attributes are specific to the operation of the RFC XML document
+converter:</t>
+<t>
+  <list style="hanging">
+    <t hangText=":no-rfc-bold-bcp14: false "><vspace blankLines="1"/>overrides the wrapping by default of boldface
+uppercase BCP14 <xref target="RFC2119"/> words (e.g. <spanx style="verb">*MUST NOT*</spanx>) with the <spanx style="verb">bcp14</spanx>
+element.</t>
+    <t hangText=":smart-quotes: false "><vspace blankLines="1"/>overrides Asciidoctor&#8217;s conversion of straight quotes
+and apostrophes to smart quotes and apostrophes.</t>
+    <t hangText=":inline-definition-lists: true "><vspace blankLines="1"/>overrides the RFC XML v2 <spanx style="verb">idnits</spanx>
+requirement that a blank line be inserted between a definition list term and
+its definition.</t>
+  </list>
+</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="_section_1" numbered="false"&gt;
+      &lt;name&gt;Section 1&lt;/name&gt;
+      &lt;t&gt;The specification  &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt;
+        use the word &lt;em&gt; doesn&amp;#8217;t&lt;/em&gt;.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+&lt;/rfc&gt;
+</artwork>
+</figure>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+:no-rfc-bold-bcp14: false
+:smart-quotes: false
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+  &lt;/front&gt;
+  &lt;middle&gt;
+    &lt;section anchor="_section_1" numbered="false"&gt;
+      &lt;name&gt;Section 1&lt;/name&gt;
+      &lt;t&gt;The specification &lt;strong&gt;MUST NOT&lt;/strong&gt;
+        use the word &lt;em&gt; doesn't&lt;/em&gt;.&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/middle&gt;
+&lt;/rfc&gt;</artwork>
+</figure></section>
+<section anchor="_preamble" title="Preamble"><t>The preamble in AsciiRFC is the text between the end of the document header
+(which terminates with a blank line) and the first section of text.</t>
+<t>Any paragraphs of text in the preamble are treated as an abstract, and may
+optionally be tagged with the <spanx style="verb">abstract</spanx> style attribute.</t>
+<t>Any notes in the preamble are treated as a <spanx style="verb">note</spanx> element.</t>
+<t>For example:</t>
+<figure>
+  <artwork type="asciidoc">= Four Yorkshiremen Sketch
+Tim Brooke-Taylor &lt;tbt@example.com&gt;
+:doctype: internet-draft
+:status: informational
+:name: draft-four-yorkshiremen-00
+
+The "Four Yorkshiremen" sketch is a comedy sketch written by
+Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and
+originally performed on their TV series _At Last the 1948 Show_ in 1967.
+It later became associated with the comedy group Monty Python
+(which included Cleese and Chapman), who performed it in their live shows,
+including _Monty Python Live at the Hollywood Bowl_.
+
+The sketch is a parody of nostalgic conversations about humble
+beginnings or difficult childhoods, featuring four men from Yorkshire
+who reminisce about their upbringing. As the conversation progresses
+they try to outdo one another, and their accounts of deprived
+childhoods become increasingly absurd.
+
+NOTE:  Barry Cryer is the wine waiter in the original performance
+and may have contributed to the writing.
+
+[NOTE]
+.Original Recording
+====
+The original performance of the sketch by the four creators is one of the
+surviving sketches from the programme and can be seen on the
+_At Last the 1948 Show_ DVD.
+====</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;rfc submissionType="IETF" prepTime="2017-11-25T10:32:27Z" version="3"&gt;
+  &lt;front&gt;
+    &lt;title&gt;Four Yorkshiremen Sketch&lt;/title&gt;
+    &lt;seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" /&gt;
+    &lt;author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor"&gt;
+      &lt;address&gt;
+        &lt;email&gt;tbt@example.com&lt;/email&gt;
+      &lt;/address&gt;
+    &lt;/author&gt;
+    &lt;date day="25" month="November" year="2017" /&gt;
+    &lt;abstract&gt;
+      &lt;t&gt;The "Four Yorkshiremen" sketch is a comedy sketch written by
+        Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and
+        originally performed on their TV series &lt;em&gt;At Last the 1948 Show&lt;/em&gt;
+        in 1967. It later became associated with the comedy group Monty Python
+        (which included Cleese and Chapman), who performed it in their live
+        shows, including &lt;em&gt;Monty Python Live at the Hollywood Bowl&lt;/em&gt;.&lt;/t&gt;
+      &lt;t&gt;The sketch is a parody of nostalgic conversations about humble
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived childhoods
+        become increasingly absurd.&lt;/t&gt;
+    &lt;/abstract&gt;
+    &lt;note&gt;
+      &lt;t&gt;Barry Cryer is the wine waiter in the original performance and may
+        have contributed to the writing.&lt;/t&gt;
+    &lt;/note&gt;
+    &lt;note&gt;
+      &lt;name&gt;Original Recording&lt;/name&gt;
+        &lt;t&gt;The original performance of the sketch by the four creators is one of
+          the surviving sketches from the programme and can be seen on the
+          &lt;em&gt;At Last the 1948 Show&lt;/em&gt; DVD.&lt;/t&gt;
+    &lt;/note&gt;
+  &lt;/front&gt;</artwork>
+</figure></section>
+<section anchor="_sections_and_paragraphs" title="Sections and Paragraphs"><t>Section headers are given with a sequence of <spanx style="verb">=</spanx>, the number of <spanx style="verb">=</spanx> giving the
+header level. Section numbering is toggled with the in-document attribute
+<spanx style="verb">:sectnums:</spanx> (on), <spanx style="verb">:sectnums!:</spanx> (off). The <spanx style="verb">toc</spanx> attribute can also be set
+on sections, indicating whether the section can be included in the document&#8217;s
+table of contents.</t>
+<figure>
+  <artwork type="asciidoc">:sectnums:
+[toc=exclude]
+== Section 1
+Para 1
+
+=== Subsection 1.1
+Para 1a
+
+:sectnums!:
+[toc=default]
+=== Subsection 1.2
+Para 2
+
+==== Subsection 1.2.1
+Para 3</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;section anchor="_section_1" toc="exclude" numbered="true"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;t&gt;Para 1&lt;/t&gt;
+  &lt;section anchor="_subsection_1_1" numbered="true"&gt;
+    &lt;name&gt;Subsection 1.1&lt;/name&gt;
+    &lt;t&gt;Para 1a&lt;/t&gt;
+  &lt;/section&gt;
+  &lt;section anchor="_subsection_1_2" toc="default" numbered="false"&gt;
+    &lt;name&gt;Subsection 1.2&lt;/name&gt;
+    &lt;t&gt;Para 2&lt;/t&gt;
+    &lt;section anchor="_subsection_1_2_1" numbered="false"&gt;
+      &lt;name&gt;Subsection 1.2.1&lt;/name&gt;
+      &lt;t&gt;Para 3&lt;/t&gt;
+    &lt;/section&gt;
+  &lt;/section&gt;
+&lt;/section&gt;</artwork>
+</figure></section>
+<section anchor="_figures" title="Figures"><t>AsciiRFC examples (corresponding to RFC XML Figures), source code Listings, and
+Literals (preformatted text) are all delimited blocks. Listings and Literals
+can occur nested within Examples:</t>
+<figure>
+  <artwork type="asciidoc">.Figure 1
+====
+.figure1.txt
+....
+Figures are only permitted to contain listings
+(sourcecode), images (artwork), or literal (artwork)
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|
+....
+
+[source,ruby]
+----
+def listing(node)
+  result = []
+  if node.parent.context != :example
+    result &lt;&lt; "&lt;figure&gt;"
+  end
+end
+----
+====</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;figure&gt;
+  &lt;name&gt;Figure 1&lt;/name&gt;
+  &lt;artwork type="ascii-art" name="figure1.txt"&gt;
+    Figures are only permitted to contain listings
+    (sourcecode), images (artwork), or literal (artwork)
+
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|&lt;/artwork&gt;
+  &lt;sourcecode type="ruby"&gt;
+    def listing(node)
+      result = []
+      if node.parent.context != :example
+        result &amp;lt;&amp;lt; "&amp;lt;figure&amp;gt;"
+      end
+    end
+  &lt;/sourcecode&gt;
+&lt;/figure&gt;</artwork>
+</figure>
+<t>If an AsciiRFC Listing or Literal occurs
+outside of an Example, the RFC XML converter will supply the surrounding Figure
+element:</t>
+<figure>
+  <artwork type="asciidoc">....
+This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|
+....</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;figure&gt;
+  &lt;artwork type="ascii-art"&gt;This is some ASCII Art:
+
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
+| |_   | | |  _| |/ _ \ __|
+|  _|  | | |_| | |  __/ |_
+|_|   |___\____|_|\___|\__|&lt;/artwork&gt;
+&lt;/figure&gt;</artwork>
+</figure></section>
+<section anchor="_lists" title="Lists"><t>AsciiRFC supports ordered, unordered, and definition lists. Indentation of
+ordered and unordered lists is indicated by repeating the list item prefix (<spanx style="verb">*</spanx>
+and <spanx style="verb">.</spanx> respectively.) List attributes specify the type of symbol used for
+ordered lists:</t>
+<figure>
+  <artwork type="asciidoc">[loweralpha]
+. First
+. Second
+[upperalpha]
+.. Third
+.. Fourth
+. Fifth
+. Sixth</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;ol anchor="id" type="a"&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;
+        &lt;t&gt;Second&lt;/t&gt;
+        &lt;ol type="A"&gt;
+            &lt;li&gt;Third&lt;/li&gt;
+            &lt;li&gt;Fourth&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Fifth&lt;/li&gt;
+    &lt;li&gt;Sixth&lt;/li&gt;
+&lt;/ol&gt;</artwork>
+</figure>
+<t>A list item by default spans a single paragraph. A following paragraph or other
+block element can be appended to the current list item by prefixing it with <spanx style="verb">+</spanx>
+in a separate line
+(<eref target="http://asciidoctor.org/docs/user-manual/#complex-list-content">Asciidoctor list continuation</eref>.)</t>
+<figure>
+  <artwork type="asciidoc">Notes::  Note 1.
++
+Note 2.
++
+Note 3.</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;dl&gt;
+  &lt;dt&gt;Notes&lt;/dt&gt;
+  &lt;dd&gt;
+    &lt;t&gt;Note 1.&lt;/t&gt;
+    &lt;t&gt;Note 2.&lt;/t&gt;
+    &lt;t&gt;Note 3.&lt;/t&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;</artwork>
+</figure>
+<t>(Multiple paragraphs are not permitted within a list item in RFC XML v2.
+The RFC XML converter deals with this by converting paragraph breaks into line
+breaks within a list item.)</t>
+<t>List continuations can also be embed to populate a list item with a sequence of
+blocks as a unit (in an Asciidoctor open block):</t>
+<figure>
+  <artwork type="asciidoc">* List Entry 1
+* List Entry 2
++
+--
+Note 2.
+
+....
+Literal
+....
+
+Note 3.
+--</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;ul&gt;
+  &lt;li&gt;List Entry 1&lt;/li&gt;
+  &lt;li&gt;
+    &lt;t&gt;
+      List Entry 2
+    &lt;/t&gt;
+    &lt;t&gt;
+      Note 2.
+    &lt;/t&gt;
+    &lt;figure&gt;
+      &lt;artwork type="ascii-art"&gt;
+        Literal
+      &lt;/artwork&gt;
+    &lt;/figure&gt;
+    &lt;t&gt;
+      Note 3.
+    &lt;/t&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</artwork>
+</figure>
+<t>AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic level of blocks, and does not
+permit lists to be nested within them: text after a list is considered to be a
+new paragraph. So markup like the following cannot be generated via
+AsciiRFC:</t>
+<figure>
+  <artwork type="xml">&lt;t&gt;
+  This is the start of a paragraph.
+  &lt;ul&gt;
+    &lt;li&gt;List Entry 1&lt;/li&gt;
+    &lt;li&gt;
+      &lt;t&gt;List Entry 2&lt;/t&gt;
+      &lt;t&gt;Note 2.&lt;/t&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  And this is the continuation of the paragraph.
+&lt;/t&gt;</artwork>
+</figure></section>
+<section anchor="_blockquotes" title="Blockquotes"><t>Asciidoctor supports blockquotes and quotations of verse; its block quotations
+permit arbitrary levels of quote nesting. RFC XML v3, and thus AsciiRFC, only supports one level of
+blockquotes. Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of tables; so
+verse quotations are converted to prose in the v3 converter.</t>
+<figure>
+  <artwork type="asciidoc">[quote,attribution="Monty Python",citetitle="http://example.com"]
+____
+Dennis: Come and see the violence inherent in the system.
+Help! Help! I'm being repressed!
+
+King Arthur: Bloody peasant!
+
+Dennis: Oh, what a giveaway!
+* Did you hear that?
+* Did you hear that, eh?
+* That's what I'm on about!
+** Did you see him repressing me?
+** You saw him, Didn't you?
+____</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;blockquote quotedfrom="Monty Python" cite="http://example.com"&gt;
+  &lt;t&gt;Dennis: Come and see the violence inherent in the system.
+  Help! Help! I&amp;#8217;m being repressed!&lt;/t&gt;
+  &lt;t&gt;King Arthur: Bloody peasant!&lt;/t&gt;
+  &lt;t&gt;Dennis: Oh, what a giveaway!&lt;/t&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Did you hear that?&lt;/li&gt;
+    &lt;li&gt;Did you hear that, eh?&lt;/li&gt;
+    &lt;li&gt;
+      &lt;t&gt;That&amp;#8217;s what I&amp;#8217;m on about!&lt;/t&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Did you see him repressing me?&lt;/li&gt;
+        &lt;li&gt;You saw him, Didn&amp;#8217;t you?&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</artwork>
+</figure></section>
+<section anchor="_notes_and_asides" title="Notes And Asides"><t>Asciidoctor supports a range of "admonitions", including notes, warnings, and
+tips. They are indicated by a paragraph prefix (e.g. <spanx style="verb">WARNING:</spanx>), or as a block
+with an admonition style attribute. All admonitions are conflated in AsciiRFC,
+being converted to <spanx style="verb">note</spanx> elements in the document preamble, and <spanx style="verb">cref</spanx> documents in the main document.</t>
+<figure>
+  <artwork type="asciidoc">== Section 1
+[NOTE,source=GBS]
+.Note Title
+====
+Any admonition inside the body of the text is a comment.
+====</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;section anchor="_section_1" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;t&gt;
+    &lt;cref display="true" source="GBS"&gt;
+      Any admonition inside the body of the text is a comment.
+    &lt;/cref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</artwork>
+</figure>
+<t>Note that no inline formatting is permitted in RFC XML v2 <spanx style="verb">cref</spanx> elements, and
+it is stripped for v2 by the converter.</t>
+<t>Because paragraphs in AsciiRFC cannot contain any other blocks, a comment at
+the end of a paragraph is treated as a new block. In the document converter,
+any such comments are moved inside the preceding RFC XML paragraph; if the
+comment is at the start of a section, as in the example above, it is wrapped
+inside a paragraph.</t>
+<t>The RFC XML v3 converter also supports asides (Asciidoctor sidebars):</t>
+<figure>
+  <artwork type="asciidoc">== Section 1
+****
+Sidebar
+
+Another sidebar
+
+* This is a list
+
+....
+And this is ascii-art
+....
+****</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;section anchor="_section_1" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+  &lt;aside&gt;
+    &lt;t&gt;Sidebar&lt;/t&gt;
+    &lt;t&gt;Another sidebar&lt;/t&gt;
+    &lt;ul&gt;
+      &lt;li&gt;This is a list&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;figure&gt;
+      &lt;artwork type="ascii-art"&gt;
+        And this is ascii-art
+      &lt;/artwork&gt;
+    &lt;/figure&gt;
+  &lt;/aside&gt;
+&lt;/section&gt;</artwork>
+</figure>
+<t>While AsciiDoc has comments proper, notated with initial <spanx style="verb">//</spanx>, they are ignored
+by the Asciidoctor document converter; so they will not appear as XML comments
+in the converter output.</t></section>
+<section anchor="_tables" title="Tables"><t>AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies and
+feet; cells spanning multiple rows and columns; and horizontal alignment. The
+larger range of table formatting options available in RFC XML v2 is also supported.</t>
+<figure>
+  <artwork type="asciidoc">.Table Title
+|===
+|head | head
+
+h|header cell | body cell
+| | body cell
+2+| colspan of 2
+.2+|rowspan of 2 | cell
+|cell
+^|centre aligned cell | cell
+&lt;|left aligned cell | cell
+&gt;|right aligned cell | cell
+
+|foot | foot
+|===</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;table&gt;
+  &lt;name&gt;Table Title&lt;/name&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th align="left"&gt;head&lt;/th&gt;
+      &lt;th align="left"&gt;head&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th align="left"&gt;header cell&lt;/th&gt;
+      &lt;td align="left"&gt;body cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;&lt;/td&gt;
+      &lt;td align="left"&gt;body cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" align="left"&gt;colspan of 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan="2" align="left"&gt;rowspan of 2&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="center"&gt;centre aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;left aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td align="right"&gt;right aligned cell&lt;/td&gt;
+      &lt;td align="left"&gt;cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td align="left"&gt;foot&lt;/td&gt;
+      &lt;td align="left"&gt;foot&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</artwork>
+</figure>
+<t>Neither version of RFC XML is as expressive in its table structure as
+Asciidoctor. RFC XML, for example, does not permit blocks within table
+cells.</t></section>
+<section anchor="_inline_formatting" title="Inline Formatting"><t>Like RFC XML v3, AsciiRFC supports italics, boldface, monospace, subscripts
+and superscripts:</t>
+<figure>
+  <artwork type="asciidoc">_Text_ *Text* `Text`  ^Superscript^ ~Subscript~</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;&lt;em&gt;Text&lt;/em&gt; &lt;strong&gt;Text&lt;/strong&gt; &lt;tt&gt;Text&lt;/tt&gt;
+&lt;sup&gt;Superscript&lt;/sup&gt; &lt;sub&gt;Subscript&lt;/sub&gt;&lt;/t&gt;</artwork>
+</figure>
+<t>RFC XML v3 also supports tagging of BCP14 keywords <xref target="RFC2119"/>; this is done in
+AsciiRFC either by tagging them with a custom formatting span
+(<spanx style="verb">bcp14#must not#</spanx>), or by converting BCP14 boldface all-caps words (unless the
+<spanx style="verb">:no-rfc-bold-bcp14: false</spanx> document attribute is set):</t>
+<figure>
+  <artwork type="asciidoc">This [bcp14]#must not# stand
+
+This *MUST NOT* stand</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;This &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt; stand&lt;/t&gt;
+
+&lt;t&gt;This &lt;bcp14&gt;MUST NOT&lt;/bcp14&gt; stand&lt;/t&gt;</artwork>
+</figure>
+<t>Any spans of BCP14 text delimited by inline formatting delimiters needs to be
+contained within a single line of text; the Asciidoctor API breaks up
+formatting spans across line breaks.</t>
+<t>Formatting delimiters like <spanx style="verb">*</spanx> can be escaped with backslash (<spanx style="verb">\*</spanx>); double formatting
+delimiters, like <spanx style="verb">**</spanx> and <spanx style="verb">__</spanx>, need to be escaped with double backslash
+(<spanx style="verb">\\**</spanx>). Escaping delimiters is not always reliable, and for double delimiters
+it is preferable to use HTML entities (<spanx style="verb">&amp;#42;&amp;#42;</spanx>), or attribute references
+(references to the value of attributes set in the document header):</t>
+<figure>
+  <artwork type="asciidoc">:dblast: **
+
+`{dblast}`</artwork>
+</figure>
+<t>In extreme circumstances (such as quoting AsciiDoc syntax), you may need to resort to
+altering the substitutions behaviour within a given block of of AsciiDoc; see
+<eref target="http://asciidoctor.org/docs/user-manual/#applying-substitutions"/></t></section>
+<section anchor="_links" title="Links"><t>Common URL formats are recognised automatically as hyperlinks, and are rendered
+as such; any hyperlinked text is appended after the hyperlink in square
+brackets:</t>
+<figure>
+  <artwork type="asciidoc">http://example.com/[linktext]</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;&lt;eref target="http://example.com/"&gt;linktext&lt;/eref&gt;&lt;/t&gt;</artwork>
+</figure>
+<t>To prevent hyperlinking of a URL, prefix it with a backslash.</t>
+<figure>
+  <artwork type="asciidoc">\http://example.com/[linktext]</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;http://example.com/[linktext]&lt;/t&gt;</artwork>
+</figure></section>
+<section anchor="_crossreferences" title="Crossreferences"><t>Anchors for crossreferences are notated as <spanx style="verb">[[&#8230;&#8203;]]</spanx> or <spanx style="verb">[#&#8230;&#8203;]</spanx>. Anchors can
+be inserted on their own line in front of most blocks. Asciidoctor supports
+anchors in a much wider range of contexts than is supported than RFC XML v3
+(let alone v2); anchors that are not supported for that version of RFC XML are
+simply ignored by the converter. Note that anchors in RFC XML are constrained
+to the format <spanx style="verb">[A-Za-z_:][[A-Za-z0-9_:.-]*</spanx>.</t>
+<t>Cross-references to anchors are notated as <spanx style="verb">&lt;&lt;...&gt;&gt;</spanx>; cross-references
+with custom text as <spanx style="verb">&lt;&lt;reference,text&gt;&gt;</spanx>.</t>
+<figure>
+  <artwork type="asciidoc">[[crossreference]]
+== Section 1
+
+== Section 2
+See &lt;&lt;crossreference&gt;&gt;.
+
+== Section 3
+See &lt;&lt;crossreference,text&gt;&gt;</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;section anchor="crossreference" numbered="false"&gt;
+  &lt;name&gt;Section 1&lt;/name&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_2" numbered="false"&gt;
+  &lt;name&gt;Section 2&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref target="crossreference"&gt;
+    &lt;/xref&gt;.
+  &lt;/t&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_3" numbered="false"&gt;
+  &lt;name&gt;Section 3&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref target="crossreference"&gt;
+      text
+    &lt;/xref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</artwork>
+</figure>
+<t>Asciidoctor natively does not
+otherwise support attributes on cross-references. AsciiRFC works around that
+by embedding formatting information as templated text within cross-references:
+<spanx style="verb">format=x: text</spanx> populates the <spanx style="verb">xref@format</spanx> attribute, while a section number followed by
+one of the words <spanx style="verb">of, parens, bare, text</spanx> is treated as a <spanx style="verb">relref</spanx> reference to
+an external document.</t>
+<figure>
+  <artwork type="asciidoc">== Section 4
+See &lt;&lt;crossreference,format=counter: text&gt;&gt;
+
+== Section 5
+See &lt;&lt;crossreference,format=title&gt;&gt;
+
+See &lt;&lt;crossreference,1.3 of&gt;&gt;
+&lt;&lt;crossreference,1.4 comma: text&gt;&gt;
+&lt;&lt;crossreference#fragment1,2.5.3 parens&gt;&gt;
+&lt;&lt;crossreference#fragment2,6.2a bare: text&gt;&gt;</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;section anchor="_section_4" numbered="false"&gt;
+  &lt;name&gt;Section 4&lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref format="counter" target="crossreference"&gt;
+      text
+    &lt;/xref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;
+&lt;section anchor="_section_5" numbered="false"&gt;
+  &lt;name&gt;
+    Section 5
+  &lt;/name&gt;
+  &lt;t&gt;
+    See
+    &lt;xref format="title" target="crossreference" /&gt;
+  &lt;/t&gt;
+  &lt;t&gt;
+    See
+    &lt;relref section="1.3" displayformat="of"
+     target="crossreference" /&gt;
+    &lt;relref section="1.4" displayformat="comma"
+     target="crossreference"&gt;
+      text
+    &lt;/relref&gt;
+    &lt;relref relative="fragment1" section="2.5.3"
+     displayformat="parens" target="crossreference" /&gt;
+    &lt;relref relative="fragment2" section="6.2a"
+     displayformat="bare" target="crossreference"&gt;
+      text
+    &lt;/relref&gt;
+  &lt;/t&gt;
+&lt;/section&gt;</artwork>
+</figure></section>
+<section anchor="_inclusions" title="Inclusions"><t>The <eref target="http://asciidoctor.org/docs/user-manual/#include-directive">Asciidoctor "include" directive</eref>
+is used to include external files in a master AsciiRFC document. The
+directive is capable of sophisticated document merging, including adjusting the
+heading levels of the included text, selecting text within specified tags or
+line numbers to be included, and adjusting the indentation of code snippets in
+merged text:</t>
+<figure>
+  <artwork type="asciidoc">include::path[
+  leveloffset=_offset_,
+  lines=_ranges_,
+  tag(s)=_name(s)_,
+  indent=_depth_
+]</artwork>
+</figure>
+<t>If a file is included in an AsciiRFC document, ensure it ends with a blank line.
+An inclusion that results in its final block not being delimited with a blank line
+from what follows can lead to unpredictable results.</t></section>
+<section anchor="_encoding_and_entities" title="Encoding and Entities"><t>XML accepts the full range of characters in the world&#8217;s languages through
+UTF-8 character encoding, and one of the motivations for the move from plain
+text to RFC XML has been to allow non-ASCII characters to be included in RFCs.
+However, current RFC XML v2 tools still do not support UTF-8, and other tool
+support for UTF-8 also remains patchy. Out of an abundance of caution, the RFC
+XML converter uses US-ASCII for its character encoding, and renders any
+non-ASCII characters as entities.</t>
+<t>The converter accepts HTML entities in AsciiRFC, even though they are not
+part of the XML specification; HTML entities such as <spanx style="verb">&amp;nbsp;</spanx> feature in
+examples of RFC XML provided by the IETF. In order to prevent dependence of the
+XML output from extraneous entity definitions, any such entities are rendered
+in the XML as decimal character entities.</t>
+<figure>
+  <artwork type="asciidoc">&#1069;&#1090;&#1086;
+&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;
+&#1071;&#1079;&#1099;&#1082;.
+&amp;mdash; This is not George&amp;apos;s.&amp;#x2020;</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;&amp;#1069;&amp;#1090;&amp;#1086;
+&amp;#1056;&amp;#1091;&amp;#1089;&amp;#1089;&amp;#1082;&amp;#1080;&amp;#1081;
+&amp;#1071;&amp;#1079;&amp;#1099;&amp;#1082;. &amp;#8212;
+This is not George's.&amp;#8224;&lt;/t&gt;</artwork>
+</figure></section>
+<section anchor="_bibliography" title="Bibliography"><t>Asciidoctor natively has a simple encoding of bibliographies, which is not adequate for
+the complexity of bibliographic markup required by RFC XML. RFC documents
+overwhelmingly cite other RFC documents, and canonical RFC XML bibliographic
+entries are available at <eref target="http://xml.resource.org/public/rfc/bibxml/"/> ; so it
+would be inefficient to encode those entries in AsciiRFC, only to have them
+converted back to RFC XML.</t>
+<t>The converter provides two means of incorporating bibliographies into RFC
+documents authored in AsciiRFC:</t>
+<t>
+  <list style="symbols">
+    <t>using raw RFC XML; and</t>
+    <t>assembling bibliographies in preprocessing.</t>
+  </list>
+</t>
+<t>In either case, the RFC XML needs to be well-formed; missing closing tags can
+lead to erratic behaviour in the converter.</t>
+<section anchor="_using_raw_rfc_xml" title="Using Raw RFC XML"><t>In the first method, bibliographic citations are handled like all other AsciiRFC
+cross-references. The bibliographic entries for normative and informative
+references are given in the AsciiRFC as passthrough blocks, which contain
+the raw RFC XML for all references; document conversion leaves the raw RFC XML
+in place. This approach requires authors to maintain the normative and
+informative bibliographies within the document, to update them as citations are
+added and removed, and to sort them manually. For example:</t>
+<figure>
+  <artwork type="asciidoc">Some datagram padding may be needed.&lt;&lt;RFC7253&gt;&gt;
+
+[bibliography]
+== Normative References
+++++
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt;
+    &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+++++</artwork>
+</figure>
+<figure>
+  <artwork type="xml">&lt;t&gt;Some datagram padding may be needed &lt;xref target="RFC7253"/&gt;&lt;/t&gt;
+
+&lt;/middle&gt;&lt;back&gt;
+&lt;references anchor="_references"&gt;
+&lt;name&gt;Normative References&lt;/name&gt;
+&lt;reference anchor='RFC7253'
+  target='https://tools.ietf.org/html/rfc7253'&gt;
+  &lt;front&gt;
+    &lt;title&gt;Guidelines for Writing an IANA Considerations
+      Section in RFCs&lt;/title&gt; &lt;author initials="T." surname="Krovetz"&gt;
+      &lt;organization&gt;Sacramento State&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;author initials="P." surname="Rogaway"&gt;
+      &lt;organization&gt;UC Davis&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;date month='May' year='2014'/&gt;
+  &lt;/front&gt;
+  &lt;seriesInfo name="RFC" value="7253"/&gt;
+&lt;/reference&gt;
+&lt;/references&gt;</artwork>
+</figure></section>
+<section anchor="asciidoctor_bibliography" title="Using preprocessing"><t>The alternative method is to use a preprocessing tool,
+<eref target="https://github.com/riboseinc/asciidoctor-bibliography">asciidoc-bibliography</eref>,
+to import citations into the AsciiRFC document from an external file of
+references.</t>
+<t>The references file consists of RFC XML reference entries, and still needs to
+be managed manually; however the bibliographies are assembled from that file,
+sorted, and inserted into the normative and informative references in
+preprocessing. Citations in the document itself are given as macros to be
+interpreted by the preprocessor; this allows them to be split into normative
+and informative references. (The MMark tool likewise splits reference citations
+into normative and informative.)</t>
+<t>Integration with the asciidoc-bibliography gem proceeds as follows:</t>
+<t>
+  <list style="numbers">
+    <t>Create an RFC XML references file, consisting of a <spanx style="verb">&lt;references&gt;</spanx> element
+with individual <spanx style="verb">&lt;reference&gt;</spanx> elements inserted, as would be done for the
+informative and normative references normally. The references file will contain
+all possible references to be used in the file; the bibliography gem will
+select which references have actually been cited in the document.<list style="letters">
+  <t>Rather than hand crafting RFC XML references for RFC documents, you should
+download them from an authoritative source; e.g.
+<eref target="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"/></t>
+  <t>Unlike the case for RFC XML documents created manually, the references file
+does not recognise XML entities and will not attempt to download them during
+processing.  Any references to <eref target="http://xml.resource.org/public/rfc/bibxml/"/> will
+need to be downloaded and inserted into the references file.</t>
+  <t>The RFC XML in the references file will need to be appropriate to the
+version of RFC XML used in the main document, as usual. Note that RFC XML v2
+references are forward compatible with v3; v3 contains a couple of additional
+elements.</t>
+</list></t>
+    <t>Add to the main document header attributes referencing the references file
+(<spanx style="verb">:bibliography-database:</spanx>), and the bibliography style (<spanx style="verb">:bibliography-style:rfc-v3</spanx>).</t>
+    <t>References to a normative reference are inserted with the macro
+<spanx style="verb">cite:norm[id]</spanx> instead of <spanx style="verb">&lt;&lt;id&gt;&gt;</spanx>, where <spanx style="verb">id</spanx> is the anchor of the
+reference.</t>
+    <t>References to an infomrative reference are inserted with the macro
+<spanx style="verb">cite:info[id]</spanx> instead of <spanx style="verb">&lt;&lt;id&gt;&gt;</spanx>, where <spanx style="verb">id</spanx> is the anchor of the
+reference.</t>
+    <t>Formatted crossreferences and <spanx style="verb">relref</spanx> crossreferences are entered by inserting the
+expected raw XML in the <spanx style="verb">text</spanx> attribute. Do not use the <spanx style="verb">{cite}</spanx> interpolation of the citation.
+For example:<list style="symbols">
+  <t><spanx style="verb">&lt;&lt;id,words&gt;&gt;</spanx> = <spanx style="verb">cite:norm[id, text="&lt;xref target='id'&gt;words&lt;/xref&gt;"]</spanx></t>
+  <t><spanx style="verb">&lt;&lt;id,format=counter: words&gt;&gt;</spanx> (processed as a formatted crossreference) = <spanx style="verb">cite:norm[id, text="&lt;xref format='counter' target='id'&gt;words&lt;/xref&gt;"]</spanx></t>
+  <t><spanx style="verb">&lt;&lt;id,2.4 comma: words&gt;&gt;</spanx> (processed as relref) = <spanx style="verb">cite:norm[id, text="&lt;relref displayFormat='comma' section='2.4' target='id'}/&gt;"]</spanx></t>
+  <t><spanx style="verb">&lt;&lt;id#section2_4,2.4 comma: words&gt;&gt;</spanx> (processed as relref with a cross-document internal reference) = <spanx style="verb">cite:norm[id, text="&lt;relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/&gt;"]</spanx></t>
+</list></t>
+    <t>Normative and Informative References are inserted in the document through a
+macro, which occurs where the RFC XML references would be inserted:</t>
+  </list>
+</t>
+<figure>
+  <artwork type="asciidoc">[bibliography]
+== Normative References
+
+++++
+bibliography::norm[]
+++++
+
+[bibliography]
+== Informative References
+
+++++
+bibliography::info[]
+++++</artwork>
+</figure></section></section>
+<section anchor="_rfc_xml_features_not_supported_in_asciidoctor" title="RFC XML features not supported in Asciidoctor"><t>The following features of  RFC XML are not supported by the AsciiRFC converter,
+and would need to be adjusted manually after RFC XML is generated:</t>
+<texttable suppress-title="false" style="full">
+  <ttcol align="left">RFC XML element</ttcol>
+  <ttcol align="left">RFC XML v3</ttcol>
+  <ttcol align="left">RFC XML v2</ttcol>
+  <c>
+    <spanx style="verb">front/boilerplate</spanx>
+  </c>
+  <c>Not added by the converter</c>
+  <c>Not added by the converter</c>
+  <c>
+    <spanx style="verb">iref@primary</spanx>
+  </c>
+  <c>N</c>
+  <c>N</c>
+  <c><spanx style="verb">reference</spanx> (and all children)</c>
+  <c>As Raw XML</c>
+  <c>As Raw XML</c>
+  <c>
+    <spanx style="verb">table/preamble</spanx>
+  </c>
+  <c>Deprecated</c>
+  <c>N</c>
+  <c>
+    <spanx style="verb">table/postamble</spanx>
+  </c>
+  <c>Deprecated</c>
+  <c>N</c>
+  <c>
+    <spanx style="verb">artwork@width</spanx>
+  </c>
+  <c>Only on images</c>
+  <c>Only on images</c>
+  <c>
+    <spanx style="verb">artwork@height</spanx>
+  </c>
+  <c>Only on images</c>
+  <c>Only on images</c>
+</texttable></section>
+<section anchor="_authoring" title="Authoring"><t>To author an AsciiRFC document, you should familiarise yourself with the
+<eref target="http://asciidoctor.org/docs/user-manual">Asciidoctor specification</eref>. The
+converter Ruby gem source code distribution also has
+<eref target="https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/asciidoctor/rfc">samples of individual RFC XML features</eref>,
+in v2 and v3, and
+<eref target="https://github.com/riboseinc/asciidoctor-rfc/tree/master/spec/examples">examples of self-standing AsciiRFC documents</eref>,
+along with their RFC XML renderings. (This includes round-tripped RFC XML
+documents.)</t>
+<t>In addition, you can clone the sample <spanx style="verb">rfc-in-asciidoc-template</spanx> repository as
+a template, and populate it for your AsciiRFC documents:</t>
+<figure>
+  <artwork type="console">$ git clone https://github.com/riboseinc/rfc-in-asciidoc-template</artwork>
+</figure>
+<t>Converting your AsciiRFC to RFC XML is a simple as installing Asciidoctor (see
+<eref target="http://asciidoctor.org/#installation"/>) and the <spanx style="verb">asciidoctor-rfc</spanx> gem in Ruby,
+then running the asciidoctor executable on the document, specifying the
+asciidoctor-rfc gem as a library:</t>
+<figure>
+  <artwork type="console">$ git clone https://github.com/riboseinc/asciidoctor-rfc
+$ cd asciidoctor-rfc
+$ bundle install
+$ gem build asciidoctor-rfc.gemspec
+$ gem install asciidoctor-rfc
+$ asciidoctor -b rfc3 -r 'asciidoctor-rfc' a.adoc  # RFC XML v3 output
+$ asciidoctor -b rfc2 -r 'asciidoctor-rfc' a.adoc  # RFC XML v2 output</artwork>
+</figure>
+<t>As you author AsciiRFC content, you should iterate through running the
+Asciidoctor conversion frequently, to ensure that you are still generating
+valid XML through your markup. The converter makes an effort to ensure that its
+XML output is valid, and it issues warnings about likely issues; it also
+validates its own XML output against the Asciidoctor schema, and reports errors
+in the XML output in the following format:</t>
+<figure>
+  <artwork type="console">V3 RELAXNG Validation: 12:0: ERROR: Invalid attribute
+  sortRefs for element rfc</artwork>
+</figure>
+<t>Note that validation against the RELAXNG RFC XML schema includes confirming the
+referential integrity of all cross-references in the document.</t>
+<t>It may be necessary to intervene in the XML output generated by the converter,
+either because the block model of AsciiRFC does not conform with the intended
+RFC XML (e.g. lists embedded in paragraphs), or because RFC XML features are
+required that are not supported within AsciiRFC.</t></section>
+<section anchor="_security_considerations" title="Security Considerations">
+  <t>
+  <list style="symbols">
+    <t>Ensure your AsciiRFC generator comes from a geniune and trustworthy source.
+This protects your own machine and also prevents injection of malicious content
+in your document.</t>
+    <t>An AsciiRFC generator may cause errors in textual rendering or link
+generation that may lead to security issues.</t>
+    <t>Creating cross-references (and also bibliographic references) to external
+documents may pose risks since the external document&#8217;s location may become
+controlled by a malicious party.</t>
+  </list>
+</t>
+</section>
+<section anchor="_iana_considerations" title="IANA Considerations">
+  <t>This document does not require any action by IANA.</t>
+</section>
+<section anchor="appendix-a" title="Examples">
+  <section anchor="_example_1" title="Example 1">
+  <t>TODO.</t>
+</section>
+</section>
+</middle><back>
+<references title="Normative References">
+  <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
+<front>
+<title>Key words for use in RFCs to Indicate Requirement Levels</title>
+<author initials="S." surname="Bradner" fullname="S. Bradner"><organization/></author>
+<date year="1997" month="March"/>
+<abstract><t>In many standards track documents several words are used to signify the requirements in the specification.  These words are often capitalized. This document defines these words as they should be interpreted in IETF documents.  This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.</t></abstract>
+</front>
+<seriesInfo name="BCP" value="14"/>
+<seriesInfo name="RFC" value="2119"/>
+<seriesInfo name="DOI" value="10.17487/RFC2119"/>
+</reference>
+  <reference anchor="RFC7991" target="https://www.rfc-editor.org/info/rfc7991">
+<front>
+<title>The "xml2rfc" Version 3 Vocabulary</title>
+<author initials="P." surname="Hoffman" fullname="P. Hoffman"><organization/></author>
+<date year="2016" month="December"/>
+<abstract><t>This document defines the "xml2rfc" version 3 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.  It is heavily derived from the version 2 vocabulary that is also under discussion.  This document obsoletes the v2 grammar described in RFC 7749.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7991"/>
+<seriesInfo name="DOI" value="10.17487/RFC7991"/>
+</reference>
+</references>
+<references title="Informative References">
+  <reference anchor="AsciiDoc" target="http://www.methods.co.nz/asciidoc/">
+<front>
+<title>AsciiDoc: Text based document generation</title>
+<author initials="S." surname="Rackham" fullname="Stuart Rackham"><organization/></author>
+<date year="2013" month="November"/>
+</front>
+</reference>
+  <reference anchor="NroffEdit" target="http://aaa-sec.com/nroffedit/">
+<front>
+<title>WYSIWYG Internet-Draft Nroff Editor</title>
+<author initials="S." surname="Santesson" fullname="Stefan Santesson"><organization/></author>
+<date year="2011" month="May"/>
+</front>
+</reference>
+  <reference anchor="Asciidoctor" target="http://asciidoctor.org">
+<front>
+  <title>Asciidoctor: A fast text processor &amp; publishing toolchain for converting AsciiDoc to HTML5, DocBook &amp; more.</title>
+<author initials="D." surname="Allen" fullname="Dan Allen"><organization/></author>
+<author initials="R." surname="Waldron" fullname="Ryan Waldron"><organization/></author>
+<author initials="S." surname="White" fullname="Sarah White"><organization/></author>
+<date year="2017" month="November"/>
+</front>
+</reference>
+  <reference anchor="draftr" target="https://ipv.sx/draftr/">
+<front>
+<title>draftr: an HTML front-end to pandoc2rfc</title>
+<author initials="R." surname="Barnes" fullname="Richard Barnes"><organization/></author>
+<date year="2017" month="Nov"/>
+</front>
+</reference>
+  <reference anchor="kramdown-rfc2629" target="https://github.com/cabo/kramdown-rfc2629">
+<front>
+<title>kramdown-rfc2629: An RFC2629 (XML2RFC) backend for Thomas Leitner's kramdown markdown parser</title>
+<author initials="C." surname="Bormann" fullname="Carsten Bormann"><organization/></author>
+<date year="2017" month="Nov"/>
+</front>
+</reference>
+  <reference anchor="lyx2rfc" target="https://github.com/nicowilliams/lyx2rfc">
+<front>
+  <title>LyX to I-D/RFC export by way of Lyx export to XHTML and XSLT conversion to xml2rfc schema</title>
+<author initials="N." surname="Williams" fullname="Nico Williams"><organization/></author>
+<date year="2014"/>
+</front>
+</reference>
+  <reference anchor="mmark" target="https://github.com/miekg/mmark">
+<front>
+<title>Using mmark to create I-Ds and RFCs</title>
+<author initials="R." surname="Gieben" fullname="R. (Miek) Gieben"><organization/></author>
+<date year="2015" month="June"/>
+<abstract><t>This document describes an markdown variant called mmark [mmark] that can be used to create RFC documents.  The aim of mmark is to make writing document as natural as possible, while providing a lot of power on how to structure and layout the document.</t></abstract>
+</front>
+</reference>
+  <reference anchor="pandoc2rfc" target="https://github.com/miekg/pandoc2rfc">
+<front>
+<title>pandoc2rfc: Use pandoc to create XML suitable for xml2rfc</title>
+<author initials="R." surname="Gieben" fullname="R. (Miek) Gieben"><organization/></author>
+<date year="2012"/>
+</front>
+</reference>
+  <reference anchor="RFC5385" target="https://www.rfc-editor.org/info/rfc5385">
+<front>
+<title>Version 2.0 Microsoft Word Template for Creating Internet Drafts and RFCs</title>
+<author initials="J." surname="Touch" fullname="J. Touch"><organization/></author>
+<date year="2010" month="February"/>
+<abstract><t>This document describes the properties and use of a revised Microsoft Word template (.dot) for writing Internet Drafts and RFCs.  It replaces the initial template described in RFC 3285 to more fully support Word's outline modes and to be easier to use.  This template can be direct-printed and direct-viewed, where either is line-for-line identical with RFC Editor-compliant ASCII output.  This version obsoletes RFC 3285.</t><t>The most recent version of this template and post-processing scripts are available at http://www.isi.edu/touch/tools.  This document is not an  Internet Standards Track specification; it is published for informational  purposes.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="5385"/>
+<seriesInfo name="DOI" value="10.17487/RFC5385"/>
+</reference>
+  <reference anchor="RFC7328" target="https://www.rfc-editor.org/info/rfc7328">
+<front>
+<title>Writing I-Ds and RFCs Using Pandoc and a Bit of XML</title>
+<author initials="R." surname="Gieben" fullname="R. Gieben"><organization/></author>
+<date year="2014" month="August"/>
+<abstract><t>This document presents a technique for using a Markdown syntax variant, called Pandoc, and a bit of XML (as defined in RFC 2629) as a source format for documents that are Internet-Drafts (I-Ds) or RFCs.</t><t>The goal of this technique (which is called Pandoc2rfc) is to let an author of an I-D focus on the main body of text without being distracted too much by XML tags; however, it does not alleviate the need to typeset some files in XML.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7328"/>
+<seriesInfo name="DOI" value="10.17487/RFC7328"/>
+</reference>
+  <reference anchor="RFC7749" target="https://www.rfc-editor.org/info/rfc7749">
+<front>
+<title>The "xml2rfc" Version 2 Vocabulary</title>
+<author initials="J." surname="Reschke" fullname="J. Reschke"><organization/></author>
+<date year="2016" month="February"/>
+<abstract><t>This document defines the "xml2rfc" version 2 vocabulary: an XML-based language used for writing RFCs and Internet-Drafts.</t><t>Version 2 represents the state of the vocabulary (as implemented by several tools and as used by the RFC Editor) around 2014.</t><t>This document obsoletes RFC 2629.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7749"/>
+<seriesInfo name="DOI" value="10.17487/RFC7749"/>
+</reference>
+  <reference anchor="RFC7763" target="https://www.rfc-editor.org/info/rfc7763">
+<front>
+<title>The text/markdown Media Type</title>
+<author initials="S." surname="Leonard" fullname="S. Leonard"><organization/></author>
+<date year="2016" month="March"/>
+<abstract><t>This document registers the text/markdown media type for use with Markdown, a family of plain-text formatting syntaxes that optionally can be converted to formal markup languages such as HTML.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7763"/>
+<seriesInfo name="DOI" value="10.17487/RFC7763"/>
+</reference>
+  <reference anchor="RFC7764" target="https://www.rfc-editor.org/info/rfc7764">
+<front>
+<title>Guidance on Markdown: Design Philosophies, Stability Strategies, and Select Registrations</title>
+<author initials="S." surname="Leonard" fullname="S. Leonard"><organization/></author>
+<date year="2016" month="March"/>
+<abstract><t>This document elaborates upon the text/markdown media type for use with Markdown, a family of plain-text formatting syntaxes that optionally can be converted to formal markup languages such as HTML. Background information, local storage strategies, and additional syntax registrations are supplied.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7764"/>
+<seriesInfo name="DOI" value="10.17487/RFC7764"/>
+</reference>
+  <reference anchor="RFC7990" target="https://www.rfc-editor.org/info/rfc7990">
+<front>
+<title>RFC Format Framework</title>
+<author initials="H." surname="Flanagan" fullname="H. Flanagan"><organization/></author>
+<date year="2016" month="December"/>
+<abstract><t>In order to improve the readability of RFCs while supporting their archivability, the canonical format of the RFC Series will be transitioning from plain-text ASCII to XML using the xml2rfc version 3 vocabulary; different publication formats will be rendered from that base document.  With these changes comes an increase in complexity for authors, consumers, and the publisher of RFCs.  This document serves as the framework that provides the problem statement, lays out a road map of the documents that capture the specific requirements, and describes the transition plan.</t></abstract>
+</front>
+<seriesInfo name="RFC" value="7990"/>
+<seriesInfo name="DOI" value="10.17487/RFC7990"/>
+</reference>
+</references>
+<section anchor="_acknowledgements" title="Acknowledgements"><t>The authors would like to thank the following persons for their valuable advice
+and input.</t>
+<t>
+  <list style="symbols">
+    <t>TODO.</t>
+  </list>
+</t></section>
+</back>
+</rfc>
