@@ -9,7 +9,7 @@ For example:
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft
 :abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
@@ -44,7 +44,7 @@ The foregoing AsciiRFC renders into RFC XML v3 as:
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
       </address>
     </author>
     <date day="1" month="April" year="1990" />
@@ -60,7 +60,7 @@ contact details:
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft
 :abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
@@ -97,7 +97,7 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
           <code>MA 02238</code>
         </postal>
         <phone>(555) 555-5555</phone>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
         <uri>http://bbn.com</uri>
       </address>
     </author>
@@ -115,14 +115,14 @@ contact details, are provided by suffixing the relevant author attributes with
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
 :doctype: internet-draft
 :status: informational
 :name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :organization: BBC
 :phone: (555) 555-5555
-:uri: http://bbc.co.uk
+:uri: http://example.com
 :street: 10 Moulton Street
 :city: Cambridge
 :code: MA 02238
@@ -155,13 +155,13 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
           <country>United Kingdom</country>
         </postal>
         <phone>(555) 555-5555</phone>
-        <email>tbt@bbc.co.uk</email>
-        <uri>http://bbc.co.uk</uri>
+        <email>tbt@example.com</email>
+        <uri>http://example.com</uri>
       </address>
     </author>
     <author fullname="John Cleese" surname="Cleese" initials="J.">
       <address>
-        <email>jc@bbc.co.uk</email>
+        <email>jc@example.com</email>
         <uri>https://twitter.com/johncleese</uri>
       </address>
     </author>
@@ -173,11 +173,11 @@ TODO: https://github.com/riboseinc/asciidoctor-rfc/issues/79
 The following text will cause `ERROR: Element spanx has extra content: eref`
 as the <spanx> element should not contain an <eref>. The gem should consider this
 and not render any eref within a <spanx> element.
-`Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
+`Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>`
 ////
 
 The initial author attribution in AsciiRFC, e.g.
-`Tim Brooke-Taylor <tbt @ bbc.co.uk>; John Cleese <jc @ bbc.co.uk>`
+`Tim Brooke-Taylor <tbt @ example.com>; John Cleese <jc @ example.com>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr."
 or suffixes like "Jr.". 
@@ -194,7 +194,7 @@ as XML processing instructions:
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft
 :status: informational
 :name: draft-four-yorkshiremen-00
@@ -215,7 +215,7 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
       </address>
     </author>
     <date day="1" month="April" year="1990" />
@@ -238,7 +238,7 @@ its definition.
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft
 :status: informational
 :name: draft-four-yorkshiremen-00
@@ -256,7 +256,7 @@ The specification *MUST NOT* use the word _doesn't_.
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
       </address>
     </author>
     <date day="25" month="November" year="2017" />
@@ -275,7 +275,7 @@ The specification *MUST NOT* use the word _doesn't_.
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft
 :status: informational
 :name: draft-four-yorkshiremen-00
@@ -295,7 +295,7 @@ The specification *MUST NOT* use the word _doesn't_.
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
       </address>
     </author>
     <date day="25" month="November" year="2017" />

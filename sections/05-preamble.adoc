@@ -13,7 +13,7 @@ For example:
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@bbc.co.uk>
+Tim Brooke-Taylor <tbt@example.com>
 :doctype: internet-draft 
 :status: informational
 :name: draft-four-yorkshiremen-00
@@ -52,7 +52,7 @@ _At Last the 1948 Show_ DVD.
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
-        <email>tbt@bbc.co.uk</email>
+        <email>tbt@example.com</email>
       </address>
     </author>
     <date day="25" month="November" year="2017" />
