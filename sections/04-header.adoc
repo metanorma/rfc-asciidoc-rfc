@@ -167,8 +167,15 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
     <date day="25" month="November" year="2017" />
 ----
 
+////
+TODO: The following text will cause `ERROR: Element spanx has extra content: eref`
+as the <spanx> element should not contain an <eref>. The gem should consider this
+and not render any eref within a <spanx> element.
+`:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
+////
+
 The initial author attribution in AsciiRFC, e.g. 
-`Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
+`Tim Brooke-Taylor <tbt @ bbc.co.uk>; John Cleese <jc @ bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr"
 or suffixes like "Jr". Name attributes with any degree of complexity
