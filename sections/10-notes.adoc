@@ -25,10 +25,11 @@ Any admonition inside the body of the text is a comment.
       Any admonition inside the body of the text is a comment.
     </cref>
   </t>
+</section>
 ----
 
-Note that no inline formatting is permitted in RFC XML v2 `cref` elements, and it is stripped
-for v2 by the converter.
+Note that no inline formatting is permitted in RFC XML v2 `cref` elements, and
+it is stripped for v2 by the converter.
 
 Because paragraphs in AsciiRFC cannot contain any other blocks, a comment at
 the end of a paragraph is treated as a new block. In the document converter,
@@ -70,10 +71,11 @@ And this is ascii-art
       </artwork>
     </figure>
   </aside>
+</section>
 ----
 
-While AsciiDoc has comments proper, notated with initial `//`, they are
-ignored by the Asciidoctor document converter; so they will not appear as XML comments in
-the converter output.
+While AsciiDoc has comments proper, notated with initial `//`, they are ignored
+by the Asciidoctor document converter; so they will not appear as XML comments
+in the converter output.
 
 

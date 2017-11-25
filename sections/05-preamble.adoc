@@ -1,10 +1,14 @@
 == Preamble
 
 The preamble in AsciiRFC is the text between the end of the document header
-(which terminates with a blank line) and the first section of text. Any
-paragraphs of text in the preamble are treated as an abstract, and may
-optionally be tagged with the `abstract` style attribute. Any notes in the
-preamble are treated as a `note` element. For example:
+(which terminates with a blank line) and the first section of text.
+
+Any paragraphs of text in the preamble are treated as an abstract, and may
+optionally be tagged with the `abstract` style attribute.
+
+Any notes in the preamble are treated as a `note` element.
+
+For example:
 
 [source,asciidoc]
 ----
@@ -12,7 +16,7 @@ preamble are treated as a `note` element. For example:
 Tim Brooke-Taylor <tbt@bbc.co.uk>
 :doctype: internet-draft 
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 
 The "Four Yorkshiremen" sketch is a comedy sketch written by 
 Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and 
@@ -45,7 +49,7 @@ _At Last the 1948 Show_ DVD.
   <front>
     <title>Four Yorkshiremen Sketch</title>
     <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
         <email>tbt@bbc.co.uk</email>

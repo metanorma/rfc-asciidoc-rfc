@@ -10,12 +10,12 @@ For example:
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
@@ -23,24 +23,25 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
 :revdate: 1990-04-01T00:00:00Z
 ----
 
-The document attributes are used to populate attributes of the root `rfc` 
-element, `front` elements, and document-level processing instructions. 
+The document attributes are used to populate attributes of the root `rfc`
+element, `front` elements, and document-level processing instructions.
 
 * `:doctype:` determines  whether the document will be considered `rfc` or
-`internet-draft`, and interprets other attributes accordingly. 
+`internet-draft`, and interprets other attributes accordingly.
 
-* Certain attributes (`workgroup`, `area`, `keyword`) are comma delimited, and result in repeated RFC XML elements.
+* Certain attributes (`workgroup`, `area`, `keyword`) are comma delimited, and
+result in repeated RFC XML elements.
 
 The foregoing AsciiRFC renders into RFC XML v3 as:
 
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
     submissionType="IETF" prepTime="2017-11-25T10:13:46Z" version="3">
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
         <email>tbt@bbc.co.uk</email>
@@ -60,12 +61,12 @@ contact details:
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
@@ -81,12 +82,12 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
 
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
     submissionType="IETF" prepTime="2017-11-25T10:15:02Z" version="3">
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <organization>BBC</organization>
       <address>
@@ -108,16 +109,16 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
 ----
 
 Details of a second, third etc. author, including their organization and
-contact details, are provided by suffixing the relevant author attributes
-with `_2`, `_3`  etc.:
+contact details, are provided by suffixing the relevant author attributes with
+`_2`, `_3`  etc.:
 
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :organization: BBC
 :phone: (555) 555-5555
@@ -137,13 +138,13 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
 
 [source,xml]
 ----
-<rfc ipr="trust200902" submissionType="IETF" 
+<rfc ipr="trust200902" submissionType="IETF"
     prepTime="2017-11-25T10:19:32Z" version="3">
   <front>
     <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" 
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor"
         surname="Brooke-Taylor" initials="T.">
       <organization>BBC</organization>
       <address>
@@ -168,21 +169,24 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
 ----
 
 ////
-TODO: The following text will cause `ERROR: Element spanx has extra content: eref`
+TODO: https://github.com/riboseinc/asciidoctor-rfc/issues/79
+The following text will cause `ERROR: Element spanx has extra content: eref`
 as the <spanx> element should not contain an <eref>. The gem should consider this
 and not render any eref within a <spanx> element.
-`:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
+`Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
 ////
 
-The initial author attribution in AsciiRFC, e.g. 
+The initial author attribution in AsciiRFC, e.g.
 `Tim Brooke-Taylor <tbt @ bbc.co.uk>; John Cleese <jc @ bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
-more Middle Names, Last name, and cannot process honorifics like "Dr"
-or suffixes like "Jr". Name attributes with any degree of complexity
-should be overriden by using the `:fullname:` and `:lastname:`
-attributes. The AsciiRFC `:forename_initials:` attribute replaces the built-in Asciidoctor
-`:initials:` attribute (which includes the surname initial), and is not
-automatically populated from the name attribution.
+more Middle Names, Last name, and cannot process honorifics like "Dr."
+or suffixes like "Jr.". 
+
+Name attributes with any degree of complexity should be overriden by using the
+`:fullname:` and `:lastname:` attributes. The AsciiRFC `:forename_initials:`
+attribute replaces the built-in Asciidoctor `:initials:` attribute (which
+includes the surname initial), and is not automatically populated from the name
+attribution.
 
 A document header may also contain attribute headers which are treated
 as XML processing instructions:
@@ -191,9 +195,9 @@ as XML processing instructions:
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :revdate: 1990-04-01T00:00:00Z
 :rfcedstyle: yes
@@ -203,12 +207,12 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
 
 [source,xml]
 ----
-<rfc ipr="trust200902" submissionType="IETF" 
+<rfc ipr="trust200902" submissionType="IETF"
     prepTime="2017-11-25T10:21:56Z" version="3">
   <front>
     <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
         <email>tbt@bbc.co.uk</email>
@@ -217,22 +221,27 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>
     <date day="1" month="April" year="1990" />
 ----
 
-A few document attributes are specific to the operation of the RFC XML document converter:
+A few document attributes are specific to the operation of the RFC XML document
+converter:
 
-`:no-rfc-bold-bcp14: false` :: overrides the wrapping by default of boldface uppercase
-BCP14 <<RFC2119>> words (e.g. `\*MUST NOT*`) with the `bcp14` element.
+`:no-rfc-bold-bcp14: false` :: overrides the wrapping by default of boldface
+uppercase BCP14 <<RFC2119>> words (e.g. `\*MUST NOT*`) with the `bcp14`
+element.
 
-`:smart-quotes: false` :: overrides Asciidoctor's conversion of straight quotes and apostrophes to smart quotes and apostrophes.
+`:smart-quotes: false` :: overrides Asciidoctor's conversion of straight quotes
+and apostrophes to smart quotes and apostrophes.
 
-`:inline-definition-lists: true` :: overrides the RFC XML v2 `idnits` requirement that a blank line be inserted between a definition list term and its definition.
+`:inline-definition-lists: true` :: overrides the RFC XML v2 `idnits`
+requirement that a blank line be inserted between a definition list term and
+its definition.
 
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 
 == Section 1
 The specification *MUST NOT* use the word _doesn't_.
@@ -243,8 +252,8 @@ The specification *MUST NOT* use the word _doesn't_.
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
   <front>
     <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
         <email>tbt@bbc.co.uk</email>
@@ -267,9 +276,9 @@ The specification *MUST NOT* use the word _doesn't_.
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@bbc.co.uk>
-:doctype: internet-draft 
+:doctype: internet-draft
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :no-rfc-bold-bcp14: false
 :smart-quotes: false
 
@@ -282,8 +291,8 @@ The specification *MUST NOT* use the word _doesn't_.
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
   <front>
     <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
-        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
         <email>tbt@bbc.co.uk</email>
@@ -299,5 +308,5 @@ The specification *MUST NOT* use the word _doesn't_.
     </section>
   </middle>
 </rfc>
-
 ----
+

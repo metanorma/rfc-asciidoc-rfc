@@ -111,7 +111,7 @@ Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
@@ -247,7 +247,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
     <seriesInfo name="Internet-Draft" status="informational" 
-      stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+      stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <organization>BBC</organization>
       <address>
@@ -365,7 +365,9 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
 
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" category="info" submissionType="IETF" docName="internet-draft-four-yorkshiremen-00">
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
+  category="info" submissionType="IETF" 
+  docName="draft-four-yorkshiremen-00">
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch<title>
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
@@ -403,9 +405,10 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
     <keyword>memory</keyword>
     <abstract>
       <t>The sketch is a parody of nostalgic conversations about humble 
-        beginnings or difficult childhoods, featuring four men from Yorkshire who reminisce about their upbringing. As the conversation progresses 
-        they try to outdo one another, and their accounts of deprived childhoods 
-        become increasingly absurd. <xref target="michaelpalin" />
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived
+        childhoods become increasingly absurd. <xref target="michaelpalin" />
         <xref target="ericidle" /></t>
     </abstract>
     <note title="NOTE">
