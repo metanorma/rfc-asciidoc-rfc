@@ -1,6 +1,6 @@
 == Tables
 
-Asciidoctor tables, like RFC XML v3, support distinct table heads, bodies and
+AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies and
 feet; cells spanning multiple rows and columns; and horizontal alignment. The
 larger range of table formatting options available in RFC XML v2 is also supported.
 

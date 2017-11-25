@@ -1,6 +1,6 @@
 == Inline Formatting
 
-Like RFC XML v3, Asciidoctor supports italics, boldface, monospace, subscripts
+Like RFC XML v3, AsciiRFC supports italics, boldface, monospace, subscripts
 and superscripts:
 
 [source,asciidoc]
@@ -15,7 +15,7 @@ _Text_ *Text* `Text`  ^Superscript^ ~Subscript~
 ----
 
 RFC XML v3 also supports tagging of BCP14 keywords <<RFC2119>>; this is done in
-Asciidoctor either by tagging them with a custom formatting span 
+AsciiRFC either by tagging them with a custom formatting span 
 (`bcp14#must not#`), or by converting BCP14 boldface all-caps words (unless the 
 `:no-rfc-bold-bcp14: false` document attribute is set):
 
@@ -51,7 +51,7 @@ it is preferable to use HTML entities (`&#42;&#42;`), or attribute references
 `{dblast}`
 ----
 
-In extreme circumstances (such as quoting Asciidoc syntax), you may need to resort to
-altering the substitutions behaviour within a given block of of Asciidoc; see
+In extreme circumstances (such as quoting AsciiDoc syntax), you may need to resort to
+altering the substitutions behaviour within a given block of of AsciiDoc; see
 http://asciidoctor.org/docs/user-manual/#applying-substitutions
 

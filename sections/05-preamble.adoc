@@ -1,6 +1,6 @@
 == Preamble
 
-The preamble in Asciidoctor is the text between the end of the document header
+The preamble in AsciiRFC is the text between the end of the document header
 (which terminates with a blank line) and the first section of text. Any
 paragraphs of text in the preamble are treated as an abstract, and may
 optionally be tagged with the `abstract` style attribute. Any notes in the

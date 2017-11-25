@@ -14,33 +14,14 @@ https://github.com/cabo/kramdown-rfc2629[Kramdown], both based on the popular
 https://daringfireball.net/projects/markdown/[Markdown markup language]
 <<RFC7763>> <<RFC7764>>.
 
-http://asciidoctor.org[Asciidoctor] is an alternative markup language to
+http://www.methods.co.nz/asciidoc/[AsciiDoc] is an alternative markup language to
 Markdown, with features that make it attractive as a markup language for RFC
-with XML output.
-
-http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Compared to Markdown],
-
-* Asciidoctor was designed from the beginning as a publishing language: it was
-initially intended as a plain-text alternative to the DocBook XML schema. For
-that reason, Asciidoctor natively supports the full range of formatting
-required by RFC XML (including notes, tables, bibliographies, source-code
-blocks, and definition lists), without resorting to embedded HTML or Markdown
-"flavours".
-
-* Asciidoctor is extensible, with a well-defined API. (Extensions have been harnessed
-to deal with bibliographic preprocessing for our RFC XML converter.)
-
-* Asciidoctor allows granular control of rendering, including user-specified
-attribute of text blocks.
-
-* Asciidoctor allows document inclusion, for managing large-scale documentation
-projects.
-
-* Asciidoctor allows granular control of permutations of block nesting, such as
-source code within lists or definition lists within unordered lists.
-
-* As a more formal counterpart to Markdown, Asciidoctor is well-suited to
-generating XML that needs to conform to a specified schema. 
+with XML output. This document describes the use of 
+http://asciidoctor.org[Asciidoctor], a Ruby-based enhancement of the
+original AsciiDoc markup language, for RFC XML markup, with a Ruby gem
+written by the authors used to render Asciidoctor documents as RFC XML.
+The markup language used specifically for the purpose of generating RFC XML
+document is called AsciiRFC.
 
 <<RFC7764,1.2 of>> famously states that "there is no such thing as "invalid"
 Markdown, there is no standard demanding adherence to the Markdown syntax, and
@@ -51,12 +32,37 @@ XML. A more rigorous counterpart to Markdown, which still preserves its basic
 approach to formatting, is useful in generating RFC XML that encompasses a
 fuller subset of the specification, and preempting malformed RFC XML output.
 
-As with Markdown, there is a wide range of tools that can render Asciidoctor;
-so Asciidoctor drafts of RFC documents can be previewed and accessed without
-depending on the RFC tools ecosystem. Our porting of RFC XML to Asciidoctor has
-aimed to ensure that, as much as possible, the Asciidoctor being used for RFC
-is generic Asciidoctor, which can be processed by Asciidoctor tools in general.
+http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Compared to Markdown],
+
+* AsciiDoc was designed from the beginning as a publishing language: it was
+initially intended as a plain-text alternative to the DocBook XML schema. For
+that reason, Asciidoctor natively supports the full range of formatting
+required by RFC XML (including notes, tables, bibliographies, source-code
+blocks, and definition lists), without resorting to embedded HTML or Markdown
+"flavours".
+
+* AsciiDoc in its Ruby-based Asciidoctor implementation is extensible, 
+with a well-defined API. (Extensions have been harnessed
+to deal with bibliographic preprocessing for AsciiRFC.)
+
+* AsciiRFC allows granular control of rendering, including user-specified
+attributes of text blocks.
+
+* The Asciidoctor implementation allows document inclusion, for managing large-scale documentation
+projects.
+
+* AsciiRFC allows granular control of permutations of block nesting, such as
+source code within lists or definition lists within unordered lists.
+
+* As a more formal counterpart to Markdown, AsciiDoc is well-suited to
+generating XML that needs to conform to a specified schema. 
+
+As with Markdown, there is a wide range of tools that can render AsciiDoc;
+so AsciiRFC drafts of RFC documents can be previewed and accessed without
+depending on the RFC tools ecosystem. Our realisation of RFC XML in AsciiRFC has
+aimed to ensure that, as much as possible, the markup language can be
+can be processed by generic Asciidoctor tools.
 (The only exception to this as an add-on is the optional bibliography module,
 which allows bibliographies to be assembled on the fly based on citations in a
-document.)
+document: see <<asciidoctor_bibliography>>.)
 

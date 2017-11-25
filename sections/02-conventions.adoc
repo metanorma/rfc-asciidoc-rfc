@@ -7,5 +7,12 @@ as described in <<RFC2119>>.
 
 === Definitions
 
-TODO.
+In this document, _AsciiDoc_ refers to the markup language generically.
+_Asciidoctor_ refers specifically to the Ruby-based implementation of
+the markup language, which has enhanced the original markup language.
+The RFC XML document converter contributed by the authors uses a subset of
+_Asciidoctor_, with some minor additions (a few document attributes
+specific to RFC XML, some macros specific to citation processing,
+and some templated use of _Asciidoctor_ crossreferences). This variant
+of _Asciidoctor_ markup is referred to as _AsciiRFC_.
 

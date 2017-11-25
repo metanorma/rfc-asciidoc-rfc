@@ -3,6 +3,8 @@
 
 The syntax of Asciidoctor is presented in the
 http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Asciidoctor user manual].
+AsciiRFC is a subset of Asciidoctor syntax, with the addition of
+bibliographic macros (<<asciidoctor_bibliography>>).
 
 Asciidoctor consists of:
 
@@ -43,7 +45,7 @@ Inline markup includes:
 
 *** Text formatting: bold, italic, superscript, subscript, monospace.
 
-*** Custom markup macros.
+*** Custom markup macros. (AsciiRFC uses one: `bcp14`.)
 
 *** URLs, including display text.
 
@@ -52,16 +54,17 @@ Inline markup includes:
 *** Cross-references to anchors (IDs of blocks or spans of text), including
 display text.
 
-*** Images, audio, and visual files.
+*** Images, audio, and visual files. (AsciiRFC only supports images.)
 
 *** Index terms.
 
 *** Equations (native support for
 http://docs.mathjax.org/en/latest/asciimath.html[AsciiMathML] and
 http://docs.mathjax.org/en/latest/tex.html[TeX/LaTeX], via the
-https://www.mathjax.org[MathJax] tool).
+https://www.mathjax.org[MathJax] tool). (Not supported in AsciiRFC, since
+there is no RFC XML equivalent.)
 
-*** Footnotes.
+*** Footnotes. (Not supported in AsciiRFC.)
 
 
 The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
@@ -87,11 +90,11 @@ In the following, v3 equivalences are given:
 * Inline markup: `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`,
 `strong`, `sub`, `sup`, `tt`, `xref`.
 
-Full details of the  mapping of Asciidoctor elements to RFC XML v2 and v3
-elements, and of how to convert Asciidoctor documents to RFC XML, are given in
+Full details of the  mapping of AsciiRFC elements to RFC XML v2 and v3
+elements, and of how to convert AsciiRFC documents to RFC XML, are given in
 https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc. The
 following gives an overview of how to create an RFC XML document in
-Asciidoctor, with some pitfalls to be aware of. Illustrations are in RFC XML
+AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML
 v3, although the converter deals with both versions of RFC XML.
 
 === Simple illustration
@@ -214,7 +217,7 @@ The first section header is followed by a paragraph, and other sections and para
 number of `=` signs are one higher than the initial section header, which indicates that they
 are subsections of that section. The paragraphs contains some inline formatting
 (italics: `\_pause for laughter_`; boldface: `\*lick*`). The first paragraph also contains a citation of
-a reference, which in this version of AsciiRef is treated identically to a cross-reference
+a reference, which in this version of AsciiRFC is treated identically to a cross-reference
 (`<<RFC7253>>`). (If the bibliography preprocessor were used, it would be encoded differently.)
 
 The second last section is tagged with the style attribute `[bibliography]`, which identifies

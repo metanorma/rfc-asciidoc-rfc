@@ -48,9 +48,9 @@ See <<crossreference,text>>
 </section>
 ----
 
-Asciidoctor does not
-otherwise support attributes on cross-references, but the converter extracts
-format information from templated text within cross-references: 
+Asciidoctor natively does not
+otherwise support attributes on cross-references. AsciiRFC works around that
+by embedding formatting information as templated text within cross-references: 
 `format=x: text` populates the `xref@format` attribute, while a section number followed by
 one of the words `of, parens, bare, text` is treated as a `relref` reference to
 an external document.

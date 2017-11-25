@@ -31,7 +31,7 @@ element, `front` elements, and document-level processing instructions.
 
 * Certain attributes (`workgroup`, `area`, `keyword`) are comma delimited, and result in repeated RFC XML elements.
 
-The foregoing Asciidoc renders into RFC XML v3 as:
+The foregoing AsciiRFC renders into RFC XML v3 as:
 
 [source,xml]
 ----
@@ -167,13 +167,13 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
     <date day="25" month="November" year="2017" />
 ----
 
-The initial author attribution in Asciidoctor, e.g. 
+The initial author attribution in AsciiRFC, e.g. 
 `Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr"
 or suffixes like "Jr". Name attributes with any degree of complexity
 should be overriden by using the `:fullname:` and `:lastname:`
-attributes. The `:forename_initials:` attribute replaces the built-in Asciidoctor
+attributes. The AsciiRFC `:forename_initials:` attribute replaces the built-in Asciidoctor
 `:initials:` attribute (which includes the surname initial), and is not
 automatically populated from the name attribution.
 

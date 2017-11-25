@@ -1,7 +1,7 @@
 == Inclusions
 
 The http://asciidoctor.org/docs/user-manual/#include-directive[Asciidoctor "include" directive]
-is used to include external files in a master Asciidoctor document. The
+is used to include external files in a master AsciiRFC document. The
 directive is capable of sophisticated document merging, including adjusting the
 heading levels of the included text, selecting text within specified tags or
 line numbers to be included, and adjusting the indentation of code snippets in
@@ -17,7 +17,7 @@ include::path[
 ]
 ----
 
-If a file is included in an Asciidoc document, ensure it ends with a blank line.
+If a file is included in an AsciiRFC document, ensure it ends with a blank line.
 An inclusion that results in its final block not being delimited with a blank line
 from what follows can lead to unpredictable results.
 

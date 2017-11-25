@@ -9,7 +9,7 @@ support for UTF-8 also remains patchy. Out of an abundance of caution, the RFC
 XML converter uses US-ASCII for its character encoding, and renders any
 non-ASCII characters as entities.
 
-The converter accepts HTML entities in Asciidoctor, even though they are not
+The converter accepts HTML entities in AsciiRFC, even though they are not
 part of the XML specification; HTML entities such as `&nbsp;` feature in
 examples of RFC XML provided by the IETF. In order to prevent dependence of the
 XML output from extraneous entity definitions, any such entities are rendered

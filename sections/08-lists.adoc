@@ -1,6 +1,6 @@
 == Lists
 
-Asciidoctor supports ordered, unordered, and definition lists. Indentation of
+AsciiRFC supports ordered, unordered, and definition lists. Indentation of
 ordered and unordered lists is indicated by repeating the list item prefix (`*`
 and `.` respectively.) List attributes specify the type of symbol used for
 ordered lists:
@@ -36,7 +36,7 @@ ordered lists:
 A list item by default spans a single paragraph. A following paragraph or other
 block element can be appended to the current list item by prefixing it with `+`
 in a separate line
-(http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoc list continuation].) 
+(http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoctor list continuation].) 
 
 [source,asciidoc]
 ----
@@ -64,7 +64,7 @@ The RFC XML converter deals with this by converting paragraph breaks into line
 breaks within a list item.)
 
 List continuations can also be embed to populate a list item with a sequence of
-blocks as a unit (in an Asciidoc open block):
+blocks as a unit (in an Asciidoctor open block):
 
 [source,asciidoc]
 ----
@@ -105,10 +105,10 @@ Note 3.
 </ul>
 ----
 
-Asciidoctor considers paragraphs to be the basic level of blocks, and does not
+AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic level of blocks, and does not
 permit lists to be nested within them: text after a list is considered to be a
 new paragraph. So markup like the following cannot be generated via
-Asciidoctor:
+AsciiRFC:
 
 [source,xml]
 ----
