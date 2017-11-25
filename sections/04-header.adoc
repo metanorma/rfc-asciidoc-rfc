@@ -8,18 +8,18 @@ For example:
 
 [source,asciidoc]
 ----
-= Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
 :doctype: internet-draft 
-:abbrev: IP Datagrams on Avian Carriers
+:abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
-:keyword: avians, datagrams
+:keyword: yorkshire, memory
 :revdate: 1990-04-01T00:00:00Z
 ----
 
@@ -35,27 +35,22 @@ The foregoing Asciidoc renders into RFC XML v3 as:
 
 [source,xml]
 ----
-<?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
-  submissiontype="IETF" preptime="2017-11-18T01:52:35Z" version="3">
-    <front>
-        <title abbrev="IP Datagrams on Avian Carriers">
-            A Standard for the Transmission of IP 
-            Datagrams on Avian Carriers
-        </title>
-        <seriesinfo name="Internet-Draft" status="informational" 
-          stream="IETF" value="internet-draft-avian-transmission-00" />
-        <author fullname="David Waitzman" surname="Waitzman">
-            <address>
-                <email>dwaitzman@BBN.COM</email>
-            </address>
-        </author>
-        <date day="1" month="April" year="1990" />
-        <area>Internet</area>
-        <workgroup>Network Working Group</workgroup>
-        <keyword>avians</keyword>
-        <keyword>datagrams</keyword>
+    submissionType="IETF" prepTime="2017-11-25T10:13:46Z" version="3">
+  <front>
+    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <address>
+        <email>tbt@bbc.co.uk</email>
+      </address>
+    </author>
+    <date day="1" month="April" year="1990" />
+    <area>Internet</area>
+    <workgroup>Network Working Group</workgroup>
+    <keyword>yorkshire</keyword>
+    <keyword>memory</keyword>
 ----
 
 The document header can spell out further information about authors, including
@@ -63,18 +58,21 @@ contact details:
 
 [source,asciidoc]
 ----
-= Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
 :doctype: internet-draft 
-:abbrev: IP Datagrams on Avian Carriers
+:abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 :ipr: trust200902
+:area: Internet
+:workgroup: Network Working Group
+:keyword: yorkshire, memory
 :revdate: 1990-04-01T00:00:00Z
-:organization: BBN STC
-:phone: (617) 873-4323
+:organization: BBC
+:phone: (555) 555-5555
 :uri: http://bbn.com
 :street: 10 Moulton Street
 :city: Cambridge
@@ -83,31 +81,30 @@ David Waitzman <dwaitzman@BBN.COM>
 
 [source,xml]
 ----
-<?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
-  submissiontype="IETF" preptime="2017-11-18T01:52:35Z" version="3">
-    <front>
-        <title abbrev="IP Datagrams on Avian Carriers">
-            A Standard for the Transmission of IP 
-            Datagrams on Avian Carriers
-        </title>
-        <seriesinfo name="Internet-Draft" status="informational" 
-          stream="IETF" value="internet-draft-avian-transmission-00" />
-        <author fullname="David Waitzman" surname="Waitzman">
-            <organization>BBN STC</organization>
-            <address>
-                <postal>
-                    <street>10 Moulton Street</street>
-                    <city>Cambridge</city>
-                    <code>MA 02238</code>
-                </postal>
-                <phone>(617) 873-4323</phone>
-                <email>dwaitzman@BBN.COM</email>
-                <uri>http://bbn.com</uri>
-            </address>
-        </author>
-        <date day="1" month="April" year="1990" />
+    submissionType="IETF" prepTime="2017-11-25T10:15:02Z" version="3">
+  <front>
+    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <organization>BBC</organization>
+      <address>
+        <postal>
+          <street>10 Moulton Street</street>
+          <city>Cambridge</city>
+          <code>MA 02238</code>
+        </postal>
+        <phone>(555) 555-5555</phone>
+        <email>tbt@bbc.co.uk</email>
+        <uri>http://bbn.com</uri>
+      </address>
+    </author>
+    <date day="1" month="April" year="1990" />
+    <area>Internet</area>
+    <workgroup>Network Working Group</workgroup>
+    <keyword>yorkshire</keyword>
+    <keyword>memory</keyword>
 ----
 
 Details of a second, third etc. author, including their organization and
@@ -116,80 +113,62 @@ with `_2`, `_3`  etc.:
 
 [source,asciidoc]
 ----
-= Transmission of IP Datagrams on Avian Carriers
-John Doe Horton <jh@email.com>; Billy Thornton <bthornton@email.com>
-:fullname: John Doe Horton
-:lastname: Horton
-:forename_initials: J. D.
-:organization: Ribose
-:fax: 555 5555
-:email: jh@email.com
-:uri: http://example.com
-:phone: 555 5655
-:street: 57 Mt Pleasant St
-:city: Dullsville
-:region: NSW
-:country: Australia
-:code: 3333
-:fullname_2: Billy Thornton
-:lastname_2: Thornton
-:forename_initials_2: B. B.
-:role_2: editor
-:organization_2: IBM
-:fax_2: 555 6666
-:email_2: bthornton@email.com
-:uri_2: http://ibm.com
-:phone_2: 555 6655
-:street_2: 67 Mt Pleasant St
-:city_2: Dulltown
-:region_2: VIC
-:country_2: UK
-:code_2: 44444
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
+:doctype: internet-draft 
+:status: informational
+:name: internet-draft-four-yorkshiremen-00
+:ipr: trust200902
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://bbc.co.uk
+:street: 10 Moulton Street
+:city: Cambridge
+:code: MA 02238
+:forename_initials: T.
+:lastname: Brooke-Taylor
+:street: 12 Moulton Street
+:city: London
+:country: United Kingdom
+:forename_initials_2: J.
+:lastname_2: Cleese
+:uri_2: https://twitter.com/johncleese
 ----
 
 [source,xml]
 ----
-<rfc submissionType="IETF" prepTime="2017-11-21T09:28:01Z" version="3">
-<front>
-  <title>Transmission of IP Datagrams on Avian Carriers</title>
-  <author fullname="John Doe Horton" surname="Horton" initials="J. D.">
-    <organization>Ribose</organization>
-    <address>
-      <postal>
-        <street>57 Mt Pleasant St</street>
-        <city>Dullsville</city>
-        <region>NSW</region>
-        <code>3333</code>
-        <country>Australia</country>
-      </postal>
-      <phone>555 5655</phone>
-      <facsimile>555 5555</facsimile>
-      <email>jh@email.com</email>
-      <uri>http://example.com</uri>
-    </address>
-  </author>
-  <author fullname="Billy Thornton" surname="Thornton" 
-    initials="B. B." role="editor">
-    <organization>IBM</organization>
-    <address>
-      <postal>
-        <street>67 Mt Pleasant St</street>
-        <city>Dulltown</city>
-        <region>VIC</region>
-        <code>44444</code>
-        <country>UK</country>
-      </postal>
-      <phone>555 6655</phone>
-      <facsimile>555 6666</facsimile>
-      <email>bthornton@email.com</email>
-      <uri>http://ibm.com</uri>
-    </address>
-  </author>
+<rfc ipr="trust200902" submissionType="IETF" 
+    prepTime="2017-11-25T10:19:32Z" version="3">
+  <front>
+    <title>Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" 
+        surname="Brooke-Taylor" initials="T.">
+      <organization>BBC</organization>
+      <address>
+        <postal>
+          <street>12 Moulton Street</street>
+          <city>London</city>
+          <code>MA 02238</code>
+          <country>United Kingdom</country>
+        </postal>
+        <phone>(555) 555-5555</phone>
+        <email>tbt@bbc.co.uk</email>
+        <uri>http://bbc.co.uk</uri>
+      </address>
+    </author>
+    <author fullname="John Cleese" surname="Cleese" initials="J.">
+      <address>
+        <email>jc@bbc.co.uk</email>
+        <uri>https://twitter.com/johncleese</uri>
+      </address>
+    </author>
+    <date day="25" month="November" year="2017" />
 ----
 
 The initial author attribution in Asciidoctor, e.g. 
-`John Doe Horton <\john.doe@email.com>; 
-Billy Bob Thornton <\billy.thornton@email.com>`
+`Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr"
 or suffixes like "Jr". Name attributes with any degree of complexity
@@ -203,14 +182,12 @@ as XML processing instructions:
 
 [source,asciidoc]
 ----
-= Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
 :doctype: internet-draft 
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 :ipr: trust200902
-:area: Internet
-:workgroup: Network Working Group
 :revdate: 1990-04-01T00:00:00Z
 :rfcedstyle: yes
 :text-list-symbols: yes
@@ -219,25 +196,18 @@ David Waitzman <dwaitzman@BBN.COM>
 
 [source,xml]
 ----
-<?xml version="1.0" encoding="US-ASCII"?>
-<?xml-stylesheet type="text/xsl" href="rfc2629.xslt"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
-<?rfc rfcedstyle="yes"?>
-<?rfc text-list-symbols="yes"?>
 <rfc ipr="trust200902" submissionType="IETF" 
-  prepTime="2017-11-21T09:29:41Z" version="3">
-<front>
-  <title>Transmission of IP Datagrams on Avian Carriers</title>
-  <seriesInfo name="Internet-Draft" status="informational" 
-    stream="IETF" value="internet-draft-avian-transmission-00"/>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <address>
-      <email>dwaitzman@BBN.COM</email>
-    </address>
-  </author>
-  <date day="1" month="April" year="1990"/>
-  <area>Internet</area>
-  <workgroup>Network Working Group</workgroup>
+    prepTime="2017-11-25T10:21:56Z" version="3">
+  <front>
+    <title>Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <address>
+        <email>tbt@bbc.co.uk</email>
+      </address>
+    </author>
+    <date day="1" month="April" year="1990" />
 ----
 
 A few document attributes are specific to the operation of the RFC XML document converter:
@@ -251,11 +221,11 @@ BCP14 <<RFC2119>> words (e.g. `\*MUST NOT*`) with the `bcp14` element.
 
 [source,asciidoc]
 ----
-= A Standard for the Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
-:doctype: internet-draft
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
+:doctype: internet-draft 
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 
 == Section 1
 The specification *MUST NOT* use the word _doesn't_.
@@ -263,37 +233,36 @@ The specification *MUST NOT* use the word _doesn't_.
 
 [source,xml]
 ----
-<rfc submissionType="IETF" 
-  prepTime="2017-11-21T11:14:35Z" version="3">
-<front>
-  <title>A Standard for the Transmission of IP Datagrams 
-    on Avian Carriers</title>
-  <seriesInfo name="Internet-Draft" status="informational" 
-    stream="IETF" value="internet-draft-avian-transmission-00"/>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <address>
-      <email>dwaitzman@BBN.COM</email>
-    </address>
-  </author>
-  <date day="21" month="November" year="2017"/>
-
-</front><middle>
-<section anchor="_section_1" numbered="false">
-  <name>Section 1</name>
-  <t>The specification <bcp14>MUST NOT</bcp14> use 
-     the word <em>doesn&#8217;t</em>.</t>
-</section>
-</middle>
+<rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
+  <front>
+    <title>Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <address>
+        <email>tbt@bbc.co.uk</email>
+      </address>
+    </author>
+    <date day="25" month="November" year="2017" />
+  </front>
+  <middle>
+    <section anchor="_section_1" numbered="false">
+      <name>Section 1</name>
+      <t>The specification  <bcp14>MUST NOT</bcp14>
+        use the word <em> doesn&#8217;t</em>.</t>
+    </section>
+  </middle>
 </rfc>
+
 ----
 
 [source,asciidoc]
 ----
-= A Standard for the Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
-:doctype: internet-draft
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
+:doctype: internet-draft 
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 :no-rfc-bold-bcp14: false
 :smart-quotes: false
 
@@ -303,26 +272,25 @@ The specification *MUST NOT* use the word _doesn't_.
 
 [source,xml]
 ----
-<rfc submissionType="IETF" 
-  prepTime="2017-11-21T11:14:35Z" version="3">
-<front>
-  <title>A Standard for the Transmission of IP Datagrams 
-    on Avian Carriers</title>
-  <seriesInfo name="Internet-Draft" status="informational" 
-    stream="IETF" value="internet-draft-avian-transmission-00"/>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <address>
-      <email>dwaitzman@BBN.COM</email>
-    </address>
-  </author>
-  <date day="21" month="November" year="2017"/>
-
-</front><middle>
-<section anchor="_section_1" numbered="false">
-  <name>Section 1</name>
-  <t>The specification <strong>MUST NOT</strong> use 
-     the word <em>doesn't</em>.</t>
-</section>
-</middle>
+<rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
+  <front>
+    <title>Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <address>
+        <email>tbt@bbc.co.uk</email>
+      </address>
+    </author>
+    <date day="25" month="November" year="2017" />
+  </front>
+  <middle>
+    <section anchor="_section_1" numbered="false">
+      <name>Section 1</name>
+      <t>The specification <strong>MUST NOT</strong>
+        use the word <em> doesn't</em>.</t>
+    </section>
+  </middle>
 </rfc>
+
 ----

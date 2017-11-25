@@ -8,75 +8,73 @@ preamble are treated as a `note` element. For example:
 
 [source,asciidoc]
 ----
-= A Standard for the Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor <tbt@bbc.co.uk>
 :doctype: internet-draft 
-:abbrev: IP Datagrams on Avian Carriers
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 
-Avian carriers can provide high delay, low throughput, and low
-altitude service.  The connection topology is limited to a single
-point-to-point path for each carrier, used with standard carriers,
-but many carriers can be used without significant interference with
-each other, outside of early spring.  This is because of the 3D ether
-space available to the carriers, in contrast to the 1D ether used by
-IEEE802.3.
+The "Four Yorkshiremen" sketch is a comedy sketch written by 
+Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and 
+originally performed on their TV series _At Last the 1948 Show_ in 1967. 
+It later became associated with the comedy group Monty Python 
+(which included Cleese and Chapman), who performed it in their live shows, 
+including _Monty Python Live at the Hollywood Bowl_. 
 
-The carriers have an intrinsic collision avoidance
-system, which increases availability.  Unlike some network
-technologies, such as packet radio, communication is not limited to
-line-of-sight distance.  Connection oriented service is available in
-some cities, usually based upon a central hub topology.
+The sketch is a parody of nostalgic conversations about humble 
+beginnings or difficult childhoods, featuring four men from Yorkshire 
+who reminisce about their upbringing. As the conversation progresses 
+they try to outdo one another, and their accounts of deprived 
+childhoods become increasingly absurd. 
 
-NOTE: This is a note.
+NOTE:  Barry Cryer is the wine waiter in the original performance 
+and may have contributed to the writing.
 
 [NOTE]
-.Title of Note
+.Original Recording
 ====
-This is another note.
+The original performance of the sketch by the four creators is one of the 
+surviving sketches from the programme and can be seen on the 
+_At Last the 1948 Show_ DVD.
 ====
 ----
 
 [source,xml]
 ----
-<rfc submissionType="IETF" prepTime="2017-11-18T02:55:47Z" version="3">
-<front>
-  <title abbrev="IP Datagrams on Avian Carriers">
-    A Standard for the Transmission of IP Datagrams on Avian Carriers
-  </title>
-  <seriesInfo name="Internet-Draft" status="informational" stream="IETF" 
-    value="internet-draft-avian-transmission-00"/>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <address>
-      <email>dwaitzman@BBN.COM</email>
-    </address>
-  </author>
-  <date day="18" month="November" year="2017"/>
-
-  <abstract>
-  <t>Avian carriers can provide high delay, low throughput, and low
-  altitude service.  The connection topology is limited to a single
-  point-to-point path for each carrier, used with standard carriers,
-  but many carriers can be used without significant interference with
-  each other, outside of early spring.  This is because of the 3D ether
-  space available to the carriers, in contrast to the 1D ether used by
-  IEEE802.3.</t>
-
-  <t>The carriers have an intrinsic collision avoidance
-  system, which increases availability.  Unlike some network
-  technologies, such as packet radio, communication is not limited to
-  line-of-sight distance.  Connection oriented service is available in
-  some cities, usually based upon a central hub topology.</t>
-  </abstract>
-
-  <note>
-    <t>This is a note.</t>
-  </note>
-  <note>
-    <name>Title of Note</name>
-    <t>This is another note.</t>
-  </note>
-</front>
+<rfc submissionType="IETF" prepTime="2017-11-25T10:32:27Z" version="3">
+  <front>
+    <title>Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+        stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <address>
+        <email>tbt@bbc.co.uk</email>
+      </address>
+    </author>
+    <date day="25" month="November" year="2017" />
+    <abstract>
+      <t>The "Four Yorkshiremen" sketch is a comedy sketch written by 
+        Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and 
+        originally performed on their TV series <em>At Last the 1948 Show</em>
+        in 1967. It later became associated with the comedy group Monty Python 
+        (which included Cleese and Chapman), who performed it in their live 
+        shows, including <em>Monty Python Live at the Hollywood Bowl</em>.</t>
+      <t>The sketch is a parody of nostalgic conversations about humble 
+        beginnings or difficult childhoods, featuring four men from Yorkshire 
+        who reminisce about their upbringing. As the conversation progresses 
+        they try to outdo one another, and their accounts of deprived childhoods 
+        become increasingly absurd.</t>
+    </abstract>
+    <note>
+      <t>Barry Cryer is the wine waiter in the original performance and may 
+        have contributed to the writing.</t>
+    </note>
+    <note>
+      <name>Original Recording</name>
+        <t>The original performance of the sketch by the four creators is one of 
+          the surviving sketches from the programme and can be seen on the 
+          <em>At Last the 1948 Show</em> DVD.</t>
+    </note>
+  </front>
 ----
 

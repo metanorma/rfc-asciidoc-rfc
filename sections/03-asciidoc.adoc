@@ -101,49 +101,71 @@ corresponding rendering in RFC XML v3:
 
 [source,asciidoc]
 ----
-=  A Standard for the Transmission of IP Datagrams on Avian Carriers
-David Waitzman <dwaitzman@BBN.COM>
+= Four Yorkshiremen Sketch
+Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
 :doctype: internet-draft 
-:abbrev: IP Datagrams on Avian Carriers
+:abbrev: 4 Yorkshiremen
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-avian-transmission-00
+:name: internet-draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
-:keyword: avians, datagrams
+:keyword: yorkshire, memory
 :revdate: 1990-04-01T00:00:00Z
-:organization: BBN STC
-:phone: (617) 873-4323
-:uri: http://bbn.com
+:organization: BBC
+:phone: (555) 555-5555
+:uri: http://bbc.co.uk
 :street: 10 Moulton Street
 :city: Cambridge
 :code: MA 02238
+:email: tbt@bbc.co.uk
+:email_2: jc@bbc.co.uk
+:email_3: gc@bbc.co.uk
+:email_4: mf@bcc.co.uk
+:smart-quotes: false
+:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby
 
 [abstract]
-Avian carriers can provide high delay, low throughput, and low
-altitude service.  The connection topology is limited to a single
-point-to-point path for each carrier, used with standard carriers,
-but many carriers can be used without significant interference with
-each other, outside of early spring. <<frame>> 
-This is because of the 3D ether
-space available to the carriers, in contrast to the 1D ether used by
-IEEE802.3.  
+The sketch is a parody of nostalgic conversations about humble 
+beginnings or difficult childhoods, featuring four men from Yorkshire 
+who reminisce about their upbringing. As the conversation progresses 
+they try to outdo one another, and their accounts of deprived 
+childhoods become increasingly absurd. <<michaelpalin>> <<ericidle>>
 
-NOTE: Yes, this is an April Fool's RFC.
+NOTE: See also Wikipedia summary
 
-[#frame]
-== Frame Format
+[#michaelpalin]
+== Claim: Michael Palin
+You were lucky. We lived for three months in a brown paper bag in a septic 
+tank. We used to have to get up at six o'clock in the morning, clean the 
+bag, eat a crust of stale bread, go to work down mill for fourteen hours 
+a day week in-week out. When we got home, out Dad would thrash us to 
+sleep with his belt! <<RFC7253>>
 
-The IP _datagram_ is *printed*, on a small scroll of paper, in
-hexadecimal, with each octet separated by whitestuff and blackstuff.
-The scroll of paper is wrapped around one leg of the avian carrier.
-A band of duct tape is used to secure the datagram's edges.  The
-bandwidth is limited to the leg length.  The MTU is variable, and
-paradoxically, generally increases with increased carrier age.  A
-typical MTU is 256 milligrams.  Some datagram padding may be 
-needed.<<RFC7253>>
+=== Response: Graham Chapman
+Luxury. We used to have to get out of the lake at three o'clock in the morning, 
+clean the lake, eat a handful of hot gravel, go to work at the mill every day 
+for tuppence a month, come home, and Dad would beat us around the head and 
+neck with a broken bottle, if we were *lucky*!
+
+=== Response: Terry Gilliam
+Well we had it tough. We used to have to get up out of the shoebox at 
+twelve o'clock at night, and *lick* the road clean with our tongues. We had 
+half a handful of freezing cold gravel, worked twenty-four hours a day at the 
+mill for fourpence every six years, and when we got home, our Dad would 
+slice us in two with a bread knife.
+
+[#ericidle]
+=== Response: Eric Idle
+Right. 
+
+I had to get up in the morning at ten o'clock at night, half an hour 
+before I went to bed, (_pause for laughter_), eat a lump of cold poison, 
+work twenty-nine hours a day down mill, and pay mill owner for permission to come 
+to work, and when we got home, our Dad would kill us, and dance about on our 
+graves singing "Hallelujah."
 
 [bibliography]
 == Normative References
@@ -164,34 +186,42 @@ needed.<<RFC7253>>
   <seriesInfo name="RFC" value="7253"/>
 </reference>
 ++++
+
+[appendix]
+== Addendum
+But you try and tell the young people today that... and they won't believe ya'.
 ----
 
-The first block of text, from `= A Standard for the Transmission` through to `:code: MA 02238`,
+The first block of text, from `= Four Yorkshiremen Sketch` through to 
+`:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
 is the document header. It contains a title in the first line, an author attribution, and then
 a set of document attributes, conveying information about the document as well as information
 about its authors. This information ends up either as attributes of the root `rfc` tag, elements of the `front`
 tag, or processing instructions.
 
-The following blocks of text, up until the first section header (`==Frame Format`), are the 
+The following blocks of text, up until the first section header (`== Claim: Michael Palin`), are the 
 document preamble. They are treated by the document converter as containing the document
 abstract (`abstract`), followed by any notes (`note`, identified above by the `NOTE:` heading).
 
 [subs="quotes"]
-The first section header (`==Frame Format`) is preceded by an anchor for that section
-(`[#frame]`). There is a cross-reference to that anchor already in place in the abstract
-(`<<frame>>`). The document converter treats the first section of the document as the start of
+The first section header (`== Claim: Michael Palin`) is preceded by an anchor for that section
+(`[#michaelpalin]`). There is a cross-reference to that anchor already in place in the abstract
+(`<<michaelpalin>>`). The document converter treats the first section of the document as the start of
 the `middle` section of the document.
 
 [subs="quotes"]
-The first section header is followed by a paragraph, which contains some inline formatting
-(italics: `\_datagram_`; boldface: `\*printed*`). The paragraph also contains a citation of
+The first section header is followed by a paragraph, and other sections and paragraphs. The
+number of `=` signs are one higher than the initial section header, which indicates that they
+are subsections of that section. The paragraphs contains some inline formatting
+(italics: `\_pause for laughter_`; boldface: `\*lick*`). The first paragraph also contains a citation of
 a reference, which in this version of AsciiRef is treated identically to a cross-reference
 (`<<RFC7253>>`). (If the bibliography preprocessor were used, it would be encoded differently.)
 
-The following section is tagged with the style attribute `[bibliography]`, which identifies
+The second last section is tagged with the style attribute `[bibliography]`, which identifies
 it as a references container; the document converter accordingly inserts this into the `back`
 element of the document. The contents of the references section are in this instance raw XML,
 delimited as a passthrough block (with `{fourpluses}`), which the converter does not alter.
+The final section is tagged with the style attribute `[appendix]`, and is treated as such.
 
 The RFC XML v3 document generated from this AsciiRFC document is:
 
@@ -199,85 +229,121 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 ----
 <?xml version="1.0" encoding="US-ASCII"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
-<?rfc strict="yes"?>
-<?rfc compact="yes"?>
-<?rfc subcompact="no"?>
-<?rfc toc="yes"?>
-<?rfc tocdepth="4"?>
-<?rfc symrefs="yes"?>
-<?rfc sortrefs="yes"?>
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
-  submissionType="IETF" prepTime="2017-11-21T08:05:30Z" version="3">
-<front>
-  <title abbrev="IP Datagrams on Avian Carriers">A Standard for the 
-    Transmission of IP Datagrams on Avian Carriers</title>
-  <seriesInfo name="Internet-Draft" status="informational" 
-    stream="IETF" value="internet-draft-avian-transmission-00"/>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <organization>BBN STC</organization>
-    <address>
-      <postal>
-        <street>10 Moulton Street</street>
-        <city>Cambridge</city>
-        <code>MA 02238</code>
-      </postal>
-      <phone>(617) 873-4323</phone>
-      <email>dwaitzman@BBN.COM</email>
-      <uri>http://bbn.com</uri>
-    </address>
-  </author>
-  <date day="1" month="April" year="1990"/>
-  <area>Internet</area>
-  <workgroup>Network Working Group</workgroup>
-  <keyword>avians</keyword>
-  <keyword>datagrams</keyword>
-
-<abstract>
-  <t>Avian carriers can provide high delay, low throughput, and low
-altitude service.  The connection topology is limited to a single
-point-to-point path for each carrier, used with standard carriers,
-but many carriers can be used without significant interference with
-each other, outside of early spring. <xref target="frame"/> 
-This is because of the 3D ether
-space available to the carriers, in contrast to the 1D ether used by
-IEEE802.3.</t>
-</abstract><note>
-  <t>Yes, this is an April Fool&#8217;s RFC.</t>
-</note>
-</front><middle>
-<section anchor="frame" numbered="false">
-  <name>Frame Format</name>
-  <t>The IP <em>datagram</em> is <strong>printed</strong>, on a 
-small scroll of paper, in
-hexadecimal, with each octet separated by whitestuff and blackstuff.
-The scroll of paper is wrapped around one leg of the avian carrier.
-A band of duct tape is used to secure the datagram&#8217;s edges.  The
-bandwidth is limited to the leg length.  The MTU is variable, and
-paradoxically, generally increases with increased carrier age.  A
-typical MTU is 256 milligrams.  Some datagram padding may be 
-needed.<xref target="RFC7253"/></t>
-</section>
-</middle><back>
-<references anchor="_normative_references">
-  <name>Normative References</name>
-<reference anchor='RFC7253' 
-  target='https://tools.ietf.org/html/rfc7253'>
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
+    submissionType="IETF" prepTime="2017-11-25T09:54:54Z" version="3">
+  <link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"
+    rel="describedby" />
   <front>
-    <title>Guidelines for Writing an IANA Considerations 
-      Section in RFCs</title>
-    <author initials="T." surname="Krovetz">
-      <organization>Sacramento State</organization>
+    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
+    <seriesInfo name="Internet-Draft" status="informational" 
+      stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <organization>BBC</organization>
+      <address>
+        <postal>
+          <street>10 Moulton Street</street>
+          <city>Cambridge</city>
+          <code>MA 02238</code>
+        </postal>
+        <phone>(555) 555-5555</phone>
+        <email>tbt@bbc.co.uk</email>
+        <uri>http://bbc.co.uk</uri>
+      </address>
     </author>
-    <author initials="P." surname="Rogaway">
-      <organization>UC Davis</organization>
+    <author fullname="John Cleese" surname="Cleese">
+      <address>
+        <email>jc@bbc.co.uk</email>
+      </address>
     </author>
-    <date month='May' year='2014'/>
+    <author fullname="Graham Chapman" surname="Chapman">
+      <address>
+        <email>gc@bbc.co.uk</email>
+      </address>
+    </author>
+    <author fullname="Marty Feldman" surname="Feldman">
+      <address>
+        <email>mf@bcc.co.uk<email>
+      </address>
+    </author>
+    <date day="1" month="April" year="1990" />
+    <area>Internet<area>
+    <workgroup>Network Working Group</workgroup>
+    <keyword>yorkshire<keyword>
+    <keyword>memory<keyword>
+    <abstract>
+      <t>The sketch is a parody of nostalgic conversations about humble 
+      beginnings or difficult childhoods, featuring four men from Yorkshire who 
+      reminisce about their upbringing. As the conversation progresses they try 
+      to outdo one another, and their accounts of deprived childhoods become 
+      increasingly absurd. <xref target="michaelpalin" />
+      <xref target="ericidle" /></t>
+    </abstract>
+    <note>
+      <t>See also Wikipedia summary<t>
+    </note>
   </front>
-  <seriesInfo name="RFC" value="7253"/>
-</reference>
-</references>
-</back>
+  <middle>
+    <section anchor="michaelpalin" numbered="false">
+      <name>Claim: Michael Palin<name>
+      <t>You were lucky. We lived for three months in a brown paper bag in a 
+        septic tank. We used to have to get up at six o'clock in the morning, 
+        clean the bag, eat a crust of stale bread, go to work down mill for 
+        fourteen hours a day week in-week out. When we got home, out Dad would 
+        thrash us to sleep with his belt! <xref target="RFC7253" /></t>
+      <section anchor="_response_graham_chapman" numbered="false">
+        <name>Response: Graham Chapman<name>
+        <t>Luxury. We used to have to get out of the lake at three o'clock in 
+          the morning, clean the lake, eat a handful of hot gravel, go to work
+          at the mill every day for tuppence a month, come home, and Dad would 
+          beat us around the head and neck with a broken bottle, if we were 
+          <strong>lucky</strong>!</t>
+      </section>
+      <section anchor="_response_terry_gilliam" numbered="false">
+        <name>Response: Terry Gilliam<name>
+        <t>Well we had it tough. We used to have to get up out of the shoebox at 
+          twelve o'clock at night, and <strong>lick<strong>
+          the road clean with our tongues. We had half a handful of freezing 
+          cold gravel, worked twenty-four hours a day at the mill for fourpence 
+          every six years, and when we got home, our Dad would slice us in two 
+          with a bread knife.</t>
+      </section>
+      <section anchor="ericidle" numbered="false">
+        <name>Response: Eric Idle<name>
+        <t>Right.<t>
+        <t>I had to get up in the morning at ten o'clock at night, half an hour 
+          before I went to bed, (<em>pause for laughter</em>), eat a lump of 
+          cold poison, work twenty-nine hours a day down mill, and pay mill 
+          owner for permission to come to work, and when we got home, our Dad 
+          would kill us, and dance about on our graves singing "Hallelujah."</t>
+      </section>
+    </section>
+  </middle>
+  <back>
+    <references anchor="_normative_references">
+      <name>Normative References<name>
+      <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+        <front>
+          <title>Guidelines for Writing an IANA Considerations Section
+            in RFCs<title>
+          <author initials="T." surname="Krovetz">
+            <organization>Sacramento State<organization>
+          </author>
+          <author initials="P." surname="Rogaway">
+            <organization>UC Davis<organization>
+          </author>
+          <date month="May" year="2014" />
+        </front>
+        <seriesInfo name="RFC" value="7253" />
+      </reference>
+    </references>
+    <section anchor="_addendum" numbered="false">
+      <name>Addendum<name>
+      <t>But you try and tell the young people today that&#8230;&#8203; 
+        and they won't believe ya'.<t>
+    </section>
+  </back>
 </rfc>
+
 ----
 
 Some default processing instructions have already been prefixed to the XML. 
@@ -288,82 +354,108 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
 
 [source,xml]
 ----
-<?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
-<?rfc strict="yes"?>
-<?rfc compact="yes"?>
-<?rfc subcompact="no"?>
-<?rfc toc="yes"?>
-<?rfc tocdepth="4"?>
-<?rfc symrefs="yes"?>
-<?rfc sortrefs="yes"?>
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
-  category="info" submissionType="IETF" 
-  docName="internet-draft-avian-transmission-00">
-<front>
-  <title abbrev="IP Datagrams on Avian Carriers">A Standard for the 
-  Transmission of IP Datagrams on Avian Carriers</title>
-  <author fullname="David Waitzman" surname="Waitzman">
-    <organization>BBN STC</organization>
-    <address>
-      <postal>
-        <street>10 Moulton Street</street>
-        <city>Cambridge</city>
-        <code>MA 02238</code>
-      </postal>
-      <phone>(617) 873-4323</phone>
-      <email>dwaitzman@BBN.COM</email>
-      <uri>http://bbn.com</uri>
-    </address>
-  </author>
-  <date day="1" month="April" year="1990"/>
-  <area>Internet</area>
-  <workgroup>Network Working Group</workgroup>
-  <keyword>avians</keyword>
-  <keyword>datagrams</keyword>
-
-<abstract>
-  <t>Avian carriers can provide high delay, low throughput, and low
-altitude service.  The connection topology is limited to a single
-point-to-point path for each carrier, used with standard carriers,
-but many carriers can be used without significant interference with
-each other, outside of early spring. <xref target="frame"/> 
-This is because of the 3D ether
-space available to the carriers, in contrast to the 1D ether used by
-IEEE802.3.</t>
-</abstract><note title="NOTE">
-  <t>Yes, this is an April Fool&#8217;s RFC.</t>
-</note>
-</front><middle>
-<section anchor="frame" title="Frame Format">
-  <t>The IP <spanx style="emph">datagram</spanx> is 
-<spanx style="strong">printed</spanx>, on a small scroll of paper, in
-hexadecimal, with each octet separated by whitestuff and blackstuff.
-The scroll of paper is wrapped around one leg of the avian carrier.
-A band of duct tape is used to secure the datagram&#8217;s edges.  The
-bandwidth is limited to the leg length.  The MTU is variable, and
-paradoxically, generally increases with increased carrier age.  A
-typical MTU is 256 milligrams.  Some datagram padding may be 
-needed.<xref target="RFC7253"/></t>
-</section>
-</middle><back>
-<references title="Normative References">
-<reference anchor='RFC7253' 
-  target='https://tools.ietf.org/html/rfc7253'>
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" category="info" submissionType="IETF" docName="internet-draft-four-yorkshiremen-00">
   <front>
-    <title>Guidelines for Writing an IANA Considerations 
-      Section in RFCs</title>
-    <author initials="T." surname="Krovetz">
-      <organization>Sacramento State</organization>
+    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch<title>
+    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
+      <organization>BBC</organization>
+      <address>
+        <postal>
+          <street>10 Moulton Street</street>
+          <city>Cambridge</city>
+          <code>MA 02238</code>
+        </postal>
+        <phone>(555) 555-5555</phone>
+        <email>tbt@bbc.co.uk</email>
+        <uri>http://bbc.co.uk</uri>
+      </address>
     </author>
-    <author initials="P." surname="Rogaway">
-      <organization>UC Davis</organization>
+    <author fullname="John Cleese" surname="Cleese">
+      <address>
+        <email>jc@bbc.co.uk</email>
+      </address>
     </author>
-    <date month='May' year='2014'/>
+    <author fullname="Graham Chapman" surname="Chapman">
+      <address>
+        <email>gc@bbc.co.uk</email>
+      </address>
+    </author>
+    <author fullname="Marty Feldman" surname="Feldman">
+      <address>
+        <email>mf@bcc.co.uk</email>
+      </address>
+    </author>
+    <date day="1" month="April" year="1990" />
+    <area>Internet</area>
+    <workgroup>Network Working Group</workgroup>
+    <keyword>yorkshire</keyword>
+    <keyword>memory</keyword>
+    <abstract>
+      <t>The sketch is a parody of nostalgic conversations about humble 
+        beginnings or difficult childhoods, featuring four men from Yorkshire who reminisce about their upbringing. As the conversation progresses 
+        they try to outdo one another, and their accounts of deprived childhoods 
+        become increasingly absurd. <xref target="michaelpalin" />
+        <xref target="ericidle" /></t>
+    </abstract>
+    <note title="NOTE">
+      <t>See also Wikipedia summary</t>
+    </note>
   </front>
-  <seriesInfo name="RFC" value="7253"/>
-</reference>
-</references>
-</back>
+  <middle>
+    <section anchor="michaelpalin" title="Claim: Michael Palin">
+      <t>You were lucky. We lived for three months in a brown paper bag in a 
+        septic tank. We used to have to get up at six o'clock in the morning, 
+        clean the bag, eat a crust of stale bread, go to work down mill for 
+        fourteen hours a day week in-week out. When we got home, out Dad would 
+        thrash us to sleep with his belt! <xref target="RFC7253" /> </t>
+      <section anchor="_response_graham_chapman" 
+          title="Response: Graham Chapman">
+        <t>Luxury. We used to have to get out of the lake at three o'clock in 
+          the morning, clean the lake, eat a handful of hot gravel, go to work 
+          at the mill every day for tuppence a month, come home, and Dad would 
+          beat us around the head and neck with a broken bottle, if we were 
+          <spanx style="strong">lucky</spanx>!</t>
+      </section>
+      <section anchor="_response_terry_gilliam" title="Response: Terry Gilliam">
+        <t>Well we had it tough. We used to have to get up out of the shoebox at 
+          twelve o'clock at night, and <spanx style="strong">lick</spanx> the 
+          road clean with our tongues. We had half a handful of freezing cold 
+          gravel, worked twenty-four hours a day at the mill for fourpence every 
+          six years, and when we got home, our Dad would slice us in two with a 
+          bread knife.</t>
+      </section>
+      <section anchor="ericidle" title="Response: Eric Idle">
+        <t>Right.</t>
+        <t>I had to get up in the morning at ten o'clock at night, half an hour 
+          before I went to bed, (<spanx style="emph">pause for 
+          laughter</spanx>), eat a lump of cold poison, work twenty-nine hours a 
+          day down mill, and pay mill owner for permission to come to work, and 
+          when we got home, our Dad would kill us, and dance about on our graves 
+          singing "Hallelujah."</t>
+      </section>
+    </section>
+  </middle>
+  <back>
+    <references title="Normative References">
+      <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+        <front>
+          <title>Guidelines for Writing an IANA Considerations Section in 
+            RFCs</title>
+          <author initials="T." surname="Krovetz">
+            <organization>Sacramento State</organization>
+          </author>
+          <author initials="P." surname="Rogaway">
+            <organization>UC Davis</organization>
+          </author>
+          <date month="May" year="2014" />
+        </front>
+        <seriesInfo name="RFC" value="7253" />
+      </reference>
+    </references>
+    <section anchor="_addendum" title="Addendum">
+      <t>But you try and tell the young people today that&#8230;&#8203; 
+        and they won't believe ya'.</t>
+    </section>
+  </back>
 </rfc>
 ----
