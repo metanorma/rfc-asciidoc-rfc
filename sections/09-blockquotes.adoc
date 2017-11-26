@@ -9,16 +9,16 @@ verse quotations are converted to prose in the v3 converter.
 ----
 [quote,attribution="Monty Python",citetitle="http://example.com"]
 ____
-Dennis: Come and see the violence inherent in the system. 
+Dennis: Come and see the violence inherent in the system.
 Help! Help! I'm being repressed!
 
 King Arthur: Bloody peasant!
 
-Dennis: Oh, what a giveaway! 
-* Did you hear that? 
-* Did you hear that, eh? 
-* That's what I'm on about! 
-** Did you see him repressing me? 
+Dennis: Oh, what a giveaway!
+* Did you hear that?
+* Did you hear that, eh?
+* That's what I'm on about!
+** Did you see him repressing me?
 ** You saw him, Didn't you?
 ____
 ----
@@ -26,7 +26,7 @@ ____
 [source,xml]
 ----
 <blockquote quotedfrom="Monty Python" cite="http://example.com">
-  <t>Dennis: Come and see the violence inherent in the system. 
+  <t>Dennis: Come and see the violence inherent in the system.
   Help! Help! I&#8217;m being repressed!</t>
   <t>King Arthur: Bloody peasant!</t>
   <t>Dennis: Oh, what a giveaway!</t>

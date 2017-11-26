@@ -10,7 +10,7 @@ encode those entries in AsciiRFC, only to have them converted back to RFC XML.
 The converter provides two means of incorporating bibliographies into RFC
 documents authored in AsciiRFC:
 
-* using raw RFC XML; and 
+* using raw RFC XML; and
 
 * assembling bibliographies in preprocessing.
 
@@ -34,10 +34,10 @@ Some datagram padding may be needed.<<RFC7253>>
 [bibliography]
 == Normative References
 ++++
-<reference anchor='RFC7253' 
+<reference anchor='RFC7253'
   target='https://tools.ietf.org/html/rfc7253'>
   <front>
-    <title>Guidelines for Writing an IANA Considerations 
+    <title>Guidelines for Writing an IANA Considerations
       Section in RFCs</title>
     <author initials="T." surname="Krovetz">
       <organization>Sacramento State</organization>
@@ -59,10 +59,10 @@ Some datagram padding may be needed.<<RFC7253>>
 </middle><back>
 <references anchor="_references">
 <name>Normative References</name>
-<reference anchor='RFC7253' 
+<reference anchor='RFC7253'
   target='https://tools.ietf.org/html/rfc7253'>
   <front>
-    <title>Guidelines for Writing an IANA Considerations 
+    <title>Guidelines for Writing an IANA Considerations
       Section in RFCs</title> <author initials="T." surname="Krovetz">
       <organization>Sacramento State</organization>
     </author>
@@ -98,7 +98,7 @@ Integration with the asciidoc-bibliography gem proceeds as follows:
 with individual `<reference>` elements inserted, as would be done for the
 informative and normative references normally. The references file will contain
 all possible references to be used in the file; the bibliography gem will
-select which references have actually been cited in the document. 
+select which references have actually been cited in the document.
 
 .. Rather than hand crafting RFC XML references for RFC documents, you should
 download them from an authoritative source; e.g.
@@ -132,13 +132,13 @@ interpolation of the citation.  For example:
 
 ** pass:q[`<<id,words>>`] = `cite:norm[id, text="<xref target='id'>words</xref>"]`
 
-** pass:q[`<<id,format=counter: words>>`] (processed as a formatted crossreference) = 
+** pass:q[`<<id,format=counter: words>>`] (processed as a formatted crossreference) =
   `cite:norm[id, text="<xref format='counter' target='id'>words</xref>"]`
 
 ** pass:q[`<<id,2.4 comma: words>>`] (processed as relref) =
   `cite:norm[id, text="<relref displayFormat='comma' section='2.4' target='id'}/>"]`
 
-** pass:q[`<<id#section2_4,2.4 comma: words>>`] 
+** pass:q[`<<id#section2_4,2.4 comma: words>>`]
   (processed as relref with a cross-document internal reference) =
   `cite:norm[id, text="<relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/>"]`
 

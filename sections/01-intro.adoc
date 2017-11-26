@@ -50,7 +50,7 @@ required by RFC XML (including notes, tables, bibliographies, source-code
 blocks, and definition lists), without resorting to embedded HTML or Markdown
 "flavours".
 
-* AsciiDoc in its Ruby-based Asciidoctor implementation is extensible, 
+* AsciiDoc in its Ruby-based Asciidoctor implementation is extensible,
 with a well-defined API. (Extensions have been harnessed
 to deal with bibliographic preprocessing for AsciiRFC.)
 
@@ -64,7 +64,7 @@ large-scale documentation projects.
 source code within lists or definition lists within unordered lists.
 
 * As a more formal counterpart to Markdown, AsciiDoc is well-suited to
-generating XML that needs to conform to a specified schema. 
+generating XML that needs to conform to a specified schema.
 
 As with Markdown, there is a wide range of tools that can render AsciiDoc; so
 AsciiRFC drafts of RFC documents can be previewed and accessed without

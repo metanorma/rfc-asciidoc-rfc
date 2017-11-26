@@ -36,7 +36,7 @@ ordered lists:
 A list item by default spans a single paragraph. A following paragraph or other
 block element can be appended to the current list item by prefixing it with `+`
 in a separate line
-(http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoctor list continuation].) 
+(http://asciidoctor.org/docs/user-manual/#complex-list-content[Asciidoctor list continuation].)
 
 [source,asciidoc]
 ----
@@ -113,7 +113,7 @@ AsciiRFC:
 [source,xml]
 ----
 <t>
-  This is the start of a paragraph. 
+  This is the start of a paragraph.
   <ul>
     <li>List Entry 1</li>
     <li>

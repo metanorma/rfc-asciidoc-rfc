@@ -11,15 +11,15 @@ can occur nested within Examples:
 ====
 .figure1.txt
 ....
-Figures are only permitted to contain listings 
+Figures are only permitted to contain listings
 (sourcecode), images (artwork), or literal (artwork)
 
 This is some ASCII Art:
 
- _____ ___ ____ _      _   
-|  ___|_ _/ ___| | ___| |_ 
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
 | |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_ 
+|  _|  | | |_| | |  __/ |_
 |_|   |___\____|_|\___|\__|
 ....
 
@@ -28,7 +28,7 @@ This is some ASCII Art:
 def listing(node)
   result = []
   if node.parent.context != :example
-    result << "<figure>" 
+    result << "<figure>"
   end
 end
 ----
@@ -41,7 +41,7 @@ end
 <figure>
   <name>Figure 1</name>
   <artwork type="ascii-art" name="figure1.txt">
-    Figures are only permitted to contain listings 
+    Figures are only permitted to contain listings
     (sourcecode), images (artwork), or literal (artwork)
 
 This is some ASCII Art:
@@ -52,10 +52,10 @@ This is some ASCII Art:
 |  _|  | | |_| | |  __/ |_
 |_|   |___\____|_|\___|\__|</artwork>
   <sourcecode type="ruby">
-    def listing(node) 
-      result = [] 
-      if node.parent.context != :example 
-        result &lt;&lt; "&lt;figure&gt;" 
+    def listing(node)
+      result = []
+      if node.parent.context != :example
+        result &lt;&lt; "&lt;figure&gt;"
       end
     end
   </sourcecode>
@@ -71,10 +71,10 @@ element:
 ....
 This is some ASCII Art:
 
- _____ ___ ____ _      _   
-|  ___|_ _/ ___| | ___| |_ 
+ _____ ___ ____ _      _
+|  ___|_ _/ ___| | ___| |_
 | |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_ 
+|  _|  | | |_| | |  __/ |_
 |_|   |___\____|_|\___|\__|
 ....
 ----

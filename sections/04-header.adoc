@@ -168,11 +168,11 @@ Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
     <date day="25" month="November" year="2017" />
 ----
 
-The initial author attribution in AsciiRFC, e.g. 
+The initial author attribution in AsciiRFC, e.g.
 `Tim Brooke-Taylor <\tbt@bbc.co.uk>; John Cleese <\jc@bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr."
-or suffixes like "Jr.". 
+or suffixes like "Jr.".
 
 Name attributes with any degree of complexity should be overriden by using the
 `:fullname:` and `:lastname:` attributes. The AsciiRFC `:forename_initials:`

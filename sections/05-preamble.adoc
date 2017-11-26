@@ -14,31 +14,31 @@ For example:
 ----
 = Four Yorkshiremen Sketch
 Tim Brooke-Taylor <tbt@example.com>
-:doctype: internet-draft 
+:doctype: internet-draft
 :status: informational
 :name: draft-four-yorkshiremen-00
 
-The "Four Yorkshiremen" sketch is a comedy sketch written by 
-Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and 
-originally performed on their TV series _At Last the 1948 Show_ in 1967. 
-It later became associated with the comedy group Monty Python 
-(which included Cleese and Chapman), who performed it in their live 
-shows, including _Monty Python Live at the Hollywood Bowl_. 
+The "Four Yorkshiremen" sketch is a comedy sketch written by
+Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman and
+originally performed on their TV series _At Last the 1948 Show_ in 1967.
+It later became associated with the comedy group Monty Python
+(which included Cleese and Chapman), who performed it in their live
+shows, including _Monty Python Live at the Hollywood Bowl_.
 
-The sketch is a parody of nostalgic conversations about humble 
-beginnings or difficult childhoods, featuring four men from Yorkshire 
-who reminisce about their upbringing. As the conversation progresses 
-they try to outdo one another, and their accounts of deprived 
-childhoods become increasingly absurd. 
+The sketch is a parody of nostalgic conversations about humble
+beginnings or difficult childhoods, featuring four men from Yorkshire
+who reminisce about their upbringing. As the conversation progresses
+they try to outdo one another, and their accounts of deprived
+childhoods become increasingly absurd.
 
-NOTE:  Barry Cryer is the wine waiter in the original performance 
+NOTE:  Barry Cryer is the wine waiter in the original performance
 and may have contributed to the writing.
 
 [NOTE]
 .Original Recording
 ====
-The original performance of the sketch by the four creators is one of 
-the surviving sketches from the programme and can be seen on the 
+The original performance of the sketch by the four creators is one of
+the surviving sketches from the programme and can be seen on the
 _At Last the 1948 Show_ DVD.
 ====
 ----
@@ -48,7 +48,7 @@ _At Last the 1948 Show_ DVD.
 <rfc submissionType="IETF" prepTime="2017-11-25T10:32:27Z" version="3">
   <front>
     <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational" 
+    <seriesInfo name="Internet-Draft" status="informational"
         stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <address>
@@ -57,27 +57,27 @@ _At Last the 1948 Show_ DVD.
     </author>
     <date day="25" month="November" year="2017" />
     <abstract>
-      <t>The "Four Yorkshiremen" sketch is a comedy sketch written by 
-        Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman 
-        and originally performed on their TV series <em>At Last the 1948 
-        Show</em> in 1967. It later became associated with the comedy 
-        group Monty Python (which included Cleese and Chapman), who 
-        performed it in their live shows, including <em>Monty Python 
+      <t>The "Four Yorkshiremen" sketch is a comedy sketch written by
+        Tim Brooke-Taylor, John Cleese, Graham Chapman and Marty Feldman
+        and originally performed on their TV series <em>At Last the 1948
+        Show</em> in 1967. It later became associated with the comedy
+        group Monty Python (which included Cleese and Chapman), who
+        performed it in their live shows, including <em>Monty Python
         Live at the Hollywood Bowl</em>.</t>
-      <t>The sketch is a parody of nostalgic conversations about humble 
-        beginnings or difficult childhoods, featuring four men from 
-        Yorkshire who reminisce about their upbringing. As the 
-        conversation progresses they try to outdo one another, and their 
+      <t>The sketch is a parody of nostalgic conversations about humble
+        beginnings or difficult childhoods, featuring four men from
+        Yorkshire who reminisce about their upbringing. As the
+        conversation progresses they try to outdo one another, and their
         accounts of deprived childhoods become increasingly absurd.</t>
     </abstract>
     <note>
-      <t>Barry Cryer is the wine waiter in the original performance and 
+      <t>Barry Cryer is the wine waiter in the original performance and
         may have contributed to the writing.</t>
     </note>
     <note>
       <name>Original Recording</name>
-        <t>The original performance of the sketch by the four 
-          creators is one of the surviving sketches from the programme 
+        <t>The original performance of the sketch by the four
+          creators is one of the surviving sketches from the programme
           and can be seen on the <em>At Last the 1948 Show</em> DVD.</t>
     </note>
   </front>

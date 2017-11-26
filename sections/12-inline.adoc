@@ -10,13 +10,13 @@ _Text_ *Text* `Text`  ^Superscript^ ~Subscript~
 
 [source,xml]
 ----
-<t><em>Text</em> <strong>Text</strong> <tt>Text</tt> 
+<t><em>Text</em> <strong>Text</strong> <tt>Text</tt>
 <sup>Superscript</sup> <sub>Subscript</sub></t>
 ----
 
 RFC XML v3 also supports tagging of BCP14 keywords <<RFC2119>>; this is done in
-AsciiRFC either by tagging them with a custom formatting span 
-(`bcp14#must not#`), or by converting BCP14 boldface all-caps words (unless the 
+AsciiRFC either by tagging them with a custom formatting span
+(`bcp14#must not#`), or by converting BCP14 boldface all-caps words (unless the
 `:no-rfc-bold-bcp14: false` document attribute is set):
 
 [source,asciidoc]
