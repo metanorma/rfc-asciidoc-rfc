@@ -128,7 +128,7 @@ Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
 :email_3: gc@example.com
 :email_4: mf@bcc.co.uk
 :smart-quotes: false
-:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby
+:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch
 
 [abstract]
 The sketch is a parody of nostalgic conversations about humble 
@@ -141,34 +141,36 @@ NOTE: See also Wikipedia summary
 
 [#michaelpalin]
 == Claim: Michael Palin
-You were lucky. We lived for three months in a brown paper bag in a septic 
-tank. We used to have to get up at six o'clock in the morning, clean the 
-bag, eat a crust of stale bread, go to work down mill for fourteen hours 
-a day week in-week out. When we got home, out Dad would thrash us to 
-sleep with his belt! <<RFC7253>>
+You were lucky. We lived for three months in a brown paper bag in a 
+septic tank. We used to have to get up at six o'clock in the morning, 
+clean the bag, eat a crust of stale bread, go to work down mill for 
+fourteen hours a day week in-week out. When we got home, our Dad would 
+thrash us to sleep with his belt! <<RFC7253>>
 
 === Response: Graham Chapman
-Luxury. We used to have to get out of the lake at three o'clock in the morning, 
-clean the lake, eat a handful of hot gravel, go to work at the mill every day 
-for tuppence a month, come home, and Dad would beat us around the head and 
-neck with a broken bottle, if we were *lucky*!
+Luxury. We used to have to get out of the lake at three o'clock in 
+the morning, clean the lake, eat a handful of hot gravel, go to work 
+at the mill every day for tuppence a month, come home, and Dad would 
+beat us around the head and neck with a broken bottle, if we were 
+*lucky*!
 
 === Response: Terry Gilliam
 Well we had it tough. We used to have to get up out of the shoebox at 
-twelve o'clock at night, and *lick* the road clean with our tongues. We had 
-half a handful of freezing cold gravel, worked twenty-four hours a day at the 
-mill for fourpence every six years, and when we got home, our Dad would 
-slice us in two with a bread knife.
+twelve o'clock at night, and *lick* the road clean with our tongues. We 
+had half a handful of freezing cold gravel, worked twenty-four hours 
+a day at the mill for fourpence every six years, and when we got home, 
+our Dad would slice us in two with a bread knife.
 
 [#ericidle]
 === Response: Eric Idle
 Right. 
 
-I had to get up in the morning at ten o'clock at night, half an hour 
-before I went to bed, (_pause for laughter_), eat a lump of cold poison, 
-work twenty-nine hours a day down mill, and pay mill owner for permission to come 
-to work, and when we got home, our Dad would kill us, and dance about on our 
-graves singing "Hallelujah."
+I had to get up in the morning at ten o'clock at night, half 
+an hour before I went to bed, (_pause for laughter_), eat a lump 
+of cold poison, work twenty-nine hours a day down mill, and pay mill 
+owner for permission to come to work, and when we got home, 
+our Dad would kill us, and dance about on our graves 
+singing "Hallelujah."
 
 [bibliography]
 == Normative References
@@ -192,11 +194,12 @@ graves singing "Hallelujah."
 
 [appendix]
 == Addendum
-But you try and tell the young people today that... and they won't believe ya'.
+But you try and tell the young people today that... 
+and they won't believe ya.
 ----
 
 The first block of text, from `= Four Yorkshiremen Sketch` through to 
-`:link: \https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
+`:link: \https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch`,
 is the document header. It contains a title in the first line, an author attribution, and then
 a set of document attributes, conveying information about the document as well as information
 about its authors. This information ends up either as attributes of the root `rfc` tag, elements of the `front`
@@ -234,8 +237,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd">
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
     submissionType="IETF" prepTime="2017-11-25T09:54:54Z" version="3">
-  <link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"
-    rel="describedby" />
+  <link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"/>
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
     <seriesInfo name="Internet-Draft" status="informational" 
@@ -275,10 +277,11 @@ The RFC XML v3 document generated from this AsciiRFC document is:
     <keyword>memory<keyword>
     <abstract>
       <t>The sketch is a parody of nostalgic conversations about humble 
-      beginnings or difficult childhoods, featuring four men from Yorkshire who 
-      reminisce about their upbringing. As the conversation progresses they try 
-      to outdo one another, and their accounts of deprived childhoods become 
-      increasingly absurd. <xref target="michaelpalin" />
+      beginnings or difficult childhoods, featuring four men from 
+      Yorkshire who reminisce about their upbringing. As the 
+      conversation progresses they try to outdo one another, and their 
+      accounts of deprived childhoods become increasingly absurd. 
+      <xref target="michaelpalin" />
       <xref target="ericidle" /></t>
     </abstract>
     <note>
@@ -288,46 +291,49 @@ The RFC XML v3 document generated from this AsciiRFC document is:
   <middle>
     <section anchor="michaelpalin" numbered="false">
       <name>Claim: Michael Palin<name>
-      <t>You were lucky. We lived for three months in a brown paper bag in a 
-        septic tank. We used to have to get up at six o'clock in the morning, 
-        clean the bag, eat a crust of stale bread, go to work down mill for 
-        fourteen hours a day week in-week out. When we got home, out Dad would 
-        thrash us to sleep with his belt! <xref target="RFC7253" /></t>
+      <t>You were lucky. We lived for three months in a brown paper bag 
+        in a septic tank. We used to have to get up at six o'clock in 
+        the morning, clean the bag, eat a crust of stale bread, go to 
+        work down mill for fourteen hours a day week in-week out. When 
+        we got home, our Dad would thrash us to sleep with his belt! 
+        <xref target="RFC7253" /></t>
       <section anchor="_response_graham_chapman" numbered="false">
         <name>Response: Graham Chapman<name>
-        <t>Luxury. We used to have to get out of the lake at three o'clock in 
-          the morning, clean the lake, eat a handful of hot gravel, go to work
-          at the mill every day for tuppence a month, come home, and Dad would 
-          beat us around the head and neck with a broken bottle, if we were 
-          <strong>lucky</strong>!</t>
+        <t>Luxury. We used to have to get out of the lake at three 
+          o'clock in the morning, clean the lake, eat a handful of hot 
+          gravel, go to work at the mill every day for tuppence a month, 
+          come home, and Dad would beat us around the head and neck with 
+          a broken bottle, if we were <strong>lucky</strong>!</t>
       </section>
       <section anchor="_response_terry_gilliam" numbered="false">
         <name>Response: Terry Gilliam<name>
-        <t>Well we had it tough. We used to have to get up out of the shoebox at 
-          twelve o'clock at night, and <strong>lick<strong>
-          the road clean with our tongues. We had half a handful of freezing 
-          cold gravel, worked twenty-four hours a day at the mill for fourpence 
-          every six years, and when we got home, our Dad would slice us in two 
-          with a bread knife.</t>
+        <t>Well we had it tough. We used to have to get up out of the 
+          shoebox at twelve o'clock at night, and <strong>lick<strong>
+          the road clean with our tongues. We had half a handful of 
+          freezing cold gravel, worked twenty-four hours a day at the 
+          mill for fourpence every six years, and when we got home, 
+          our Dad would slice us in two with a bread knife.</t>
       </section>
       <section anchor="ericidle" numbered="false">
         <name>Response: Eric Idle<name>
         <t>Right.<t>
-        <t>I had to get up in the morning at ten o'clock at night, half an hour 
-          before I went to bed, (<em>pause for laughter</em>), eat a lump of 
-          cold poison, work twenty-nine hours a day down mill, and pay mill 
-          owner for permission to come to work, and when we got home, our Dad 
-          would kill us, and dance about on our graves singing "Hallelujah."</t>
+        <t>I had to get up in the morning at ten o'clock at night, half 
+          an hour before I went to bed, (<em>pause for laughter</em>), 
+          eat a lump of cold poison, work twenty-nine hours a day down 
+          mill, and pay mill owner for permission to come to work, and 
+          when we got home, our Dad would kill us, and dance about on 
+          our graves singing "Hallelujah."</t>
       </section>
     </section>
   </middle>
   <back>
     <references anchor="_normative_references">
       <name>Normative References<name>
-      <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+      <reference anchor="RFC7253" 
+          target="https://tools.ietf.org/html/rfc7253">
         <front>
-          <title>Guidelines for Writing an IANA Considerations Section
-            in RFCs<title>
+          <title>Guidelines for Writing an IANA Considerations 
+            Section in RFCs<title>
           <author initials="T." surname="Krovetz">
             <organization>Sacramento State<organization>
           </author>
@@ -397,11 +403,12 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
     <keyword>memory</keyword>
     <abstract>
       <t>The sketch is a parody of nostalgic conversations about humble 
-        beginnings or difficult childhoods, featuring four men from Yorkshire
-        who reminisce about their upbringing. As the conversation progresses
-        they try to outdo one another, and their accounts of deprived
-        childhoods become increasingly absurd. <xref target="michaelpalin" />
-        <xref target="ericidle" /></t>
+      beginnings or difficult childhoods, featuring four men from 
+      Yorkshire who reminisce about their upbringing. As the 
+      conversation progresses they try to outdo one another, and their 
+      accounts of deprived childhoods become increasingly absurd. 
+      <xref target="michaelpalin" />
+      <xref target="ericidle" /></t>
     </abstract>
     <note title="NOTE">
       <t>See also Wikipedia summary</t>
@@ -409,44 +416,50 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
   </front>
   <middle>
     <section anchor="michaelpalin" title="Claim: Michael Palin">
-      <t>You were lucky. We lived for three months in a brown paper bag in a 
-        septic tank. We used to have to get up at six o'clock in the morning, 
-        clean the bag, eat a crust of stale bread, go to work down mill for 
-        fourteen hours a day week in-week out. When we got home, out Dad would 
-        thrash us to sleep with his belt! <xref target="RFC7253" /> </t>
+      <t>You were lucky. We lived for three months in a brown paper bag 
+        in a septic tank. We used to have to get up at six o'clock in 
+        the morning, clean the bag, eat a crust of stale bread, go to 
+        work down mill for fourteen hours a day week in-week out. When 
+        we got home, our Dad would thrash us to sleep with his belt! 
+        <xref target="RFC7253" /></t>
       <section anchor="_response_graham_chapman" 
           title="Response: Graham Chapman">
-        <t>Luxury. We used to have to get out of the lake at three o'clock in 
-          the morning, clean the lake, eat a handful of hot gravel, go to work 
-          at the mill every day for tuppence a month, come home, and Dad would 
-          beat us around the head and neck with a broken bottle, if we were 
+        <t>Luxury. We used to have to get out of the lake at three 
+          o'clock in the morning, clean the lake, eat a handful of hot 
+          gravel, go to work at the mill every day for tuppence a month, 
+          come home, and Dad would beat us around the head and neck with 
+          a broken bottle, if we were 
           <spanx style="strong">lucky</spanx>!</t>
       </section>
-      <section anchor="_response_terry_gilliam" title="Response: Terry Gilliam">
-        <t>Well we had it tough. We used to have to get up out of the shoebox at 
-          twelve o'clock at night, and <spanx style="strong">lick</spanx> the 
-          road clean with our tongues. We had half a handful of freezing cold 
-          gravel, worked twenty-four hours a day at the mill for fourpence every 
-          six years, and when we got home, our Dad would slice us in two with a 
-          bread knife.</t>
+      <section anchor="_response_terry_gilliam" 
+          title="Response: Terry Gilliam">
+        <t>Well we had it tough. We used to have to get up out of the 
+          shoebox at twelve o'clock at night, and 
+          <spanx style="strong">lick<spanx>
+          the road clean with our tongues. We had half a handful of 
+          freezing cold gravel, worked twenty-four hours a day at the 
+          mill for fourpence every six years, and when we got home, 
+          our Dad would slice us in two with a bread knife.</t>
       </section>
       <section anchor="ericidle" title="Response: Eric Idle">
         <t>Right.</t>
-        <t>I had to get up in the morning at ten o'clock at night, half an hour 
-          before I went to bed, (<spanx style="emph">pause for 
-          laughter</spanx>), eat a lump of cold poison, work twenty-nine hours a 
-          day down mill, and pay mill owner for permission to come to work, and 
-          when we got home, our Dad would kill us, and dance about on our graves 
-          singing "Hallelujah."</t>
+        <t>I had to get up in the morning at ten o'clock at night, half 
+          an hour before I went to bed, (<spanx style="emph">pause 
+          for laughter</spanx>), 
+          eat a lump of cold poison, work twenty-nine hours a day down 
+          mill, and pay mill owner for permission to come to work, and 
+          when we got home, our Dad would kill us, and dance about on 
+          our graves singing "Hallelujah."</t>
       </section>
     </section>
   </middle>
   <back>
     <references title="Normative References">
-      <reference anchor="RFC7253" target="https://tools.ietf.org/html/rfc7253">
+      <reference anchor="RFC7253" 
+          target="https://tools.ietf.org/html/rfc7253">
         <front>
-          <title>Guidelines for Writing an IANA Considerations Section in 
-            RFCs</title>
+          <title>Guidelines for Writing an IANA Considerations 
+            Section in RFCs</title>
           <author initials="T." surname="Krovetz">
             <organization>Sacramento State</organization>
           </author>
