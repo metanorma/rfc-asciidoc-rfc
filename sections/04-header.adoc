@@ -168,7 +168,7 @@ Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>
 ----
 
 The initial author attribution in AsciiRFC, e.g. 
-`Tim Brooke-Taylor <tbt@bbc.co.uk>; John Cleese <jc@bbc.co.uk>`
+`Tim Brooke-Taylor <\tbt@bbc.co.uk>; John Cleese <\jc@bbc.co.uk>`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr"
 or suffixes like "Jr". Name attributes with any degree of complexity

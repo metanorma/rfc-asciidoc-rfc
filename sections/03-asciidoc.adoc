@@ -196,7 +196,7 @@ But you try and tell the young people today that... and they won't believe ya'.
 ----
 
 The first block of text, from `= Four Yorkshiremen Sketch` through to 
-`:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
+`:link: \https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby`,
 is the document header. It contains a title in the first line, an author attribution, and then
 a set of document attributes, conveying information about the document as well as information
 about its authors. This information ends up either as attributes of the root `rfc` tag, elements of the `front`
