@@ -111,7 +111,7 @@ Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
 :obsoletes: 10, 120
 :updates: 2010, 2120
 :status: informational
-:name: internet-draft-four-yorkshiremen-00
+:name: draft-four-yorkshiremen-00
 :ipr: trust200902
 :area: Internet
 :workgroup: Network Working Group
@@ -119,13 +119,13 @@ Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
 :revdate: 1990-04-01T00:00:00Z
 :organization: BBC
 :phone: (555) 555-5555
-:uri: http://bbc.co.uk
+:uri: http://example.com
 :street: 10 Moulton Street
 :city: Cambridge
 :code: MA 02238
-:email: tbt@bbc.co.uk
-:email_2: jc@bbc.co.uk
-:email_3: gc@bbc.co.uk
+:email: tbt@example.com
+:email_2: jc@example.com
+:email_3: gc@example.com
 :email_4: mf@bcc.co.uk
 :smart-quotes: false
 :link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch describedby
@@ -239,7 +239,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
     <seriesInfo name="Internet-Draft" status="informational" 
-      stream="IETF" value="internet-draft-four-yorkshiremen-00" />
+      stream="IETF" value="draft-four-yorkshiremen-00" />
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
       <organization>BBC</organization>
       <address>
@@ -249,18 +249,18 @@ The RFC XML v3 document generated from this AsciiRFC document is:
           <code>MA 02238</code>
         </postal>
         <phone>(555) 555-5555</phone>
-        <email>tbt@bbc.co.uk</email>
-        <uri>http://bbc.co.uk</uri>
+        <email>tbt@example.com</email>
+        <uri>http://example.com</uri>
       </address>
     </author>
     <author fullname="John Cleese" surname="Cleese">
       <address>
-        <email>jc@bbc.co.uk</email>
+        <email>jc@example.com</email>
       </address>
     </author>
     <author fullname="Graham Chapman" surname="Chapman">
       <address>
-        <email>gc@bbc.co.uk</email>
+        <email>gc@example.com</email>
       </address>
     </author>
     <author fullname="Marty Feldman" surname="Feldman">
@@ -357,7 +357,9 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
 
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" category="info" submissionType="IETF" docName="internet-draft-four-yorkshiremen-00">
+<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120" 
+  category="info" submissionType="IETF" 
+  docName="draft-four-yorkshiremen-00">
   <front>
     <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch<title>
     <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
@@ -369,18 +371,18 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
           <code>MA 02238</code>
         </postal>
         <phone>(555) 555-5555</phone>
-        <email>tbt@bbc.co.uk</email>
-        <uri>http://bbc.co.uk</uri>
+        <email>tbt@example.com</email>
+        <uri>http://example.com</uri>
       </address>
     </author>
     <author fullname="John Cleese" surname="Cleese">
       <address>
-        <email>jc@bbc.co.uk</email>
+        <email>jc@example.com</email>
       </address>
     </author>
     <author fullname="Graham Chapman" surname="Chapman">
       <address>
-        <email>gc@bbc.co.uk</email>
+        <email>gc@example.com</email>
       </address>
     </author>
     <author fullname="Marty Feldman" surname="Feldman">
@@ -395,9 +397,10 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
     <keyword>memory</keyword>
     <abstract>
       <t>The sketch is a parody of nostalgic conversations about humble 
-        beginnings or difficult childhoods, featuring four men from Yorkshire who reminisce about their upbringing. As the conversation progresses 
-        they try to outdo one another, and their accounts of deprived childhoods 
-        become increasingly absurd. <xref target="michaelpalin" />
+        beginnings or difficult childhoods, featuring four men from Yorkshire
+        who reminisce about their upbringing. As the conversation progresses
+        they try to outdo one another, and their accounts of deprived
+        childhoods become increasingly absurd. <xref target="michaelpalin" />
         <xref target="ericidle" /></t>
     </abstract>
     <note title="NOTE">

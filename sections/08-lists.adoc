@@ -50,12 +50,12 @@ Note 3.
 [source,xml]
 ----
 <dl>
-    <dt>Notes</dt>
-    <dd>
-        <t>Note 1.</t>
-        <t>Note 2.</t>
-        <t>Note 3.</t>
-    </dd>
+  <dt>Notes</dt>
+  <dd>
+    <t>Note 1.</t>
+    <t>Note 2.</t>
+    <t>Note 3.</t>
+  </dd>
 </dl>
 ----
 
@@ -124,6 +124,4 @@ AsciiRFC:
   And this is the continuation of the paragraph.
 </t>
 ----
-
-
 

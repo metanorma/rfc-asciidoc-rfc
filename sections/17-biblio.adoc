@@ -1,11 +1,11 @@
 == Bibliography
 
-Asciidoctor natively has a simple encoding of bibliographies, which is not adequate for
-the complexity of bibliographic markup required by RFC XML. RFC documents
-overwhelmingly cite other RFC documents, and canonical RFC XML bibliographic
-entries are available at http://xml.resource.org/public/rfc/bibxml/ ; so it
-would be inefficient to encode those entries in AsciiRFC, only to have them
-converted back to RFC XML.
+Asciidoctor natively has a simple encoding of bibliographies, which is not
+adequate for the complexity of bibliographic markup required by RFC XML. RFC
+documents overwhelmingly cite other RFC documents, and canonical RFC XML
+bibliographic entries are available at
+http://xml.resource.org/public/rfc/bibxml/ ; so it would be inefficient to
+encode those entries in AsciiRFC, only to have them converted back to RFC XML.
 
 The converter provides two means of incorporating bibliographies into RFC
 documents authored in AsciiRFC:
@@ -19,11 +19,11 @@ lead to erratic behaviour in the converter.
 
 === Using Raw RFC XML
 
-In the first method, bibliographic citations are handled like all other AsciiRFC
-cross-references. The bibliographic entries for normative and informative
-references are given in the AsciiRFC as passthrough blocks, which contain
-the raw RFC XML for all references; document conversion leaves the raw RFC XML
-in place. This approach requires authors to maintain the normative and
+In the first method, bibliographic citations are handled like all other
+AsciiRFC cross-references. The bibliographic entries for normative and
+informative references are given in the AsciiRFC as passthrough blocks, which
+contain the raw RFC XML for all references; document conversion leaves the raw
+RFC XML in place. This approach requires authors to maintain the normative and
 informative bibliographies within the document, to update them as citations are
 added and removed, and to sort them manually. For example:
 
@@ -126,14 +126,22 @@ reference.
 `cite:info[id]` instead of pass:q[`<<id>>`], where `id` is the anchor of the
 reference.
 
-. Formatted crossreferences and `relref` crossreferences are entered by inserting the 
-expected raw XML in the `text` attribute. Do not use the `{cite}` interpolation of the citation.
-For example:
+. Formatted crossreferences and `relref` crossreferences are entered by
+inserting the expected raw XML in the `text` attribute. Do not use the `{cite}`
+interpolation of the citation.  For example:
 
 ** pass:q[`<<id,words>>`] = `cite:norm[id, text="<xref target='id'>words</xref>"]`
-** pass:q[`<<id,format=counter: words>>`] (processed as a formatted crossreference) = `cite:norm[id, text="<xref format='counter' target='id'>words</xref>"]`
-** pass:q[`<<id,2.4 comma: words>>`] (processed as relref) = `cite:norm[id, text="<relref displayFormat='comma' section='2.4' target='id'}/>"]`
-** pass:q[`<<id#section2_4,2.4 comma: words>>`] (processed as relref with a cross-document internal reference) = `cite:norm[id, text="<relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/>"]`
+
+** pass:q[`<<id,format=counter: words>>`] (processed as a formatted crossreference) = 
+  `cite:norm[id, text="<xref format='counter' target='id'>words</xref>"]`
+
+** pass:q[`<<id,2.4 comma: words>>`] (processed as relref) =
+  `cite:norm[id, text="<relref displayFormat='comma' section='2.4' target='id'}/>"]`
+
+** pass:q[`<<id#section2_4,2.4 comma: words>>`] 
+  (processed as relref with a cross-document internal reference) =
+  `cite:norm[id, text="<relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/>"]`
+
 
 . Normative and Informative References are inserted in the document through a
 macro, which occurs where the RFC XML references would be inserted:

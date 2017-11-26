@@ -5,8 +5,8 @@
 This protects your own machine and also prevents injection of malicious content
 in your document.
 
-* An AsciiRFC generator may cause errors in textual rendering or link generation
-that may lead to security issues.
+* An AsciiRFC generator may cause errors in textual rendering or link
+generation that may lead to security issues.
 
 * Creating cross-references (and also bibliographic references) to external
 documents may pose risks since the external document's location may become

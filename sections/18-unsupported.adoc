@@ -1,18 +1,18 @@
 == RFC XML features not supported in Asciidoctor
 
-The following features of  RFC XML are not supported by the AsciiRFC
-converter, and would need to be adjusted manually after RFC XML is generated:
+The following features of  RFC XML are not supported by the AsciiRFC converter,
+and would need to be adjusted manually after RFC XML is generated:
 
 |===
-| RFC XML element                  | RFC XML v3 | RFC XML v2
+| RFC XML element                | RFC XML v3 | RFC XML v2
 
-| `front/boilerplate`              | Not added by the converter  | Not added by the converter
-| `iref@primary`                   | N          | N
-| `reference` (and all children)   | As Raw XML | As Raw XML
-| `table/preamble`                 | Deprecated | N
-| `table/postamble`                | Deprecated | N
-| `artwork@width`                  | Only on images | Only on images
-| `artwork@height`                 | Only on images | Only on images
+| `front/boilerplate`            | Not added by the converter  | Not added by the converter
+| `iref@primary`                 | N          | N
+| `reference` (and all children) | As Raw XML | As Raw XML
+| `table/preamble`               | Deprecated | N
+| `table/postamble`              | Deprecated | N
+| `artwork@width`                | Only on images | Only on images
+| `artwork@height`               | Only on images | Only on images
 |===
 
 
