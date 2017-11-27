@@ -41,7 +41,7 @@ XML. A more rigorous counterpart to Markdown, which still preserves its basic
 approach to formatting, is useful in generating RFC XML that encompasses a
 fuller subset of the specification, and preempting malformed RFC XML output.
 
-http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Compared to Markdown],
+Compared to Markdown <<Asciidoctor-Manual>>,
 
 * AsciiDoc was designed from the beginning as a publishing language: it was
 initially intended as a plain-text alternative to the DocBook XML schema. For

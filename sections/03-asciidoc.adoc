@@ -2,7 +2,7 @@
 == Document Structure And AsciiDoctor Syntax
 
 The syntax of Asciidoctor is presented in the
-http://asciidoctor.org/docs/user-manual/#compared-to-markdown[Asciidoctor user manual].
+Asciidoctor user manual <<Asciidoctor-Manual>>.
 AsciiRFC is a subset of Asciidoctor syntax, with the addition of
 bibliographic macros (<<asciidoctor_bibliography>>).
 
@@ -58,11 +58,9 @@ display text.
 
 *** Index terms.
 
-*** Equations (native support for
-http://docs.mathjax.org/en/latest/asciimath.html[AsciiMathML] and
-http://docs.mathjax.org/en/latest/tex.html[TeX/LaTeX], via the
-https://www.mathjax.org[MathJax] tool). (Not supported in AsciiRFC, since
-there is no RFC XML equivalent.)
+*** Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via the
+<<MathJax>> tool). (Not supported in AsciiRFC, since there is no RFC XML
+equivalent.)
 
 *** Footnotes. (Not supported in AsciiRFC.)
 
@@ -90,12 +88,13 @@ In the following, v3 equivalences are given:
 * Inline markup: `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`,
 `strong`, `sub`, `sup`, `tt`, `xref`.
 
-Full details of the  mapping of AsciiRFC elements to RFC XML v2 and v3
+Full details of the mapping of AsciiRFC elements to RFC XML v2 and v3
 elements, and of how to convert AsciiRFC documents to RFC XML, are given in
-https://github.com/riboseinc/asciidoctor-rfc/blob/master/README.adoc. The
-following gives an overview of how to create an RFC XML document in
-AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML
-v3, although the converter deals with both versions of RFC XML.
+the documentation of <<asciidoctor-rfc>>.
+
+The following gives an overview of how to create an RFC XML document in
+AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML v3,
+although the converter deals with both versions of RFC XML.
 
 === Simple illustration
 

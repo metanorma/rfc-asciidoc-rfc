@@ -1,11 +1,12 @@
 == Bibliography
 
 Asciidoctor natively has a simple encoding of bibliographies, which is not
-adequate for the complexity of bibliographic markup required by RFC XML. RFC
-documents overwhelmingly cite other RFC documents, and canonical RFC XML
-bibliographic entries are available at
-http://xml.resource.org/public/rfc/bibxml/ ; so it would be inefficient to
-encode those entries in AsciiRFC, only to have them converted back to RFC XML.
+adequate for the complexity of bibliographic markup required by RFC XML.
+
+RFC documents overwhelmingly cite other RFC documents, and canonical RFC XML
+bibliographic entries are available at <<IETF-BibXML>>; so it would be
+inefficient to encode those entries in AsciiRFC, only to have them converted
+back to RFC XML.
 
 The converter provides two means of incorporating bibliographies into RFC
 documents authored in AsciiRFC:
@@ -80,9 +81,8 @@ Some datagram padding may be needed.<<RFC7253>>
 === Using preprocessing
 
 The alternative method is to use a preprocessing tool,
-https://github.com/riboseinc/asciidoctor-bibliography[asciidoc-bibliography],
-to import citations into the AsciiRFC document from an external file of
-references.
+<<asciidoctor-bibliography>>, to import citations into the AsciiRFC document from
+an external file of references.
 
 The references file consists of RFC XML reference entries, and still needs to
 be managed manually; however the bibliographies are assembled from that file,
@@ -102,11 +102,11 @@ select which references have actually been cited in the document.
 
 .. Rather than hand crafting RFC XML references for RFC documents, you should
 download them from an authoritative source; e.g.
-http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml
+`http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml`
 
 .. Unlike the case for RFC XML documents created manually, the references file
 does not recognise XML entities and will not attempt to download them during
-processing.  Any references to http://xml.resource.org/public/rfc/bibxml/ will
+processing.  Any references to `http://xml.resource.org/public/rfc/bibxml/` will
 need to be downloaded and inserted into the references file.
 
 .. The RFC XML in the references file will need to be appropriate to the

@@ -53,5 +53,5 @@ it is preferable to use HTML entities (`&#42;&#42;`), or attribute references
 
 In extreme circumstances (such as quoting AsciiDoc syntax), you may need to resort to
 altering the substitutions behaviour within a given block of of AsciiDoc; see
-http://asciidoctor.org/docs/user-manual/#applying-substitutions
+the "Applying Substitutions" section of <<Asciidoctor-Manual>>.
 

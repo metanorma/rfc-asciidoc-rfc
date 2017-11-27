@@ -1,6 +1,6 @@
 == Inclusions
 
-The http://asciidoctor.org/docs/user-manual/#include-directive[Asciidoctor "include" directive]
+The Asciidoctor "include" directive <<Asciidoctor-Manual>>
 is used to include external files in a master AsciiRFC document. The
 directive is capable of sophisticated document merging, including adjusting the
 heading levels of the included text, selecting text within specified tags or
