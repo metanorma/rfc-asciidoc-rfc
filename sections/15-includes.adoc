@@ -1,11 +1,10 @@
 == Inclusions
 
-The Asciidoctor "include" directive <<Asciidoctor-Manual>>
-is used to include external files in a master AsciiRFC document. The
-directive is capable of sophisticated document merging, including adjusting the
-heading levels of the included text, selecting text within specified tags or
-line numbers to be included, and adjusting the indentation of code snippets in
-merged text:
+The Asciidoctor "include" directive <<Asciidoctor-Manual>> is used to include
+external files in a master AsciiRFC document. The directive is capable of
+sophisticated document merging, including adjusting the heading levels of the
+included text, selecting text within specified tags or line numbers to be
+included, and adjusting the indentation of code snippets in merged text:
 
 [source,asciidoc]
 ----

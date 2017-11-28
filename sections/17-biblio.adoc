@@ -78,11 +78,11 @@ Some datagram padding may be needed.<<RFC7253>>
 ----
 
 [#asciidoctor_bibliography]
-=== Using preprocessing
+=== Using Preprocessing
 
 The alternative method is to use a preprocessing tool,
-<<asciidoctor-bibliography>>, to import citations into the AsciiRFC document from
-an external file of references.
+<<asciidoctor-bibliography>>, to import citations into the AsciiRFC document
+from an external file of references.
 
 The references file consists of RFC XML reference entries, and still needs to
 be managed manually; however the bibliographies are assembled from that file,

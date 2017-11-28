@@ -62,9 +62,8 @@ This is some ASCII Art:
 </figure>
 ----
 
-If an AsciiRFC Listing or Literal occurs
-outside of an Example, the RFC XML converter will supply the surrounding Figure
-element:
+If an AsciiRFC Listing or Literal occurs outside of an Example, the RFC XML
+converter will supply the surrounding Figure element:
 
 [source,asciidoc]
 ----

@@ -20,16 +20,16 @@ ordered lists:
 [source,xml]
 ----
 <ol anchor="id" type="a">
-    <li>First</li>
-    <li>
-        <t>Second</t>
-        <ol type="A">
-            <li>Third</li>
-            <li>Fourth</li>
-        </ol>
-    </li>
-    <li>Fifth</li>
-    <li>Sixth</li>
+  <li>First</li>
+  <li>
+    <t>Second</t>
+    <ol type="A">
+      <li>Third</li>
+      <li>Fourth</li>
+    </ol>
+  </li>
+  <li>Fifth</li>
+  <li>Sixth</li>
 </ol>
 ----
 
@@ -87,20 +87,14 @@ Note 3.
 <ul>
   <li>List Entry 1</li>
   <li>
-    <t>
-      List Entry 2
-    </t>
-    <t>
-      Note 2.
-    </t>
+    <t>List Entry 2</t>
+    <t>Note 2.</t>
     <figure>
       <artwork type="ascii-art">
         Literal
       </artwork>
     </figure>
-    <t>
-      Note 3.
-    </t>
+    <t>Note 3.</t>
   </li>
 </ul>
 ----

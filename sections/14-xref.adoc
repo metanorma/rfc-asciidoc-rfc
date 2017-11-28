@@ -1,7 +1,7 @@
 
-== Crossreferences
+== Cross-references
 
-Anchors for crossreferences are notated as `[[...]]` or `[#...]`. Anchors can
+Anchors for cross-references are notated as `[[...]]` or `[#...]`. Anchors can
 be inserted on their own line in front of most blocks. Asciidoctor supports
 anchors in a much wider range of contexts than is supported than RFC XML v3
 (let alone v2); anchors that are not supported for that version of RFC XML are
@@ -48,12 +48,11 @@ See <<crossreference,text>>
 </section>
 ----
 
-Asciidoctor natively does not
-otherwise support attributes on cross-references. AsciiRFC works around that
-by embedding formatting information as templated text within cross-references:
-`format=x: text` populates the `xref@format` attribute, while a section number followed by
-one of the words `of, parens, bare, text` is treated as a `relref` reference to
-an external document.
+Asciidoctor natively does not otherwise support attributes on cross-references.
+AsciiRFC works around that by embedding formatting information as templated
+text within cross-references: `format=x: text` populates the `xref@format`
+attribute, while a section number followed by one of the words `of, parens,
+bare, text` is treated as a `relref` reference to an external document.
 
 [source,asciidoc]
 ----

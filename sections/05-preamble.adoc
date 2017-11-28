@@ -76,9 +76,9 @@ _At Last the 1948 Show_ DVD.
     </note>
     <note>
       <name>Original Recording</name>
-        <t>The original performance of the sketch by the four
-          creators is one of the surviving sketches from the programme
-          and can be seen on the <em>At Last the 1948 Show</em> DVD.</t>
+      <t>The original performance of the sketch by the four
+        creators is one of the surviving sketches from the programme
+        and can be seen on the <em>At Last the 1948 Show</em> DVD.</t>
     </note>
   </front>
 ----

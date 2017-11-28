@@ -3,12 +3,12 @@
 
 * Ensure your AsciiRFC generator comes from a geniune and trustworthy source.
 This protects your own machine and also prevents injection of malicious content
-in your document.
+in your resulting document.
 
 * An AsciiRFC generator may cause errors in textual rendering or link
 generation that may lead to security issues.
 
 * Creating cross-references (and also bibliographic references) to external
-documents may pose risks since the external document's location may become
+documents may pose risks since the specified external location may become
 controlled by a malicious party.
 

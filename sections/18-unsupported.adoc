@@ -1,7 +1,8 @@
 == RFC XML features not supported in Asciidoctor
 
-The following features of  RFC XML are not supported by the AsciiRFC converter,
-and would need to be adjusted manually after RFC XML is generated:
+The following features of RFC XML v3 <<RFC7991>> and v2 <<RFC7749>> are not
+supported by the AsciiRFC converter, and would need to be adjusted manually
+after RFC XML is generated:
 
 |===
 | RFC XML element                | RFC XML v3 | RFC XML v2
@@ -14,6 +15,4 @@ and would need to be adjusted manually after RFC XML is generated:
 | `artwork@width`                | Only on images | Only on images
 | `artwork@height`               | Only on images | Only on images
 |===
-
-
 
