@@ -1,0 +1,41 @@
+idnits 2.15.00 
+
+draft-ribose-asciirfc-02.txt:
+draft-ribose-asciirfc-02.txt(1425): Found possible FQDN 'node.parent.context' in position 8; this doesn't match RFC 2606's suggested ".example" or ".example.(com|org|net)".
+draft-ribose-asciirfc-02.txt(1477): Found possible FQDN 'node.parent.context' in position 12; this doesn't match RFC 2606's suggested ".example" or ".example.(com|org|net)".
+
+  Checking boilerplate required by RFC 5378 and the IETF Trust (see
+  https://trustee.ietf.org/license-info):
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking nits according to https://www.ietf.org/id-info/1id-guidelines.txt:
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking nits according to https://www.ietf.org/id-info/checklist :
+  ----------------------------------------------------------------------------
+
+  == There are 2 instances of lines with non-RFC2606-compliant FQDNs in the
+     document.
+
+
+  Miscellaneous warnings:
+  ----------------------------------------------------------------------------
+
+     No issues found here.
+
+  Checking references for intended status: Informational
+  ----------------------------------------------------------------------------
+
+  == Missing Reference: 'NOTE' is mentioned on line 994, but not
+     defined
+'[NOTE]...'
+
+  -- Obsolete informational reference (is this intentional?): RFC 7749
+     (Obsoleted by RFC 7991)
+
+
+     Summary: 0 errors (**), 0 flaws (~~), 2 warnings (==), 1 comment (--).
