@@ -2,7 +2,7 @@
 Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :doctype: internet-draft
 :abbrev: AsciiRFC Specifications
-:name: draft-ribose-asciirfc-02
+:name: draft-ribose-asciirfc-03
 :status: informational
 :ipr: trust200902
 :submissionType: independent
