@@ -4,7 +4,8 @@ image:https://img.shields.io/travis/riboseinc/rfc-asciidoc-rfc/master.svg[
 	Build Status, link="https://travis-ci.org/riboseinc/rfc-asciidoc-rfc"]
 
 This Internet-Draft is written in pure AsciiDoc using the excellent
-https://github.com/riboseinc/asciidoctor-rfc[`asciidoctor-rfc` gem].
+https://github.com/riboseinc/asciidoctor-rfc[`asciidoctor-rfc` gem]. The latest
+draft of this Internet-Draft is available at https://tools.ietf.org/html/draft-ribose-asciirfc-02 .
 
 == Fetching the document
 
