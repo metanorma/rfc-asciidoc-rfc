@@ -4,7 +4,8 @@
 Asciidoctor supports a range of "admonitions", including notes, warnings, and
 tips. They are indicated by a paragraph prefix (e.g. `WARNING:`), or as a block
 with an admonition style attribute. All admonitions are conflated in AsciiRFC,
-being converted to `note` elements in the document preamble, and `cref` documents in the main document.
+being converted to `note` elements in the document preamble, and `cref`
+documents in the main document.
 
 [source,asciidoc]
 ----
