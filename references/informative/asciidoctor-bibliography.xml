@@ -1,6 +1,6 @@
 <reference  anchor='asciidoctor-bibliography' target='https://github.com/riboseinc/asciidoctor-bibliography/'>
 <front>
-  <title>Citations and Bibliography the "asciidoctor-way"</title>
+  <title>Citations and Bibliography the 'asciidoctor-way'</title>
     <author>
       <organization>Ribose Inc.</organization>
       <address>
