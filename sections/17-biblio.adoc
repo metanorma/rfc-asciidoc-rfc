@@ -36,6 +36,7 @@ corresponding RFC XML in <<source-bib-xml-inline>>.
 
 [[source-bib-asciirfc-inline]]
 .Inline Bibliography AsciiRFC 
+====
 [source,asciidoc]
 ----
 Some datagram padding may be needed.<<RFC7253>>
@@ -60,9 +61,11 @@ Some datagram padding may be needed.<<RFC7253>>
 </reference>
 ++++
 ----
+====
 
 [[source-bib-xml-inline]]
 .Inline Bibliography Rendered RFC XML
+====
 [source,xml]
 ----
   <t>Some datagram padding may be needed <xref target="RFC7253"/></t>
@@ -87,6 +90,7 @@ Some datagram padding may be needed.<<RFC7253>>
   </reference>
 </references>
 ----
+====
 
 [#asciidoctor_bibliography]
 === Using Preprocessing
@@ -159,6 +163,7 @@ macro, which occurs where the RFC XML references would be inserted <<source-bib-
 
 [[source-bib-abib]]
 .Inline Bibliography Rendered RFC XML
+====
 [source,asciidoc]
 --
 [bibliography]
@@ -175,4 +180,5 @@ bibliography::norm[]
 bibliography::info[]
 ++++
 --
+====
 
