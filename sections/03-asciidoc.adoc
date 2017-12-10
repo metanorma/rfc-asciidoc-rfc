@@ -14,93 +14,116 @@ attributes in lines prefixed with `:`.
 * An optional document preamble, separated from document header by a blank line.
 
 * A number of sections, set off by a section title (a line prefixed with two or
-more `=`. A section may contain:
+more `=`. 
 
-** Other sections, whose level of nesting is indicated by the number of `=` in
+A section may contain:
+
+* Other sections, whose level of nesting is indicated by the number of `=` in
 their header.
 
-** Blocks of text. Blocks can have metadata (including a title, an anchor for
-cross-references, and attributes.) Blocks can be:
+* Blocks of text. Blocks can have metadata (including a title, an anchor for
+cross-references, and attributes.) 
 
-*** Paragraphs, which are terminated by blank lines.
+Blocks can be:
 
-*** Lists. List items are by default paragraphs, but can span over multiple
+* Paragraphs, which are terminated by blank lines.
+
+* Lists. List items are by default paragraphs, but can span over multiple
 paragraphs.
 
-*** Delimited blocks (with a line delimiter on either side of them); these
+* Delimited blocks (with a line delimiter on either side of them); these
 include tables, notes, sidebars, source code, block quotes, examples, and
 unprocessed content (e.g. raw XML). Delimited blocks contain by default one or
 more paragraphs.
 
-*** List items can contain other blocks, including both nested lists and
+* List items can contain other blocks, including both nested lists and
 delimited blocks.
 
-*** Some delimited blocks can contain other delimited blocks; for example,
+* Some delimited blocks can contain other delimited blocks; for example,
 examples can contain source code as well as discussion in paragraphs.
 
-** Blocks of text consist of inline text, which themselves can contain markup.
+* Blocks of text consist of inline text, which themselves can contain markup.
 
 
 Inline markup includes:
 
-*** Text formatting: bold, italic, superscript, subscript, monospace.
+* Text formatting: bold, italic, superscript, subscript, monospace.
 
-*** Custom markup macros. (AsciiRFC uses one: `bcp14`.)
+* Custom markup macros. (AsciiRFC uses one: `bcp14`.)
 
-*** URLs, including display text.
+* URLs, including display text.
 
-*** Inline anchors.
+* Inline anchors.
 
-*** Cross-references to anchors (IDs of blocks or spans of text), including
+* Cross-references to anchors (IDs of blocks or spans of text), including
 display text.
 
-*** Images, audio, and visual files. (AsciiRFC only supports images.)
+* Images, audio, and visual files. (AsciiRFC only supports images.)
 
-*** Index terms.
+* Index terms.
 
-*** Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via the
+* Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via the
 <<MathJax>> tool). (Not supported in AsciiRFC, since there is no RFC XML
 equivalent.)
 
-*** Footnotes. (Not supported in AsciiRFC.)
+* Footnotes. (Not supported in AsciiRFC.)
 
+
+=== AsciiRFC Structure Alignment with Asciidoctor
 
 The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
-In the following, v3 equivalences are given:
+In the following, v3 equivalences are given.
 
-* Header: `<rfc>` attributes, most `front` elements.
+Header::
+  `<rfc>` attributes, most `front` elements.
 
-* Preamble: `front/abstract` and `front/note`.
+Preamble::
+  `front/abstract` and `front/note`.
 
-* Sections: `middle/section` elements.
+Sections::
+  `middle/section` elements.
 
-* Sections with `bibliography` style attributes: `back/references` elements.
+Sections with `bibliography` style attributes::
+  `back/references` elements.
 
-* Sections with `appendix` style attributes: `back/section` elements.
+Sections with `appendix` style attributes::
+  `back/section` elements.
 
-* Paragraphs: `t` elements.
+Paragraphs::
+  `t` elements.
 
-* Lists: `ul`, `ol`, `dl` elements.
+Lists::
+  `ul`, `ol`, `dl` elements.
 
-* Delimited blocks: `artwork`, `aside`, `blockquote`, `figure`, `note`,
-`sourcecode`, `table`.
+Delimited blocks::
+  `artwork`, `aside`, `blockquote`, `figure`, `note`, `sourcecode`, `table`.
 
-* Inline markup: `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`,
-`strong`, `sub`, `sup`, `tt`, `xref`.
+Inline markup::
+  `bcp14`, `br`, `cref`, `em`, `eref`, `iref`, `relref`, `strong`, `sub`,
+  `sup`, `tt`, `xref`.
 
 Full details of the mapping of AsciiRFC elements to RFC XML v2 and v3
 elements, and of how to convert AsciiRFC documents to RFC XML, are given in
 the documentation of <<asciidoctor-rfc>>.
 
-The following gives an overview of how to create an RFC XML document in
-AsciiRFC, with some pitfalls to be aware of. Illustrations are in RFC XML v3,
-although the converter deals with both versions of RFC XML.
+The following section gives an overview of how to create an RFC XML document in
+AsciiRFC, with some pitfalls to be aware of.
 
-=== Simple illustration
+Illustrations are in RFC XML v3, although the converter deals with both
+versions of RFC XML.
 
-The following is an illustration of a simple AsciiRFC document, and its
-corresponding rendering in RFC XML v3:
 
+=== Simple Illustration
+
+A simple AsciiRFC document is provided in <<source-sample-asciirfc>>, and its
+corresponding rendering in:
+
+* RFC XML v3 (<<source-sample-asciirfc-output-v3>>)
+* RFC XML v2 (<<source-sample-asciirfc-output-v2>>)
+
+[[source-sample-asciirfc]]
+.Sample Internet-Draft in AsciiRFC
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -196,6 +219,7 @@ singing "Hallelujah."
 But you try and tell the young people today that...
 and they won't believe ya.
 ----
+====
 
 The first block of text, from `= Four Yorkshiremen Sketch` through to
 `:link: \https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch`,
@@ -230,6 +254,9 @@ The final section is tagged with the style attribute `[appendix]`, and is treate
 
 The RFC XML v3 document generated from this AsciiRFC document is:
 
+[[source-sample-asciirfc-output-v3]]
+.Sample Internet-Draft In AsciiRFC, Output In RFC XML v3 Format
+====
 [source,xml]
 ----
 <?xml version="1.0" encoding="US-ASCII"?>
@@ -351,15 +378,18 @@ The RFC XML v3 document generated from this AsciiRFC document is:
     </section>
   </back>
 </rfc>
-
 ----
+====
 
 Some default processing instructions have already been prefixed to the XML.
 
-Although we do not describe it extensively in this document, our AsciiRFC
-converter also generates RFC XML v2 from the same source AsciiRFC. For illustration,
-the foregoing AsciiRFC document generates the following RFC XML v2 output:
+Our AsciiRFC converter can also generate RFC XML v2 from the same source
+AsciiRFC, as shown in <<source-sample-asciirfc-output-v2>>. Output in RFC XML
+v2 is not extensively described in this document.
 
+[[source-sample-asciirfc-output-v2]]
+.Sample Internet-Draft In AsciiRFC, Output In RFC XML v2 Format
+====
 [source,xml]
 ----
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
@@ -477,3 +507,5 @@ the foregoing AsciiRFC document generates the following RFC XML v2 output:
   </back>
 </rfc>
 ----
+====
+
