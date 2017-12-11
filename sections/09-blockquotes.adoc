@@ -1,10 +1,20 @@
 == Blockquotes
 
-Asciidoctor supports blockquotes and quotations of verse; its block quotations
-permit arbitrary levels of quote nesting. RFC XML v3, and thus AsciiRFC, only supports one level of
-blockquotes. Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of tables; so
-verse quotations are converted to prose in the v3 converter.
+Asciidoctor supports blockquotes and quotations of verse; its block
+quotations permit arbitrary levels of quote nesting.
+RFC XML v3, and thus AsciiRFC, only supports one level of blockquotes.
 
+Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of
+tables, so verse quotations are converted to prose in the v3
+converter.
+
+An example of using AsciiRFC Blockquotes is given in
+<<source-asciirfc-blockquotes>> with its rendered version in
+<<source-asciirfc-blockquotes-v3>>.
+
+[[source-asciirfc-blockquotes]]
+.AsciiRFC Blockquote Usage
+====
 [source,asciidoc]
 ----
 [quote,attribution="Monty Python",citetitle="http://example.com"]
@@ -22,7 +32,11 @@ Dennis: Oh, what a giveaway!
 ** You saw him, Didn't you?
 ____
 ----
+====
 
+[[source-asciirfc-blockquotes-v3]]
+.AsciiRFC Blockquote Usage (RFC XML v3)
+====
 [source,xml]
 ----
 <blockquote quotedfrom="Monty Python" cite="http://example.com">
@@ -43,4 +57,5 @@ ____
   </ul>
 </blockquote>
 ----
+====
 

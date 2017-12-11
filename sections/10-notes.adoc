@@ -1,12 +1,21 @@
 
 == Notes And Asides
 
-Asciidoctor supports a range of "admonitions", including notes, warnings, and
-tips. They are indicated by a paragraph prefix (e.g. `WARNING:`), or as a block
-with an admonition style attribute. All admonitions are conflated in AsciiRFC,
-being converted to `note` elements in the document preamble, and `cref`
-documents in the main document.
+Asciidoctor supports a range of "admonitions", including notes,
+warnings, and tips. They are indicated by a paragraph prefix (e.g.
+`WARNING:`), or as a block with an admonition style attribute.
 
+All admonitions are conflated in AsciiRFC, being converted to `note`
+elements in the document preamble, and `cref` documents in the main
+document.
+
+This means that all admonitions will therefore not appear in the
+textual output. A sample of this is shown in <<source-asciirfc-note>>
+with its rendered output in <<source-asciirfc-note-v3>>.
+
+[[source-asciirfc-note]]
+.An AsciiRFC Adminition Block
+======
 [source,asciidoc]
 ----
 == Section 1
@@ -16,7 +25,11 @@ documents in the main document.
 Any admonition inside the body of the text is a comment.
 ====
 ----
+======
 
+[[source-asciirfc-note-v3]]
+.An AsciiRFC Adminition Block (RFC XML v3)
+====
 [source,xml]
 ----
 <section anchor="_section_1" numbered="false">
@@ -28,18 +41,24 @@ Any admonition inside the body of the text is a comment.
   </t>
 </section>
 ----
+====
 
-Note that no inline formatting is permitted in RFC XML v2 `cref` elements, and
-it is stripped for v2 by the converter.
+With RFC XML v2, note that no inline formatting is permitted for
+`cref` elements, and is therefore stripped for v2 by the converter.
 
-Because paragraphs in AsciiRFC cannot contain any other blocks, a comment at
-the end of a paragraph is treated as a new block. In the document converter,
-any such comments are moved inside the preceding RFC XML paragraph; if the
-comment is at the start of a section, as in the example above, it is wrapped
-inside a paragraph.
+Because paragraphs in AsciiRFC cannot contain any other blocks, a
+comment at the end of a paragraph is treated as a new block. In the
+document converter, any such comments are moved inside the preceding
+RFC XML paragraph; if the comment is at the start of a section, as in
+the example above, it is wrapped inside a paragraph.
 
-The RFC XML v3 converter also supports asides (Asciidoctor sidebars):
+The RFC XML v3 converter also supports `asides` (Asciidoctor
+sidebars). A sample is shown in <<source-asciirfc-sidebar>> with its
+rendered output in <<source-asciirfc-sidebar-v3>>.
 
+[[source-asciirfc-sidebar]]
+.An AsciiRFC Sidebar Block
+====
 [source,asciidoc]
 ----
 == Section 1
@@ -55,7 +74,11 @@ And this is ascii-art
 ....
 ****
 ----
+====
 
+[[source-asciirfc-sidebar-v3]]
+.An AsciiRFC Sidebar Block Rendered As An Aside (RFC XML v3)
+====
 [source,xml]
 ----
 <section anchor="_section_1" numbered="false">
@@ -74,9 +97,9 @@ And this is ascii-art
   </aside>
 </section>
 ----
+====
 
-While AsciiDoc has comments proper, notated with initial `//`, they are ignored
-by the Asciidoctor document converter; so they will not appear as XML comments
-in the converter output.
-
+Comments given in the AsciiDoc syntax (notated with initial `//`) are
+not intended to be shown in the rendered output, and will not appear
+in the output as XML comments.
 

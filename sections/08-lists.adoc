@@ -1,10 +1,21 @@
+[#lists]
 == Lists
 
-AsciiRFC supports ordered, unordered, and definition lists. Indentation of
-ordered and unordered lists is indicated by repeating the list item prefix (`*`
-and `.` respectively.) List attributes specify the type of symbol used for
-ordered lists:
+=== Basic Lists
 
+AsciiRFC supports ordered, unordered, and definition lists.
+Indentation of ordered and unordered lists is indicated by repeating
+the list item prefix (`*` and `.` respectively).
+
+List attributes specify the type of symbol used for ordered lists.
+
+An example of AsciiRFC List is shown in <<source-asciirfc-list>> with
+its rendered version in <<source-asciirfc-list-v3>>.
+
+
+[[source-asciirfc-list]]
+.AsciiRFC With Lists
+====
 [source,asciidoc]
 ----
 [loweralpha]
@@ -16,7 +27,11 @@ ordered lists:
 . Fifth
 . Sixth
 ----
+====
 
+[[source-asciirfc-list-v3]]
+.AsciiRFC With Lists (RFC XML v3)
+====
 [source,xml]
 ----
 <ol anchor="id" type="a">
@@ -32,12 +47,24 @@ ordered lists:
   <li>Sixth</li>
 </ol>
 ----
+====
 
-A list item by default spans a single paragraph. A following paragraph or other
-block element can be appended to the current list item by prefixing it with `+`
-in a separate line. See the "List Continuation" section in
-<<Asciidoctor-Manual>> for more information.
+=== List Continuation
 
+A list item by default spans a single paragraph. A following paragraph
+or other block element can be appended to the current list item by
+prefixing it with `+` in a separate line.
+
+See the "List Continuation" section in <<Asciidoctor-Manual>> for more
+information.
+
+An example of list containuation with text is shown in
+<<source-asciirfc-list-text>> with its rendered version in
+<<source-asciirfc-list-text-v3>>.
+
+[[source-asciirfc-list-text]]
+.AsciiRFC List With Text Continuation
+====
 [source,asciidoc]
 ----
 Notes::  Note 1.
@@ -46,7 +73,11 @@ Note 2.
 +
 Note 3.
 ----
+====
 
+[[source-asciirfc-list-text-v3]]
+.AsciiRFC List With Text Continuation (RFC XML v3)
+====
 [source,xml]
 ----
 <dl>
@@ -58,14 +89,22 @@ Note 3.
   </dd>
 </dl>
 ----
+====
 
-(Multiple paragraphs are not permitted within a list item in RFC XML v2.
-The RFC XML converter deals with this by converting paragraph breaks into line
-breaks within a list item.)
+(Multiple paragraphs are not permitted within a list item in RFC XML
+v2.  The RFC XML converter deals with this by converting paragraph
+breaks into line breaks within a list item.)
 
-List continuations can also be embed to populate a list item with a sequence of
-blocks as a unit (in an Asciidoctor open block):
+List continuations can also be embed to populate a list item with a
+sequence of blocks as a unit (in an Asciidoctor open block).
 
+An example of list containuation with block is shown in
+<<source-asciirfc-list-block>> with its rendered version in
+<<source-asciirfc-list-block-v3>>.
+
+[[source-asciirfc-list-block]]
+.AsciiRFC List With Block Continuation
+====
 [source,asciidoc]
 ----
 * List Entry 1
@@ -81,7 +120,11 @@ Literal
 Note 3.
 --
 ----
+====
 
+[[source-asciirfc-list-block-v3]]
+.AsciiRFC List With Block Continuation (RFC XML v3)
+====
 [source,xml]
 ----
 <ul>
@@ -98,12 +141,18 @@ Note 3.
   </li>
 </ul>
 ----
+====
 
-AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic level of blocks, and does not
-permit lists to be nested within them: text after a list is considered to be a
-new paragraph. So markup like the following cannot be generated via
-AsciiRFC:
+AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic
+level of blocks, and does not permit lists to be nested within them:
+text after a list is considered to be a new paragraph.
 
+Therefore, markup as shown in <<source-asciirfc-list-impossible>>
+cannot be generated via AsciiRFC.
+
+[[source-asciirfc-list-impossible]]
+.This RFC XML v3 Output Cannot Be Generated Using AsciiRFC
+====
 [source,xml]
 ----
 <t>
@@ -118,4 +167,5 @@ AsciiRFC:
   And this is the continuation of the paragraph.
 </t>
 ----
+====
 

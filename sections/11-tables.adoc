@@ -1,9 +1,20 @@
 == Tables
 
-AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies and
-feet; cells spanning multiple rows and columns; and horizontal alignment. The
-larger range of table formatting options available in RFC XML v2 is also supported.
+AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies
+and feet; cells spanning multiple rows and columns; and horizontal
+alignment. The larger range of table formatting options available in
+RFC XML v2 is also supported.
 
+A sample of an AsciiRFC table is shown in <<source-asciirfc-table>>
+with its rendered output in <<source-asciirfc-table-v3>>.
+
+Neither version of RFC XML is as expressive in its table structure as
+Asciidoctor. RFC XML, for example, does not permit blocks within table
+cells.
+
+[[source-asciirfc-table]]
+.An AsciiRFC Table
+====
 [source,asciidoc]
 ----
 .Table Title
@@ -22,7 +33,11 @@ h|header cell | body cell
 |foot | foot
 |===
 ----
+====
 
+[[source-asciirfc-table-v3]]
+.An AsciiRFC Table (RFC XML v3)
+====
 [source,xml]
 ----
 <table>
@@ -73,8 +88,5 @@ h|header cell | body cell
   </tfoot>
 </table>
 ----
-
-Neither version of RFC XML is as expressive in its table structure as
-Asciidoctor. RFC XML, for example, does not permit blocks within table
-cells.
+====
 
