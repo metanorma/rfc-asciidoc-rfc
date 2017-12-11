@@ -8,7 +8,7 @@
 AsciiRFC:
 
 [source,asciidoc]
-----
+--
 = The Holy Hand Grenade of Antioch
 Arthur Pendragon <arthur@camelot.gov.uk>
 :doctype: internet-draft
@@ -423,7 +423,7 @@ if ready:
 ++++
 
 ++++
-----
+--
 
 RFC XML v3:
 

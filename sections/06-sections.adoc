@@ -1,11 +1,18 @@
 == Sections and Paragraphs
 
-Section headers are given with a sequence of `=`, the number of `=` giving the
-header level. Section numbering is toggled with the in-document attribute
-`:sectnums:` (on), `:sectnums!:` (off). The `toc` attribute can also be set
-on sections, indicating whether the section can be included in the document's
-table of contents.
+Section headers are given with a sequence of `=`, the number of `=`
+giving the header level. Section numbering is toggled with the
+in-document attribute `:sectnums:` (on), `:sectnums!:` (off). The
+`toc` attribute can also be set on sections, indicating whether the
+section can be included in the document's table of contents.
 
+<<source-asciirfc-sections>> shows how sections and paragraphs are
+used in AsciiRFC, and its rendered form shown in
+<<source-asciirfc-sections-v3>>.
+
+[[source-asciirfc-sections]]
+.AsciiRFC With Sections
+====
 [source,asciidoc]
 ----
 :sectnums:
@@ -24,7 +31,11 @@ Para 2
 ==== Subsection 1.2.1
 Para 3
 ----
+====
 
+[[source-asciirfc-sections-v3]]
+.AsciiRFC With Sections (RFC XML v3)
+====
 [source,xml]
 ----
 <section anchor="_section_1" toc="exclude" numbered="true">
@@ -44,4 +55,5 @@ Para 3
   </section>
 </section>
 ----
+====
 

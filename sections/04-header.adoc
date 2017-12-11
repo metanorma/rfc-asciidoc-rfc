@@ -1,11 +1,29 @@
+[#header]
 == Header And Document Attributes
 
 The header gives the document title, followed by an optional author
-attribution, and a series of document attributes, with no carriage return
-breaks.
+attribution, and a series of document attributes, with no carriage
+return breaks.
 
-For example:
+=== Title And Basic Attributes
 
+Document attributes are used to populate attributes of the root `rfc`
+element, `front` elements, and document-level processing instructions.
+
+* `:doctype:` determines  whether the document will be considered
+`rfc` or `internet-draft`, and interprets other attributes
+accordingly.
+
+* Certain attributes (`workgroup`, `area`, `keyword`) are comma
+delimited, and result in repeated RFC XML elements.
+
+<<source-asciirfc-header>> demonstrates how to set the document header
+in AsciiRFC, with its rendering in v3 shown in
+<<source-asciirfc-header-v3>>.
+
+[[source-asciirfc-header]]
+.AsciiRFC Document Header
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -22,18 +40,11 @@ Tim Brooke-Taylor <tbt@example.com>
 :keyword: yorkshire, memory
 :revdate: 1990-04-01T00:00:00Z
 ----
+====
 
-The document attributes are used to populate attributes of the root `rfc`
-element, `front` elements, and document-level processing instructions.
-
-* `:doctype:` determines  whether the document will be considered `rfc` or
-`internet-draft`, and interprets other attributes accordingly.
-
-* Certain attributes (`workgroup`, `area`, `keyword`) are comma delimited, and
-result in repeated RFC XML elements.
-
-The foregoing AsciiRFC renders into RFC XML v3 as:
-
+[[source-asciirfc-header-v3]]
+.AsciiRFC Document Header Rendered As RFC XML v3
+====
 [source,xml]
 ----
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
@@ -53,10 +64,18 @@ The foregoing AsciiRFC renders into RFC XML v3 as:
     <keyword>yorkshire</keyword>
     <keyword>memory</keyword>
 ----
+====
 
-The document header can spell out further information about authors, including
-contact details:
+=== Detailed Author Information
 
+The document header can spell out further information about authors,
+including contact details. The AsciiRFC header is shown in
+<<source-asciirfc-header-authors>> with its rendering in RFC XML v3
+shown in <<source-asciirfc-header-authors-v3>>.
+
+[[source-asciirfc-header-authors]]
+.AsciiRFC Document Header With One Author
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -79,7 +98,11 @@ Tim Brooke-Taylor <tbt@example.com>
 :city: Cambridge
 :code: MA 02238
 ----
+====
 
+[[source-asciirfc-header-authors-v3]]
+.AsciiRFC Document Header With One Author (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
@@ -107,11 +130,16 @@ Tim Brooke-Taylor <tbt@example.com>
     <keyword>yorkshire</keyword>
     <keyword>memory</keyword>
 ----
+====
 
 Details of a second, third etc. author, including their organization and
 contact details, are provided by suffixing the relevant author attributes with
-`_2`, `_3`  etc.:
+`_2`, `_3`  etc., as shown in <<source-asciirfc-header-mauthors>> and
+its v3 rendering <<source-asciirfc-header-mauthors-v3>>.
 
+[[source-asciirfc-header-mauthors]]
+.AsciiRFC Document Header With Multiple Authors
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -135,7 +163,11 @@ Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
 :lastname_2: Cleese
 :uri_2: https://twitter.com/johncleese
 ----
+====
 
+[[source-asciirfc-header-mauthors-v3]]
+.AsciiRFC Document Header With Multiple Authors (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc ipr="trust200902" submissionType="IETF"
@@ -167,6 +199,7 @@ Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
     </author>
     <date day="25" month="November" year="2017" />
 ----
+====
 
 The initial author attribution in AsciiRFC, e.g.
 `Tim Brooke-Taylor <\tbt@bbc.co.uk>; John Cleese <\jc@bbc.co.uk>`
@@ -174,15 +207,23 @@ in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr."
 or suffixes like "Jr.".
 
-Name attributes with any degree of complexity should be overriden by using the
-`:fullname:` and `:lastname:` attributes. The AsciiRFC `:forename_initials:`
-attribute replaces the built-in Asciidoctor `:initials:` attribute (which
-includes the surname initial), and is not automatically populated from the name
-attribution.
+Name attributes with any degree of complexity should be overriden by
+using the `:fullname:` and `:lastname:` attributes. The AsciiRFC
+`:forename_initials:` attribute replaces the built-in Asciidoctor
+`:initials:` attribute (which includes the surname initial), and is
+not automatically populated from the name attribution.
+
+
+=== XML Processing Information
 
 A document header may also contain attribute headers which are treated
-as XML processing instructions:
+as XML processing instructions. An AsciiRFC example is shown in
+<<source-asciirfc-header-pi>> with its rendering in
+<<source-asciirfc-header-pi-v3>>.
 
+[[source-asciirfc-header-pi]]
+.AsciiRFC Document Header With XML Processing Information
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -196,7 +237,11 @@ Tim Brooke-Taylor <tbt@example.com>
 :text-list-symbols: yes
 :rfc2629xslt: true
 ----
+====
 
+[[source-asciirfc-header-pi-v3]]
+.AsciiRFC Document Header With XML Processing Information (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc ipr="trust200902" submissionType="IETF"
@@ -212,21 +257,29 @@ Tim Brooke-Taylor <tbt@example.com>
     </author>
     <date day="1" month="April" year="1990" />
 ----
+====
 
-A few document attributes are specific to the operation of the RFC XML document
-converter:
 
-`:no-rfc-bold-bcp14: false` :: overrides the wrapping by default of boldface
-uppercase BCP14 <<RFC2119>> words (e.g. `\*MUST NOT*`) with the `bcp14`
-element.
+=== AsciiRFC-specific Document Attributes
 
-`:smart-quotes: false` :: overrides Asciidoctor's conversion of straight quotes
-and apostrophes to smart quotes and apostrophes.
+A few document attributes are specific to the operation of the RFC XML
+document converter:
 
-`:inline-definition-lists: true` :: overrides the RFC XML v2 `idnits`
-requirement that a blank line be inserted between a definition list term and
-its definition.
+`:no-rfc-bold-bcp14: false` :: 
+  overrides the wrapping by default of boldface uppercase BCP14
+  <<RFC2119>> words (e.g. `\*MUST NOT*`) with the `bcp14` element.
 
+`:smart-quotes: false` ::
+  overrides Asciidoctor's conversion of straight quotes and
+  apostrophes to smart quotes and apostrophes.
+
+`:inline-definition-lists: true` ::
+  overrides the RFC XML v2 `idnits` requirement that a blank line be
+  inserted between a definition list term and its definition.
+
+[[source-asciirfc-header-rfc]]
+.AsciiRFC Document Header Without RFC-specific Attributes
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -238,7 +291,11 @@ Tim Brooke-Taylor <tbt@example.com>
 == Section 1
 The specification *MUST NOT* use the word _doesn't_.
 ----
+====
 
+[[source-asciirfc-header-rfc-v3]]
+.AsciiRFC Document Header Without RFC-specific Attributes (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
@@ -261,9 +318,12 @@ The specification *MUST NOT* use the word _doesn't_.
     </section>
   </middle>
 </rfc>
-
 ----
+====
 
+[[source-asciirfc-header-override]]
+.AsciiRFC Document Header With Overridden RFC-specific Attributes
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -277,7 +337,11 @@ Tim Brooke-Taylor <tbt@example.com>
 == Section 1
 The specification *MUST NOT* use the word _doesn't_.
 ----
+====
 
+[[source-asciirfc-header-override-v3]]
+.AsciiRFC Document Header With Overridden RFC-specific Attributes (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
@@ -296,9 +360,10 @@ The specification *MUST NOT* use the word _doesn't_.
     <section anchor="_section_1" numbered="false">
       <name>Section 1</name>
       <t>The specification <strong>MUST NOT</strong>
-        use the word <em> doesn't</em>.</t>
+        use the word <em>doesn't</em>.</t>
     </section>
   </middle>
 </rfc>
 ----
+====
 

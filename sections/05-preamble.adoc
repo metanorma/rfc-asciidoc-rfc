@@ -1,3 +1,4 @@
+[#preamble]
 == Preamble
 
 The preamble in AsciiRFC is the text between the end of the document header
@@ -8,8 +9,13 @@ optionally be tagged with the `abstract` style attribute.
 
 Any notes in the preamble are treated as a `note` element.
 
-For example:
+An example of setting the preamble is given in
+<<source-asciirfc-preamble>> with its rendering in
+<<source-asciirfc-preamble-v3>>.
 
+[[source-asciirfc-preamble]]
+.AsciiRFC With Preamble
+====
 [source,asciidoc]
 ----
 = Four Yorkshiremen Sketch
@@ -36,13 +42,17 @@ and may have contributed to the writing.
 
 [NOTE]
 .Original Recording
-====
+==
 The original performance of the sketch by the four creators is one of
 the surviving sketches from the programme and can be seen on the
 _At Last the 1948 Show_ DVD.
-====
+==
 ----
+====
 
+[[source-asciirfc-preamble-v3]]
+.AsciiRFC With Preamble (RFC XML v3)
+====
 [source,xml]
 ----
 <rfc submissionType="IETF" prepTime="2017-11-25T10:32:27Z" version="3">
@@ -82,4 +92,5 @@ _At Last the 1948 Show_ DVD.
     </note>
   </front>
 ----
+====
 

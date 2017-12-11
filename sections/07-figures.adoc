@@ -1,12 +1,21 @@
 
+[#figures]
 == Figures
 
-AsciiRFC examples (corresponding to RFC XML Figures), source code Listings, and
-Literals (preformatted text) are all delimited blocks. Listings and Literals
-can occur nested within Examples:
+AsciiRFC examples (corresponding to RFC XML Figures), source code
+Listings, and Literals (preformatted text) are all delimited blocks.
+Listings and Literals can occur nested within Examples.
 
-[source,asciidoc]
+An AsciiRFC example with a figure is given in
+<<source-asciirfc-figure>>, and its rendering in
+<<source-asciirfc-figure-v3>>.
+
+[[source-asciirfc-figure]]
+.AsciiRFC With A Figure
+[example]
 --
+[source,asciidoc]
+------
 .Figure 1
 ====
 .figure1.txt
@@ -31,11 +40,15 @@ def listing(node)
     result << "<figure>"
   end
 end
-----
+------
 ====
 --
 
 
+[[source-asciirfc-figure-v3]]
+.AsciiRFC With A Figure (RFC XML v3)
+[example]
+--
 [source,xml]
 ----
 <figure>
@@ -61,10 +74,16 @@ This is some ASCII Art:
   </sourcecode>
 </figure>
 ----
+--
 
-If an AsciiRFC Listing or Literal occurs outside of an Example, the RFC XML
-converter will supply the surrounding Figure element:
+If an AsciiRFC Listing or Literal occurs outside of an Example
+(<<source-asciirfc-literal>>), the RFC XML converter will supply the
+surrounding Figure element (<<source-asciirfc-literal-v3>>).
 
+[[source-asciirfc-literal]]
+.AsciiRFC With ASCII Art Without Figure Wrapping
+[example]
+--
 [source,asciidoc]
 ----
 ....
@@ -77,7 +96,12 @@ This is some ASCII Art:
 |_|   |___\____|_|\___|\__|
 ....
 ----
+--
 
+[[source-asciirfc-literal-v3]]
+.AsciiRFC With ASCII Art Without Figure Wrapping (RFC XML v3)
+[example]
+--
 [source,xml]
 ----
 <figure>
@@ -90,4 +114,5 @@ This is some ASCII Art:
 |_|   |___\____|_|\___|\__|</artwork>
 </figure>
 ----
+--
 
