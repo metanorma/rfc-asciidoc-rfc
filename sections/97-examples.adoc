@@ -3,9 +3,7 @@
 [#appendix-a]
 == Examples
 
-=== Example 1
-
-AsciiRFC:
+=== Example 1: AsciiRFC
 
 [source,asciidoc]
 --
@@ -79,9 +77,9 @@ as any other hand grenade.
 The rabbit is now used as a metaphor for something ostensibly harmless
 which is, in fact, deadly. Such hidden but real risks may even arise
 from similarly cuddly animals.
-----
+--
 
-RFC XML v3:
+=== Example 1: RFC XML v3
 
 [source,xml]
 ----
@@ -173,13 +171,12 @@ parse="text" />
     </section>
   </back>
 </rfc>
-
 ----
 
-=== Example 2
+=== Example 2: AsciiRFC
 
 [source,asciidoc]
-----
+--
 = The Holy Hand Grenade of Antioch
 :doctype: internet-draft
 :abbrev: Hand Grenade of Antioch
@@ -421,11 +418,9 @@ if ready:
   <seriesInfo name="DOI" value="10.17487/RFC2635" />
 </reference>
 ++++
-
-++++
 --
 
-RFC XML v3:
+=== Example 2: RFC XML v3
 
 [source,xml]
 ----
