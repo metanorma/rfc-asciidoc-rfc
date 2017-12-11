@@ -1,11 +1,19 @@
 == Inclusions
 
-The Asciidoctor "include" directive <<Asciidoctor-Manual>> is used to include
-external files in a master AsciiRFC document. The directive is capable of
-sophisticated document merging, including adjusting the heading levels of the
-included text, selecting text within specified tags or line numbers to be
-included, and adjusting the indentation of code snippets in merged text:
+AsciiRFC inherits the Asciidoctor "include" directive
+<<Asciidoctor-Manual>> to include external files in a master AsciiRFC
+document. 
 
+This directive is capable of sophisticated document merging, including
+adjusting the heading levels of the included text, selecting text
+within specified tags or line numbers to be included, and adjusting
+the indentation of code snippets in merged text.
+
+Its basic syntax is given in <<source-asciirfc-include>>.
+
+[[source-asciirfc-include]]
+.Inclusions In AsciiRFC
+====
 [source,asciidoc]
 ----
 include::path[
@@ -15,8 +23,10 @@ include::path[
   indent=_depth_
 ]
 ----
+====
 
-If a file is included in an AsciiRFC document, ensure it ends with a blank line.
-An inclusion that results in its final block not being delimited with a blank line
-from what follows can lead to unpredictable results.
+If a file is included in an AsciiRFC document, ensure it ends with a
+blank line.  An inclusion that results in its final block not being
+delimited with a blank line from what follows can lead to
+unpredictable results.
 

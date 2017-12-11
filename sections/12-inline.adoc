@@ -79,7 +79,7 @@ references (references to the value of attributes set in the document
 header) as shown in <<source-asciirfc-escaping>>.
 
 [[source-asciirfc-escaping]]
-.Escaping Syntax In AsciiRFC
+.Escaping AsciiRFC Syntax Using Attributes
 ====
 [source,asciidoc]
 ----

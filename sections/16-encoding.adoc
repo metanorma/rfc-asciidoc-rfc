@@ -1,20 +1,32 @@
 
+[#encoding]
 == Encoding and Entities
 
-XML accepts the full range of characters in the world's languages through
-UTF-8 character encoding, and one of the motivations for the move from plain
-text to RFC XML has been to allow non-ASCII characters to be included in RFCs.
-However, current RFC XML v2 tools still do not support UTF-8, and other tool
-support for UTF-8 also remains patchy. Out of an abundance of caution, the RFC
-XML converter uses US-ASCII for its character encoding, and renders any
-non-ASCII characters as entities.
+XML accepts the full range of characters in the world's languages
+through UTF-8 character encoding, and one of the motivations for the
+move from plain text to RFC XML has been to allow non-ASCII characters
+to be included in RFCs.
 
-The converter accepts HTML entities in AsciiRFC, even though they are not
-part of the XML specification; HTML entities such as `&nbsp;` feature in
-examples of RFC XML provided by the IETF. In order to prevent dependence of the
-XML output from extraneous entity definitions, any such entities are rendered
-in the XML as decimal character entities.
+However, current RFC XML v2 tools still do not support UTF-8, and
+alternative tooling support for UTF-8 also remains patchy. Out of an
+abundance of caution, the RFC XML converter uses US-ASCII for its
+character encoding, and renders any non-ASCII characters as HTML
+entities.
 
+AsciiRFC accepts HTML entities as input even though they are not part
+of the XML specification. HTML entities such as `&nbsp;` feature in
+examples of RFC XML provided by the IETF. In order to prevent
+dependence of the XML output from extraneous entity definitions, any
+such entities are rendered in the XML as decimal character entities.
+
+An example of how AsciiRFC renders non-ASCII UTF-8 characters
+are given in <<source-asciirfc-enc>> with the output in
+<<source-asciirfc-enc-v3>>.
+
+
+[[source-asciirfc-enc]]
+.UTF-8 Characters In AsciiRFC
+====
 [source,asciidoc]
 ----
 Это
@@ -22,7 +34,11 @@ in the XML as decimal character entities.
 Язык.
 &mdash; This is not George&apos;s.&#x2020;
 ----
+====
 
+[[source-asciirfc-enc-v3]]
+.UTF-8 Characters In AsciiRFC Rendered As RFC XML v3
+====
 [source,xml]
 ----
 <t>&#1069;&#1090;&#1086;
@@ -30,4 +46,5 @@ in the XML as decimal character entities.
 &#1071;&#1079;&#1099;&#1082;. &#8212;
 This is not George's.&#8224;</t>
 ----
+====
 

@@ -1,28 +1,52 @@
 == Links
 
-Common URL formats are recognised automatically as hyperlinks, and are rendered
-as such; any hyperlinked text is appended after the hyperlink in square
-brackets:
+Common URL formats are recognised automatically as hyperlinks in
+AsciiRFC, inheriting this excellent feature from AsciiDoc, and are
+rendered as such.
 
+Any hyperlinked text is appended after the hyperlink in square
+brackets.
+
+An example is given in <<source-asciirfc-link>> with its rendered
+version in <<source-asciirfc-link-v3>>.
+
+[[source-asciirfc-link]]
+.An AsciiRFC Link
+====
 [source,asciidoc]
 ----
 http://example.com/[linktext]
 ----
+====
 
+[[source-asciirfc-link-v3]]
+.An AsciiRFC Link (RFC XML v3)
+====
 [source,xml]
 ----
 <t><eref target="http://example.com/">linktext</eref></t>
 ----
+====
 
-To prevent hyperlinking of a URL, prefix it with a backslash.
+To prevent hyperlinking of a URL, prefix it with a backslash, as shown
+in <<source-asciirfc-link-lit>> with its rendered version in
+<<source-asciirfc-link-lit-v3>.
 
+[[source-asciirfc-link-lit]]
+.A Literal AsciiRFC Link
+====
 [source,asciidoc]
 ----
 \http://example.com/[linktext]
 ----
+====
 
+[[source-asciirfc-link-lit-v3]]
+.A Literal AsciiRFC Link (RFC XML v3)
+====
 [source,xml]
 ----
 <t>http://example.com/[linktext]</t>
 ----
+====
 
