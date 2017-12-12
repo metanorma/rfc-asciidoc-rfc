@@ -2,14 +2,14 @@
 Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :doctype: internet-draft
 :abbrev: AsciiRFC Specifications
-:name: draft-ribose-asciirfc-04
+:name: draft-ribose-asciirfc-05
 :status: informational
 :ipr: trust200902
-:submission-type: independent
 :area: Internet
-:intended-series: full-standard
+:submission-type: independent
+:intended-series: informational
 //:workgroup: Network
-:revdate: 2017-12-08T00:00:00Z
+:revdate: 2017-12-12T00:00:00Z
 :lastname: Tse
 :fullname: Ronald Henry Tse
 :forename_initials: R. H.
