@@ -5,7 +5,7 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :name: draft-ribose-asciirfc-04
 :status: informational
 :ipr: trust200902
-:submissionType: independent
+:submission-type: independent
 :area: Internet
 :intended-series: full-standard
 //:workgroup: Network
