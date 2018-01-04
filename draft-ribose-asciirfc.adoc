@@ -73,7 +73,7 @@ include::sections/19-authoring.adoc[]
 include::sections/20-security.adoc[]
 include::sections/21-iana.adoc[]
 
-include::sections/97-examples.adoc[]
 include::sections/98-references.adoc[]
+include::sections/97-examples.adoc[]
 include::sections/99-acknowledgements.adoc[]
 

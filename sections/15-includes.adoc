@@ -1,6 +1,6 @@
 == Inclusions
 
-AsciiRFC inherits the Asciidoctor "include" directive
+AsciiRFC inherits the Asciidoctor syntax "include" directive
 <<Asciidoctor-Manual>> to include external files in a master AsciiRFC
 document. 
 

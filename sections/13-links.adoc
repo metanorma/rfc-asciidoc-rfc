@@ -30,7 +30,7 @@ http://example.com/[linktext]
 
 To prevent hyperlinking of a URL, prefix it with a backslash, as shown
 in <<source-asciirfc-link-lit>> with its rendered version in
-<<source-asciirfc-link-lit-v3>.
+<<source-asciirfc-link-lit-v3>>.
 
 [[source-asciirfc-link-lit]]
 .A Literal AsciiRFC Link

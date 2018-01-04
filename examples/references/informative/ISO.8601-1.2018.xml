@@ -1,0 +1,14 @@
+<reference anchor='ISO.8601-1.2018' target='https://www.iso.org/en/standard/70907.html'>
+  <front>
+    <title>ISO/DIS 8601-1:2018, Data elements and interchange formats -- Information interchange -- Representation of dates and times -- Part 1: Basic rules</title>
+    <author>
+      <organization>ISO/IEC</organization>
+      <address>
+        <uri>http://www.iso.org</uri>
+      </address>
+    </author>
+    <date month='January' year='2018'/>
+    <abstract><t></t></abstract>
+  </front>
+</reference>
+

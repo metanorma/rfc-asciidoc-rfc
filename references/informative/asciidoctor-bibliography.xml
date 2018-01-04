@@ -1,6 +1,6 @@
-<reference  anchor='asciidoctor-bibliography' target='https://github.com/riboseinc/asciidoctor-bibliography/'>
-<front>
-  <title>Citations and Bibliography the 'asciidoctor-way'</title>
+<reference anchor='asciidoctor-bibliography' target='https://github.com/riboseinc/asciidoctor-bibliography/'>
+  <front>
+    <title>Citations and Bibliography the 'asciidoctor-way'</title>
     <author>
       <organization>Ribose Inc.</organization>
       <address>
@@ -12,8 +12,7 @@
         <uri>https://www.ribose.com</uri>
       </address>
     </author>
-<date year='2017' month='November' />
-</front>
+    <date year='2017' month='November' />
+  </front>
 </reference>
-
 

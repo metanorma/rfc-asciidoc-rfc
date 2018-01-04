@@ -9,8 +9,8 @@ A sample of an AsciiRFC table is shown in <<source-asciirfc-table>>
 with its rendered output in <<source-asciirfc-table-v3>>.
 
 Neither version of RFC XML is as expressive in its table structure as
-Asciidoctor. RFC XML, for example, does not permit blocks within table
-cells.
+Asciidoctor syntax. RFC XML, for example, does not permit blocks
+within table cells.
 
 [[source-asciirfc-table]]
 .An AsciiRFC Table

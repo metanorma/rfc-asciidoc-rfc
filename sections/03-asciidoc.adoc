@@ -1,48 +1,51 @@
 
-== Document Structure And AsciiDoctor Syntax
+== Document Structure And Asciidoctor Syntax
 
-The syntax of Asciidoctor is presented in the Asciidoctor user manual
-<<Asciidoctor-Manual>>.  AsciiRFC is a subset of Asciidoctor syntax, with the
-addition of bibliographic macros (<<asciidoctor_bibliography>>).
+Asciidoctor syntax is presented in the Asciidoctor user manual
+<<Asciidoctor-Manual>>.  AsciiRFC is a subset of Asciidoctor syntax,
+with the addition of bibliographic macros
+(<<asciidoctor_bibliography>>).
 
-Asciidoctor consists of:
+Asciidoctor syntax consists of:
 
-* A document header, containing a title, a list of authors, and document
-attributes in lines prefixed with `:`.
+* A document header, containing a title, a list of authors, and
+document attributes in lines prefixed with `:`.
 
-* An optional document preamble, separated from document header by a blank
-line.
+* An optional document preamble, separated from document header by a
+blank line.
 
-* A number of sections, set off by a section title (a line prefixed with two or
-more `=`. 
+* A number of sections, set off by a section title (a line prefixed
+with two or more `=`. 
 
 A section may contain:
 
-* Other sections, whose level of nesting is indicated by the number of `=` in
-their header.
+* Other sections, whose level of nesting is indicated by the number of
+`=` in their header.
 
-* Blocks of text. Blocks can have metadata (including a title, an anchor for
-cross-references, and attributes.) 
+* Blocks of text. Blocks can have metadata (including a title, an
+anchor for cross-references, and attributes.) 
 
 Blocks can be:
 
 * Paragraphs, which are terminated by blank lines.
 
-* Lists. List items are by default paragraphs, but can span over multiple
-paragraphs.
+* Lists. List items are by default paragraphs, but can span over
+multiple paragraphs.
 
-* Delimited blocks (with a line delimiter on either side of them); these
-include tables, notes, sidebars, source code, block quotes, examples, and
-unprocessed content (e.g. raw XML). Delimited blocks contain by default one or
-more paragraphs.
+* Delimited blocks (with a line delimiter on either side of them);
+these include tables, notes, sidebars, source code, block quotes,
+examples, and unprocessed content (e.g. raw XML). Delimited blocks
+contain by default one or more paragraphs.
 
 * List items can contain other blocks, including both nested lists and
 delimited blocks.
 
-* Some delimited blocks can contain other delimited blocks; for example,
-examples can contain source code as well as discussion in paragraphs.
+* Some delimited blocks can contain other delimited blocks; for
+example, examples can contain source code as well as discussion in
+paragraphs.
 
-* Blocks of text consist of inline text, which themselves can contain markup.
+* Blocks of text consist of inline text, which themselves can contain
+markup.
 
 
 Inline markup includes:
@@ -55,24 +58,24 @@ Inline markup includes:
 
 * Inline anchors.
 
-* Cross-references to anchors (IDs of blocks or spans of text), including
-display text.
+* Cross-references to anchors (IDs of blocks or spans of text),
+including display text.
 
 * Images, audio, and visual files. (AsciiRFC only supports images.)
 
 * Index terms.
 
-* Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via the
-<<MathJax>> tool). (Not supported in AsciiRFC, since there is no RFC XML
-equivalent.)
+* Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via
+the <<MathJax>> tool). (Not supported in AsciiRFC, since there is no
+RFC XML equivalent.)
 
 * Footnotes. (Not supported in AsciiRFC.)
 
 
-=== AsciiRFC Mapping To Asciidoctor
+=== AsciiRFC Mapping To Asciidoctor syntax
 
-The Asciidoctor document structure aligns with the RFC XML v2 and v3 structure.
-In the following, v3 equivalences are given.
+The Asciidoctor syntax document structure aligns with the RFC XML v2
+and v3 structure.  In the following, v3 equivalences are given.
 
 Header::
   `<rfc>` attributes, most `front` elements.
@@ -103,8 +106,8 @@ Inline markup::
   `sup`, `tt`, `xref`.
 
 Full details of the mapping of AsciiRFC elements to RFC XML v2 and v3
-elements, and of how to convert AsciiRFC documents to RFC XML, are given in
-the documentation of <<asciidoctor-rfc>>.
+elements, and of how to convert AsciiRFC documents to RFC XML, are
+given in the documentation of <<asciidoctor-rfc>>.
 
 
 === Simple Illustration
@@ -112,11 +115,10 @@ the documentation of <<asciidoctor-rfc>>.
 This section gives an overview of how to create an RFC XML document in
 AsciiRFC, with some pitfalls to be aware of.
 
-Illustrations are in RFC XML v3, although the converter deals with both
-versions of RFC XML.
+Illustrations are in RFC XML v3 and RFC XML v2.
 
-A sample AsciiRFC document is provided in <<source-sample-asciirfc>>, and its
-corresponding rendering in:
+A sample AsciiRFC document is provided in <<source-sample-asciirfc>>,
+and its corresponding rendering in:
 
 * RFC XML v3 (<<source-sample-asciirfc-output-v3>>)
 
@@ -127,135 +129,52 @@ corresponding rendering in:
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor; John Cleese; Graham Chapman; Marty Feldman
-:doctype: internet-draft
-:abbrev: 4 Yorkshiremen
-:obsoletes: 10, 120
-:updates: 2010, 2120
-:status: informational
-:name: draft-four-yorkshiremen-00
-:ipr: trust200902
-:area: Internet
-:workgroup: Network Working Group
-:keyword: yorkshire, memory
-:revdate: 1990-04-01T00:00:00Z
-:organization: BBC
-:phone: (555) 555-5555
-:uri: http://example.com
-:street: 10 Moulton Street
-:city: Cambridge
-:code: MA 02238
-:email: tbt@example.com
-:email_2: jc@example.com
-:email_3: gc@example.com
-:email_4: mf@bcc.co.uk
-:smart-quotes: false
-:link: https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch
-
-[abstract]
-The sketch is a parody of nostalgic conversations about humble
-beginnings or difficult childhoods, featuring four men from Yorkshire
-who reminisce about their upbringing. As the conversation progresses
-they try to outdo one another, and their accounts of deprived
-childhoods become increasingly absurd. <<michaelpalin>> <<ericidle>>
-
-NOTE: See also Wikipedia summary
-
-[#michaelpalin]
-== Claim: Michael Palin
-You were lucky. We lived for three months in a brown paper bag in a
-septic tank. We used to have to get up at six o'clock in the morning,
-clean the bag, eat a crust of stale bread, go to work down mill for
-fourteen hours a day week in-week out. When we got home, our Dad would
-thrash us to sleep with his belt! <<RFC7253>>
-
-=== Response: Graham Chapman
-Luxury. We used to have to get out of the lake at three o'clock in
-the morning, clean the lake, eat a handful of hot gravel, go to work
-at the mill every day for tuppence a month, come home, and Dad would
-beat us around the head and neck with a broken bottle, if we were
-*lucky*!
-
-=== Response: Terry Gilliam
-Well we had it tough. We used to have to get up out of the shoebox at
-twelve o'clock at night, and *lick* the road clean with our tongues. We
-had half a handful of freezing cold gravel, worked twenty-four hours
-a day at the mill for fourpence every six years, and when we got home,
-our Dad would slice us in two with a bread knife.
-
-[#ericidle]
-=== Response: Eric Idle
-Right.
-
-I had to get up in the morning at ten o'clock at night, half
-an hour before I went to bed, (_pause for laughter_), eat a lump
-of cold poison, work twenty-nine hours a day down mill, and pay mill
-owner for permission to come to work, and when we got home,
-our Dad would kill us, and dance about on our graves
-singing "Hallelujah."
-
-[bibliography]
-== Normative References
-++++
-<reference anchor='RFC7253'
-  target='https://tools.ietf.org/html/rfc7253'>
-  <front>
-    <title>Guidelines for Writing an IANA Considerations
-      Section in RFCs</title>
-    <author initials="T." surname="Krovetz">
-      <organization>Sacramento State</organization>
-    </author>
-    <author initials="P." surname="Rogaway">
-      <organization>UC Davis</organization>
-    </author>
-    <date month='May' year='2014'/>
-  </front>
-  <seriesInfo name="RFC" value="7253"/>
-</reference>
-++++
-
-[appendix]
-== Addendum
-But you try and tell the young people today that...
-and they won't believe ya.
+<CODE BEGINS>
+include::examples/draft-divination-cfapi.adoc[]
+<CODE ENDS>
 ----
 ====
 
-The first block of text, from `= Four Yorkshiremen Sketch` through to
-`:link: \https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch`,
-is the document header. It contains a title in the first line, an author attribution, and then
-a set of document attributes, conveying information about the document as well as information
-about its authors. This information ends up either as attributes of the root `rfc` tag, elements of the `front`
-tag, or processing instructions.
+The first block of text, from 
+`= An API For Calendar-Based Fortune Heuristics Services` through to
+`:country_2: USA`, is
+the document header. It contains a title in the first line, an author
+attribution, and then a set of document attributes, conveying
+information about the document as well as information about its
+authors. This information ends up either as attributes of the root
+`rfc` tag, elements of the `front` tag, or processing instructions.
 
-The following blocks of text, up until the first section header (`== Claim: Michael Palin`), are the
-document preamble. They are treated by the document converter as containing the document
-abstract (`abstract`), followed by any notes (`note`, identified above by the `NOTE:` heading).
-
-[subs="quotes"]
-The first section header (`== Claim: Michael Palin`) is preceded by an anchor
-for that section (`[#michaelpalin]`). There is a cross-reference to that anchor
-already in place in the abstract (`<<michaelpalin>>`). The document converter
-treats the first section of the document as the start of the `middle` section
-of the document.
+The following blocks of text, up until the first section header 
+(`== Claim: Michael Palin`), are the document preamble. They are
+treated by the document converter as containing the document abstract
+(`abstract`), followed by any notes (`note`, identified above by the
+`NOTE:` heading).
 
 [subs="quotes"]
-The first section header is followed by a paragraph, and other sections and
-paragraphs. The number of `=` signs are one higher than the initial section
-header, which indicates that they are subsections of that section. The
-paragraphs contains some inline formatting (italics: `\_pause for laughter_`;
-boldface: `\*lick*`). The first paragraph also contains a citation of a
-reference, which in this version of AsciiRFC is treated identically to a
-cross-reference (`<<RFC7253>>`). (If the bibliography preprocessor were used,
-it would be encoded differently.)
+The first section header (`== Claim: Michael Palin`) is preceded by an
+anchor for that section (`[#michaelpalin]`). There is a
+cross-reference to that anchor already in place in the abstract
+(`<<michaelpalin>>`). The document converter treats the first section
+of the document as the start of the `middle` section of the document.
 
-The second last section is tagged with the style attribute `[bibliography]`,
-which identifies it as a references container; the document converter
-accordingly inserts this into the `back` element of the document. The contents
-of the references section are in this instance raw XML, delimited as a
-passthrough block (with `{fourpluses}`), which the converter does not alter.
-The final section is tagged with the style attribute `[appendix]`, and is
+[subs="quotes"]
+The first section header is followed by a paragraph, and other
+sections and paragraphs. The number of `=` signs are one higher than
+the initial section header, which indicates that they are subsections
+of that section. The paragraphs contains some inline formatting
+(italics: `\_pause for laughter_`; boldface: `\*lick*`). The first
+paragraph also contains a citation of a reference, which in this
+version of AsciiRFC is treated identically to a cross-reference
+(`<<RFC7253>>`). (If the bibliography preprocessor were used, it would
+be encoded differently.)
+
+The second last section is tagged with the style attribute
+`[bibliography]`, which identifies it as a references container; the
+document converter accordingly inserts this into the `back` element of
+the document. The contents of the references section are in this
+instance raw XML, delimited as a passthrough block (with
+`{fourpluses}`), which the converter does not alter.  The final
+section is tagged with the style attribute `[appendix]`, and is
 treated as such.
 
 The RFC XML v3 document generated from this AsciiRFC document is:
@@ -265,253 +184,27 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 ====
 [source,xml]
 ----
-<?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
-    submissionType="IETF" prepTime="2017-11-25T09:54:54Z" version="3">
-  <link href="https://en.wikipedia.org/wiki/Four_Yorkshiremen_sketch"/>
-  <front>
-    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational"
-      stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <organization>BBC</organization>
-      <address>
-        <postal>
-          <street>10 Moulton Street</street>
-          <city>Cambridge</city>
-          <code>MA 02238</code>
-        </postal>
-        <phone>(555) 555-5555</phone>
-        <email>tbt@example.com</email>
-        <uri>http://example.com</uri>
-      </address>
-    </author>
-    <author fullname="John Cleese" surname="Cleese">
-      <address>
-        <email>jc@example.com</email>
-      </address>
-    </author>
-    <author fullname="Graham Chapman" surname="Chapman">
-      <address>
-        <email>gc@example.com</email>
-      </address>
-    </author>
-    <author fullname="Marty Feldman" surname="Feldman">
-      <address>
-        <email>mf@bcc.co.uk<email>
-      </address>
-    </author>
-    <date day="1" month="April" year="1990" />
-    <area>Internet<area>
-    <workgroup>Network Working Group</workgroup>
-    <keyword>yorkshire<keyword>
-    <keyword>memory<keyword>
-    <abstract>
-      <t>The sketch is a parody of nostalgic conversations about humble
-      beginnings or difficult childhoods, featuring four men from
-      Yorkshire who reminisce about their upbringing. As the
-      conversation progresses they try to outdo one another, and their
-      accounts of deprived childhoods become increasingly absurd.
-      <xref target="michaelpalin" />
-      <xref target="ericidle" /></t>
-    </abstract>
-    <note>
-      <t>See also Wikipedia summary<t>
-    </note>
-  </front>
-  <middle>
-    <section anchor="michaelpalin" numbered="false">
-      <name>Claim: Michael Palin<name>
-      <t>You were lucky. We lived for three months in a brown paper bag
-        in a septic tank. We used to have to get up at six o'clock in
-        the morning, clean the bag, eat a crust of stale bread, go to
-        work down mill for fourteen hours a day week in-week out. When
-        we got home, our Dad would thrash us to sleep with his belt!
-        <xref target="RFC7253" /></t>
-      <section anchor="_response_graham_chapman" numbered="false">
-        <name>Response: Graham Chapman<name>
-        <t>Luxury. We used to have to get out of the lake at three
-          o'clock in the morning, clean the lake, eat a handful of hot
-          gravel, go to work at the mill every day for tuppence a month,
-          come home, and Dad would beat us around the head and neck with
-          a broken bottle, if we were <strong>lucky</strong>!</t>
-      </section>
-      <section anchor="_response_terry_gilliam" numbered="false">
-        <name>Response: Terry Gilliam<name>
-        <t>Well we had it tough. We used to have to get up out of the
-          shoebox at twelve o'clock at night, and <strong>lick<strong>
-          the road clean with our tongues. We had half a handful of
-          freezing cold gravel, worked twenty-four hours a day at the
-          mill for fourpence every six years, and when we got home,
-          our Dad would slice us in two with a bread knife.</t>
-      </section>
-      <section anchor="ericidle" numbered="false">
-        <name>Response: Eric Idle<name>
-        <t>Right.<t>
-        <t>I had to get up in the morning at ten o'clock at night, half
-          an hour before I went to bed, (<em>pause for laughter</em>),
-          eat a lump of cold poison, work twenty-nine hours a day down
-          mill, and pay mill owner for permission to come to work, and
-          when we got home, our Dad would kill us, and dance about on
-          our graves singing "Hallelujah."</t>
-      </section>
-    </section>
-  </middle>
-  <back>
-    <references anchor="_normative_references">
-      <name>Normative References<name>
-      <reference anchor="RFC7253"
-          target="https://tools.ietf.org/html/rfc7253">
-        <front>
-          <title>Guidelines for Writing an IANA Considerations
-            Section in RFCs<title>
-          <author initials="T." surname="Krovetz">
-            <organization>Sacramento State<organization>
-          </author>
-          <author initials="P." surname="Rogaway">
-            <organization>UC Davis<organization>
-          </author>
-          <date month="May" year="2014" />
-        </front>
-        <seriesInfo name="RFC" value="7253" />
-      </reference>
-    </references>
-    <section anchor="_addendum" numbered="false">
-      <name>Addendum<name>
-      <t>But you try and tell the young people today that&#8230;&#8203;
-        and they won't believe ya'.<t>
-    </section>
-  </back>
-</rfc>
+<CODE BEGINS>
+include::examples/draft-divination-cfapi.xml3[]
+<CODE ENDS>
 ----
 ====
 
-Some default processing instructions have already been prefixed to the XML.
+Some default processing instructions have already been prefixed to the
+XML.
 
-Our AsciiRFC converter can also generate RFC XML v2 from the same source
-AsciiRFC, as shown in <<source-sample-asciirfc-output-v2>>. Output in RFC XML
-v2 is not extensively described in this document.
+Our AsciiRFC converter can also generate RFC XML v2 from the same
+source AsciiRFC, as shown in <<source-sample-asciirfc-output-v2>>.
+Output in RFC XML v2 is not extensively described in this document.
 
 [[source-sample-asciirfc-output-v2]]
 .Sample Internet-Draft In AsciiRFC, Output In RFC XML v2 Format
 ====
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
-  category="info" submissionType="IETF"
-  docName="draft-four-yorkshiremen-00">
-  <front>
-    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch<title>
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <organization>BBC</organization>
-      <address>
-        <postal>
-          <street>10 Moulton Street</street>
-          <city>Cambridge</city>
-          <code>MA 02238</code>
-        </postal>
-        <phone>(555) 555-5555</phone>
-        <email>tbt@example.com</email>
-        <uri>http://example.com</uri>
-      </address>
-    </author>
-    <author fullname="John Cleese" surname="Cleese">
-      <address>
-        <email>jc@example.com</email>
-      </address>
-    </author>
-    <author fullname="Graham Chapman" surname="Chapman">
-      <address>
-        <email>gc@example.com</email>
-      </address>
-    </author>
-    <author fullname="Marty Feldman" surname="Feldman">
-      <address>
-        <email>mf@bcc.co.uk</email>
-      </address>
-    </author>
-    <date day="1" month="April" year="1990" />
-    <area>Internet</area>
-    <workgroup>Network Working Group</workgroup>
-    <keyword>yorkshire</keyword>
-    <keyword>memory</keyword>
-    <abstract>
-      <t>The sketch is a parody of nostalgic conversations about humble
-      beginnings or difficult childhoods, featuring four men from
-      Yorkshire who reminisce about their upbringing. As the
-      conversation progresses they try to outdo one another, and their
-      accounts of deprived childhoods become increasingly absurd.
-      <xref target="michaelpalin" />
-      <xref target="ericidle" /></t>
-    </abstract>
-    <note title="NOTE">
-      <t>See also Wikipedia summary</t>
-    </note>
-  </front>
-  <middle>
-    <section anchor="michaelpalin" title="Claim: Michael Palin">
-      <t>You were lucky. We lived for three months in a brown paper bag
-        in a septic tank. We used to have to get up at six o'clock in
-        the morning, clean the bag, eat a crust of stale bread, go to
-        work down mill for fourteen hours a day week in-week out. When
-        we got home, our Dad would thrash us to sleep with his belt!
-        <xref target="RFC7253" /></t>
-      <section anchor="_response_graham_chapman"
-          title="Response: Graham Chapman">
-        <t>Luxury. We used to have to get out of the lake at three
-          o'clock in the morning, clean the lake, eat a handful of hot
-          gravel, go to work at the mill every day for tuppence a month,
-          come home, and Dad would beat us around the head and neck with
-          a broken bottle, if we were
-          <spanx style="strong">lucky</spanx>!</t>
-      </section>
-      <section anchor="_response_terry_gilliam"
-          title="Response: Terry Gilliam">
-        <t>Well we had it tough. We used to have to get up out of the
-          shoebox at twelve o'clock at night, and
-          <spanx style="strong">lick<spanx>
-          the road clean with our tongues. We had half a handful of
-          freezing cold gravel, worked twenty-four hours a day at the
-          mill for fourpence every six years, and when we got home,
-          our Dad would slice us in two with a bread knife.</t>
-      </section>
-      <section anchor="ericidle" title="Response: Eric Idle">
-        <t>Right.</t>
-        <t>I had to get up in the morning at ten o'clock at night, half
-          an hour before I went to bed, (<spanx style="emph">pause
-          for laughter</spanx>),
-          eat a lump of cold poison, work twenty-nine hours a day down
-          mill, and pay mill owner for permission to come to work, and
-          when we got home, our Dad would kill us, and dance about on
-          our graves singing "Hallelujah."</t>
-      </section>
-    </section>
-  </middle>
-  <back>
-    <references title="Normative References">
-      <reference anchor="RFC7253"
-          target="https://tools.ietf.org/html/rfc7253">
-        <front>
-          <title>Guidelines for Writing an IANA Considerations
-            Section in RFCs</title>
-          <author initials="T." surname="Krovetz">
-            <organization>Sacramento State</organization>
-          </author>
-          <author initials="P." surname="Rogaway">
-            <organization>UC Davis</organization>
-          </author>
-          <date month="May" year="2014" />
-        </front>
-        <seriesInfo name="RFC" value="7253" />
-      </reference>
-    </references>
-    <section anchor="_addendum" title="Addendum">
-      <t>But you try and tell the young people today that&#8230;&#8203;
-        and they won't believe ya'.</t>
-    </section>
-  </back>
-</rfc>
+<CODE BEGINS>
+include::examples/draft-divination-cfapi.xml[]
+<CODE ENDS>
 ----
 ====
 

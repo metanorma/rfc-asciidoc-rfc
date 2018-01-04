@@ -7,14 +7,47 @@ AsciiRFC supports ordered, unordered, and definition lists.
 Indentation of ordered and unordered lists is indicated by repeating
 the list item prefix (`*` and `.` respectively).
 
-List attributes specify the type of symbol used for ordered lists.
+List attributes can be used to specify the type of symbol used for
+ordered lists.
 
-An example of AsciiRFC List is shown in <<source-asciirfc-list>> with
-its rendered version in <<source-asciirfc-list-v3>>.
+An example of an unordered list is shown in
+<<source-asciirfc-unordered-list>> (with its rendered version in
+<<source-asciirfc-unordered-list-v3>>), and that of an ordered list is
+shown in <<source-asciirfc-ordered-list>> (with its rendered version
+in <<source-asciirfc-ordered-list-v3>>).
 
+[[source-asciirfc-unordered-list]]
+.AsciiRFC With Unordered lists
+====
+[source,asciidoc]
+----
+* One
+* Two
+** Three
+*** Four
+** Five
+* Six
+----
+====
 
-[[source-asciirfc-list]]
-.AsciiRFC With Lists
+[[source-asciirfc-unordered-list-v3]]
+.AsciiRFC With Unordered Lists (RFC XML v3)
+====
+[source,xml]
+----
+<list style="symbols">
+  <t>One</t>
+  <t>Two</t>
+  <t>Three</t>
+  <t>Four</t>
+  <t>Five</t>
+  <t>Six</t>
+</list>
+----
+====
+
+[[source-asciirfc-ordered-list]]
+.AsciiRFC With Ordered lists
 ====
 [source,asciidoc]
 ----
@@ -29,8 +62,8 @@ its rendered version in <<source-asciirfc-list-v3>>.
 ----
 ====
 
-[[source-asciirfc-list-v3]]
-.AsciiRFC With Lists (RFC XML v3)
+[[source-asciirfc-ordered-list-v3]]
+.AsciiRFC With Ordered Lists (RFC XML v3)
 ====
 [source,xml]
 ----
@@ -48,6 +81,41 @@ its rendered version in <<source-asciirfc-list-v3>>.
 </ol>
 ----
 ====
+
+[[source-asciirfc-definition-list]]
+.AsciiRFC With Definition lists
+====
+[source,asciidoc]
+----
+RFC::
+  Request For Comment, a type of publication from the Internet
+  Engineering Task Force (IETF) and the Internet Society (ISOC)
+RFC XML::
+  An XML format for the publishing of RFCs, specified in RFC 7749 (v2)
+  and RFC 7991 (v3)
+----
+====
+
+[[source-asciirfc-definition-list-v3]]
+.AsciiRFC With Definition Lists (RFC XML v3)
+====
+[source,xml]
+----
+<dl>
+  <dt>RFC</dt>
+  <dd>
+    <t>Request For Comment, a type of publication from the Internet
+    Engineering Task Force (IETF) and the Internet Society (ISOC)</t>
+  </dd>
+  <dt>RFC XML</dt>
+  <dd>
+    <t>An XML format for the publishing of RFCs, specified in RFC 7749
+    (v2) and RFC 7991 (v3)</t>
+  </dd>
+</dl>
+----
+====
+
 
 === List Continuation
 
@@ -96,7 +164,7 @@ v2.  The RFC XML converter deals with this by converting paragraph
 breaks into line breaks within a list item.)
 
 List continuations can also be embed to populate a list item with a
-sequence of blocks as a unit (in an Asciidoctor open block).
+sequence of blocks as a unit (in an Asciidoctor syntax open block).
 
 An example of list containuation with block is shown in
 <<source-asciirfc-list-block>> with its rendered version in

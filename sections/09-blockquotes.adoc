@@ -1,8 +1,8 @@
 == Blockquotes
 
-Asciidoctor supports blockquotes and quotations of verse; its block
-quotations permit arbitrary levels of quote nesting.
-RFC XML v3, and thus AsciiRFC, only supports one level of blockquotes.
+Asciidoctor syntax supports blockquotes and quotations of verse; its
+block quotations permit arbitrary levels of quote nesting.  RFC XML
+v3, and thus AsciiRFC, only supports one level of blockquotes.
 
 Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of
 tables, so verse quotations are converted to prose in the v3

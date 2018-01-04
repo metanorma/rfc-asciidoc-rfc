@@ -1,8 +1,8 @@
 == Bibliography
 
 The simple encoding of bibliography syntax provided by AsciiDoc (and
-Asciidoctor) is inadequate for the complexity of bibliographic markup
-required by RFC XML.
+Asciidoctor syntax) is inadequate for the complexity of bibliographic
+markup required by RFC XML.
 
 RFC documents overwhelmingly cite other RFC documents, and canonical
 RFC XML bibliographic entries are available at <<IETF-BibXML>>; so it
@@ -94,7 +94,7 @@ Some datagram padding may be needed.<<RFC7253>>
 ====
 
 [#asciidoctor_bibliography]
-=== Preprocessing Using `asciidoctor-bibliography`
+=== Preprocessing Using "asciidoctor-bibliography"
 
 The alternative method is to use a preprocessing tool,
 <<asciidoctor-bibliography>>, to import citations into the AsciiRFC

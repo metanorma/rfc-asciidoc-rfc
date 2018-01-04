@@ -1,7 +1,14 @@
 == Sections and Paragraphs
 
 Section headers are given with a sequence of `=`, the number of `=`
-giving the header level. Section numbering is toggled with the
+giving the header level: a single `=` is used for the opening of the
+document, and a minimum of two `=` symbols are used to prefix a
+section immediately 
+
+The document itself opens with a single `=`, and sections within it
+must be started with a minimum of `==`.  
+
+Section numbering is toggled with the
 in-document attribute `:sectnums:` (on), `:sectnums!:` (off). The
 `toc` attribute can also be set on sections, indicating whether the
 section can be included in the document's table of contents.
@@ -56,4 +63,14 @@ Para 3
 </section>
 ----
 ====
+
+
+Note that skipped sections, such as defining a section using `====`
+within a section defined using `==`, is not allowed in AsciiRFC
+syntax. Doing so will trigger an error with the following message:
+
+----
+asciidoctor: WARNING: [filename]: line [X]:
+  section title out of sequence: expected level 2, got level 3
+----
 

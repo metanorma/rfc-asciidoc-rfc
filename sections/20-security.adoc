@@ -12,3 +12,9 @@ generation that may lead to security issues.
 external documents may pose risks since the specified external
 location may become controlled by a malicious party.
 
+* URIs that start with the "http:" or "https:" prefix are
+automatically converted into links in AsciiRFC except when escaped
+with a backslash before the prefix. A URI that is intended to be text
+but unintentionally rendered as a link may cause users to visit a
+malicious website with security consequences.
+

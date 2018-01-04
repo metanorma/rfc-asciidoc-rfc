@@ -3,7 +3,25 @@
 [#appendix-a]
 == Examples
 
-=== Example 1: AsciiRFC
+=== Example 1: An April Fool's Day AsciiRFC
+
+[source,asciidoc]
+----
+<CODE BEGINS>
+include::examples/draft-divination-cfapi.adoc[]
+<CODE ENDS>
+----
+
+=== Example 1: An April Fool's Day RFC in RFC XML v3
+
+[source,xml]
+----
+<CODE BEGINS>
+include::examples/draft-divination-cfapi.xml[]
+<CODE ENDS>
+----
+
+=== Example 2: AsciiRFC
 
 [source,asciidoc]
 --
@@ -79,7 +97,7 @@ which is, in fact, deadly. Such hidden but real risks may even arise
 from similarly cuddly animals.
 --
 
-=== Example 1: RFC XML v3
+=== Example 2: RFC XML v3
 
 [source,xml]
 ----
@@ -173,7 +191,7 @@ parse="text" />
 </rfc>
 ----
 
-=== Example 2: AsciiRFC
+=== Example 3: AsciiRFC
 
 [source,asciidoc]
 --
@@ -420,7 +438,7 @@ if ready:
 ++++
 --
 
-=== Example 2: RFC XML v3
+=== Example 3: RFC XML v3
 
 [source,xml]
 ----

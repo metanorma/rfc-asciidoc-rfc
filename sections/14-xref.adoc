@@ -7,8 +7,8 @@
 Anchors for cross-references are notated as `[[...]]` or `[#...]`, and
 can be inserted on their own line in front of most blocks.
 
-Asciidoctor supports anchors in a much wider range of contexts than is
-supported than RFC XML v3 (let alone v2); anchors that are not
+Asciidoctor syntax supports anchors in a much wider range of contexts
+than is supported than RFC XML v3 (let alone v2); anchors that are not
 supported for that version of RFC XML are simply ignored by the
 converter. 
 
@@ -69,7 +69,7 @@ See <<cross-reference,text>>
 
 === Referencing With Attributes
 
-While Asciidoctor natively does not support attributes on
+While Asciidoctor syntax natively does not support attributes on
 cross-references, AsciiRFC works around that by embedding formatting
 information as templated text within cross-references:
 

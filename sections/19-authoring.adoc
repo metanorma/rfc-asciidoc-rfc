@@ -9,7 +9,7 @@ self-standing AsciiRFC documents, along with their RFC XML renderings.
 (This includes round-tripped RFC XML documents.)
 
 
-=== Using the `rfc-in-asciidoc-template`
+=== Using the "rfc-in-asciidoc-template"
 
 In addition, you can clone the sample `rfc-in-asciidoc-template`
 repository as a template, and populate it for your AsciiRFC document
@@ -26,11 +26,11 @@ $ git clone https://github.com/riboseinc/rfc-in-asciidoc-template
 
 === Installing AsciiRFC Backend Processors
 
-Converting your AsciiRFC to RFC XML is a simple as installing
-Asciidoctor (see "Installation" at <<Asciidoctor>>) and the
-`asciidoctor-rfc` gem in Ruby (through RubyGems), then running the
-asciidoctor executable on the document, specifying the asciidoctor-rfc
-gem as a library.
+Converting your AsciiRFC to RFC XML is a simple as installing the
+Asciidoctor Ruby gem `asciidoctor` (see "Installation" at
+<<Asciidoctor>>) and the `asciidoctor-rfc` gem in Ruby (through
+RubyGems), then running the `asciidoctor` executable on the document,
+specifying the `asciidoctor-rfc` gem as a library.
 
 The necessary steps are shown in <<source-asciirfc-install-converters>>.
 
@@ -48,8 +48,8 @@ $ asciidoctor -b rfc2 -r 'asciidoctor-rfc' foo.adoc  # RFC XML v2 output
 
 === Iterating AsciiRFC Content
 
-As you author AsciiRFC content, you should iterate through running the
-Asciidoctor conversion frequently, to ensure that you are still
+As you author AsciiRFC content, you should iterate by running the
+AsciiRFC conversion frequently, to ensure that you are still
 generating valid XML through your markup. The converter makes an
 effort to ensure that its XML output is valid, and it issues warnings
 about likely issues; it also validates its own XML output against the
