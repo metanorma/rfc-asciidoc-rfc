@@ -119,8 +119,11 @@ file; the bibliography gem will select which references have actually
 been cited in the document.
 
 .. Rather than hand crafting RFC XML references for RFC documents, you
-should download them from an authoritative source; e.g.
-`\http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml`
+should download them from an authoritative source; e.g.,
+`\http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml`.
+Note that RFC XML references from this link contains the XML
+document declaraction, which needs to be removed before being used in
+the XML bibliography.
 
 .. Unlike the case for RFC XML documents created manually, the
 references file does not recognise XML entities and will not attempt

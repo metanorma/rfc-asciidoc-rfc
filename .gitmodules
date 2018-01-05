@@ -4,3 +4,6 @@
 [submodule "examples/rfc-asciirfc-template"]
 	path = examples/rfc-asciirfc-template
 	url = https://github.com/riboseinc/rfc-asciirfc-template
+[submodule "examples/rfc-camelot-holy-grenade"]
+	path = examples/rfc-camelot-holy-grenade
+	url = https://github.com/riboseinc/rfc-camelot-holy-grenade

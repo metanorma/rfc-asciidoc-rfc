@@ -1,4 +1,4 @@
-= Internet-Draft: Preparing Internet-Drafts And RFCs In AsciiDoc
+= AsciiRFC: Preparing Internet-Drafts And RFCs In AsciiDoc
 
 image:https://img.shields.io/travis/riboseinc/rfc-asciidoc-rfc/master.svg[
 	Build Status, link="https://travis-ci.org/riboseinc/rfc-asciidoc-rfc"]
@@ -36,7 +36,7 @@ bundle install
 ----
 make all
 # or
-export ID_NAME=document-template
+export ID_NAME=ribose-asciirfc
 make draft-${ID_NAME}.txt
 ----
 
@@ -51,7 +51,7 @@ prevent it complaining about the location.
 
 [source,sh]
 ----
-export ID_NAME=document-template
+export ID_NAME=ribose-asciirfc
 make draft-${ID_NAME}.nits
 ----
 
@@ -59,7 +59,7 @@ make draft-${ID_NAME}.nits
 
 [source,sh]
 ----
-export ID_NAME=document-template
+export ID_NAME=ribose-asciirfc
 pcregrep --color='auto' -n "[\x80-\xFF]" draft-${ID_NAME}.xml
 ----
 
@@ -67,7 +67,7 @@ pcregrep --color='auto' -n "[\x80-\xFF]" draft-${ID_NAME}.xml
 
 [source,sh]
 ----
-export ID_NAME=document-template
+export ID_NAME=ribose-asciirfc
 make clean all; open draft-${ID_NAME}.txt
 ----
 

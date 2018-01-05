@@ -128,11 +128,11 @@ and its corresponding rendering in:
 .Sample Internet-Draft in AsciiRFC
 ====
 [source,asciidoc]
-----
+--------
 <CODE BEGINS>
-include::examples/draft-divination-cfapi.adoc[]
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 <CODE ENDS>
-----
+--------
 ====
 
 The first block of text, from 
@@ -185,7 +185,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 [source,xml]
 ----
 <CODE BEGINS>
-include::examples/draft-divination-cfapi.xml3[]
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml3[]
 <CODE ENDS>
 ----
 ====
@@ -203,7 +203,7 @@ Output in RFC XML v2 is not extensively described in this document.
 [source,xml]
 ----
 <CODE BEGINS>
-include::examples/draft-divination-cfapi.xml[]
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml[]
 <CODE ENDS>
 ----
 ====
