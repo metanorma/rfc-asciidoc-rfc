@@ -18,3 +18,10 @@ with a backslash before the prefix. A URI that is intended to be text
 but unintentionally rendered as a link may cause users to visit a
 malicious website with security consequences.
 
+* AsciiRFC contains syntax that can directly incorporate remote URI
+content, such as `include::` which allows remotely-located AsciiRFC
+content files.  If a remote URI contains malicious content, this
+content will be included in the resulting AsciiRFC document compiled
+as RFC XML.  Remotely-linked URIs should always be checked for
+malicious content prior to compiling AsciiRFC into RFC XML.
+

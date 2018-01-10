@@ -1,18 +1,18 @@
 == Conventions Used in This Document
 
 ////
-The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**",
-"**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**",
-"**MAY**", and "**OPTIONAL**" in this document are to be interpreted
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*MAY*", and "*OPTIONAL*" in this document are to be interpreted
 as described in <<RFC2119>>.
 ////
 
 The following terms and definitions apply to this document:
 
-AsciiDoc:: 
+AsciiDoc::
 the AsciiDoc markup language generically, as described in <<AsciiDoc>>.
 
-Asciidoctor syntax:: 
+Asciidoctor syntax::
 the enhanced AsciiDoc syntax implemented by the <<Asciidoctor>>
 Ruby gem.
 
