@@ -26,18 +26,7 @@ in AsciiRFC, with its rendering in v3 shown in
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>
-:doctype: internet-draft
-:abbrev: 4 Yorkshiremen
-:obsoletes: 10, 120
-:updates: 2010, 2120
-:status: informational
-:name: draft-four-yorkshiremen-00
-:ipr: trust200902
-:area: Internet
-:keyword: yorkshire, memory
-:revdate: 1990-04-01T00:00:00Z
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..15]
 ----
 ====
 
@@ -46,22 +35,7 @@ Tim Brooke-Taylor <tbt@example.com>
 ====
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
-    submissionType="IETF" prepTime="2017-11-25T10:13:46Z" version="3">
-  <front>
-    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <address>
-        <email>tbt@example.com</email>
-      </address>
-    </author>
-    <date day="1" month="April" year="1990" />
-    <area>Internet</area>
-    <workgroup>Network Working Group</workgroup>
-    <keyword>yorkshire</keyword>
-    <keyword>memory</keyword>
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="13..23,35,37..40"]
 ----
 ====
 
@@ -77,24 +51,7 @@ shown in <<source-asciirfc-header-authors-v3>>.
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>
-:doctype: internet-draft
-:abbrev: 4 Yorkshiremen
-:obsoletes: 10, 120
-:updates: 2010, 2120
-:status: informational
-:name: draft-four-yorkshiremen-00
-:ipr: trust200902
-:area: Internet
-:keyword: yorkshire, memory
-:revdate: 1990-04-01T00:00:00Z
-:organization: BBC
-:phone: (555) 555-5555
-:uri: http://bbn.com
-:street: 10 Moulton Street
-:city: Cambridge
-:code: MA 02238
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..25]
 ----
 ====
 
@@ -103,30 +60,7 @@ Tim Brooke-Taylor <tbt@example.com>
 ====
 [source,xml]
 ----
-<rfc ipr="trust200902" obsoletes="10, 120" updates="2010, 2120"
-    submissionType="IETF" prepTime="2017-11-25T10:15:02Z" version="3">
-  <front>
-    <title abbrev="4 Yorkshiremen">Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <organization>BBC</organization>
-      <address>
-        <postal>
-          <street>10 Moulton Street</street>
-          <city>Cambridge</city>
-          <code>MA 02238</code>
-        </postal>
-        <phone>(555) 555-5555</phone>
-        <email>tbt@example.com</email>
-        <uri>http://bbn.com</uri>
-      </address>
-    </author>
-    <date day="1" month="April" year="1990" />
-    <area>Internet</area>
-    <workgroup>Network Working Group</workgroup>
-    <keyword>yorkshire</keyword>
-    <keyword>memory</keyword>
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="13..40"]
 ----
 ====
 
@@ -136,31 +70,11 @@ contact details, are provided by suffixing the relevant author attributes with
 its v3 rendering <<source-asciirfc-header-mauthors-v3>>.
 
 [[source-asciirfc-header-mauthors]]
-.AsciiRFC Document Header With Multiple Authors
 ====
 [source,asciidoc]
-----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
-:doctype: internet-draft
-:status: informational
-:name: draft-four-yorkshiremen-00
-:ipr: trust200902
-:organization: Example Ltd.
-:phone: (555) 555-5555
-:uri: http://example.com
-:street: 10 Moulton Street
-:city: Cambridge
-:code: MA 02238
-:forename_initials: T.
-:lastname: Brooke-Taylor
-:street: 12 Moulton Street
-:city: London
-:country: United Kingdom
-:forename_initials_2: J.
-:lastname_2: Cleese
-:uri_2: https://example.com/johncleese
-----
+--------
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[lines=1..31]
+--------
 ====
 
 [[source-asciirfc-header-mauthors-v3]]
@@ -168,39 +82,12 @@ Tim Brooke-Taylor <tbt@example.com>; John Cleese <jc@example.com>
 ====
 [source,xml]
 ----
-<rfc ipr="trust200902" submissionType="IETF"
-    prepTime="2017-11-25T10:19:32Z" version="3">
-  <front>
-    <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor"
-        surname="Brooke-Taylor" initials="T.">
-      <organization>Example Ltd.</organization>
-      <address>
-        <postal>
-          <street>12 Moulton Street</street>
-          <city>London</city>
-          <code>MA 02238</code>
-          <country>United Kingdom</country>
-        </postal>
-        <phone>(555) 555-5555</phone>
-        <email>tbt@example.com</email>
-        <uri>http://example.com</uri>
-      </address>
-    </author>
-    <author fullname="John Cleese" surname="Cleese" initials="J.">
-      <address>
-        <email>jc@example.com</email>
-        <uri>https://example.com/johncleese</uri>
-      </address>
-    </author>
-    <date day="25" month="November" year="2017" />
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml3[lines=11..47]
 ----
 ====
 
 The initial author attribution in AsciiRFC, e.g.
-`Tim Brooke-Taylor <\tbt@example.com>; John Cleese <\jc@example.com>`
+`Gabriel Destiny; Charlise Luck`
 in the example above, expects a strict format of First Name, zero or
 more Middle Names, Last name, and cannot process honorifics like "Dr."
 or suffixes like "Jr.".
@@ -211,29 +98,21 @@ using the `:fullname:` and `:lastname:` attributes. The AsciiRFC
 syntax `:initials:` attribute (which includes the surname initial),
 and is not automatically populated from the name attribution.
 
-
 === XML Processing Information
 
 A document header may also contain attribute headers which are treated
 as XML processing instructions. An AsciiRFC example is shown in
 <<source-asciirfc-header-pi>> with its rendering in
-<<source-asciirfc-header-pi-v3>>.
+<<source-asciirfc-header-pi-v3>>. (Note that several processing
+instructions are included by default in the output of the AsciiRFC
+processor.)
 
 [[source-asciirfc-header-pi]]
 .AsciiRFC Document Header With XML Processing Information
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>
-:doctype: internet-draft
-:status: informational
-:name: draft-four-yorkshiremen-00
-:ipr: trust200902
-:revdate: 1990-04-01T00:00:00Z
-:rfcedstyle: yes
-:text-list-symbols: yes
-:rfc2629xslt: true
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines="1..9,12-15,26..27"]
 ----
 ====
 
@@ -242,20 +121,15 @@ Tim Brooke-Taylor <tbt@example.com>
 ====
 [source,xml]
 ----
-<rfc ipr="trust200902" submissionType="IETF"
-    prepTime="2017-11-25T10:21:56Z" version="3">
-  <front>
-    <title>Four Yorkshiremen Sketch</title>
-    <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <address>
-        <email>tbt@example.com</email>
-      </address>
-    </author>
-    <date day="1" month="April" year="1990" />
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="1..23,35"]
 ----
 ====
+
+In the foregoing, values for the processing instructions `strict`, `compact`,
+`toc` etc are included by default; but `comments` and `notedraftinprogress`
+are included as specified in the AsciiRFC document header. The default
+values provided for processing instructions can in fact be overriden through
+the AsciiRFC document header.
 
 
 === AsciiRFC-specific Document Attributes
@@ -280,11 +154,11 @@ document converter:
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
 :doctype: internet-draft
 :status: informational
-:name: draft-four-yorkshiremen-00
+:name: draft-camelot-holy-grenade-00
 
 == Section 1
 The specification *MUST NOT* use the word _doesn't_.
@@ -298,13 +172,11 @@ The specification *MUST NOT* use the word _doesn't_.
 ----
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
   <front>
-    <title>Four Yorkshiremen Sketch</title>
+    <title>The Holy Hand Grenade of Antioch</title>
     <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <address>
-        <email>tbt@example.com</email>
-      </address>
+        stream="IETF" value="draft-camelot-holy-grenade-00" />
+    <author fullname="Arthur son of Uther Pendragon" surname="Pendragon" 
+initials="A.">
     </author>
     <date day="25" month="November" year="2017" />
   </front>
@@ -324,11 +196,11 @@ The specification *MUST NOT* use the word _doesn't_.
 ====
 [source,asciidoc]
 ----
-= Four Yorkshiremen Sketch
-Tim Brooke-Taylor <tbt@example.com>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
 :doctype: internet-draft
 :status: informational
-:name: draft-four-yorkshiremen-00
+:name: draft-camelot-holy-grenade-00
 :no-rfc-bold-bcp14: false
 :smart-quotes: false
 
@@ -344,13 +216,11 @@ The specification *MUST NOT* use the word _doesn't_.
 ----
 <rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
   <front>
-    <title>Four Yorkshiremen Sketch</title>
+    <title>The Holy Hand Grenade of Antioch</title>
     <seriesInfo name="Internet-Draft" status="informational"
-        stream="IETF" value="draft-four-yorkshiremen-00" />
-    <author fullname="Tim Brooke-Taylor" surname="Brooke-Taylor">
-      <address>
-        <email>tbt@example.com</email>
-      </address>
+        stream="IETF" value="draft-camelot-holy-grenade-00" />
+    <author fullname="Arthur son of Uther Pendragon" surname="Pendragon" 
+initials="A.">
     </author>
     <date day="25" month="November" year="2017" />
   </front>
