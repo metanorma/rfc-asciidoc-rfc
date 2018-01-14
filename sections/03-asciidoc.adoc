@@ -15,7 +15,7 @@ document attributes in lines prefixed with `:`.
 blank line.
 
 * A number of sections, set off by a section title (a line prefixed
-with two or more `=`. 
+with two or more `=`.)
 
 A section may contain:
 
@@ -75,7 +75,8 @@ RFC XML equivalent.)
 === AsciiRFC Mapping To Asciidoctor syntax
 
 The Asciidoctor syntax document structure aligns with the RFC XML v2
-and v3 structure.  In the following, v3 equivalences are given.
+and v3 structure.  In the following, RFC XML v3 equivalences are given
+to the basic Asciidoctor structure.
 
 Header::
   `<rfc>` attributes, most `front` elements.
@@ -139,41 +140,57 @@ The first block of text, from
 `= An API For Calendar-Based Fortune Heuristics Services` through to
 `:country_2: USA`, is
 the document header. It contains a title in the first line, an author
-attribution, and then a set of document attributes, conveying
+attribution (`Gabriel Destiny; Charise Luck`), and then a set of 
+document attributes, conveying
 information about the document as well as information about its
 authors. This information ends up either as attributes of the root
 `rfc` tag, elements of the `front` tag, or processing instructions.
 
 The following blocks of text, up until the first section header 
-(`== Claim: Michael Palin`), are the document preamble. They are
+(`== Introduction`), are the document preamble. They are
 treated by the document converter as containing the document abstract
-(`abstract`), followed by any notes (`note`, identified above by the
-`NOTE:` heading).
+(`abstract`), followed by any notes if present.
 
 [subs="quotes"]
-The first section header (`== Claim: Michael Palin`) is preceded by an
-anchor for that section (`[#michaelpalin]`). There is a
-cross-reference to that anchor already in place in the abstract
-(`<<michaelpalin>>`). The document converter treats the first section
+Section headers delimit the sections of the main body of the document,
+starting with `== Introduction`. The document converter treats the first section
 of the document as the start of the `middle` section of the document.
+The first section header is followed by a paragraph, and other
+sections and paragraphs. The number of `=` signs can be one higher than that of
+the preceding section header, which indicates that they are subsections
+of that section; so `=== Well-Known URI Redirection`
+is a subsection of the preceding `== Fortune Heuristics Service Well-Known URI`.
+
+The paragraphs contain some inline formatting
+(e.g. boldface: `\*MUST*`, monospace: `{backtick}type{backtick}`), and sections can
+also contain blocks other than normal paragraphs; the section
+`== Conventions Used in This Document`, for example, contains
+a definition list (whose terms are delimited by `::`), and the 
+subsection `=== Root of Fortune Path URI ("/")` contains a code snippet
+(delimited by `----`, and tagged with the style attribute `[source,json]`,
+indicating that this is a JSON sourcecode listing). The document
+can also include comments (`//` for inline, `////` for blocks),
+which are not rendered when the document is processed.
 
 [subs="quotes"]
-The first section header is followed by a paragraph, and other
-sections and paragraphs. The number of `=` signs are one higher than
-the initial section header, which indicates that they are subsections
-of that section. The paragraphs contains some inline formatting
-(italics: `\_pause for laughter_`; boldface: `\*lick*`). The first
-paragraph also contains a citation of a reference, which in this
+The introductory section
+contains a citation of a reference, which in this
 version of AsciiRFC is treated identically to a cross-reference
-(`<<RFC7253>>`). (If the bibliography preprocessor were used, it would
-be encoded differently.)
+(`<<RFC7230>>`) -- the crossreference being to the references
+section of the document. Sections and blocks of texts within the
+document can also be the target of crossreferences; for example,
+the section header `== Fortune Heuristics Service Discovery`
+is preceded by the anchor `[#service-discovery]`, and that anchor
+is already referenced in the section `== Conventions Used in This Document`.
 
-The second last section is tagged with the style attribute
-`[bibliography]`, which identifies it as a references container; the
-document converter accordingly inserts this into the `back` element of
-the document. The contents of the references section are in this
+The third last and second last section are tagged with the style attribute
+`[bibliography]`, which identifies them as references containers; the
+document converter accordingly inserts them into the `back` element of
+the document. The contents of the references sections are in this
 instance raw XML, delimited as a passthrough block (with
-`{fourpluses}`), which the converter does not alter.  The final
+`{fourpluses}`), which the converter does not alter. 
+
+The final
 section is tagged with the style attribute `[appendix]`, and is
 treated as such.
 
@@ -203,7 +220,7 @@ Output in RFC XML v2 is not extensively described in this document.
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml[]
+include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml2[]
 <CODE ENDS>
 ----
 ====

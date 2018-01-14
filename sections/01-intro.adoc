@@ -5,7 +5,7 @@ Internet-Drafts and RFCs intended for publication submission to the
 IETF can be written in a multitude of formats today, including:
 
 * XML: RFC XML v2 <<RFC7749>> and v3 <<RFC7991>>
-* nroff: through "NroffEdit" <<NroffEdit>>
+* nroff: through <<NroffEdit>>
 * Microsoft Word: through usage of <<RFC5385>>
 * Lyx: through <<lyx2rfc>>
 * Pandoc: <<RFC7328>>, through <<pandoc2rfc>> or <<draftr>>
