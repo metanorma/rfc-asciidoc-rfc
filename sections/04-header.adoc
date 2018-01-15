@@ -35,7 +35,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="13..23,35,37..40"]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..23,35,37..40"]
 ----
 ====
 
@@ -60,7 +60,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="13..40"]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..40"]
 ----
 ====
 
@@ -82,7 +82,7 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[lines=1..3
 ====
 [source,xml]
 ----
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml3[lines=11..47]
+include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[lines=11..47]
 ----
 ====
 
@@ -121,7 +121,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[lines="1..23,35"]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="1..23,35"]
 ----
 ====
 
