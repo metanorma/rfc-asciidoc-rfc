@@ -10,71 +10,27 @@ An AsciiRFC example with a figure is given in
 <<source-asciirfc-figure>>, and its rendering in
 <<source-asciirfc-figure-v3>>.
 
+// nesting examples within examples and includes has defeated me
+
 [[source-asciirfc-figure]]
 .AsciiRFC With A Figure
-[example]
+[example,subs="attributes"]
 --
-[source,asciidoc]
-------
-.Figure 1
-====
-.figure1.txt
-....
-Figures are only permitted to contain listings
-(sourcecode), images (artwork), or literal (artwork)
-
-This is some ASCII Art:
-
- _____ ___ ____ _      _
-|  ___|_ _/ ___| | ___| |_
-| |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_
-|_|   |___\____|_|\___|\__|
-....
-
-[source,ruby]
-----
-def listing(node)
-  result = []
-  if node.parent.context != :example
-    result << "<figure>"
-  end
-end
-------
-====
+[source,asciidoc,subs="attributes"]
+-----
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=figure]
+-----
 --
 
 
 [[source-asciirfc-figure-v3]]
 .AsciiRFC With A Figure (RFC XML v3)
-[example]
---
-[source,xml]
+====
+[source,asciidoc]
 ----
-<figure>
-  <name>Figure 1</name>
-  <artwork type="ascii-art" name="figure1.txt">
-    Figures are only permitted to contain listings
-    (sourcecode), images (artwork), or literal (artwork)
-
-This is some ASCII Art:
-
- _____ ___ ____ _      _
-|  ___|_ _/ ___| | ___| |_
-| |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_
-|_|   |___\____|_|\___|\__|</artwork>
-  <sourcecode type="ruby">
-    def listing(node)
-      result = []
-      if node.parent.context != :example
-        result &lt;&lt; "&lt;figure&gt;"
-      end
-    end
-  </sourcecode>
-</figure>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure]
 ----
---
+====
 
 If an AsciiRFC Listing or Literal occurs outside of an Example
 (<<source-asciirfc-literal>>), the RFC XML converter will supply the
@@ -82,37 +38,21 @@ surrounding Figure element (<<source-asciirfc-literal-v3>>).
 
 [[source-asciirfc-literal]]
 .AsciiRFC With ASCII Art Without Figure Wrapping
-[example]
---
+====
 [source,asciidoc]
 ----
-....
-This is some ASCII Art:
-
- _____ ___ ____ _      _
-|  ___|_ _/ ___| | ___| |_
-| |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_
-|_|   |___\____|_|\___|\__|
-....
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=figure2]
 ----
---
+====
+
 
 [[source-asciirfc-literal-v3]]
 .AsciiRFC With ASCII Art Without Figure Wrapping (RFC XML v3)
-[example]
---
-[source,xml]
+====
+[source,asciidoc]
 ----
-<figure>
-  <artwork type="ascii-art">This is some ASCII Art:
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure2]
+----
+====
 
- _____ ___ ____ _      _
-|  ___|_ _/ ___| | ___| |_
-| |_   | | |  _| |/ _ \ __|
-|  _|  | | |_| | |  __/ |_
-|_|   |___\____|_|\___|\__|</artwork>
-</figure>
-----
---
 

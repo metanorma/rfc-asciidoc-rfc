@@ -48,6 +48,8 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :dblopenangle: <<
 :dblcloseangle: >>
 :fourpluses: ++++
+:fourdashes: ----
+:fourequals: ====
 :dblstar: **
 :backtick: `
 

@@ -28,7 +28,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 [source,xml]
 ----
 <abstract>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=myTag]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=preamble]
 ----
 ====
 
