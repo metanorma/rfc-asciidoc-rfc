@@ -17,20 +17,7 @@ An example of using AsciiRFC Blockquotes is given in
 ====
 [source,asciidoc]
 ----
-[quote,attribution="Monty Python",citetitle="http://example.com"]
-____
-Dennis: Come and see the violence inherent in the system.
-Help! Help! I'm being repressed!
-
-King Arthur: Bloody peasant!
-
-Dennis: Oh, what a giveaway!
-* Did you hear that?
-* Did you hear that, eh?
-* That's what I'm on about!
-** Did you see him repressing me?
-** You saw him, Didn't you?
-____
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=quote]
 ----
 ====
 
@@ -39,23 +26,7 @@ ____
 ====
 [source,xml]
 ----
-<blockquote quotedfrom="Monty Python" cite="http://example.com">
-  <t>Dennis: Come and see the violence inherent in the system.
-  Help! Help! I&#8217;m being repressed!</t>
-  <t>King Arthur: Bloody peasant!</t>
-  <t>Dennis: Oh, what a giveaway!</t>
-  <ul>
-    <li>Did you hear that?</li>
-    <li>Did you hear that, eh?</li>
-    <li>
-      <t>That&#8217;s what I&#8217;m on about!</t>
-      <ul>
-        <li>Did you see him repressing me?</li>
-        <li>You saw him, Didn&#8217;t you?</li>
-      </ul>
-    </li>
-  </ul>
-</blockquote>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=quote1]
 ----
 ====
 

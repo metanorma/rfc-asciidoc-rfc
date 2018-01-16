@@ -17,7 +17,7 @@ include::../examples/rfc-asciirfc-template/draft-asciirfc-template.adoc[]
 [source,xml]
 --------
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/draft-asciirfc-template.xml3[]
+include::../examples/rfc-asciirfc-template/xml3/draft-asciirfc-template.xml[]
 <CODE ENDS>
 --------
 
@@ -36,7 +36,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
 [source,asciidoc]
 --------
 <CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.xml3[]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[]
 <CODE ENDS>
 --------
 
@@ -54,7 +54,7 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.xml3[]
+include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[]
 <CODE ENDS>
 ----
 

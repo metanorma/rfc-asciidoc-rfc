@@ -5,44 +5,37 @@
 
 AsciiRFC supports ordered, unordered, and definition lists.
 Indentation of ordered and unordered lists is indicated by repeating
-the list item prefix (`*` and `.` respectively).
+the list item prefix (`*` and `.` respectively); for definition
+lists, by incrementing the number of definition term delimiters
+(`::`).
 
 List attributes can be used to specify the type of symbol used for
 ordered lists.
 
 An example of an unordered list is shown in
 <<source-asciirfc-unordered-list>> (with its rendered version in
-<<source-asciirfc-unordered-list-v3>>), and that of an ordered list is
+<<source-asciirfc-unordered-list-v3>>). An example of an ordered list 
+with ordered and unordered sublists is
 shown in <<source-asciirfc-ordered-list>> (with its rendered version
-in <<source-asciirfc-ordered-list-v3>>).
+in <<source-asciirfc-ordered-list-v3>>). An example of a definition
+list is shown in <<source-asciirfc-definition-list>> (with its
+rendered version in <<source-asciirfc-definition-list-v3>>).
 
 [[source-asciirfc-unordered-list]]
 .AsciiRFC With Unordered lists
 ====
 [source,asciidoc]
 ----
-* One
-* Two
-** Three
-*** Four
-** Five
-* Six
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=ul]
 ----
 ====
 
 [[source-asciirfc-unordered-list-v3]]
 .AsciiRFC With Unordered Lists (RFC XML v3)
 ====
-[source,xml]
+[source,asciidoc]
 ----
-<list style="symbols">
-  <t>One</t>
-  <t>Two</t>
-  <t>Three</t>
-  <t>Four</t>
-  <t>Five</t>
-  <t>Six</t>
-</list>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ul1]
 ----
 ====
 
@@ -51,14 +44,7 @@ in <<source-asciirfc-ordered-list-v3>>).
 ====
 [source,asciidoc]
 ----
-[loweralpha]
-. First
-. Second
-[upperalpha]
-.. Third
-.. Fourth
-. Fifth
-. Sixth
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=ol]
 ----
 ====
 
@@ -67,18 +53,7 @@ in <<source-asciirfc-ordered-list-v3>>).
 ====
 [source,xml]
 ----
-<ol anchor="id" type="a">
-  <li>First</li>
-  <li>
-    <t>Second</t>
-    <ol type="A">
-      <li>Third</li>
-      <li>Fourth</li>
-    </ol>
-  </li>
-  <li>Fifth</li>
-  <li>Sixth</li>
-</ol>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ol1]
 ----
 ====
 
@@ -87,12 +62,7 @@ in <<source-asciirfc-ordered-list-v3>>).
 ====
 [source,asciidoc]
 ----
-RFC::
-  Request For Comment, a type of publication from the Internet
-  Engineering Task Force (IETF) and the Internet Society (ISOC)
-RFC XML::
-  An XML format for the publishing of RFCs, specified in RFC 7749 (v2)
-  and RFC 7991 (v3)
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=dl]
 ----
 ====
 
@@ -101,18 +71,7 @@ RFC XML::
 ====
 [source,xml]
 ----
-<dl>
-  <dt>RFC</dt>
-  <dd>
-    <t>Request For Comment, a type of publication from the Internet
-    Engineering Task Force (IETF) and the Internet Society (ISOC)</t>
-  </dd>
-  <dt>RFC XML</dt>
-  <dd>
-    <t>An XML format for the publishing of RFCs, specified in RFC 7749
-    (v2) and RFC 7991 (v3)</t>
-  </dd>
-</dl>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=dl1]
 ----
 ====
 
@@ -126,7 +85,7 @@ prefixing it with `+` in a separate line.
 See the "List Continuation" section in <<Asciidoctor-Manual>> for more
 information.
 
-An example of list containuation with text is shown in
+An example of list continuation with text is shown in
 <<source-asciirfc-list-text>> with its rendered version in
 <<source-asciirfc-list-text-v3>>.
 
@@ -135,11 +94,7 @@ An example of list containuation with text is shown in
 ====
 [source,asciidoc]
 ----
-Notes::  Note 1.
-+
-Note 2.
-+
-Note 3.
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=listcontinuation]
 ----
 ====
 
@@ -148,14 +103,7 @@ Note 3.
 ====
 [source,xml]
 ----
-<dl>
-  <dt>Notes</dt>
-  <dd>
-    <t>Note 1.</t>
-    <t>Note 2.</t>
-    <t>Note 3.</t>
-  </dd>
-</dl>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuation1]
 ----
 ====
 
@@ -166,7 +114,7 @@ breaks into line breaks within a list item.)
 List continuations can also be embed to populate a list item with a
 sequence of blocks as a unit (in an Asciidoctor syntax open block).
 
-An example of list containuation with block is shown in
+An example of list continuation with block is shown in
 <<source-asciirfc-list-block>> with its rendered version in
 <<source-asciirfc-list-block-v3>>.
 
@@ -174,20 +122,9 @@ An example of list containuation with block is shown in
 .AsciiRFC List With Block Continuation
 ====
 [source,asciidoc]
-----
-* List Entry 1
-* List Entry 2
-+
---
-Note 2.
-
-....
-Literal
-....
-
-Note 3.
---
-----
+-----
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=listcontinuationblock]
+-----
 ====
 
 [[source-asciirfc-list-block-v3]]
@@ -195,19 +132,7 @@ Note 3.
 ====
 [source,xml]
 ----
-<ul>
-  <li>List Entry 1</li>
-  <li>
-    <t>List Entry 2</t>
-    <t>Note 2.</t>
-    <figure>
-      <artwork type="ascii-art">
-        Literal
-      </artwork>
-    </figure>
-    <t>Note 3.</t>
-  </li>
-</ul>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuationblock1]
 ----
 ====
 
