@@ -16,12 +16,14 @@ Its basic syntax is given in <<source-asciirfc-include>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::path[
   leveloffset=_offset_,
   lines=_ranges_,
   tag(s)=_name(s)_,
   indent=_depth_
 ]
+<CODE ENDS>
 ----
 ====
 

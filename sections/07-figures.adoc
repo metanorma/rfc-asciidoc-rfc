@@ -18,7 +18,9 @@ An AsciiRFC example with a figure is given in
 --
 [source,asciidoc,subs="attributes"]
 -----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=figure1a]
+<CODE ENDS>
 -----
 --
 
@@ -28,7 +30,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure1]
+<CODE ENDS>
 ----
 ====
 
@@ -41,7 +45,9 @@ surrounding Figure element (<<source-asciirfc-literal-v3>>).
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=figure2a]
+<CODE ENDS>
 ----
 ====
 
@@ -51,7 +57,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure2]
+<CODE ENDS>
 ----
 ====
 

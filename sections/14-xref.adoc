@@ -28,7 +28,9 @@ An example of using cross-references in AsciiRFC is given in
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=xref]
+<CODE ENDS>
 ----
 ====
 
@@ -37,7 +39,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=xref1]
+<CODE ENDS>
 ----
 ====
 
@@ -63,7 +67,9 @@ An example of referencing with attributes is given in
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=relref]
+<CODE ENDS>
 ----
 ====
 
@@ -72,7 +78,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=relref1]
+<CODE ENDS>
 ----
 ====
 
@@ -88,7 +96,9 @@ the main entry by comma.
 ======
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=index]
+<CODE ENDS>
 ----
 ======
 
@@ -97,7 +107,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=index1]
+<CODE ENDS>
 ----
 ====
 

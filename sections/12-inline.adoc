@@ -13,7 +13,9 @@ produces the RFC XML v3 output given in <<source-asciirfc-inline-v3>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=inline_formatting]
+<CODE ENDS>
 ----
 ====
 
@@ -22,7 +24,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=inline_formatting1]
+<CODE ENDS>
 ----
 ====
 
@@ -47,7 +51,9 @@ rendered output in <<source-asciirfc-bcp14-v3>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bcp14]
+<CODE ENDS>
 ----
 ====
 
@@ -56,7 +62,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bcp14_1]
+<CODE ENDS>
 ----
 ====
 
@@ -78,9 +86,11 @@ header) as shown in <<source-asciirfc-escaping>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 :dblast: **
 
 `{dblast}`
+<CODE ENDS>
 ----
 ====
 

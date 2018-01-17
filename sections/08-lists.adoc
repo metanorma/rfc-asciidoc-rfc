@@ -26,7 +26,9 @@ rendered version in <<source-asciirfc-definition-list-v3>>).
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=ul]
+<CODE ENDS>
 ----
 ====
 
@@ -35,7 +37,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ul1]
+<CODE ENDS>
 ----
 ====
 
@@ -44,7 +48,9 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=ol]
+<CODE ENDS>
 ----
 ====
 
@@ -53,7 +59,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ol1]
+<CODE ENDS>
 ----
 ====
 
@@ -62,7 +70,9 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=dl]
+<CODE ENDS>
 ----
 ====
 
@@ -71,7 +81,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=dl1]
+<CODE ENDS>
 ----
 ====
 
@@ -94,7 +106,9 @@ An example of list continuation with text is shown in
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=listcontinuation]
+<CODE ENDS>
 ----
 ====
 
@@ -103,7 +117,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuation1]
+<CODE ENDS>
 ----
 ====
 
@@ -123,7 +139,9 @@ An example of list continuation with block is shown in
 ====
 [source,asciidoc]
 -----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=listcontinuationblock]
+<CODE ENDS>
 -----
 ====
 
@@ -132,7 +150,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuationblock1]
+<CODE ENDS>
 ----
 ====
 
@@ -148,6 +168,7 @@ cannot be generated via AsciiRFC.
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 <t>
   This is the start of a paragraph.
   <ul>
@@ -159,6 +180,7 @@ cannot be generated via AsciiRFC.
   </ul>
   And this is the continuation of the paragraph.
 </t>
+<CODE ENDS>
 ----
 ====
 

@@ -42,7 +42,9 @@ generate the corresponding RFC XML in <<source-bib-xml-inline>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bibliography]
+<CODE ENDS>
 ----
 ====
 
@@ -51,7 +53,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bibliography1]
+<CODE ENDS>
 ----
 ====
 
@@ -136,6 +140,7 @@ inserted, as shown in <<source-bib-abib>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 [bibliography]
 == Normative References
 
@@ -149,6 +154,7 @@ bibliography::norm[]
 ++++
 bibliography::info[]
 ++++
+<CODE ENDS>
 ----
 ====
 

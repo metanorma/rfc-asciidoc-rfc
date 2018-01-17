@@ -36,7 +36,9 @@ are given in <<source-asciirfc-enc>> with the output in
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=hebrew]
+<CODE ENDS>
 ----
 ====
 
@@ -45,7 +47,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=hebrew1]
+<CODE ENDS>
 ----
 ====
 

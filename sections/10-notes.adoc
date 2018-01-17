@@ -19,7 +19,9 @@ with its rendered output in <<source-asciirfc-note-v3>>.
 ======
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=note]
+<CODE ENDS>
 ----
 ======
 
@@ -28,7 +30,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=note1]
+<CODE ENDS>
 ----
 ====
 
@@ -51,7 +55,9 @@ rendered output in <<source-asciirfc-sidebar-v3>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=aside]
+<CODE ENDS>
 ----
 ====
 
@@ -60,7 +66,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=aside1]
+<CODE ENDS>
 ----
 ====
 
@@ -76,7 +84,9 @@ rendered output in <<source-asciirfc-sidebar-v3>>.
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=comment]
+<CODE ENDS>
 ----
 ====
 
@@ -85,7 +95,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=comment1]
+<CODE ENDS>
 ----
 ====
 

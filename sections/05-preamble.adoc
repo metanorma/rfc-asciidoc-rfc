@@ -18,7 +18,9 @@ An example of setting the preamble is given in
 ====
 [source,asciidoc]
 ----
+<CODE BEGINS>
 include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=preamble]
+<CODE ENDS>
 ----
 ====
 
@@ -27,8 +29,10 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
+<CODE BEGINS>
 <abstract>
 include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=preamble]
+<CODE ENDS>
 ----
 ====
 
