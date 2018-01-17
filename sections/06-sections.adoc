@@ -31,7 +31,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=sectnums]
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=sectnums1]
 ----
 ====
 
