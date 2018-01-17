@@ -1,4 +1,5 @@
-<reference anchor='asciidoctor-bibliography' target='https://github.com/riboseinc/asciidoctor-bibliography/'>
+<reference anchor='asciidoctor-bibliography' 
+  target='https://github.com/riboseinc/asciidoctor-bibliography/'>
   <front>
     <title>Citations and Bibliography the 'asciidoctor-way'</title>
     <author>

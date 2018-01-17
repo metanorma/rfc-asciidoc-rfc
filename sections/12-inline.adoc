@@ -13,7 +13,7 @@ produces the RFC XML v3 output given in <<source-asciirfc-inline-v3>>.
 ====
 [source,asciidoc]
 ----
-_Text_ *Text* `Text`  ^Superscript^ ~Subscript~
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=inline_formatting]
 ----
 ====
 
@@ -22,8 +22,7 @@ _Text_ *Text* `Text`  ^Superscript^ ~Subscript~
 ====
 [source,xml]
 ----
-<t><em>Text</em> <strong>Text</strong> <tt>Text</tt>
-<sup>Superscript</sup> <sub>Subscript</sub></t>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=inline_formatting1]
 ----
 ====
 
@@ -48,9 +47,7 @@ rendered output in <<source-asciirfc-bcp14-v3>>.
 ====
 [source,asciidoc]
 ----
-This [bcp14]#must not# stand
-
-This *MUST NOT* stand
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bcp14]
 ----
 ====
 
@@ -59,9 +56,7 @@ This *MUST NOT* stand
 ====
 [source,xml]
 ----
-<t>This <bcp14>MUST NOT</bcp14> stand</t>
-
-<t>This <bcp14>MUST NOT</bcp14> stand</t>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bcp14_1]
 ----
 ====
 

@@ -1,8 +1,9 @@
-<reference  anchor='AsciiMathML' target='http://asciimath.org'>
-<front>
-  <title>AsciiMath is an easy-to-write markup language for mathematics.</title>
-<author/>
-<date year='2017' month='November' />
-</front>
+<reference anchor='AsciiMathML' target='http://asciimath.org'>
+  <front>
+    <title>AsciiMath is an easy-to-write markup language for 
+      mathematics.</title>
+    <author/>
+    <date year='2017' month='November' />
+  </front>
 </reference>
 

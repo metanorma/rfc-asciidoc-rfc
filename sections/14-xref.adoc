@@ -13,7 +13,7 @@ supported for that version of RFC XML are simply ignored by the
 converter. 
 
 Note that anchors in RFC XML are constrained to the format
-`[A-Za-z_:][[A-Za-z0-9_:.-]*`.
+`[A-Za-z_:][[A-Za-z0-9_:.-]*` (i.e. `xsd:ID`).
 
 [subs="quotes"]
 Cross-references to anchors are notated as `<<...>>`; cross-references
@@ -28,14 +28,7 @@ An example of using cross-references in AsciiRFC is given in
 ====
 [source,asciidoc]
 ----
-[[cross-reference]]
-== Section 1
-
-== Section 2
-See <<cross-reference>>.
-
-== Section 3
-See <<cross-reference,text>>
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=xref]
 ----
 ====
 
@@ -44,26 +37,7 @@ See <<cross-reference,text>>
 ====
 [source,xml]
 ----
-<section anchor="cross-reference" numbered="false">
-  <name>Section 1</name>
-</section>
-<section anchor="_section_2" numbered="false">
-  <name>Section 2</name>
-  <t>
-    See
-    <xref target="cross-reference">
-    </xref>.
-  </t>
-</section>
-<section anchor="_section_3" numbered="false">
-  <name>Section 3</name>
-  <t>
-    See
-    <xref target="cross-reference">
-      text
-    </xref>
-  </t>
-</section>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=xref1]
 ----
 ====
 
@@ -89,16 +63,7 @@ An example of referencing with attributes is given in
 ====
 [source,asciidoc]
 ----
-== Section 4
-See <<cross-reference,format=counter: text>>
-
-== Section 5
-See <<cross-reference,format=title>>
-
-See <<cross-reference,1.3 of>>
-<<cross-reference,1.4 comma: text>>
-<<cross-reference#fragment1,2.5.3 parens>>
-<<cross-reference#fragment2,6.2a bare: text>>
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=relref]
 ----
 ====
 
@@ -107,39 +72,32 @@ See <<cross-reference,1.3 of>>
 ====
 [source,xml]
 ----
-<section anchor="_section_4" numbered="false">
-  <name>Section 4</name>
-  <t>
-    See
-    <xref format="counter" target="cross-reference">
-      text
-    </xref>
-  </t>
-</section>
-<section anchor="_section_5" numbered="false">
-  <name>
-    Section 5
-  </name>
-  <t>
-    See
-    <xref format="title" target="cross-reference" />
-  </t>
-  <t>
-    See
-    <relref section="1.3" displayformat="of"
-     target="cross-reference" />
-    <relref section="1.4" displayformat="comma"
-     target="cross-reference">
-      text
-    </relref>
-    <relref relative="fragment1" section="2.5.3"
-     displayformat="parens" target="cross-reference" />
-    <relref relative="fragment2" section="6.2a"
-     displayformat="bare" target="cross-reference">
-      text
-    </relref>
-  </t>
-</section>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=relref1]
+----
+====
+
+=== Indexing
+
+Inline index entries are notated as `\((...))`. Index entries
+which do not appear in the text are notated as `\(((...)))`;
+such entries may include a separate sub-entry, separated from
+the main entry by comma.
+
+[[source-asciirfc-index]]
+.AsciiRFC Index Entries
+======
+[source,asciidoc]
+----
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=index]
+----
+======
+
+[[source-asciirfc-index-v3]]
+.AsciiRFC Index Entries (RFC XML v3)
+====
+[source,xml]
+----
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=index1]
 ----
 ====
 

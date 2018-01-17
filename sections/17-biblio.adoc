@@ -29,7 +29,10 @@ document conversion leaves the raw RFC XML in place.
 
 This approach requires authors to maintain the normative and
 informative bibliographies within the document, to update them as
-citations are added and removed, and to sort them manually. 
+citations are added and removed, and to sort them manually. However,
+if the citation is stored on the IETF's RFC XML citation libraries
+(see https://xml2rfc.tools.ietf.org), AsciiRFC will automatically
+replace it with an external reference to that citation.
 
 For example, the AsciiRFC in <<source-bib-asciirfc-inline>> will
 generate the corresponding RFC XML in <<source-bib-xml-inline>>.
@@ -39,27 +42,7 @@ generate the corresponding RFC XML in <<source-bib-xml-inline>>.
 ====
 [source,asciidoc]
 ----
-Some datagram padding may be needed.<<RFC7253>>
-
-[bibliography]
-== Normative References
-++++
-<reference anchor='RFC7253'
-  target='https://tools.ietf.org/html/rfc7253'>
-  <front>
-    <title>Guidelines for Writing an IANA Considerations
-      Section in RFCs</title>
-    <author initials="T." surname="Krovetz">
-      <organization>Sacramento State</organization>
-    </author>
-    <author initials="P." surname="Rogaway">
-      <organization>UC Davis</organization>
-    </author>
-    <date month='May' year='2014'/>
-  </front>
-  <seriesInfo name="RFC" value="7253"/>
-</reference>
-++++
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bibliography]
 ----
 ====
 
@@ -68,28 +51,7 @@ Some datagram padding may be needed.<<RFC7253>>
 ====
 [source,xml]
 ----
-  <t>Some datagram padding may be needed <xref target="RFC7253"/></t>
-</middle>
-
-<back>
-<references anchor="_references">
-  <name>Normative References</name>
-  <reference anchor='RFC7253'
-    target='https://tools.ietf.org/html/rfc7253'>
-    <front>
-      <title>Guidelines for Writing an IANA Considerations
-        Section in RFCs</title> <author initials="T." surname="Krovetz">
-        <organization>Sacramento State</organization>
-      </author>
-      <author initials="P." surname="Rogaway">
-        <organization>UC Davis</organization>
-      </author>
-      <date month='May' year='2014'/>
-    </front>
-    <seriesInfo name="RFC" value="7253"/>
-  </reference>
-</references>
-</back>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bibliography1]
 ----
 ====
 

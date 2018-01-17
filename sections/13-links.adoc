@@ -15,7 +15,7 @@ version in <<source-asciirfc-link-v3>>.
 ====
 [source,asciidoc]
 ----
-http://example.com/[linktext]
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=hyperlink]
 ----
 ====
 
@@ -24,7 +24,7 @@ http://example.com/[linktext]
 ====
 [source,xml]
 ----
-<t><eref target="http://example.com/">linktext</eref></t>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=hyperlink1]
 ----
 ====
 
@@ -37,7 +37,7 @@ in <<source-asciirfc-link-lit>> with its rendered version in
 ====
 [source,asciidoc]
 ----
-\http://example.com/[linktext]
+include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=escaped_hyperlink]
 ----
 ====
 
@@ -46,7 +46,7 @@ in <<source-asciirfc-link-lit>> with its rendered version in
 ====
 [source,xml]
 ----
-<t>http://example.com/[linktext]</t>
+include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=escaped_hyperlink1]
 ----
 ====
 

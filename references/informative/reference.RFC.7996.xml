@@ -1,4 +1,5 @@
-<reference anchor="RFC7996" target="https://www.rfc-editor.org/info/rfc7996">
+<reference anchor="RFC7996" 
+  target="https://www.rfc-editor.org/info/rfc7996">
   <front>
     <title>SVG Drawings for RFCs: SVG 1.2 RFC</title>
     <author initials="N." surname="Brownlee" fullname="N. Brownlee">
@@ -6,11 +7,10 @@
     </author>
     <date year="2016" month="December"/>
     <abstract>
-      <t>
-        This document specifies SVG 1.2 RFC -- an SVG profile for use in 
-        diagrams that may appear in RFCs -- and considers some of the issues 
-        concerning the creation and use of such diagrams.
-      </t>
+      <t>This document specifies SVG 1.2 RFC -- an SVG profile for 
+        use in diagrams that may appear in RFCs -- and considers 
+        some of the issues concerning the creation and use of 
+        such diagrams.  </t>
     </abstract>
   </front>
   <seriesInfo name="RFC" value="7996"/>
