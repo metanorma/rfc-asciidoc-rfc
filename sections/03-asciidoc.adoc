@@ -11,8 +11,8 @@ Asciidoctor syntax consists of:
 * A document header, containing a title, a list of authors, and
 document attributes in lines prefixed with `:`.
 
-* An optional document preamble, separated from document header by a
-blank line.
+* An optional document preamble, separated from the document header by a
+blank line, and not containing any section titles.
 
 * A number of sections, set off by a section title (a line prefixed
 with two or more `=`.)
@@ -44,7 +44,7 @@ delimited blocks.
 example, examples can contain source code as well as discussion in
 paragraphs.
 
-* Blocks of text consist of inline text, which themselves can contain
+* Blocks of text consist of inline text, which itself can contain
 markup.
 
 
@@ -54,12 +54,12 @@ Inline markup includes:
 
 * Custom markup macros. (AsciiRFC uses two: `bcp14, comment`.)
 
-* URLs, including display text.
+* URLs, including display text to render.
 
 * Inline anchors.
 
 * Cross-references to anchors (IDs of blocks or spans of text),
-including display text.
+including display text to render.
 
 * Images, audio, and visual files. (AsciiRFC only supports images.)
 
@@ -74,8 +74,8 @@ RFC XML equivalent.)
 
 === AsciiRFC Mapping To Asciidoctor syntax
 
-The Asciidoctor syntax document structure aligns with the RFC XML v2
-and v3 structure.  In the following, RFC XML v3 equivalences are given
+The Asciidoctor syntax document structure aligns with both the RFC XML v2
+and the RFC XML v3 structure.  In the following, RFC XML v3 equivalences are given
 to the basic Asciidoctor structure.
 
 Header::
@@ -87,10 +87,10 @@ Preamble::
 Sections::
   `middle/section` elements.
 
-Sections with `bibliography` style attributes::
+Sections with `bibliography` style attribute::
   `back/references` elements.
 
-Sections with `appendix` style attributes::
+Sections with `appendix` style attribute::
   `back/section` elements.
 
 Paragraphs::
@@ -119,7 +119,7 @@ AsciiRFC, with some pitfalls to be aware of.
 Illustrations are in RFC XML v3 and RFC XML v2.
 
 A sample AsciiRFC document is provided in <<source-sample-asciirfc>>,
-and its corresponding rendering in:
+together with its corresponding rendering in:
 
 * RFC XML v3 (<<source-sample-asciirfc-output-v3>>)
 
@@ -143,7 +143,7 @@ the document header. It contains a title in the first line, an author
 attribution (`Gabriel Destiny; Charise Luck`), and then a set of 
 document attributes, conveying
 information about the document as well as information about its
-authors. This information ends up either as attributes of the root
+authors. This information ends up in RFC XML either as attributes of the root
 `rfc` tag, elements of the `front` tag, or processing instructions.
 
 The following blocks of text, up until the first section header 
@@ -154,7 +154,7 @@ treated by the document converter as containing the document abstract
 [subs="quotes"]
 Section headers delimit the sections of the main body of the document,
 starting with `== Introduction`. The document converter treats the first section
-of the document as the start of the `middle` section of the document.
+of the document as the start of the `middle` section in RFC XML.
 The first section header is followed by a paragraph, and other
 sections and paragraphs. The number of `=` signs can be one higher than that of
 the preceding section header, which indicates that they are subsections
@@ -173,7 +173,7 @@ can also include comments (`//` for inline, `////` for blocks),
 which are not rendered when the document is processed.
 
 [subs="quotes"]
-The introductory section
+The introductory section in this example
 contains a citation of a reference, which in this
 version of AsciiRFC is treated identically to a cross-reference
 (`<<RFC7230>>`) -- the crossreference being to the references
@@ -185,8 +185,8 @@ is already referenced in the section `== Conventions Used in This Document`.
 
 The third last and second last section are tagged with the style attribute
 `[bibliography]`, which identifies them as references containers; the
-document converter accordingly inserts them into the `back` element of
-the document. The contents of the references sections are in this
+document converter accordingly inserts them into the `back` element under
+RFC XML. The contents of the references sections are in this
 instance raw XML, delimited as a passthrough block (with
 `{fourpluses}`), which the converter does not alter. 
 

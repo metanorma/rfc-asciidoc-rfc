@@ -6,7 +6,7 @@
 AsciiRFC supports ordered, unordered, and definition lists.
 Indentation of ordered and unordered lists is indicated by repeating
 the list item prefix (`*` and `.` respectively); for definition
-lists, by incrementing the number of definition term delimiters
+lists, it is indicated by incrementing the number of definition term delimiters
 (`::`).
 
 List attributes can be used to specify the type of symbol used for
@@ -127,10 +127,10 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 v2.  The RFC XML converter deals with this by converting paragraph
 breaks into line breaks within a list item.)
 
-List continuations can also be embed to populate a list item with a
+List continuations can also be embedded to populate a list item with a
 sequence of blocks as a unit (in an Asciidoctor syntax open block).
 
-An example of list continuation with block is shown in
+An example of list continuation with a delimited block is shown in
 <<source-asciirfc-list-block>> with its rendered version in
 <<source-asciirfc-list-block-v3>>.
 
@@ -158,7 +158,7 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 
 AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic
 level of blocks, and does not permit lists to be nested within them:
-text after a list is considered to be a new paragraph.
+any text after a list is considered to be a new paragraph.
 
 Therefore, markup as shown in <<source-asciirfc-list-impossible>>
 cannot be generated via AsciiRFC.

@@ -1,9 +1,9 @@
 == Sections and Paragraphs
 
-Section headers are given with a sequence of `=`, the number of `=`
-giving the header level: a single `=` is used for the opening of the
+Section headers are given with a sequence of `=`, where the number of 
+instances of `=` gives the header level: a single `=` is used for the opening of the
 document, and a minimum of two `=` symbols are used to prefix a
-section immediately 
+section immediately.
 
 The document itself opens with a single `=`, and sections within it
 must be started with a minimum of `==`.  
@@ -14,7 +14,7 @@ in-document attribute `:sectnums:` (on), `:sectnums!:` (off). The
 section can be included in the document's table of contents.
 
 <<source-asciirfc-sections>> shows how sections and paragraphs are
-used in AsciiRFC, and its rendered form shown in
+used in AsciiRFC, and its rendered form is shown in
 <<source-asciirfc-sections-v3>>.
 
 [[source-asciirfc-sections]]

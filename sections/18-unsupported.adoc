@@ -7,7 +7,7 @@ after RFC XML is generated:
 |===
 | RFC XML element                | RFC XML v3 | RFC XML v2
 
-| `front/boilerplate`            | Not added by the converter  | Not added by the converter
+| `front/boilerplate`            2+| Not added by the converter
 | `iref@primary`                 | N          | N
 | `reference` (and all children) | As Raw XML | As Raw XML
 | `table/preamble`               | Deprecated | N

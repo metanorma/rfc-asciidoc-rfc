@@ -2,8 +2,7 @@
 == Header And Document Attributes
 
 The header gives the document title, followed by an optional author
-attribution, and a series of document attributes, with no carriage
-return breaks.
+attribution, and a series of document attributes, with no empty lines.
 
 === Title And Basic Attributes
 
@@ -18,7 +17,7 @@ accordingly.
 delimited, and result in repeated RFC XML elements.
 
 <<source-asciirfc-header>> demonstrates how to set the document header
-in AsciiRFC, with its rendering in v3 shown in
+in AsciiRFC, with its rendering in RFC XML v3 shown in
 <<source-asciirfc-header-v3>>.
 
 [[source-asciirfc-header]]
@@ -75,7 +74,7 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 Details of a second, third etc. author, including their organization and
 contact details, are provided by suffixing the relevant author attributes with
 `_2`, `_3`  etc., as shown in <<source-asciirfc-header-mauthors>> and
-its v3 rendering <<source-asciirfc-header-mauthors-v3>>.
+its RFC XML v3 rendering <<source-asciirfc-header-mauthors-v3>>.
 
 [[source-asciirfc-header-mauthors]]
 ====

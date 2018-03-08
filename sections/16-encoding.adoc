@@ -4,8 +4,8 @@
 
 XML accepts the full range of characters in the world's languages
 through UTF-8 character encoding, and one of the motivations for the
-move from plain text to RFC XML has been to allow non-ASCII characters
-to be included in RFCs.
+move by the IETF from plain text to RFC XML has been to allow 
+non-ASCII characters to be included in RFCs.
 
 However, current RFC XML v2 tools still do not support UTF-8, and
 alternative tooling support for UTF-8 also remains patchy. Out of an
@@ -13,8 +13,8 @@ abundance of caution, the RFC XML converter uses US-ASCII for its
 character encoding, and renders any non-ASCII characters as HTML
 entities.
 
-AsciiRFC accepts HTML entities as input even though they are not part
-of the XML specification. HTML entities such as `&nbsp;` feature in
+AsciiRFC accepts HTML entities as input, even though they are not part
+of the W3C XML specification. HTML entities such as `&nbsp;` feature in
 examples of RFC XML provided by the IETF. In order to prevent
 dependence of the XML output from extraneous entity definitions, any
 such entities are rendered in the XML as decimal character entities.
@@ -54,8 +54,8 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 ====
 
 Note that because initial period is a formatting character in Asciidoctor,
-we have had to escape the period at the end of Hebrew sentences (which appears
-at the start of the line, Hebrew being written Right-to-Left): Asciidoctor is
+we have had to use `&#x2e;` to escape the period at the end of Hebrew sentences (which appears
+at the start of the line, Hebrew being written Right-to-Left). Asciidoctor is
 not natively equipped to deal with Right-to-Left languages in its formatting
 parsing.
 

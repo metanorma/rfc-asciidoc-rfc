@@ -5,7 +5,7 @@ and feet; cells spanning multiple rows and columns; and horizontal
 alignment. The larger range of table formatting options available in
 RFC XML v2 is also supported.
 
-A sample of an AsciiRFC table is shown in <<source-asciirfc-table>>
+A sample of an AsciiRFC table is shown in <<source-asciirfc-table>>,
 with its rendered output in <<source-asciirfc-table-v3>>.
 
 Neither version of RFC XML is as expressive in its table structure as

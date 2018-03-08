@@ -67,7 +67,7 @@ V3 RELAXNG Validation: 12:0: ERROR: Invalid attribute
 ----
 ====
 
-Note that validation against the RELAXNG RFC XML schema includes
+Note that validation against the Relax NG RFC XML schema includes
 confirming the referential integrity of all cross-references in the
 document.
 

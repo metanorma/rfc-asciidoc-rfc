@@ -1,6 +1,6 @@
 [abstract]
 
-This document describes the AsciiDoc syntax extension called AsciiRFC
+This document describes an AsciiDoc syntax extension called AsciiRFC,
 designed for authoring IETF Internet-Drafts and RFCs.
 
 AsciiDoc is a human readable document markup language which affords

@@ -1,7 +1,7 @@
 == Links
 
 Common URL formats are recognised automatically as hyperlinks in
-AsciiRFC, inheriting this excellent feature from AsciiDoc, and are
+AsciiRFC, which inherits this excellent feature from AsciiDoc, and are
 rendered as such.
 
 Any hyperlinked text is appended after the hyperlink in square
