@@ -23,7 +23,7 @@ A section may contain:
 `=` in their header.
 
 * Blocks of text. Blocks can have metadata (including a title, an
-anchor for cross-references, and attributes.) 
+anchor for cross-references, and attributes.)
 
 Blocks can be:
 
@@ -131,22 +131,31 @@ together with its corresponding rendering in:
 [source,asciidoc]
 --------
 <CODE BEGINS>
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
+include::../examples/rfc-asciirfc-template/draft-asciirfc-template.adoc[lines=1..33]
+include::../examples/rfc-asciirfc-template/sections/00-abstract.adoc[]
+include::../examples/rfc-asciirfc-template/sections/01-intro.adoc[]
+include::../examples/rfc-asciirfc-template/sections/02-conventions.adoc[]
+include::../examples/rfc-asciirfc-template/sections/03-symbols.adoc[]
+include::../examples/rfc-asciirfc-template/sections/10-security.adoc[]
+include::../examples/rfc-asciirfc-template/sections/11-iana.adoc[]
+include::../examples/rfc-asciirfc-template/sections/98-references.adoc[]
+include::../examples/rfc-asciirfc-template/sections/97-examples.adoc[]
+include::../examples/rfc-asciirfc-template/sections/99-acknowledgements.adoc[]
 <CODE ENDS>
 --------
 ====
 
-The first block of text, from 
-`= An API For Calendar-Based Fortune Heuristics Services` through to
-`:country_2: USA`, is
+The first block of text, from
+`= Template For Writing An Internet-Draft In AsciiRFC` through to
+`:country_2: United States of America`, is
 the document header. It contains a title in the first line, an author
-attribution (`Gabriel Destiny; Charise Luck`), and then a set of 
+attribution (`Josiah Carberry; Thomas Kandell`), and then a set of
 document attributes, conveying
 information about the document as well as information about its
 authors. This information ends up in RFC XML either as attributes of the root
 `rfc` tag, elements of the `front` tag, or processing instructions.
 
-The following blocks of text, up until the first section header 
+The following blocks of text, up until the first section header
 (`== Introduction`), are the document preamble. They are
 treated by the document converter as containing the document abstract
 (`abstract`), followed by any notes if present.
@@ -158,15 +167,15 @@ of the document as the start of the `middle` section in RFC XML.
 The first section header is followed by a paragraph, and other
 sections and paragraphs. The number of `=` signs can be one higher than that of
 the preceding section header, which indicates that they are subsections
-of that section; so `=== Well-Known URI Redirection`
-is a subsection of the preceding `== Fortune Heuristics Service Well-Known URI`.
+of that section; so `=== Operators`
+is a subsection of the preceding `== Symbols And Abbreviations`.
 
 The paragraphs contain some inline formatting
 (e.g. boldface: `\*MUST*`, monospace: `{backtick}type{backtick}`), and sections can
 also contain blocks other than normal paragraphs; the section
-`== Conventions Used in This Document`, for example, contains
-a definition list (whose terms are delimited by `::`), and the 
-subsection `=== Root of Fortune Path URI ("/")` contains a code snippet
+`== Operators`, for example, contains
+a definition list (whose terms are delimited by `::`), and the
+subsection `=== Example 1` contains a code snippet
 (delimited by `----`, and tagged with the style attribute `[source,json]`,
 indicating that this is a JSON sourcecode listing). The document
 can also include comments (`//` for inline, `////` for blocks),
@@ -176,23 +185,22 @@ which are not rendered when the document is processed.
 The introductory section in this example
 contains a citation of a reference, which in this
 version of AsciiRFC is treated identically to a cross-reference
-(`<<RFC7230>>`) -- the crossreference being to the references
+(`<<RFC7253>>`) -- the crossreference being to the references
 section of the document. Sections and blocks of texts within the
 document can also be the target of crossreferences; for example,
-the section header `== Fortune Heuristics Service Discovery`
-is preceded by the anchor `[#service-discovery]`, and that anchor
-is already referenced in the section `== Conventions Used in This Document`.
+the section header `=== Operators`
+is preceded by the anchor `[#operators]`, and that anchor
+is already referenced in the section `== Security Considerations`.
 
 The third last and second last section are tagged with the style attribute
 `[bibliography]`, which identifies them as references containers; the
 document converter accordingly inserts them into the `back` element under
 RFC XML. The contents of the references sections are in this
 instance raw XML, delimited as a passthrough block (with
-`{fourpluses}`), which the converter does not alter. 
+`{fourpluses}`), which the converter does not alter.
 
-The final
-section is tagged with the style attribute `[appendix]`, and is
-treated as such.
+The final section is tagged with the style attribute `[appendix]`,
+and is treated as such.
 
 The RFC XML v3 document generated from this AsciiRFC document is:
 
@@ -202,7 +210,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[]
+include::../examples/rfc-asciirfc-template/xml3/draft-asciirfc-template.xml[]
 <CODE ENDS>
 ----
 ====
@@ -220,7 +228,7 @@ Output in RFC XML v2 is not extensively described in this document.
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-divination-cfapi/xml2/draft-divination-cfapi.xml[]
+include::../examples/rfc-asciirfc-template/xml2/draft-asciirfc-template.xml[]
 <CODE ENDS>
 ----
 ====

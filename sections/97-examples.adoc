@@ -3,6 +3,7 @@
 [#appendix-a]
 == Examples
 
+[[example-1-asciirfc]]
 === Example 1: AsciiRFC Template in AsciiRFC
 
 [source,asciidoc]
@@ -12,6 +13,7 @@ include::../examples/rfc-asciirfc-template/draft-asciirfc-template.adoc[]
 <CODE ENDS>
 --------
 
+[[example-1-xml3]]
 === Example 1: AsciiRFC Template in RFC XML v3
 
 [source,xml]
@@ -22,7 +24,8 @@ include::../examples/rfc-asciirfc-template/xml3/draft-asciirfc-template.xml[]
 --------
 
 
-=== Example 2: The Holy Hand Grenade of Antioch in AsciiRFC
+[[example-2-asciirfc]]
+=== Example 2: "The Holy Hand Grenade of Antioch" in AsciiRFC
 
 [source,asciidoc]
 --------
@@ -31,7 +34,8 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
 <CODE ENDS>
 --------
 
-=== Example 2: The Holy Hand Grenade of Antioch in RFC XML v3
+[[example-2-xml3]]
+=== Example 2: "The Holy Hand Grenade of Antioch" in RFC XML v3
 
 [source,asciidoc]
 --------
@@ -40,7 +44,9 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 <CODE ENDS>
 --------
 
-=== Example 3: An April Fool's Day AsciiRFC
+
+[[example-3-asciirfc]]
+=== Example 3: "An API For Calendar-Based Fortune Heuristics Services" in AsciiRFC
 
 [source,asciidoc]
 --------
@@ -49,7 +55,8 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 <CODE ENDS>
 --------
 
-=== Example 3: An April Fool's Day RFC in RFC XML v3
+[[example-3-xml3]]
+=== Example 3: "An API For Calendar-Based Fortune Heuristics Services" in RFC XML v3
 
 [source,xml]
 ----
