@@ -6,7 +6,7 @@ The document itself opens with a single `=`, and sections within it
 must be started with a minimum of `==`.  
 
 Section numbering is toggled with the
-in-document attribute `:sectnums:` (on), `:sectnums!:` (off). The
+in-document attribute `:sectnums:` (on), `:sectnums!:` (off). The boolean
 `toc` attribute can also be set on sections, indicating whether the
 section can be included in the document's table of contents.
 
