@@ -1,10 +1,7 @@
 == Sections and Paragraphs
 
 Section headers are given with a sequence of `=`, where the number of 
-instances of `=` gives the header level: a single `=` is used for the opening of the
-document, and a minimum of two `=` symbols are used to prefix a
-section immediately.
-
+instances of `=` gives the header level.
 The document itself opens with a single `=`, and sections within it
 must be started with a minimum of `==`.  
 
