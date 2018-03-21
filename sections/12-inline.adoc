@@ -35,7 +35,7 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 
 RFC XML v3 also supports tagging of BCP14 keywords <<RFC2119>>; this
 is done in AsciiRFC either by tagging them with a custom formatting
-span (e.g. `bcp14#must not#`), or by converting any boldface all-caps
+span (e.g. `[bcp14]#must not#`), or by converting any boldface all-caps
 words recognised as BCP14 words (unless the `:no-rfc-bold-bcp14: false` 
 document attribute is set).
 
