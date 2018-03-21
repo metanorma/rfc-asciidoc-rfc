@@ -111,7 +111,7 @@ style (`:bibliography-style: rfc-v3`).
 `cite:norm[id]` instead of pass:q[`<<id>>`], where `id` is the anchor
 of the reference.
 
-. References to an infomrative reference are inserted with the macro
+. References to an informative reference are inserted with the macro
 `cite:info[id]` instead of pass:q[`<<id>>`], where `id` is the anchor
 of the reference.
 
