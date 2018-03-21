@@ -32,7 +32,8 @@ informative bibliographies within the document, to update them as
 citations are added and removed, and to sort them manually. However,
 if the citation is stored on the IETF's RFC XML citation libraries
 (see https://xml2rfc.tools.ietf.org), AsciiRFC will automatically
-replace it with an external reference to that citation.
+replace it with an external reference to that citation. So the body of
+the citation XML can be left out.
 
 For example, the AsciiRFC in <<source-bib-asciirfc-inline>> will
 generate the corresponding RFC XML v3 output in <<source-bib-xml-inline>>.
