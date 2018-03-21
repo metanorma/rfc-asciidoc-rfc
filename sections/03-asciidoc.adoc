@@ -72,7 +72,7 @@ RFC XML equivalent.)
 * Footnotes. (Not supported in AsciiRFC.)
 
 
-=== AsciiRFC Mapping To Asciidoctor syntax
+=== AsciiRFC Mapping To RFC XML syntax
 
 The Asciidoctor syntax document structure aligns with both the RFC XML v2
 and the RFC XML v3 structure.  In the following, RFC XML v3 equivalences are given
@@ -147,7 +147,7 @@ include::../examples/rfc-asciirfc-template/sections/99-acknowledgements.adoc[]
 
 The first block of text, from
 `= Template For Writing An Internet-Draft In AsciiRFC` through to
-`:country_2: United States of America`, is
+`:email_2: thomas.kandell@brown.edu`, is
 the document header. It contains a title in the first line, an author
 attribution (`Josiah Carberry; Thomas Kandell`), and then a set of
 document attributes, conveying
