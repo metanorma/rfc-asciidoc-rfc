@@ -1,0 +1,19 @@
+<reference anchor='datatracker-divination-cfapi'
+  target='https://datatracker.ietf.org/doc/draft-divination-cfapi/'>
+<front>
+<title>IETF Datatracker: An API For Calendar-Based Fortune Heuristics Services</title>
+
+<author initials='G' surname='Destiny' fullname='Gabriel Destiny'>
+    <organization />
+</author>
+
+<author initials='C' surname='Luck' fullname='Charise Luck'>
+    <organization />
+</author>
+
+<date month='March' day='22' year='2018' />
+
+<abstract><t>This document describes a JSON HTTP API for online services that provide calendar-based fortune heuristics.</t></abstract>
+
+</front>
+</reference>

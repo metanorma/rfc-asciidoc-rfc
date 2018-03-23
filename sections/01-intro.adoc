@@ -1,6 +1,15 @@
 
 == Introduction
 
+This document describes a markup language called "AsciiRFC", developed
+specifically for the purpose of generating RFC XML document, based on
+Asciidoctor syntax.  AsciiRFC can be used to generate compliant RFC
+XML v2 and v3 documents through the usage of an open source, MIT-licensed
+Ruby gem called "asciidoctor-rfc" written by the authors
+<<asciidoctor-rfc>>.
+
+=== Designed for authoring RFCs and Internet-Drafts
+
 Internet-Drafts and RFCs intended for publication submission to the
 IETF can be written in a multitude of formats today, including:
 
@@ -25,23 +34,29 @@ While this need is already met for RFC XML v2 <<RFC7749>> by the tools
 specified above, the transition to RFC XML v3 <<RFC7991>> places added
 onus on authors to generate compliant XML.
 
+
+=== Relationship between AsciiRFC, AsciiDoc and Asciidoctor
+
 <<AsciiDoc>> is a lightweight markup language and an alternative to
 Markdown, with features that make it attractive as a markup language
-for RFC with XML output. <<Asciidoctor>> is an open source,
-MIT-licensed Ruby implementation of <<AsciiDoc>> that provides an
-enhancement of the original AsciiDoc markup language; the variant of AsciiDoc
-syntax accepted by <<Asciidoctor>> is hereafter called "Asciidoctor
-syntax".
+for RFC with XML output.
 
-This document describes a markup language called "AsciiRFC", developed
-specifically for the purpose of generating RFC XML document, based on
-Asciidoctor syntax.  AsciiRFC can be used to generate compliant RFC
-XML v2 and v3 documents through the usage of an open source, MIT-licensed
-Ruby gem called "asciidoctor-rfc" written by the authors
-<<asciidoctor-rfc>>.
+<<Asciidoctor>> is an open source,
+MIT-licensed Ruby implementation of <<AsciiDoc>> that provides an
+enhancement of the original AsciiDoc markup language.
+
+The variant of AsciiDoc syntax accepted by <<Asciidoctor>> is
+hereafter called "Asciidoctor syntax".
+
+AsciiRFC, as described in this document, is an AsciiDoc variant developed
+on Asciidoctor syntax, created for the purpose of generating RFC XML
+documents.
+
+
+=== Comparison with RFC XML tools based on Markdown variants
 
 <<RFC7764,1.2 of>> famously states that "there is no such thing as
-"invalid" Markdown, there is no standard demanding adherence to the
+'invalid' Markdown, there is no standard demanding adherence to the
 Markdown syntax, and there is no governing body that guides or impedes
 its development." While there are contexts where that flexibility
 is useful, the authoring of RFCs does have a standard and a governing
@@ -96,7 +111,8 @@ accessed without depending on the RFC tools ecosystem. Our realisation
 of RFC XML in AsciiRFC has aimed to ensure that, as much as possible,
 the markup language can be can be processed by generic Asciidoctor
 tools.
-(The only exception to this as an add-on is the optional bibliography
+
+The only exception to this as an add-on is the optional bibliography
 module, which allows bibliographies to be assembled on the fly based
-on citations in a document: see <<asciidoctor_bibliography>>.)
+on citations in a document: see <<asciidoctor_bibliography>>.
 

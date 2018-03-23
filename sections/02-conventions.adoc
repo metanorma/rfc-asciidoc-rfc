@@ -1,29 +1,14 @@
 == Conventions Used in This Document
 
-////
-The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
-"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
-"*MAY*", and "*OPTIONAL*" in this document are to be interpreted
-as described in <<RFC2119>>.
-////
-
 The following terms and definitions apply to this document:
 
 AsciiDoc::
-the AsciiDoc markup language generically, as described in <<AsciiDoc>>.
+The AsciiDoc markup language generically, as described in <<AsciiDoc>>.
 
 Asciidoctor syntax::
-the enhanced AsciiDoc syntax implemented by the <<Asciidoctor>>
+The enhanced AsciiDoc syntax implemented by the <<Asciidoctor>>
 Ruby gem.
 
 AsciiRFC::
 The AsciiDoc syntax developed for the purpose of generating RFC XML
 document based on Asciidoctor syntax, as described in this document.
-
-////
-with some minor additions (a few document
-attributes specific to RFC XML, some macros specific to citation
-processing, and some templated use of _Asciidoctor syntax_
-crossreferences).
-////
-

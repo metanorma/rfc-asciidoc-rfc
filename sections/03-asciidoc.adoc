@@ -1,12 +1,13 @@
 
-== Document Structure And Asciidoctor Syntax
+== Document Structure and Syntax
 
-Asciidoctor syntax is presented in the Asciidoctor user manual
-<<Asciidoctor-Manual>>.  AsciiRFC is a subset of Asciidoctor syntax,
+AsciiRFC consists of a subset of Asciidoctor syntax
 with the addition of bibliographic macros
 (<<asciidoctor_bibliography>>).
+Asciidoctor syntax is presented in the Asciidoctor user manual
+<<Asciidoctor-Manual>>.
 
-Asciidoctor syntax consists of:
+AsciiRFC syntax consists of:
 
 * A document header, containing a title, a list of authors, and
 document attributes in lines prefixed with `:`.
@@ -50,9 +51,9 @@ markup.
 
 Inline markup includes:
 
-* Text formatting: bold, italic, superscript, subscript, monospace.
+* Text formatting: Bold, italic, superscript, subscript, monospace.
 
-* Custom markup macros. (AsciiRFC uses two: `bcp14, comment`.)
+* Markup macros: the `bcp14` and `comment` macros. (Asciidoctor syntax supports custom markup macros.)
 
 * URLs, including display text to render.
 
@@ -61,18 +62,31 @@ Inline markup includes:
 * Cross-references to anchors (IDs of blocks or spans of text),
 including display text to render.
 
-* Images, audio, and visual files. (AsciiRFC only supports images.)
+* Images: SVG only, as specified in <<RFC7996>>.
 
 * Index terms.
 
-* Equations (native support for <<AsciiMathML>> and <<TeX-LaTeX>>, via
-the <<MathJax>> tool). (Not supported in AsciiRFC, since there is no
-RFC XML equivalent.)
 
-* Footnotes. (Not supported in AsciiRFC.)
+=== Unsupported features compared with Asciidoctor syntax
+
+Several features from Asciidoctor are not supported within AsciiRFC
+due to the lack of support within RFC XML, including:
+
+* Audio and video files are not supported in AsciiRFC as today's
+RFC XML structure does not support audio or video.
+
+* Equations are not supported as there is no current RFC XML
+equivalent. Asciidoctor provides native support for
+<<AsciiMathML>> and <<TeX-LaTeX>>, via the <<MathJax>> tool.
+
+* Footnotes are not supported in AsciiRFC as there is no equivalent
+semantic representation in RFC XML.
+
+These carved out features can be easily supported by AsciiRFC
+once RFC XML allows these elements.
 
 
-=== AsciiRFC Mapping To RFC XML syntax
+=== Mapping To RFC XML syntax
 
 The Asciidoctor syntax document structure aligns with both the RFC XML v2
 and the RFC XML v3 structure.  In the following, RFC XML v3 equivalences are given
@@ -111,6 +125,22 @@ elements, and of how to convert AsciiRFC documents to RFC XML, are
 given in the documentation of <<asciidoctor-rfc>>.
 
 
+
+=== Example Illustrations
+
+This document utilizes example documents provided in <<appendix-a>> for
+demonstration of AsciiRFC syntax and usage. The source files and published
+versions (at the IETF Datatracker) of these example documents are
+available in <<appendix-a>>.
+
+* "A Minimal Internet-Draft In AsciiRFC" <<example-1-asciirfc>>
+
+* "The Holy Hand Grenade of Antioch" <<example-2-asciirfc>>
+
+* "An API For Calendar-Based Fortune Heuristics Services" <<example-3-asciirfc>>
+
+
+
 === Simple Illustration
 
 This section gives an overview of how to create an RFC XML document in
@@ -131,16 +161,16 @@ together with its corresponding rendering in:
 [source,asciidoc]
 --------
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/draft-asciirfc-template.adoc[lines=1..33]
-include::../examples/rfc-asciirfc-template/sections/00-abstract.adoc[]
-include::../examples/rfc-asciirfc-template/sections/01-intro.adoc[]
-include::../examples/rfc-asciirfc-template/sections/02-conventions.adoc[]
-include::../examples/rfc-asciirfc-template/sections/03-symbols.adoc[]
-include::../examples/rfc-asciirfc-template/sections/10-security.adoc[]
-include::../examples/rfc-asciirfc-template/sections/11-iana.adoc[]
-include::../examples/rfc-asciirfc-template/sections/98-references.adoc[]
-include::../examples/rfc-asciirfc-template/sections/97-examples.adoc[]
-include::../examples/rfc-asciirfc-template/sections/99-acknowledgements.adoc[]
+include::../examples/rfc-asciirfc-minimal/draft-asciirfc-minimal.adoc[lines=1..33]
+include::../examples/rfc-asciirfc-minimal/sections/00-abstract.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/01-intro.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/02-conventions.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/03-symbols.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/10-security.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/11-iana.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/98-references.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/97-examples.adoc[]
+include::../examples/rfc-asciirfc-minimal/sections/99-acknowledgements.adoc[]
 <CODE ENDS>
 --------
 ====
@@ -210,7 +240,7 @@ The RFC XML v3 document generated from this AsciiRFC document is:
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/xml3/draft-asciirfc-template.xml[]
+include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
 <CODE ENDS>
 ----
 ====
@@ -228,7 +258,7 @@ Output in RFC XML v2 is not extensively described in this document.
 [source,xml]
 ----
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/xml2/draft-asciirfc-template.xml[]
+include::../examples/rfc-asciirfc-minimal/xml2/draft-asciirfc-minimal.xml[]
 <CODE ENDS>
 ----
 ====

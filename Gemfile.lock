@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/riboseinc/asciidoctor-bibliography
-  revision: 43e6e3d52ed83c919a3fb24219adb8ff0c133e87
+  revision: 5171a3738cccbc96ca0f79b10b4a61b5a2d7f1e8
   specs:
-    asciidoctor-bibliography (0.7.2)
+    asciidoctor-bibliography (0.7.3)
       asciidoctor (~> 1.5.6)
       bibtex-ruby (~> 4.4.4)
       citeproc-ruby (~> 1.1.7)
@@ -24,7 +24,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    asciidoctor (1.5.6.1)
+    asciidoctor (1.5.6.2)
     bibtex-ruby (4.4.6)
       latex-decode (~> 0.0)
     citeproc (1.0.9)

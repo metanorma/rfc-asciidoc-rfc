@@ -3,29 +3,55 @@
 [#appendix-a]
 == Examples
 
+[[example-1]]
+=== Example 1: "A Minimal Internet-Draft In AsciiRFC"
+
+This example is available in the following formats:
+
+* AsciiRFC <<git-asciirfc-minimal>>
+
+* Internet-Draft <<I-D.asciirfc-minimal>>
+
+* Text, RFC XML, PDF and HTML on the IETF Datatracker
+  <<datatracker-asciirfc-minimal>>
+
+
 [[example-1-asciirfc]]
-=== Example 1: AsciiRFC Template in AsciiRFC
+==== In AsciiRFC
 
 [source,asciidoc]
 --------
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/draft-asciirfc-template.adoc[]
+include::../examples/rfc-asciirfc-minimal/draft-asciirfc-minimal.adoc[]
 <CODE ENDS>
 --------
 
 [[example-1-xml3]]
-=== Example 1: AsciiRFC Template in RFC XML v3
+==== Rendered as RFC XML v3
 
 [source,xml]
 --------
 <CODE BEGINS>
-include::../examples/rfc-asciirfc-template/xml3/draft-asciirfc-template.xml[]
+include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
 <CODE ENDS>
 --------
 
 
+[[example-2]]
+=== Example 2: "The Holy Hand Grenade of Antioch"
+
+This example is available in the following formats:
+
+* AsciiRFC <<git-camelot-holy-grenade>>
+
+* Internet-Draft <<I-D.camelot-holy-grenade>>
+
+* Text, RFC XML, PDF and HTML on the IETF Datatracker
+  <<datatracker-camelot-holy-grenade>>
+
+
 [[example-2-asciirfc]]
-=== Example 2: "The Holy Hand Grenade of Antioch" in AsciiRFC
+==== In AsciiRFC
 
 [source,asciidoc]
 --------
@@ -35,7 +61,7 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
 --------
 
 [[example-2-xml3]]
-=== Example 2: "The Holy Hand Grenade of Antioch" in RFC XML v3
+==== Rendered as RFC XML v3
 
 [source,asciidoc]
 --------
@@ -45,8 +71,21 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 --------
 
 
-[[example-3-asciirfc]]
+[[example-3]]
 === Example 3: "An API For Calendar-Based Fortune Heuristics Services" in AsciiRFC
+
+This example is available in the following formats:
+
+* AsciiRFC <<git-divination-cfapi>>
+
+* Internet-Draft <<I-D.divination-cfapi>>
+
+* Text, RFC XML, PDF and HTML on the IETF Datatracker
+  <<datatracker-divination-cfapi>>
+
+
+[[example-3-asciirfc]]
+==== In AsciiRFC
 
 [source,asciidoc]
 --------
@@ -56,7 +95,7 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 --------
 
 [[example-3-xml3]]
-=== Example 3: "An API For Calendar-Based Fortune Heuristics Services" in RFC XML v3
+=== Rendered as RFC XML v3
 
 [source,xml]
 ----
