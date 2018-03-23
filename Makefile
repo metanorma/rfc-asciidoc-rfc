@@ -27,12 +27,12 @@ clean:
 	cp $^ $@
 
 %.xml: %.adoc
-	bundle exec asciidoctor -r ./lib/glob-include-processor.rb -r asciidoctor-rfc -b rfc2 -a flush-biblio=true $^ --trace 
+	bundle exec asciidoctor -r ./lib/glob-include-processor.rb -r asciidoctor-rfc -b rfc2 $^ --trace
 	mkdir -p $(@D)/xml2
 	cat $@ | ruby fold.rb | perl -p -e 's/<!--/\n<!--/;s/-->/-->\n/;' > $(@D)/xml2/$(*F).xml
 
 %.xml3: %.adoc
-	bundle exec asciidoctor -r ./lib/glob-include-processor.rb -r asciidoctor-rfc -b rfc3 -a flush-biblio=true $^ --trace 
+	bundle exec asciidoctor -r ./lib/glob-include-processor.rb -r asciidoctor-rfc -b rfc3 $^ --trace
 	mkdir -p $(@D)/xml3
 	cat $*.xml | ruby fold.rb | perl -p -e 's/<!--/\n<!--/;s/-->/-->\n/;' > $(@D)/xml3/$(*F).xml
 
