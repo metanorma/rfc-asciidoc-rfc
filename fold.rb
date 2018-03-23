@@ -4,7 +4,8 @@ end
 
 embed = false
 $stdin.each_line do |line|
-  embed = !embed if /^\+\+\+\+$/.match? line
+  embed = true if /CODE BEGINS/.match? line
+  embed = false if /CODE ENDS/.match? line
   line = wrap(line, 72) if embed
   puts line
 end
