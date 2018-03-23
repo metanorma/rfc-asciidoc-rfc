@@ -9,9 +9,9 @@ self-standing AsciiRFC documents, along with their RFC XML renderings.
 (This includes round-tripped RFC XML documents.)
 
 
-=== Using the "rfc-asciirfc-template"
+=== Using the "rfc-asciirfc-minimal" template
 
-In addition, you can clone the sample `rfc-asciirfc-template`
+In addition, you can clone the sample `rfc-asciirfc-minimal`
 repository as a template, and populate it for your AsciiRFC document
 using the steps shown in <<source-asciirfc-sample-template>>.
 
@@ -20,7 +20,7 @@ using the steps shown in <<source-asciirfc-sample-template>>.
 ====
 [source,console]
 ----
-$ git clone https://github.com/riboseinc/rfc-asciirfc-template
+$ git clone https://github.com/riboseinc/rfc-asciirfc-minimal
 ----
 ====
 
