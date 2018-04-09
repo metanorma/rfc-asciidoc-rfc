@@ -6,4 +6,4 @@
 	url = https://github.com/riboseinc/rfc-camelot-holy-grenade
 [submodule "examples/rfc-asciirfc-minimal"]
 	path = examples/rfc-asciirfc-minimal
-	url = https://github.com/riboseinc/rfc-asciirfc-minimal
+	url = https://github.com/riboseinc/rfc-asciirfc-minimal.git
