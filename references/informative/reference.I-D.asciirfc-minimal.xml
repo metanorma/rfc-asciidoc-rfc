@@ -10,13 +10,13 @@
     <organization />
 </author>
 
-<date month='March' day='22' year='2018' />
+<date month='April' day='12' year='2018' />
 
 <abstract><t>This document provides a template on how to author (or migrate!) a new Internet-Draft / RFC in AsciiRFC format.  This template requires usage of the "asciidoctor-rfc" Ruby gem.</t></abstract>
 
 </front>
 
-<seriesInfo name='Internet-Draft' value='draft-asciirfc-minimal-01' />
+<seriesInfo name='Internet-Draft' value='draft-asciirfc-minimal-02' />
 <format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-asciirfc-minimal-01.txt' />
+        target='http://www.ietf.org/internet-drafts/draft-asciirfc-minimal-02.txt' />
 </reference>

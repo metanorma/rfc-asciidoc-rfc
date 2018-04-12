@@ -22,7 +22,8 @@ examples: $(EXAMPLEXML) $(EXAMPLEXML3)
 
 clean:
 	rm -f $(TXT) $(HTML) $(XML) $(EXAMPLEXML) $(EXAMPLEXML3)
-	rm -f xml2/* xml3/* examples/xml2/* examples/xml3/*
+	rm -f xml2/* xml3/*
+	rm -rf examples/*/xml2 examples/*/xml3
 
 %.adocinc: %.adoc
 	cp $^ $@
