@@ -22,4 +22,6 @@ $stdin.each_line do |line|
   #warn line if embed>0 && !cdata && linelen > 72
   puts line
   cdata = true if /<artwork type=\s*['"]ascii-art['"]/.match(line)
+  cdata = true if /<artwork alt/.match(line)
+  cdata = !cdata if line == "....\n"
 end
