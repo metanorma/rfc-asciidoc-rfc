@@ -14,9 +14,9 @@ end
 embed = 0
 cdata = false
 $stdin.each_line do |line|
-  embed = embed+1 if /CODE BEGINS/.match? line
+  embed = embed+1 if /^<CODE BEGINS>/.match? line
   cdata = false if cdata && line.include?('</artwork>')
-  embed = embed-1 if /CODE ENDS/.match? line
+  embed = embed-1 if /^<CODE ENDS>/.match? line
   linelen = line.length
   #warn line if embed>0 && !cdata && linelen > 72
   line = wrap(line, 72) if embed>0 && !cdata # && line.length > 72
