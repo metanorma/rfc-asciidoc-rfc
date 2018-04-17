@@ -1,5 +1,7 @@
 == Conventions Used in This Document
 
+=== Terms and Definitions
+
 The following terms and definitions apply to this document:
 
 AsciiDoc::
@@ -12,3 +14,35 @@ Ruby gem.
 AsciiRFC::
 The AsciiDoc syntax developed for the purpose of generating RFC XML
 document based on Asciidoctor syntax, as described in this document.
+
+=== Wrapping Lines in Documentation Examples
+
+This document contains a number of examples as fragments of XML. In
+some cases, the examples contain URLs that are over 72 characters long
+and so need to be wrapped for presentation in this document even though
+they would not need to be wrapped in the actual source XML.
+
+This document adopts a policy similar to that described in
+<<I-D.wu-netmod-yang-xml-doc-conventions>> to denote line wraps. When an
+XML example contains a URL, that URL is always included in
+double-quotes. If the URL would extend beyond 72 characters, the line
+is wrapped and the wrap is indicated with a backslash ("\"). The
+backslash appears without any additional space before the backslash and
+with no further characters after the backslash.
+
+For example, the following XML...
+
+[source,xml]
+----
+<format type= "TXT" target=
+  "http://www.example.org/citations/cookpot.txt"/>
+----
+
+...may be presented as
+
+[source,xml]
+----
+<format type= "TXT" target=
+  "http://www.example.org/citations/\
+  cookpot.txt"/>
+----
