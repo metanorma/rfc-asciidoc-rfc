@@ -34,7 +34,7 @@ For example, the following XML...
 
 [source,xml]
 ----
-<format type= "TXT" target=
+<format type="TXT" target=
   "http://www.example.org/citations/cookpot.txt"/>
 ----
 
@@ -42,7 +42,7 @@ For example, the following XML...
 
 [source,xml]
 ----
-<format type= "TXT" target=
+<format type="TXT" target=
   "http://www.example.org/citations/\
   cookpot.txt"/>
 ----
