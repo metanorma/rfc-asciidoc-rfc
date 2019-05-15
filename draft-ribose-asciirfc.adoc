@@ -52,6 +52,9 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :fourequals: ====
 :dblstar: **
 :backtick: `
+:docfile: draft-ribose-asciirfc.adoc
+:mn-document-class: ietf
+:mn-output-extensions: xmlrfc2,txt,html,nits
 
 include::sections/00-abstract.adoc[]
 include::sections/01-intro.adoc[]
