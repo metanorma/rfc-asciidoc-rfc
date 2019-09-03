@@ -95,7 +95,7 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 --------
 
 [[example-3-xml3]]
-=== Rendered as RFC XML v3
+==== Rendered as RFC XML v3
 
 [source,xml]
 ----
