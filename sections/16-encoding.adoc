@@ -1,5 +1,5 @@
 
-[#encoding]
+
 == Encoding and Entities
 
 XML accepts the full range of characters in the world's languages

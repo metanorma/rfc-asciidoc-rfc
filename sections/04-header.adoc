@@ -1,4 +1,4 @@
-[#header]
+
 == Header And Document Attributes
 
 The header gives the document title, followed by an optional author

@@ -1,5 +1,5 @@
 = AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc
-Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
+:title: AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc
 :doctype: internet-draft
 :abbrev: AsciiRFC Specifications
 :name: draft-ribose-asciirfc-08
@@ -8,7 +8,6 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :area: Internet
 :submission-type: independent
 :intended-series: informational
-//:workgroup: Network
 :revdate: 2018-04-18T00:00:00Z
 :lastname: Tse
 :fullname: Ronald Henry Tse
@@ -44,42 +43,57 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :email_4: paolo.brasolin@ribose.com
 :uri_4: https://www.ribose.com
 :country_4: Italy
-:brackethash: [#
-:dblopenangle: <<
-:dblcloseangle: >>
-:fourpluses: ++++
-:fourdashes: ----
-:fourequals: ====
-:dblstar: **
-:backtick: `
 :docfile: draft-ribose-asciirfc.adoc
 :mn-document-class: ietf
-:mn-output-extensions: xmlrfc2,txt,html,nits
+
 
 include::sections/00-abstract.adoc[]
-include::sections/01-intro.adoc[]
-include::sections/02-conventions.adoc[]
-include::sections/03-asciidoc.adoc[]
-include::sections/04-header.adoc[]
-include::sections/05-preamble.adoc[]
-include::sections/06-sections.adoc[]
-include::sections/07-figures.adoc[]
-include::sections/08-lists.adoc[]
-include::sections/09-blockquotes.adoc[]
-include::sections/10-notes.adoc[]
-include::sections/11-tables.adoc[]
-include::sections/12-inline.adoc[]
-include::sections/13-links.adoc[]
-include::sections/14-xref.adoc[]
-include::sections/15-includes.adoc[]
-include::sections/16-encoding.adoc[]
-include::sections/17-biblio.adoc[]
-include::sections/18-unsupported.adoc[]
-include::sections/19-authoring.adoc[]
-include::sections/20-security.adoc[]
-include::sections/21-iana.adoc[]
 
-include::sections/98-references.adoc[]
-include::sections/97-examples.adoc[]
-include::sections/99-acknowledgements.adoc[]
+include::sections/01-intro.adoc[]
+
+// include::sections/02-conventions.adoc[]
+
+// include::sections/03-asciidoc.adoc[]
+
+// include::sections/04-header.adoc[]
+
+// include::sections/05-preamble.adoc[]
+
+// include::sections/06-sections.adoc[]
+
+// include::sections/07-figures.adoc[]
+
+// include::sections/08-lists.adoc[]
+
+// include::sections/09-blockquotes.adoc[]
+
+// include::sections/10-notes.adoc[]
+
+// include::sections/11-tables.adoc[]
+
+// include::sections/12-inline.adoc[]
+
+// include::sections/13-links.adoc[]
+
+// include::sections/14-xref.adoc[]
+
+// include::sections/15-includes.adoc[]
+
+// include::sections/16-encoding.adoc[]
+
+// include::sections/17-biblio.adoc[]
+
+// include::sections/18-unsupported.adoc[]
+
+// include::sections/19-authoring.adoc[]
+
+// include::sections/20-security.adoc[]
+
+// include::sections/21-iana.adoc[]
+
+// include::sections/98-references_2.adoc[]
+
+// include::sections/97-examples.adoc[]
+
+// include::sections/99-acknowledgements.adoc[]
 

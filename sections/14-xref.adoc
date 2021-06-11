@@ -1,5 +1,4 @@
 
-[#cross-references]
 == Cross-References
 
 === Basic Referencing

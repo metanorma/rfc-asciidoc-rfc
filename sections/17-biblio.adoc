@@ -60,7 +60,7 @@ include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xm
 ----
 ====
 
-[#asciidoctor_bibliography]
+
 === Preprocessing Using "asciidoctor-bibliography"
 
 The alternative method is to use a preprocessing tool,
