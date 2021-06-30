@@ -1,0 +1,136 @@
+/__w/rfc-asciidoc-rfc/rfc-asciidoc-rfc/site/documents/draft-ribose-asciirfc.err errors
+
+
+== AsciiDoc Input
+
+(ID _bibliography): Section not marked up as [bibliography]!
+	#<Asciidoctor::Section@47223918726060 {level: 1, title: "Bibliography", blocks: 7}>
+(ID _using_raw_rfc_xml): Section not marked up as [bibliography]!
+	#<Asciidoctor::Section@47223918762700 {level: 2, title: "Using Raw RFC XML", blocks: 5}>
+(Section: Bibliography): no anchor on reference, markup may be malformed: see https://www.metanorma.com/author/topics/document-format/bibliography/ , https://www.metanorma.com/author/iso/topics/markup/#bibliographies: using raw RFC XML; and
+	#<Asciidoctor::List@47223918723720 {context: :ulist, style: nil, items: 2}>
+(Section: Bibliography): no anchor on reference, markup may be malformed: see https://www.metanorma.com/author/topics/document-format/bibliography/ , https://www.metanorma.com/author/iso/topics/markup/#bibliographies: assembling bibliographies in preprocessing.
+	#<Asciidoctor::List@47223918723720 {context: :ulist, style: nil, items: 2}>
+
+
+== Metanorma XML Style Warning
+
+(XML Line 000095): Hanging paragraph in clause
+	<clause id="_introduction" inline-header="false" obligation="normative"><title>Introduction</title><p id="_d1726e7d-c37c-403d-a0b8-9f6acebdbc11">This document describes a markup language called "AsciiRFC", developed
+	specifically for the purpose of generating RFC XML document, based on
+	Asciidoctor syntax.  AsciiRFC can be used to generate compliant RFC
+	XML v2 and v3 documents through the usage of an open source, MIT-licensed
+	Ruby gem called "asciidoctor-rfc" written by the authors
+(XML Line 000215): Hanging paragraph in clause
+	<clause id="_conventions_used_in_this_document" inline-header="false" obligation="normative"><title>Conventions Used in This Document</title><clause id="_terms_and_definitions" inline-header="false" obligation="normative"><title>Terms and Definitions</title><p id="_ace77e33-c9b1-4342-8a1b-d46e472a79bb">The following terms and definitions apply to this document:</p>
+	<dl id="_5a99a419-a40d-4196-bc3e-72c908370ea5">
+	<dt>AsciiDoc</dt>
+	<dd>
+	<p id="_d21dce24-1358-4225-a7eb-4b360a65c478">The AsciiDoc markup language generically, as described in <xref target="AsciiDoc"/>.</p>
+(XML Line 000252): Hanging paragraph in clause
+	<clause id="_document_structure_and_syntax" inline-header="false" obligation="normative"><title>Document Structure and Syntax</title><p id="_1f2d3a7d-20dc-4bff-ad5b-a4d7e97ab495">AsciiRFC consists of a subset of Asciidoctor syntax
+	with the addition of bibliographic macros
+	(<xref target="asciidoctor_bibliography"/>).
+	Asciidoctor syntax is presented in the Asciidoctor user manual
+	<xref target="Asciidoctor-Manual"/>.</p>
+(XML Line 000818): Hanging paragraph in clause
+	<clause id="header" inline-header="false" obligation="normative"><title>Header And Document Attributes</title><p id="_4931e4c8-2dbd-4f56-a776-1bda175059fa">The header gives the document title, followed by an optional author
+	attribution, and a series of document attributes, with no empty lines.</p>
+	<clause id="_title_and_basic_attributes" inline-header="false" obligation="normative"><title>Title And Basic Attributes</title><p id="_8cf2e0f5-03e1-410d-a121-481ac7242749">Document attributes are used to populate attributes of the root <tt>rfc</tt>
+	element, <tt>front</tt> elements, and document-level processing instructions.</p>
+	<ul id="_41aef3cd-7ed3-4f76-8b5a-82cdd61b7ee2">
+(XML Line 001247): Hanging paragraph in clause
+	<clause id="lists" inline-header="false" obligation="normative"><title>Lists</title><clause id="_basic_lists" inline-header="false" obligation="normative"><title>Basic Lists</title><p id="_eeb608f5-f58f-4041-a901-e3308b82436b">AsciiRFC supports ordered, unordered, and definition lists.
+	Indentation of ordered and unordered lists is indicated by repeating
+	the list item prefix (<tt>*</tt> and <tt>.</tt> respectively); for definition
+	lists, it is indicated by incrementing the number of definition term delimiters
+	(<tt>::</tt>).</p>
+(XML Line 001562): Hanging paragraph in clause
+	<clause id="_inline_formatting" inline-header="false" obligation="normative"><title>Inline Formatting</title><clause id="_italics_boldface_monospace_subscripts_superscripts" inline-header="false" obligation="normative"><title>Italics, Boldface, Monospace, Subscripts, Superscripts</title><p id="_44e423bb-a9f5-4588-bfa5-f6b993d24213">AsciiRFC supports italics, boldface, monospace, subscripts and
+	superscripts, just like RFC XML v3.</p>
+	<p id="_b4203b84-6d96-4da8-8c40-a01ac8110bb5">The inline formatting syntax given in <xref target="source-asciirfc-inline"/>
+	produces the RFC XML v3 output given in <xref target="source-asciirfc-inline-v3"/>.</p>
+	<example id="source-asciirfc-inline"><name>Inline Formatting In AsciiRFC</name><sourcecode lang="asciidoc" id="_adada7e1-ec26-45dc-92b5-690da49bf1de">&lt;CODE BEGINS&gt;
+(XML Line 001664): Hanging paragraph in clause
+	<clause id="cross-references" inline-header="false" obligation="normative"><title>Cross-References</title><clause id="_basic_referencing" inline-header="false" obligation="normative"><title>Basic Referencing</title><p id="_78fd33d8-6a68-4edc-b71f-f1b1b4a450c1">Anchors for cross-references are notated as <tt>[[…​]]</tt> or <tt>[#…​]</tt>, and
+	can be inserted on their own line in front of most blocks.</p>
+	<p id="_d591aaa9-d285-48e0-b215-8d44641c603a">Asciidoctor syntax supports anchors in a much wider range of contexts
+	than is supported than RFC XML v3 (let alone v2); anchors that are not
+	supported for that version of RFC XML are simply ignored by the
+(XML Line 001813): Hanging paragraph in clause
+	<clause id="_bibliography" obligation="informative"><title>Bibliography</title><p id="_7f3dbe0a-ab05-4212-979d-323350e49e31">The simple encoding of bibliography syntax provided by AsciiDoc (and
+	Asciidoctor syntax) is inadequate for the complexity of bibliographic
+	markup required by RFC XML.</p>
+	<p id="_0d7bdb84-c580-4d4b-8886-66b836a09acd">RFC documents overwhelmingly cite other RFC documents, and canonical
+	RFC XML bibliographic entries are available at <xref target="IETF-BibXML"/>; so it
+(XML Line 002060): Table should have title
+	<table id="_e337bbd6-e891-4732-838d-f0e4094243a5">
+	<thead>
+	<tr>
+	<th valign="top" align="left">RFC XML element</th>
+	<th valign="top" align="left">RFC XML v3</th>
+(XML Line 002118): Hanging paragraph in clause
+	<clause id="_authoring" inline-header="false" obligation="normative"><title>Authoring</title><p id="_69ba1a4f-222e-411e-99f6-d5ac8f17b8ae">To author an AsciiRFC document, you should first familiarise yourself
+	with the <xref target="Asciidoctor-Manual"/>.</p>
+	<p id="_caf07974-75aa-48dc-9a58-8c8a77053a9b">The <xref target="asciidoctor-rfc"/> Ruby gem source code distribution also has
+	samples of individual RFC XML features in v2 and v3, and examples of
+	self-standing AsciiRFC documents, along with their RFC XML renderings.
+(XML Line 002731): Hanging paragraph in clause
+	<annex id="appendix-a" inline-header="false" obligation="normative"><title>Examples</title><clause id="example-1" inline-header="false" obligation="normative"><title>Example 1: "A Minimal Internet-Draft In AsciiRFC"</title><p id="_613fe6db-8d7c-4701-b009-0c0dc22d3b7b">This example is available in the following formats:</p>
+	<ul id="_42867d06-ccaa-4ff8-b3ed-7cd15282d864">
+	<li>
+	<p id="_a678d229-59e7-47a7-8f9c-9eccfdd266da">AsciiRFC <xref target="git-asciirfc-minimal"/></p>
+	</li>
+(XML Line 002731): Hanging paragraph in clause
+	<clause id="example-1" inline-header="false" obligation="normative"><title>Example 1: "A Minimal Internet-Draft In AsciiRFC"</title><p id="_613fe6db-8d7c-4701-b009-0c0dc22d3b7b">This example is available in the following formats:</p>
+	<ul id="_42867d06-ccaa-4ff8-b3ed-7cd15282d864">
+	<li>
+	<p id="_a678d229-59e7-47a7-8f9c-9eccfdd266da">AsciiRFC <xref target="git-asciirfc-minimal"/></p>
+	</li>
+(XML Line 003124): Hanging paragraph in clause
+	<clause id="example-2" inline-header="false" obligation="normative"><title>Example 2: "The Holy Hand Grenade of Antioch"</title><p id="_9b4eccbf-cc1f-4301-af9a-d645c1cb03d1">This example is available in the following formats:</p>
+	<ul id="_25dc3cd7-29a5-495f-93c1-dea49a5b77ec">
+	<li>
+	<p id="_5b31260a-5e4e-4426-bed2-15e141975995">AsciiRFC <xref target="git-camelot-holy-grenade"/></p>
+	</li>
+(XML Line 003823): Hanging paragraph in clause
+	<clause id="example-3" inline-header="false" obligation="normative"><title>Example 3: "An API For Calendar-Based Fortune Heuristics Services" in AsciiRFC</title><p id="_9b10416a-0097-4988-89ab-5451feeb1da1">This example is available in the following formats:</p>
+	<ul id="_f9405917-0b32-4ed5-9e2a-c60fffccd75b">
+	<li>
+	<p id="_a224a93d-dcd8-4938-bfc7-ba2886eed5c6">AsciiRFC <xref target="git-divination-cfapi"/></p>
+	</li>
+
+
+== Metanorma XML Syntax
+
+(XML Line 000053:52): character content of element "revision-date" invalid; must be a string matching the regular expression "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?"
+(XML Line 000084:88): attribute "obligation" not allowed here; expected attribute "language", "numbered", "removeInRFC", "script" or "toc"
+(XML Line 000094:104): attribute "obligation" not allowed here; expected attribute "language", "numbered", "removeInRFC", "script" or "toc"
+(XML Line 000765:63): element "link" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 000797:19): element "rfc7253" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 001148:160): element "code" not allowed here; expected the element end-tag, text or element "annotation", "callout", "name" or "note"
+(XML Line 001148:160): found attribute "begins", but no attributes allowed here
+(XML Line 001173:17): element "code" not allowed here; expected the element end-tag or text
+(XML Line 001173:17): found attribute "begins", but no attributes allowed here
+(XML Line 001201:15): element "code" not allowed here; expected the element end-tag or text
+(XML Line 001201:15): found attribute "ends", but no attributes allowed here
+(XML Line 001206:16): element "code" not allowed here; expected the element end-tag or text
+(XML Line 001206:16): found attribute "ends", but no attributes allowed here
+(XML Line 001595:41): element "bcp14" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 001680:21): text not allowed here; expected the element end-tag or element "admonition", "bookmark", "clause", "definitions", "dl", "example", "figure", "form", "formula", "hr", "imagemap", "note", "ol", "p", "pagebreak", "permission", "pre", "quote", "recommendation", "requirement", "review", "sourcecode", "svgmap", "table", "terms" or "ul"
+(XML Line 001680:25): element "tt" not allowed here; expected the element end-tag or element "admonition", "bookmark", "clause", "definitions", "dl", "example", "figure", "form", "formula", "hr", "imagemap", "note", "ol", "p", "pagebreak", "permission", "pre", "quote", "recommendation", "requirement", "review", "sourcecode", "svgmap", "table", "terms" or "ul"
+(XML Line 001680:37): element "reference" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 001680:45): text not allowed here; expected the element end-tag or element "admonition", "bookmark", "clause", "definitions", "dl", "example", "figure", "form", "formula", "hr", "imagemap", "note", "ol", "p", "pagebreak", "permission", "pre", "quote", "recommendation", "requirement", "review", "sourcecode", "svgmap", "table", "terms" or "ul"
+(XML Line 001681:47): element "p" not allowed here; expected the element end-tag or element "clause", "definitions" or "terms"
+(XML Line 001684:36): element "example" not allowed here; expected the element end-tag or element "clause", "definitions" or "terms"
+(XML Line 001700:39): element "example" not allowed here; expected the element end-tag or element "clause", "definitions" or "terms"
+(XML Line 001760:71): element "clause" not allowed here; expected element "annex", "bibliography" or "sections"
+(XML Line 001781:68): element "clause" not allowed here; expected element "annex", "bibliography" or "sections"
+(XML Line 001820:53): element "clause" not allowed here; expected element "annex", "bibliography" or "sections"
+(XML Line 001960:86): element "clause" not allowed here; expected the element end-tag or element "references"
+(XML Line 002011:44): element "id" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 002016:44): element "id" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 002025:56): element "id" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 002028:65): element "id" not allowed here; expected the element end-tag, text or element "br", "em", "index", "smallcap", "strike", "strong", "sub", "sup", "tt" or "underline"
+(XML Line 002028:65): found attribute "words", but no attributes allowed here
+(XML Line 002032:75): The prefix "comma" for attribute "comma:" associated with an element type "id" is not bound.

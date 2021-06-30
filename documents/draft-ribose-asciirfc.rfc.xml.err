@@ -1,0 +1,3684 @@
+<?xml version="1.0"?>
+<?rfc strict="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<?rfc tocdepth="4"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="info" ipr="trust200902" submissionType="independent" xml:lang="en" version="3" >
+  <front>
+    <title abbrev="AsciiRFC Specifications">AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc</title>
+    <seriesInfo value="" status="Informational" stream="independent" name="Internet-Draft" asciiName="Internet-Draft"></seriesInfo>
+    <seriesInfo name="" value="" status="informational"></seriesInfo>
+    <author fullname="Ronald Henry Tse">
+      <address>
+        <postal></postal>
+        <email>ronald.tse@ribose.com</email>
+        <uri></uri>
+      </address>
+    </author>
+    <author fullname="Nick Nicholas">
+      <address>
+        <postal></postal>
+        <email>nick.nicholas@ribose.com</email>
+        <uri></uri>
+      </address>
+    </author>
+    <author fullname="Jeffrey Lau">
+      <address>
+        <postal></postal>
+        <email>jeffrey.lau@ribose.com</email>
+        <uri></uri>
+      </address>
+    </author>
+    <author fullname="Paolo Brasolin">
+      <address>
+        <postal></postal>
+        <email>paolo.brasolin@ribose.com</email>
+        <uri></uri>
+      </address>
+    </author>
+    <area>Internet</area>
+    <abstract anchor="_7bce9a42-a8b0-40b6-8d4b-4553cf67143a">
+<t anchor="_35cfdbac-074b-4ed2-8a72-8f471fa2bfb0">AsciiDoc is a human readable document markup language which affords
+more granular control over markup than comparable schemes such as
+Markdown.</t>
+<t anchor="_78a2fbe8-9a2c-4762-9060-85a90ed835a3">The AsciiRFC syntax is designed to allow the author to entirely focus
+on text, providing the full power of the resulting RFC XML through the
+AsciiDoc language, while abstracting away the need to manually edit
+XML, including references.</t>
+<t anchor="_81b9dfb5-83b9-4fc6-b4f8-1094324d8741">This document itself was written and generated into RFC XML v2
+(RFC7749) and RFC XML v3 (RFC7991) directly through asciidoctor-rfc,
+an AsciiRFC generator.</t></abstract>
+  </front>
+  <middle>
+    <section anchor="_acknowledgements"><name>Acknowledgements</name><t anchor="_da21bdde-309b-485f-8281-dc3311bb10bc">The authors would like to thank the following persons for their
+valuable advice and input.</t>
+<ul anchor="_25081b62-1616-4c15-8328-720f6a7d0b06">
+<li>
+<t anchor="_de38ee1e-0020-4c9b-a808-c4d6a5596ae5">Adrian Farrel for his comprehensive review of the document and
+numerous beneficial suggestions.</t>
+</li>
+</ul></section>
+    <section anchor="_introduction"><name>Introduction</name><t anchor="_d1726e7d-c37c-403d-a0b8-9f6acebdbc11">This document describes a markup language called "AsciiRFC", developed
+specifically for the purpose of generating RFC XML document, based on
+Asciidoctor syntax.  AsciiRFC can be used to generate compliant RFC
+XML v2 and v3 documents through the usage of an open source, MIT-licensed
+Ruby gem called "asciidoctor-rfc" written by the authors
+<xref target="asciidoctor-rfc"></xref>.</t>
+<section anchor="_designed_for_authoring_rfcs_and_internet_drafts"><name>Designed for authoring RFCs and Internet-Drafts</name><t anchor="_c12806eb-8572-4af4-9a28-04ae3916024b">Internet-Drafts and RFCs intended for publication submission to the
+IETF can be written in a multitude of formats today, including:</t>
+<ul anchor="_a2410c2f-9f5b-43ba-a69b-90bd5361fef7">
+<li>
+<t anchor="_40816736-44f1-4705-a3ee-ce03ee77bb96">XML: RFC XML v2 <xref target="RFC7749"></xref> and v3 <xref target="RFC7991"></xref></t>
+</li>
+<li>
+<t anchor="_b575ffe3-bc40-440a-91ee-06ff0da52fd5">nroff: through <xref target="NroffEdit"></xref></t>
+</li>
+<li>
+<t anchor="_4cabefa1-d8e9-410b-a86b-12ba70afdd74">Microsoft Word: through usage of <xref target="RFC5385"></xref></t>
+</li>
+<li>
+<t anchor="_665daf1c-cc4d-4d7d-a0db-74d786c45663">Lyx: through <xref target="lyx2rfc"></xref></t>
+</li>
+<li>
+<t anchor="_3ce943c2-e8fa-45f0-9eed-42b712e1e1fa">Pandoc: <xref target="RFC7328"></xref>, through <xref target="pandoc2rfc"></xref> or <xref target="draftr"></xref></t>
+</li>
+<li>
+<t anchor="_b5263263-f98e-4268-943a-bc3abc60b68c">Kramdown: through <xref target="kramdown-rfc2629"></xref></t>
+</li>
+<li>
+<t anchor="_174ad374-dfa1-4761-8e44-721f56eb19f8">mmark: through <xref target="mmark"></xref></t>
+</li>
+</ul>
+<t anchor="_1a7bf2ce-c380-4925-9c18-87c42e4c4aa3">Interestingly, the last three are Markdown <xref target="RFC7763"></xref> variants.</t>
+<t anchor="_4b622807-e65d-465e-b2cb-ca1f7360eccb">As specified in <xref target="RFC7990"></xref>, the IETF intends for the canonical format
+of RFCs to transition from plain-text ASCII to RFC XML v3 <xref target="RFC7991"></xref>.
+While plain-text will continue to be accepted from authors by the
+IETF, at least in the short- to medium-term, XML will be preferred for
+submission, and any plain-text submissions will need to be converted
+to RFC XML v3.</t>
+<t anchor="_caef39cb-df0e-4219-8072-16fc6e9bd115">While this need is already met for RFC XML v2 <xref target="RFC7749"></xref> by the tools
+specified above, the transition to RFC XML v3 <xref target="RFC7991"></xref> places added
+onus on authors to generate compliant XML.</t></section>
+<section anchor="_relationship_between_asciirfc_asciidoc_and_asciidoctor"><name>Relationship between AsciiRFC, AsciiDoc and Asciidoctor</name><t anchor="_40a7b248-a1b0-4f91-8819-78fe8438272b"><xref target="AsciiDoc"></xref> is a lightweight markup language and an alternative to
+Markdown, with features that make it attractive as a markup language
+for RFC with XML output.</t>
+<t anchor="_8e0c30a5-a8b0-4a4a-ab24-0cebef9fb4e9"><xref target="Asciidoctor"></xref> is an open source,
+MIT-licensed Ruby implementation of <xref target="AsciiDoc"></xref> that provides an
+enhancement of the original AsciiDoc markup language.</t>
+<t anchor="_a7cc68e5-1386-401d-9e5b-1a843f7a1b7b">The variant of AsciiDoc syntax accepted by <xref target="Asciidoctor"></xref> is
+hereafter called "Asciidoctor syntax".</t>
+<t anchor="_84a2c106-24a9-4d4f-bc38-4afa2bc86536">AsciiRFC, as described in this document, is an AsciiDoc variant developed
+on Asciidoctor syntax, created for the purpose of generating RFC XML
+documents.</t></section>
+<section anchor="_comparison_with_rfc_xml_tools_based_on_markdown_variants"><name>Comparison with RFC XML tools based on Markdown variants</name><t anchor="_370da056-12c4-46fa-ac2a-34012f02e636"><xref target="RFC7764">1.2 of</xref> famously states that "there is no such thing as
+'invalid' Markdown, there is no standard demanding adherence to the
+Markdown syntax, and there is no governing body that guides or impedes
+its development." While there are contexts where that flexibility
+is useful, the authoring of RFCs does have a standard and a governing
+body, and there is such a thing as invalid RFC XML. A more rigorous
+and extensible
+counterpart to Markdown, which still preserves its basic approach to
+formatting, can generate RFC XML that encompasses a fuller
+subset of the specification, and preempts malformed RFC XML output.
+The proposed markup language and associated Ruby gem has several
+advantages that we believe make it worth considering as an approach
+to generating RFC XML.</t>
+<ul anchor="_74c0e914-a722-4127-a264-7edb79a258a0">
+<li>
+<t anchor="_b5debeda-9f1b-4cef-97ce-6929d1101c2e">AsciiDoc was designed from the beginning as a publishing language:
+it was initially intended as a plain-text alternative to the DocBook
+XML schema. For that reason, Asciidoctor natively supports the full
+range of formatting required by RFC XML (including notes, tables,
+bibliographies, source-code blocks, and definition lists), without
+resorting to embedded HTML or Markdown "flavours".</t>
+</li>
+<li>
+<t anchor="_5995bd1b-ce7c-45a5-a106-5e2311a2975e">AsciiRFC covers the full range of elements in RFC XML v2 and RFC XML v3.</t>
+</li>
+<li>
+<t anchor="_586c3e14-b618-4b17-b141-8d3785b48096">AsciiDoc in its Ruby-based Asciidoctor implementation is extensible,
+with a well-defined API. (Extensions have been harnessed to deal with
+bibliographic preprocessing for AsciiRFC.)</t>
+</li>
+<li>
+<t anchor="_3368f72a-a074-48aa-8ef9-9d78c2da24f4">AsciiRFC allows granular control of rendering, including
+user-specified attributes of text blocks.</t>
+</li>
+<li>
+<t anchor="_3d618f29-8448-45be-bdf0-31b20ca68463">The Asciidoctor implementation allows document inclusion, for
+managing large-scale documentation projects.</t>
+</li>
+<li>
+<t anchor="_78245e9d-29cc-42c4-a491-0532f13fcbf9">AsciiRFC allows granular control of permutations of block nesting,
+such as source code within lists or definition lists within unordered
+lists.</t>
+</li>
+<li>
+<t anchor="_f6a228ed-3d57-4ae0-8b56-d824449aac0d">As a more formal counterpart to Markdown, AsciiDoc is well-suited to
+generating XML that needs to conform to a specified schema. The asciidoctor-rfc
+Ruby gem developed around AsciiDoc validates its RFC XML output against the RelaxNG
+schema defined for RFC XML, and reports any issues to the end user.</t>
+</li>
+<li>
+<t anchor="_869338d8-5f3f-4d28-b0cb-9626f22119e9">The asciidoctor-rfc Ruby gem incorporates validation not
+only of the XML structure of the standard, but also of the IETF workgroups
+it mentions against the latest listing online,
+and the bibliographic entries for RFC and other standards registered
+on <eref target="https://xml2rfc.tools.ietf.org"></eref>. The gem also dynamically
+fetches bibliographic entries from the xml2rfc site, and uses them
+to populate the RFC XML document.</t>
+</li>
+</ul>
+<t anchor="_d398fb2e-0a64-4242-8df7-f9306655e5b5">As with Markdown, there is a wide range of tools that can render
+AsciiDoc; so AsciiRFC drafts of RFC documents can be previewed and
+accessed without depending on the RFC tools ecosystem. Our realisation
+of RFC XML in AsciiRFC has aimed to ensure that, as much as possible,
+the markup language can be can be processed by generic Asciidoctor
+tools.</t>
+<t anchor="_14824e91-481c-45db-9628-b8976dd9a464">The only exception to this as an add-on is the optional bibliography
+module, which allows bibliographies to be assembled on the fly based
+on citations in a document: see <xref target="asciidoctor_bibliography"></xref>.</t></section></section>
+    <section anchor="_conventions_used_in_this_document"><name>Conventions Used in This Document</name><section anchor="_terms_and_definitions"><name>Terms and Definitions</name><t anchor="_ace77e33-c9b1-4342-8a1b-d46e472a79bb">The following terms and definitions apply to this document:</t>
+<dl anchor="_5a99a419-a40d-4196-bc3e-72c908370ea5"><dt>AsciiDoc</dt><dd>
+<t anchor="_d21dce24-1358-4225-a7eb-4b360a65c478">The AsciiDoc markup language generically, as described in <xref target="AsciiDoc"></xref>.</t>
+</dd><dt>Asciidoctor syntax</dt><dd>
+<t anchor="_ccfc1e73-d7ee-4987-8cb9-554eed97df99">The enhanced AsciiDoc syntax implemented by the <xref target="Asciidoctor"></xref>
+Ruby gem.</t>
+</dd><dt>AsciiRFC</dt><dd>
+<t anchor="_e27b1874-bfb7-44ae-8cd6-904146e70117">The AsciiDoc syntax developed for the purpose of generating RFC XML
+document based on Asciidoctor syntax, as described in this document.</t>
+</dd></dl></section>
+<section anchor="_wrapping_lines_in_documentation_examples"><name>Wrapping Lines in Documentation Examples</name><t anchor="_0e1fdcc8-4bbb-4c4d-9826-3f241d77d23a">This document contains a number of examples as fragments of XML. In
+some cases, the examples contain URLs that are over 72 characters long
+and so need to be wrapped for presentation in this document even though
+they would not need to be wrapped in the actual source XML.</t>
+<t anchor="_b98a8e7f-7477-42cf-8385-af08b991b9bb">This document adopts a policy similar to that described in
+<xref target="I-D.wu-netmod-yang-xml-doc-conventions"></xref> to denote line wraps. When an
+XML example contains a URL, that URL is always included in
+double-quotes. If the URL would extend beyond 72 characters, the line
+is wrapped and the wrap is indicated with a backslash ("\"). The
+backslash appears without any additional space before the backslash and
+with no further characters after the backslash.</t>
+<t anchor="_faa9b600-2849-46b2-8e8b-cd4c1ec3f358">For example, the following XML&#x2026;&#x200B;</t>
+<sourcecode anchor="_2b14387c-5e74-4d94-a165-81435b16277d" type="xml"><![CDATA[<format type="TXT" target=
+  "http://www.example.org/citations/cookpot.txt"/>]]></sourcecode>
+
+<t anchor="_309c2455-78c5-4bd5-8904-ceb723c5fdec">&#x2026;&#x200B;may be presented as</t>
+<sourcecode anchor="_d835e810-f3cf-4d21-b419-c0cfa941a6da" type="xml"><![CDATA[<format type="TXT" target=
+  "http://www.example.org/citations/\
+  cookpot.txt"/>]]></sourcecode>
+</section></section>
+    <section anchor="_document_structure_and_syntax"><name>Document Structure and Syntax</name><t anchor="_1f2d3a7d-20dc-4bff-ad5b-a4d7e97ab495">AsciiRFC consists of a subset of Asciidoctor syntax
+with the addition of bibliographic macros
+(<xref target="asciidoctor_bibliography"></xref>).
+Asciidoctor syntax is presented in the Asciidoctor user manual
+<xref target="Asciidoctor-Manual"></xref>.</t>
+<t anchor="_88041f95-9074-49a3-95fe-01eb6769ee96">AsciiRFC syntax consists of:</t>
+<ul anchor="_1941a2b0-dbd1-418f-a3ca-d839a1061d49">
+<li>
+<t anchor="_3e6a3aef-2962-4636-b10f-faab44dfbb47">A document header, containing a title, a list of authors, and
+document attributes in lines prefixed with <tt>:</tt>.</t>
+</li>
+<li>
+<t anchor="_c48617fa-eb37-4d62-a89c-3940ba2e47e4">An optional document preamble, separated from the document header by a
+blank line, and not containing any section titles.</t>
+</li>
+<li>
+<t anchor="_4b7f140f-7b5d-4b38-9f15-9fc6b242ed9c">A number of sections, set off by a section title (a line prefixed
+with two or more <tt>=</tt>.)</t>
+</li>
+</ul>
+<t anchor="_ed85b53a-8124-4441-8183-b15103dd8767">A section may contain:</t>
+<ul anchor="_2436f78c-373d-45e4-a671-d157167305e2">
+<li>
+<t anchor="_055cdbff-226c-4cd4-b1b8-4c7d1b0ae06d">Other sections, whose level of nesting is indicated by the number of
+<tt>=</tt> in their header.</t>
+</li>
+<li>
+<t anchor="_1c82cec9-4bad-4d36-816c-a800ecdb65f4">Blocks of text. Blocks can have metadata (including a title, an
+anchor for cross-references, and attributes.)</t>
+</li>
+</ul>
+<t anchor="_5e8d40bd-be79-4c62-a4f5-7b8af399c493">Blocks can be:</t>
+<ul anchor="_72100b88-d54a-431b-ab06-1a6a5018a97e">
+<li>
+<t anchor="_44a9c02e-2b0d-4869-8c81-80fce66e7e33">Paragraphs, which are terminated by blank lines.</t>
+</li>
+<li>
+<t anchor="_ae187c3f-8c85-4da0-b327-51c309120471">Lists. List items are by default paragraphs, but can span over
+multiple paragraphs.</t>
+</li>
+<li>
+<t anchor="_6d95f206-5577-48d3-b110-0cb7bf10a7a2">Delimited blocks (with a line delimiter on either side of them);
+these include tables, notes, sidebars, source code, block quotes,
+examples, and unprocessed content (e.g. raw XML). Delimited blocks
+contain by default one or more paragraphs.</t>
+</li>
+<li>
+<t anchor="_858c86f7-9001-4db9-a085-03b6ee119bdf">List items can contain other blocks, including both nested lists and
+delimited blocks.</t>
+</li>
+<li>
+<t anchor="_b3083f82-208e-40e5-93d6-853a531d1861">Some delimited blocks can contain other delimited blocks; for
+example, examples can contain source code as well as discussion in
+paragraphs.</t>
+</li>
+<li>
+<t anchor="_170f6419-f312-4292-9991-db819ebdf19f">Blocks of text consist of inline text, which itself can contain
+markup.</t>
+</li>
+</ul>
+<t anchor="_3cc43c37-accf-4e3e-91d3-3e1a7a0d9ac4">Inline markup includes:</t>
+<ul anchor="_d6a97d6a-6d69-48e9-8a89-831b91cc174f">
+<li>
+<t anchor="_18383a8d-9a1c-4e9d-a9c9-375c6bc47a82">Text formatting: Bold, italic, superscript, subscript, monospace.</t>
+</li>
+<li>
+<t anchor="_9e3d850d-6a4f-4396-a99f-5f996723686a">Markup macros: the <tt>bcp14</tt> and <tt>comment</tt> macros. (Asciidoctor syntax supports custom markup macros.)</t>
+</li>
+<li>
+<t anchor="_3a301ed0-edde-4da9-88ac-8275984d0499">URLs, including display text to render.</t>
+</li>
+<li>
+<t anchor="_0b6fb5ba-77e9-4c69-8802-855851553a7e">Inline anchors.</t>
+</li>
+<li>
+<t anchor="_4359e0e8-28e0-4197-a408-a5a352b98a84">Cross-references to anchors (IDs of blocks or spans of text),
+including display text to render.</t>
+</li>
+<li>
+<t anchor="_cadc67ba-a1e1-461b-9d79-84dfc76cde96">Images: SVG only, as specified in <xref target="RFC7996"></xref>.</t>
+</li>
+<li>
+<t anchor="_151a5d53-c10f-495b-8404-994345aa0d39">Index terms.</t>
+</li>
+</ul>
+<section anchor="_unsupported_features_compared_with_asciidoctor_syntax"><name>Unsupported features compared with Asciidoctor syntax</name><t anchor="_c99b96bf-6446-42a3-9abf-1c905e32e8b8">Several features from Asciidoctor are not supported within AsciiRFC
+due to the lack of support within RFC XML, including:</t>
+<ul anchor="_5df8db4c-046e-4076-ad84-5e641c0eba16">
+<li>
+<t anchor="_fe1fcc6f-5beb-4949-80c0-73868fa9a68b">Audio and video files are not supported in AsciiRFC as today's
+RFC XML structure does not support audio or video.</t>
+</li>
+<li>
+<t anchor="_2c99e176-cfd8-4711-9e9c-0079f1a348bf">Equations are not supported as there is no current RFC XML
+equivalent. Asciidoctor provides native support for
+<xref target="AsciiMathML"></xref> and <xref target="TeX-LaTeX"></xref>, via the <xref target="MathJax"></xref> tool.</t>
+</li>
+<li>
+<t anchor="_ad35ab17-13ae-4d7f-8d84-bff90c2c8917">Footnotes are not supported in AsciiRFC as there is no equivalent
+semantic representation in RFC XML.</t>
+</li>
+</ul>
+<t anchor="_07c41d49-df29-401e-b849-2b93e287cbd0">These carved out features can be easily supported by AsciiRFC
+once RFC XML allows these elements.</t></section>
+<section anchor="_mapping_to_rfc_xml_syntax"><name>Mapping To RFC XML syntax</name><t anchor="_51e0ae2e-6865-4ee5-85ed-4170a78c26f7">The Asciidoctor syntax document structure aligns with both the RFC XML v2
+and the RFC XML v3 structure.  In the following, RFC XML v3 equivalences are given
+to the basic Asciidoctor structure.</t>
+<dl anchor="_48b2772d-d80e-4dac-96f0-7b2d6f6735f4"><dt>Header</dt><dd>
+<t anchor="_2140f3c9-afad-4886-bd84-e7f345854c98"><tt>&lt;rfc&gt;</tt> attributes, most <tt>front</tt> elements.</t>
+</dd><dt>Preamble</dt><dd>
+<t anchor="_66f700cf-29de-4ebc-a55f-ee8788929dbd"><tt>front/abstract</tt> and <tt>front/note</tt>.</t>
+</dd><dt>Sections</dt><dd>
+<t anchor="_dbb226ae-25d8-4702-8184-3c9597465950"><tt>middle/section</tt> elements.</t>
+</dd><dt>Sections with <tt>bibliography</tt> style attribute</dt><dd>
+<t anchor="_16921aa6-9dff-4360-a95f-b417f96d9150"><tt>back/references</tt> elements.</t>
+</dd><dt>Sections with <tt>appendix</tt> style attribute</dt><dd>
+<t anchor="_a5eb929d-ab05-45f9-a5cf-367b4a532835"><tt>back/section</tt> elements.</t>
+</dd><dt>Paragraphs</dt><dd>
+<t anchor="_f0326eda-3d01-4ef1-adac-3b9f76b64776"><tt>t</tt> elements.</t>
+</dd><dt>Lists</dt><dd>
+<t anchor="_30208893-c030-41fe-b3c6-c04f8dde0b8a"><tt>ul</tt>, <tt>ol</tt>, <tt>dl</tt> elements.</t>
+</dd><dt>Delimited blocks</dt><dd>
+<t anchor="_1acd1c34-80a8-4bf5-97bd-54de88bc1081"><tt>artwork</tt>, <tt>aside</tt>, <tt>blockquote</tt>, <tt>figure</tt>, <tt>note</tt>, <tt>sourcecode</tt>, <tt>table</tt>.</t>
+</dd><dt>Inline markup</dt><dd>
+<t anchor="_e9cf79bf-85a8-418d-8a80-f16cb1d993f8"><tt>bcp14</tt>, <tt>br</tt>, <tt>cref</tt>, <tt>em</tt>, <tt>eref</tt>, <tt>iref</tt>, <tt>relref</tt>, <tt>strong</tt>, <tt>sub</tt>,
+<tt>sup</tt>, <tt>tt</tt>, <tt>xref</tt>.</t>
+</dd></dl>
+<t anchor="_f31012dc-e862-4d64-9876-210a812d8d82">Full details of the mapping of AsciiRFC elements to RFC XML v2 and v3
+elements, and of how to convert AsciiRFC documents to RFC XML, are
+given in the documentation of <xref target="asciidoctor-rfc"></xref>.</t></section>
+<section anchor="_example_illustrations"><name>Example Illustrations</name><t anchor="_23b7341f-1b90-4d91-aa2b-937b8c0b7d64">This document utilizes example documents provided in <xref target="appendix-a"></xref> for
+demonstration of AsciiRFC syntax and usage. The source files and published
+versions (at the IETF Datatracker) of these example documents are
+available in <xref target="appendix-a"></xref>.</t>
+<ul anchor="_c261359c-7bf9-4ca3-aed3-ec1157b72a67">
+<li>
+<t anchor="_77175729-6f20-462f-8c8d-fdeaf63fdbce">"A Minimal Internet-Draft In AsciiRFC" <xref target="example-1-asciirfc"></xref></t>
+</li>
+<li>
+<t anchor="_ae2cd4ae-c23c-4e9a-9ec1-aa8f379fae11">"The Holy Hand Grenade of Antioch" <xref target="example-2-asciirfc"></xref></t>
+</li>
+<li>
+<t anchor="_be9c6762-e164-4d69-9074-712111ef64c1">"An API For Calendar-Based Fortune Heuristics Services" <xref target="example-3-asciirfc"></xref></t>
+</li>
+</ul></section>
+<section anchor="_simple_illustration"><name>Simple Illustration</name><t anchor="_f298263b-02e8-4542-b783-ebdbcfd15ecf">This section gives an overview of how to create an RFC XML document in
+AsciiRFC, with some pitfalls to be aware of.</t>
+<t anchor="_318675dd-48ff-460d-9e27-32addd8515e1">Illustrations are in RFC XML v3 and RFC XML v2.</t>
+<t anchor="_15b0cc84-a164-4668-ab83-9b2c4a979bf4">A sample AsciiRFC document is provided in <xref target="source-sample-asciirfc"></xref>,
+together with its corresponding rendering in:</t>
+<ul anchor="_b358a0f7-0fbe-4936-bc42-86d356819afa">
+<li>
+<t anchor="_d44c219a-d2a2-46b4-9ec4-e195721ea184">RFC XML v3 (<xref target="source-sample-asciirfc-output-v3"></xref>)</t>
+</li>
+<li>
+<t anchor="_a7ca1d2a-a954-485d-8f98-2f7ea282bb34">RFC XML v2 (<xref target="source-sample-asciirfc-output-v2"></xref>)</t>
+</li>
+</ul>
+<t anchor="source-sample-asciirfc" keepWithNext="true">EXAMPLE  1: Sample Internet-Draft in AsciiRFC</t><sourcecode anchor="_89b95b36-08b7-422a-b51b-35e85f5f91bc" type="asciidoc"><![CDATA[<CODE BEGINS>
+= A Minimal Internet-Draft In AsciiRFC
+:doctype: internet-draft
+:name: draft-asciirfc-minimal-02
+:abbrev: AsciiRFC Example
+:status: informational
+:ipr: trust200902
+:submissionType: individual
+:area: Internet
+:intended-series: full-standard
+:revdate: 2018-04-12T00:00:00Z
+:fullname: Josiah Stinkney Carberry
+:lastname: Carberry
+:forename_initials: J. S.
+:organization: Brown University
+:phone: +1 401 863 1000
+:street: Box K, 69 Brown Street
+:city: Providence
+:code: 02912
+:country: United States of America
+:uri: https://www.brown.edu
+:email: josiah.carberry@ribose.com
+:fullname_2: Truman Grayson
+:lastname_2: Grayson
+:forename_initials_2: T.
+:organization_2: Brown University
+:phone_2: +1 401 863 1000
+:street_2: Box G, 69 Brown Street
+:city_2: Providence
+:code_2: 02912
+:country_2: United States of America
+:uri_2: https://www.brown.edu
+:email_2: truman.grayson@ribose.com
+
+[abstract]
+
+This document provides a template on how to author (or migrate!)
+a new Internet-Draft / RFC in the AsciiRFC format.
+
+This template requires usage of the `asciidoctor-rfc` Ruby gem.
+
+[#introduction]
+== Introduction
+
+AsciiRFC <<I-D.ribose-asciirfc>> is an extremely simple way to
+author Internet-Drafts and RFCs without needing to manually
+craft RFC XML conforming to <<RFC7991>>.
+
+This is a template specifically made for authors to easily
+start with creating an Internet-Draft conforming to <<RFC7991>>
+and submittable to the IETF datatracker.
+
+[#conventions]
+== Terms and Definitions
+
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this
+document are to be interpreted as described in BCP 14
+<<RFC2119>> <<RFC8174>> when, and only when, they appear in
+all capitals, as shown here.
+
+This document also refers to the following terms and
+definitions:
+
+AsciiRFC::
+  an AsciiDoc-derived syntax used for authoring RFCs and
+  Internet-Drafts, as defined in <<I-D.ribose-asciirfc>>.
+
+[#symbols]
+== Symbols And Abbreviations
+
+ADRFC::
+  abbreviated form of AsciiRFC
+
+
+[#security]
+== Security Considerations
+
+Any security considerations should be placed here.
+
+As described in <<main>> (here's how you refer a local anchor),
+local tools have to be installed before the document template
+can be built.
+
+Running of these local tools *MAY* produce unintended side
+effects that impact security.
+
+[#iana]
+== IANA Considerations
+
+This document does not require any action by IANA.
+
+But if it does, such as proposing changes to IANA registries,
+please include them here.
+
+[bibliography]
+== Normative References
+
+//bibliography::norm[]
+++++
+
+<reference anchor='RFC2119'
+  target='https://www.rfc-editor.org/info/rfc2119'>
+  <front>
+    <title>Key words for use in RFCs to Indicate Requirement
+      Levels</title>
+    <author initials='S.' surname='Bradner' fullname='S. Bradner'>
+      <organization />
+    </author>
+    <date year='1997' month='March' />
+    <abstract>
+      <t>In many standards track documents several words are
+        used to signify the requirements in the specification.
+        These words are often capitalized. This document defines
+        these words as they should be interpreted in IETF
+        documents.  This document specifies an Internet Best
+        Current Practices for the Internet Community, and
+        requests discussion and suggestions for improvements.
+      </t>
+    </abstract>
+  </front>
+  <seriesInfo name='BCP' value='14'/>
+  <seriesInfo name='RFC' value='2119'/>
+  <seriesInfo name='DOI' value='10.17487/RFC2119'/>
+</reference>
+
+<reference anchor='RFC7991'
+  target='https://www.rfc-editor.org/info/rfc7991'>
+  <front>
+    <title>The &quot;xml2rfc&quot; Version 3 Vocabulary</title>
+    <author initials='P.' surname='Hoffman' fullname='P. Hoffman'>
+      <organization />
+    </author>
+    <date year='2016' month='December' />
+    <abstract>
+      <t>This document defines the &quot;xml2rfc&quot;
+        version 3 vocabulary: an XML-based language used for
+        writing RFCs and Internet-Drafts.  It is heavily derived
+        from the version 2 vocabulary that is also under
+        discussion.  This document obsoletes the v2 grammar
+        described in RFC 7749.</t>
+      </abstract>
+  </front>
+  <seriesInfo name='RFC' value='7991'/>
+  <seriesInfo name='DOI' value='10.17487/RFC7991'/>
+</reference>
+
+<reference anchor='RFC8174'
+  target='https://www.rfc-editor.org/info/rfc8174'>
+  <front>
+    <title>Ambiguity of Uppercase vs Lowercase in RFC 2119
+      Key Words</title>
+    <author initials='B.' surname='Leiba' fullname='B. Leiba'>
+      <organization />
+    </author>
+    <date year='2017' month='May' />
+    <abstract>
+      <t>RFC 2119 specifies common key words that may be
+        used in protocol specifications.  This document aims to
+        reduce the ambiguity by clarifying that only UPPERCASE
+        usage of the key words have the defined special
+        meanings.</t>
+    </abstract>
+  </front>
+  <seriesInfo name='BCP' value='14'/>
+  <seriesInfo name='RFC' value='8174'/>
+  <seriesInfo name='DOI' value='10.17487/RFC8174'/>
+</reference>
+++++
+
+[bibliography]
+== Informative References
+
+//bibliography::info[]
+++++
+
+<reference anchor='IETF.TLP'
+  target='https://trustee.ietf.org/trust-legal-provisions.html'>
+  <front>
+  <title>IETF Trust Legal Provisions (TLP)</title>
+  <author>
+    <organization>IETF</organization>
+  </author>
+  <date month='April' day='12' year='2018' />
+  </front>
+</reference>
+
+<reference anchor='RNP' target='https://github.com/riboseinc/rnp/'>
+  <front>
+    <title>RNP: A C library approach to OpenPGP</title>
+    <author>
+      <organization>Ribose Inc.</organization>
+      <address>
+        <postal>
+          <street>Suite 1111, 1 Pedder Street</street>
+          <city>Central</city>
+          <region>Hong Kong</city>
+          <country>Hong Kong</country>
+        </postal>
+        <email>open.source@ribose.com</email>
+        <uri>https://www.ribose.com</uri>
+      </address>
+    </author>
+    <date day='31' month='March' year='2018'/>
+  </front>
+</reference>
+
+<reference anchor='I-D.ribose-asciirfc'>
+  <front>
+  <title>
+    AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc
+  </title>
+  <author initials="R" surname="Tse" fullname="Ronald Tse">
+    <organization/>
+  </author>
+  <author initials="J" surname="Lau" fullname="Jeffrey Lau">
+    <organization/>
+  </author>
+  <author initials="N" surname="Nicholas" fullname="Nick Nicholas">
+    <organization/>
+  </author>
+  <author initials="P" surname="Brasolin" fullname="Paolo Brasolin">
+    <organization/>
+  </author>
+    <date month="March" day="23" year="2018"/>
+    <abstract>
+      <t>This document describes an AsciiDoc syntax
+extension called AsciiRFC, designed for authoring IETF
+Internet-Drafts and RFCs.  AsciiDoc is a human readable document
+markup language which affords more granular control over markup
+than comparable schemes such as Markdown.  The AsciiRFC syntax
+is designed to allow the author to entirely focus on text,
+providing the full power of the resulting RFC XML through the
+AsciiDoc language, while abstracting away the need to manually
+edit XML, including references.  This document itself was
+written and generated into RFC XML v2 (RFC7749) and RFC XML v3
+(RFC7991) directly through asciidoctor-rfc, an AsciiRFC
+generator.</t>
+    </abstract>
+  </front>
+<seriesInfo name="Internet-Draft" value="draft-ribose-asciirfc-04"/>
+<format type="TXT" target="http://www.ietf.org/internet-drafts/draft-ribose-asciirfc-04.txt"/>
+</reference>
+
+<reference anchor="RFC5378"
+  target="https://www.rfc-editor.org/info/rfc5378">
+  <front>
+  <title>Rights Contributors Provide to the IETF Trust</title>
+  <author initials="S."
+    surname="Bradner" fullname="S. Bradner" role="editor">
+    <organization/>
+  </author>
+  <author initials="J."
+    surname="Contreras" fullname="J. Contreras" role="editor">
+    <organization/>
+  </author>
+  <date year="2008" month="November"/>
+  <abstract><t>The IETF policies about rights in Contributions
+    to the IETF are designed to ensure that such Contributions
+    can be made available to the IETF and Internet communities
+    while permitting the authors to retain as many rights as
+    possible. This memo details the IETF policies on rights in
+    Contributions to the IETF. It also describes the
+    objectives that the policies are designed to meet. This
+    memo obsoletes RFCs 3978 and 4748 and, with BCP 79 and
+    RFC 5377, replaces Section 10 of RFC 2026. This document
+    specifies an Internet Best Current Practices for the
+    Internet Community, and requests discussion and
+    suggestions for improvements.</t></abstract>
+  </front>
+  <seriesInfo name="BCP" value="78"/>
+  <seriesInfo name="RFC" value="5378"/>
+  <seriesInfo name="DOI" value="10.17487/RFC5378"/>
+</reference>
+
+<reference anchor='RFC7253'
+  target='https://www.rfc-editor.org/info/rfc7253'>
+  <front>
+    <title>The OCB Authenticated-Encryption Algorithm</title>
+    <author initials='T.' surname='Krovetz' fullname='T. Krovetz'>
+      <organization />
+    </author>
+    <author initials='P.' surname='Rogaway' fullname='P. Rogaway'>
+      <organization />
+    </author>
+    <date year='2014' month='May' />
+    <abstract><t>This document specifies OCB, a shared-key
+        blockcipher-based encryption scheme that provides
+        confidentiality and authenticity for plaintexts and
+        authenticity for associated data.  This document is a product
+        of the Crypto Forum Research Group (CFRG).</t></abstract>
+  </front>
+  <seriesInfo name='RFC' value='7253'/>
+  <seriesInfo name='DOI' value='10.17487/RFC7253'/>
+</reference>
+++++
+
+
+[appendix]
+[#appendix-a]
+== Examples
+
+=== Example 1
+
+Here's an example of a properly wrapped code snippet in
+accordance with rules specified in <<code-snippets>>.
+
+[source,json]
+----
+<CODE BEGINS>
+{
+  "code": {
+    "encoding": "ascii",
+    "type":     "rfc",
+    "authors":  [ "Josiah Carberry", "Truman Grayson" ]
+  }
+}
+<CODE ENDS>
+----
+
+[#acknowledgements]
+== Acknowledgements
+
+The authors would like to thank their families.
+<CODE ENDS>]]></sourcecode>
+<t anchor="_bd5f984b-b831-4043-9de6-53d533f9a2b0">The first block of text, from
+<tt>= Template For Writing An Internet-Draft In AsciiRFC</tt> through to
+<tt>:email_2: <eref target="mailto:thomas.kandell@brown.edu"></eref></tt>, is
+the document header. It contains a title in the first line, an author
+attribution (<tt>Josiah Carberry; Thomas Kandell</tt>), and then a set of
+document attributes, conveying
+information about the document as well as information about its
+authors. This information ends up in RFC XML either as attributes of the root
+<tt>rfc</tt> tag, elements of the <tt>front</tt> tag, or processing instructions.</t>
+<t anchor="_e072df86-3386-4756-90cb-829ea6d7580b">The following blocks of text, up until the first section header
+(<tt>== Introduction</tt>), are the document preamble. They are
+treated by the document converter as containing the document abstract
+(<tt>abstract</tt>), followed by any notes if present.</t>
+<t anchor="_dc308aaf-98e2-4659-adea-d326cf48421e">Section headers delimit the sections of the main body of the document,
+starting with <tt>== Introduction</tt>. The document converter treats the first section
+of the document as the start of the <tt>middle</tt> section in RFC XML.
+The first section header is followed by a paragraph, and other
+sections and paragraphs. The number of <tt>=</tt> signs can be one higher than that of
+the preceding section header, which indicates that they are subsections
+of that section; so <tt>=== Operators</tt>
+is a subsection of the preceding <tt>== Symbols And Abbreviations</tt>.</t>
+<t anchor="_8eb3641b-8412-47b5-b2d2-91f9bf885f29">The paragraphs contain some inline formatting
+(e.g. boldface: <tt>*MUST*</tt>, monospace: <tt>`type`</tt>), and sections can
+also contain blocks other than normal paragraphs; the section
+<tt>== Operators</tt>, for example, contains
+a definition list (whose terms are delimited by <tt>::</tt>), and the
+subsection <tt>=== Example 1</tt> contains a code snippet
+(delimited by <tt>----</tt>, and tagged with the style attribute <tt>[source,json]</tt>,
+indicating that this is a JSON sourcecode listing). The document
+can also include comments (<tt>//</tt> for inline, <tt>////</tt> for blocks),
+which are not rendered when the document is processed.</t>
+<t anchor="_4ca96db5-4dd2-479b-a8c3-49ea6675daa3">The introductory section in this example
+contains a citation of a reference, which in this
+version of AsciiRFC is treated identically to a cross-reference
+(<tt>&lt;<t>&lt;rfc7253&gt;&gt;&lt;/rfc7253&gt;</t></tt>) -- the crossreference being to the references
+section of the document. Sections and blocks of texts within the
+document can also be the target of crossreferences; for example,
+the section header <tt>=== Operators</tt>
+is preceded by the anchor <tt>[#operators]</tt>, and that anchor
+is already referenced in the section <tt>== Security Considerations</tt>.</t>
+<t anchor="_4dae5ea0-ce6b-4472-9995-063b2af4a71d">The third last and second last section are tagged with the style attribute
+<tt>[bibliography]</tt>, which identifies them as references containers; the
+document converter accordingly inserts them into the <tt>back</tt> element under
+RFC XML. The contents of the references sections are in this
+instance raw XML, delimited as a passthrough block (with
+<tt>++++</tt>), which the converter does not alter.</t>
+<t anchor="_00b5e627-065f-4443-89d6-efc0c1fdd6f8">The final section is tagged with the style attribute <tt>[appendix]</tt>,
+and is treated as such.</t>
+<t anchor="_69fe39aa-3973-4a46-8e70-8f39de5bad30">The RFC XML v3 document generated from this AsciiRFC document is:</t>
+<t anchor="source-sample-asciirfc-output-v3" keepWithNext="true">EXAMPLE  2: Sample Internet-Draft In AsciiRFC, Output In RFC XML v3 Format</t><sourcecode anchor="_3a776987-9dd4-477b-8a76-f4018560978f" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/03-asciidoc.adoc - include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_35f66e6b-b245-4539-b1b7-8e258e45029b">Some default processing instructions have already been prefixed to the
+XML.</t>
+<t anchor="_3bb06968-a022-4266-840e-b317ae0ee676">Our AsciiRFC converter can also generate RFC XML v2 from the same
+source AsciiRFC, as shown in <xref target="source-sample-asciirfc-output-v2"></xref>.
+Output in RFC XML v2 is not extensively described in this document.</t>
+<t anchor="source-sample-asciirfc-output-v2" keepWithNext="true">EXAMPLE  3: Sample Internet-Draft In AsciiRFC, Output In RFC XML v2 Format</t><sourcecode anchor="_a3864b89-d932-49f3-89ee-ae8c8368f0c0" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/03-asciidoc.adoc - include::../examples/rfc-asciirfc-minimal/xml2/draft-asciirfc-minimal.xml[]
+<CODE ENDS>]]></sourcecode></section></section>
+    <section anchor="header"><name>Header And Document Attributes</name><t anchor="_4931e4c8-2dbd-4f56-a776-1bda175059fa">The header gives the document title, followed by an optional author
+attribution, and a series of document attributes, with no empty lines.</t>
+<section anchor="_title_and_basic_attributes"><name>Title And Basic Attributes</name><t anchor="_8cf2e0f5-03e1-410d-a121-481ac7242749">Document attributes are used to populate attributes of the root <tt>rfc</tt>
+element, <tt>front</tt> elements, and document-level processing instructions.</t>
+<ul anchor="_41aef3cd-7ed3-4f76-8b5a-82cdd61b7ee2">
+<li>
+<t anchor="_ca3d8de3-c6ba-492b-9dfb-cfed63d55787"><tt>:doctype:</tt> determines  whether the document will be considered
+<tt>rfc</tt> or <tt>internet-draft</tt>, and interprets other attributes
+accordingly.</t>
+</li>
+<li>
+<t anchor="_b022e2d2-c12a-4cc4-8154-fe640bf13ab7">Certain attributes (<tt>workgroup</tt>, <tt>area</tt>, <tt>keyword</tt>) are comma
+delimited, and result in repeated RFC XML elements.</t>
+</li>
+</ul>
+<t anchor="_a3c353f7-341c-446c-8986-badc376359c1"><xref target="source-asciirfc-header"></xref> demonstrates how to set the document header
+in AsciiRFC, with its rendering in RFC XML v3 shown in
+<xref target="source-asciirfc-header-v3"></xref>.</t>
+<t anchor="source-asciirfc-header" keepWithNext="true">EXAMPLE  1: AsciiRFC Document Header</t><sourcecode anchor="_0167f7a3-0686-4961-b31d-fe0dbc8bc37e" type="asciidoc"><![CDATA[<CODE BEGINS>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:abbrev: Hand Grenade of Antioch
+:updates: 8140
+:submission-type: independent
+:name: draft-camelot-holy-grenade-01
+:status: informational
+:consensus: false
+:area: General, Operations and Management
+:keyword: rabbits, grenades, antioch, camelot
+:ipr: trust200902
+:toc-include: true
+:sort-refs: true
+:revdate: 2018-04-15T00:00:00Z
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Document Header Rendered As RFC XML v3</t><sourcecode anchor="_f89b4e1b-bc7f-462d-820c-93d0b5b34f9c" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/04-header.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..23,35,37..40"]
+<CODE ENDS>]]></sourcecode></section>
+<section anchor="_detailed_author_information"><name>Detailed Author Information</name><t anchor="_2bcf2de6-1da4-4113-a0a6-285b1ebd16db">The document header can spell out further information about authors,
+including contact details. The AsciiRFC header is shown in
+<xref target="source-asciirfc-header-authors"></xref> with its rendering in RFC XML v3
+shown in <xref target="source-asciirfc-header-authors-v3"></xref>.</t>
+<t anchor="source-asciirfc-header-authors" keepWithNext="true">EXAMPLE  1: AsciiRFC Document Header With One Author</t><sourcecode anchor="_34a96f60-a5b4-49a5-b5f9-12a5920718a8" type="asciidoc"><![CDATA[<CODE BEGINS>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:abbrev: Hand Grenade of Antioch
+:updates: 8140
+:submission-type: independent
+:name: draft-camelot-holy-grenade-01
+:status: informational
+:consensus: false
+:area: General, Operations and Management
+:keyword: rabbits, grenades, antioch, camelot
+:ipr: trust200902
+:toc-include: true
+:sort-refs: true
+:revdate: 2018-04-15T00:00:00Z
+:fullname: Arthur son of Uther Pendragon
+:forename_initials: A.
+:lastname: Pendragon
+:email: arthur.pendragon@ribose.com
+:organization: Camelot
+:uri: http://camelot.gov.example
+:street: Palace\ Camel Lot 1
+:city: Camelot
+:region: England
+:country: United Kingdom
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-authors-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Document Header With One Author (RFC XML v3)</t><sourcecode anchor="_9609926e-f877-460d-a537-048542733d5d" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/04-header.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..40"]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_204e643a-3416-47bb-9482-66ab435d6965">Details of a second, third etc. author, including their organization and
+contact details, are provided by suffixing the relevant author attributes with
+<tt>_2</tt>, <tt>_3</tt>  etc., as shown in <xref target="source-asciirfc-header-mauthors"></xref> and
+its RFC XML v3 rendering <xref target="source-asciirfc-header-mauthors-v3"></xref>.</t>
+<t anchor="source-asciirfc-header-mauthors" keepWithNext="true">EXAMPLE  3</t><sourcecode anchor="_39737270-b0e1-4362-9702-0100d74ca161" type="asciidoc"><![CDATA[<CODE BEGINS>
+= An API For Calendar-Based Fortune Heuristics Services
+Gabriel Destiny; Charise Luck
+:doctype: internet-draft
+:abbrev: Calendar Fortune Heuristics API
+:name: draft-divination-cfapi-00
+:status: informational
+:ipr: trust200902
+:area: Internet
+:submission-type: independent
+:intended-series: informational
+:revdate: 2018-03-23T00:00:00Z
+:lastname: Destiny
+:fullname: Gabriel Destiny
+:forename_initials: G.
+:organization: Divination Inc.
+:email: gabriel.destiny@ribose.com
+:street: 9288 N Divine Street
+:city: Dunn
+:code: 28334
+:region: NC
+:country: United States of America
+:lastname_2: Luck
+:fullname_2: Charise Luck
+:forename_initials_2: C.
+:organization_2: Divination Inc.
+:email_2: charise.luck@ribose.com
+:street_2: 9288 N Divine Street
+:city_2: Dunn
+:code_2: 28334
+:region_2: NC
+:country_2: United States of America
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-mauthors-v3" keepWithNext="true">EXAMPLE  4: AsciiRFC Document Header With Multiple Authors (RFC XML v3)</t><sourcecode anchor="_ef14e98f-0dc3-424b-89ef-96676d3c9156" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/04-header.adoc - include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[lines=11..47]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_11192392-1084-4390-bec6-0970e36a2e13">The initial author attribution in AsciiRFC, e.g.
+<tt>Gabriel Destiny; Charlise Luck</tt>
+in the example above, expects a strict format of First Name, zero or
+more Middle Names, Last name, and cannot process honorifics like "Dr."
+or suffixes like "Jr.".</t>
+<t anchor="_cf6da49d-09d6-4392-b2aa-bc082bb44fe8">Name attributes with any degree of complexity should be overriden by
+using the <tt>:fullname:</tt> and <tt>:lastname:</tt> attributes. The AsciiRFC
+<tt>:forename_initials:</tt> attribute replaces the built-in Asciidoctor
+syntax <tt>:initials:</tt> attribute (which includes the surname initial),
+and is not automatically populated from the name attribution.</t></section>
+<section anchor="_xml_processing_information"><name>XML Processing Information</name><t anchor="_f08bbbd1-294f-4d5b-8bbf-8f954e7464bf">A document header may also contain attribute headers which are treated
+as XML processing instructions. An AsciiRFC example is shown in
+<xref target="source-asciirfc-header-pi"></xref> with its rendering in
+<xref target="source-asciirfc-header-pi-v3"></xref>. (Note that several processing
+instructions are included by default in the output of the AsciiRFC
+processor.)</t>
+<t anchor="source-asciirfc-header-pi" keepWithNext="true">EXAMPLE  1: AsciiRFC Document Header With XML Processing Information</t><sourcecode anchor="_7c38d634-1fb5-4ac8-b0bf-708cdc4abdf3" type="asciidoc"><![CDATA[<CODE BEGINS>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:abbrev: Hand Grenade of Antioch
+:updates: 8140
+:submission-type: independent
+:name: draft-camelot-holy-grenade-01
+:status: informational
+:consensus: false
+:ipr: trust200902
+:comments: yes
+:notedraftinprogress: yes
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-pi-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Document Header With XML Processing Information (RFC XML v3)</t><sourcecode anchor="_00ca9ae2-be80-47d6-9b78-c7d60a61a789" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/04-header.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="1..23,35"]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_1b5e7ef5-f360-4482-87d4-bb8aafe72a60">In the foregoing, values for the processing instructions <tt>strict</tt>, <tt>compact</tt>,
+<tt>toc</tt> etc are included by default; but <tt>comments</tt> and <tt>notedraftinprogress</tt>
+are included as specified in the AsciiRFC document header. The default
+values provided for processing instructions can in fact be overriden through
+the AsciiRFC document header.</t></section>
+<section anchor="_asciirfc_specific_document_attributes"><name>AsciiRFC-specific Document Attributes</name><t anchor="_e9011d92-5cc9-4f51-8546-5de696459379">A few document attributes are specific to the operation of the RFC XML
+document converter:</t>
+<dl anchor="_f7463996-d437-4153-86ec-4190673f8390"><dt><tt>:no-rfc-bold-bcp14: false</tt> </dt><dd>
+<t anchor="_63303238-7a6d-432e-b7a2-14255462215b">overrides the wrapping by default of boldface uppercase BCP14
+<xref target="RFC2119"></xref> words (e.g. <tt>*MUST NOT*</tt>) with the <tt>bcp14</tt> element.</t>
+</dd><dt><tt>:smart-quotes: false</tt> </dt><dd>
+<t anchor="_51fb133e-ec25-4db1-babc-99d429cb1528">overrides Asciidoctor's conversion of straight quotes and
+apostrophes to smart quotes and apostrophes.</t>
+</dd><dt><tt>:inline-definition-lists: true</tt> </dt><dd>
+<t anchor="_bbe21c5e-b91c-4044-9c10-d21236d30195">overrides the RFC XML v2 <tt>idnits</tt> requirement that a blank line be
+inserted between a definition list term and its definition.</t>
+</dd></dl>
+<t anchor="source-asciirfc-header-rfc" keepWithNext="true">EXAMPLE  1: AsciiRFC Document Header Without RFC-specific Attributes</t><sourcecode anchor="_de50ab78-a742-4dc7-8f5d-27d8c6fccbe8" type="asciidoc"><![CDATA[<CODE BEGINS>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:status: informational
+:name: draft-camelot-holy-grenade-00
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-rfc-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Document Header Without RFC-specific Attributes (RFC XML v3)</t><sourcecode anchor="_7f258e0f-3bd2-455b-b4b8-42117f7d0c87" type="xml"><![CDATA[<CODE BEGINS>
+<rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
+  <front>
+    <title>The Holy Hand Grenade of Antioch</title>
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-camelot-holy-grenade-00" />
+    <author fullname="Arthur son of Uther Pendragon" surname="Pendragon"
+initials="A.">
+    </author>
+    <date day="25" month="November" year="2017" />
+  </front>
+  <middle>
+    <section anchor="_section_1" numbered="false">
+      <name>Section 1</name>
+      <t>The specification  <bcp14>MUST NOT</bcp14>
+        use the word <em> doesn&#8217;t</em>.</t>
+    </section>
+  </middle>
+</rfc>
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-override" keepWithNext="true">EXAMPLE  3: AsciiRFC Document Header With Overridden RFC-specific Attributes</t><sourcecode anchor="_b1174bd3-45e8-4601-ac19-ed993e0c876a" type="asciidoc"><![CDATA[<CODE BEGINS>
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:status: informational
+:name: draft-camelot-holy-grenade-00
+:no-rfc-bold-bcp14: false
+:smart-quotes: false
+
+== Section 1
+The specification *MUST NOT* use the word _doesn't_.
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-header-override-v3" keepWithNext="true">EXAMPLE  4: AsciiRFC Document Header With Overridden RFC-specific Attributes (RFC XML v3)</t><sourcecode anchor="_624bf883-c06a-4a54-91aa-47b36bb6b040" type="xml"><![CDATA[<CODE BEGINS>
+<rfc submissionType="IETF" prepTime="2017-11-25T10:23:39Z" version="3">
+  <front>
+    <title>The Holy Hand Grenade of Antioch</title>
+    <seriesInfo name="Internet-Draft" status="informational"
+        stream="IETF" value="draft-camelot-holy-grenade-00" />
+    <author fullname="Arthur son of Uther Pendragon" surname="Pendragon"
+initials="A.">
+    </author>
+    <date day="25" month="November" year="2017" />
+  </front>
+  <middle>
+    <section anchor="_section_1" numbered="false">
+      <name>Section 1</name>
+      <t>The specification <strong>MUST NOT</strong>
+        use the word <em>doesn't</em>.</t>
+    </section>
+  </middle>
+</rfc>
+<CODE ENDS>]]></sourcecode></section></section>
+    <section anchor="preamble"><name>Preamble</name><t anchor="_b423e118-32d7-443b-bd68-74f445009bc4">The preamble in AsciiRFC is the text between the end of the document header
+(which terminates with a blank line) and the first section of text.</t>
+<t anchor="_2a230eac-f239-4ecd-aa56-599fc3ffc1fd">Any paragraphs of text in the preamble are treated as an abstract, and may
+optionally be tagged with the <tt>abstract</tt> style attribute.</t>
+<t anchor="_290b774c-a325-4bbf-b05c-2a91ae1edbe3">Any notes in the preamble are treated as a <tt>note</tt> element.</t>
+<t anchor="_516d36f9-6c53-4074-a9a6-bc15bb892ab4">An example of setting the preamble is given in
+<xref target="source-asciirfc-preamble"></xref> with its rendering in
+<xref target="source-asciirfc-preamble-v3"></xref>.</t>
+<t anchor="source-asciirfc-preamble" keepWithNext="true">EXAMPLE  1: AsciiRFC With Preamble</t><sourcecode anchor="_fc29c130-2eb6-4b5a-aa32-cfcf816c3f7f" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[abstract]
+The menagerie of beasts and artefacts depicted in RFC8140
+may be usefully supplemented by other renowned figures of
+Internet and more general lore. This document extends the
+menagerie to the seminal fable of the
+"Holy Hand Grenade of Antioch", as depicted in the
+Monty Python film "Monty Python and the Holy Grail",
+as well as "Spamalot", the musical inspired by the movie.
+
+[NOTE,remove-in-rfc=false]
+.Spamalot
+The relevance of the musical "Spamalot" to Internet lore should be
+obvious to the reader; but in case of doubt, see also
+Section 1 ("What is Spam*?") of RFC2635.
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-preamble-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC With Preamble (RFC XML v3)</t><sourcecode anchor="_f10c071b-d57b-4252-84f4-10970685ffc6" type="xml"><![CDATA[<CODE BEGINS>
+<abstract>
+Unresolved directive in sections/05-preamble.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=preamble1]
+</abstract>
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="_sections_and_paragraphs"><name>Sections and Paragraphs</name><t anchor="_920e5a94-d50e-4eca-ae32-2795c4496b85">Section headers are given with a sequence of <tt>=</tt>, where the number of
+instances of <tt>=</tt> gives the header level.
+The document itself opens with a single <tt>=</tt>, and sections within it
+must be started with a minimum of <tt>==</tt>.</t>
+<t anchor="_98d3047c-4a9c-483a-a54e-4238f73fb4c8">Section numbering is toggled with the
+in-document attribute <tt>:sectnums:</tt> (on), <tt>:sectnums!:</tt> (off). The boolean
+<tt>toc</tt> attribute can also be set on sections, indicating whether the
+section can be included in the document's table of contents.</t>
+<t anchor="_4c0dc131-e545-4522-9f5a-c9f5ccd44254"><xref target="source-asciirfc-sections"></xref> shows how sections and paragraphs are
+used in AsciiRFC, and its rendered form is shown in
+<xref target="source-asciirfc-sections-v3"></xref>.</t>
+<t anchor="source-asciirfc-sections" keepWithNext="true">EXAMPLE  1: AsciiRFC With Sections</t><sourcecode anchor="_46124115-bae7-46a7-b9b8-935dac3db7a2" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[toc=exclude]
+:sectnums!:
+== Terminology
+
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this document
+are to be interpreted as described in BCP 14 <<RFC2119>> <<RFC8174>>
+when, and only when, they appear in all capitals, as shown here.
+
+:sectnums:
+== Introduction
+
+<<RFC8140>> refers to the intended move of RFC formatting to
+XML2RFC v3 <<RFC7990>>, in the following terms:
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-sections-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC With Sections (RFC XML v3)</t><sourcecode anchor="_6f09aadc-e475-49bc-a469-ec317b3723a0" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/06-sections.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tags=sectnums1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_d23398d5-ccf8-4b40-a937-b33719959f0b">Note that skipped sections, such as defining a section using <tt>====</tt>
+within a section defined using <tt>==</tt>, is not allowed in AsciiRFC
+syntax. Doing so will trigger an error with the following message:</t>
+<sourcecode anchor="_eb0e9310-93a6-4141-8fbb-c91ee19a75f5" type="console"><![CDATA[asciidoctor: WARNING: _filename_: line _X_:
+  section title out of sequence: expected level 2, got level 3]]></sourcecode>
+</section>
+    <section anchor="figures"><name>Figures</name><t anchor="_db829b3b-91b7-4b4f-ac2e-f1ed74d43d45">AsciiRFC examples (corresponding to RFC XML Figures), source code
+Listings, and Literals (preformatted text) are all delimited blocks.
+Listings and Literals can occur nested within Examples.</t>
+<t anchor="_37226fbe-3278-481d-b301-9f066f7045bf">An AsciiRFC example with a figure is given in
+<xref target="source-asciirfc-figure"></xref>, and its rendering in
+<xref target="source-asciirfc-figure-v3"></xref>.</t>
+<t anchor="source-asciirfc-figure" keepWithNext="true">EXAMPLE  1: AsciiRFC With A Figure</t><sourcecode anchor="_a0ad7ed8-6e6f-4cb2-b56c-c2b8b41dd611" type="asciidoc"><![CDATA[<code begins="">
+
+[[killer-bunny]]
+.A Photo Of The Killer Rabbit of Caerbannog Taken In Secret
+====
+[alt=The Killer Bunny, in ASCII]
+....
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\^^^^^^^^^^^^^^^^^^^^^^\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\<>>\\\\\\\\\\\\
+\\\\\\\\\\\\\\\<<>>>\\\\\\\\
+\\\\\\\\\\\\\<>>\\\\\\
+\\\\\\\\\\\\<     \\/||//         v\/||/
+       )          /--------^-^            ,.            \|//
+ #  \(/ .\\|x//                              " ' '
+  . ,                \\||//        \||\\\//   \\
+....
+====
+
+[[killer-source]]
+.C Code To Lure Killer Rabbit Back To Cave
+====
+[source,c]
+----
+<code begins="">
+/* Locate the Killer Rabbit */
+int type;
+unsigned char *killerRabbit =
+  LocateCreature(&caerbannog, "killer rabbit");
+if( killerRabbit == 0 ){
+  puts("The Killer Rabbit of Caerbannog is out of town.");
+  return LOST_CREATURE;
+}
+
+/* Load Cave */
+unsigned char *cave = LoadPlace(&caerbannog,
+  "The Cave Of Caerbannog");
+if( cave == 0 ){
+  puts("The Cave of Caerbannog must have moved.");
+  return LOST_PLACE;
+}
+
+/* Lure the Killer Rabbit back into the Cave */
+unsigned char *carrot = allocateObjectInPlace(
+  carrot("fresh"), cave);
+if( carrot == 0 ){
+  puts("No carrot, no rabbit.");
+  return LOST_LURE;
+}
+
+/* Finally, notify the Killer Rabbit to act */
+return notifyCreature(killerRabbit, &carrot);
+<code ends="">
+----
+====
+
+
+<code ends=""/></code></code></code>]]></sourcecode>
+<t anchor="source-asciirfc-figure-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC With A Figure (RFC XML v3)</t><sourcecode anchor="_c9830c16-ab80-4c2c-a6e4-8c2ddb4241cc" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/07-figures.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_401dad10-d433-4719-ac2e-6aede38f7ad1">If an AsciiRFC Listing or Literal occurs outside of an Example
+(<xref target="source-asciirfc-literal"></xref>), the RFC XML converter will supply the
+surrounding Figure element (<xref target="source-asciirfc-literal-v3"></xref>).</t>
+<t anchor="source-asciirfc-literal" keepWithNext="true">EXAMPLE  3: AsciiRFC With ASCII Art Without Figure Wrapping</t><sourcecode anchor="_86c810e0-3c8b-4e66-b02d-c57effca7467" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[[hand-grenade-figure]]
+.The Holy Hand Grenade of Antioch (don't pull the pin)]]></sourcecode>
+<figure anchor="_0de65c4e-c785-4154-840a-4c0167139095">
+
+<artwork anchor="_0d2b06d4-86d4-4ebd-a33f-4cee44b4c87d" alt="Holy Hand Grenade of Antioch" type="ascii-art"><![CDATA[                        ______
+                       \\/  \/
+                      __\\  /__
+                     ||  //\   |
+                     ||__\\/ __|
+                        ||  |    ,---,
+                        ||  |====`\  |
+                        ||  |    '---'
+                      ,--'*`--,
+                    _||#|***|#|
+                 _,/.-'#|* *|#`-._
+               ,,-'#####|   |#####`-.
+             ,,'########|   |########`,
+            //##########| o |##########\
+           ||###########|   |###########|
+          ||############| o |############|
+          ||------------'   '------------|
+          ||o  o  o  o  o   o  o  o  o  o|
+           |-----------------------------|
+           ||###########################|
+            \\#########################/
+             `..#####################,'
+               ``..###############_,'
+                  ``--.._____..--'
+                     `''-----''`]]></artwork></figure>
+<t anchor="_3a833140-fc79-4c73-a9a1-773be259343b" keepWithNext="true">EXAMPLE  4</t><t anchor="_b89e726b-f2ef-4cd8-aecc-53e25390597a">&lt;CODE ENDS&gt;</t><sourcecode anchor="_05a2112e-a15f-4d56-8ccb-60d85d849e0b"><![CDATA[]]></sourcecode>
+<t anchor="source-asciirfc-literal-v3" keepWithNext="true">EXAMPLE  5: AsciiRFC With ASCII Art Without Figure Wrapping (RFC XML v3)</t><sourcecode anchor="_dc52efe0-3376-4b39-a823-f02319161e4d" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/07-figures.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=figure2]
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="lists"><name>Lists</name><section anchor="_basic_lists"><name>Basic Lists</name><t anchor="_eeb608f5-f58f-4041-a901-e3308b82436b">AsciiRFC supports ordered, unordered, and definition lists.
+Indentation of ordered and unordered lists is indicated by repeating
+the list item prefix (<tt>*</tt> and <tt>.</tt> respectively); for definition
+lists, it is indicated by incrementing the number of definition term delimiters
+(<tt>::</tt>).</t>
+<t anchor="_08b37cd8-8f2c-49b2-9749-e2ae29af26cc">List attributes can be used to specify the type of symbol used for
+ordered lists.</t>
+<t anchor="_adb860e1-54f0-440e-ac02-cf25c1a97d5a">An example of an unordered list is shown in
+<xref target="source-asciirfc-unordered-list"></xref> (with its rendered version in
+<xref target="source-asciirfc-unordered-list-v3"></xref>). An example of an ordered list
+with ordered and unordered sublists is
+shown in <xref target="source-asciirfc-ordered-list"></xref> (with its rendered version
+in <xref target="source-asciirfc-ordered-list-v3"></xref>). An example of a definition
+list is shown in <xref target="source-asciirfc-definition-list"></xref> (with its
+rendered version in <xref target="source-asciirfc-definition-list-v3"></xref>).</t>
+<t anchor="source-asciirfc-unordered-list" keepWithNext="true">EXAMPLE  1: AsciiRFC With Unordered lists</t><sourcecode anchor="_03c71f01-7bc9-4e43-acd1-a92fe5b1dbf4" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+* Killed
+** Sir Bors
+** Sir Gawain
+** Sir Ector
+* Soiled Himself
+** Sir Robin
+* Panicked
+** King Arthur
+* Employed Ordnance
+** The Lector
+** Brother Maynard
+* Scoffed
+** Tim the Enchanter
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-unordered-list-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC With Unordered Lists (RFC XML v3)</t><sourcecode anchor="_7747474e-b3e9-4d50-a69e-a6229aa61c22" type="asciidoc"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/08-lists.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ul1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-ordered-list" keepWithNext="true">EXAMPLE  3: AsciiRFC With Ordered lists</t><sourcecode anchor="_dc788ae6-88e0-4351-854b-8c832df62249" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+. Preamble: St Attila Benediction
+. Feast of the People on Sundry Foods
+** Lambs
+** Sloths
+** Carp
+** Anchovies
+** Orangutangs
+** Breakfast Cereals
+** Fruit Bats
+** _et hoc genus omne_
+. Take out the Holy Pin
+. The Count
+[upperalpha]
+.. Count is to Three: no more, no less
+.. Not Four
+.. Nor Two, except if the count then proceeds to Three
+.. Five is Right Out
+. Lob the Holy Hand Grenade of Antioch towards the Foe
+. The Foe, being naughty in the *LORD's* sight, [bcp14]#shall# snuff it
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-ordered-list-v3" keepWithNext="true">EXAMPLE  4: AsciiRFC With Ordered Lists (RFC XML v3)</t><sourcecode anchor="_c3ade976-e7c6-467a-870f-a8539cbfb8df" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/08-lists.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=ol1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-definition-list" keepWithNext="true">EXAMPLE  5: AsciiRFC With Definition lists</t><sourcecode anchor="_29f64ed4-8d1c-4a66-a1f3-6fcffd0b578f" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+Holy Hand Grenade of Antioch::
+  Ordnance deployed by Brother Maynard under the incantation of a
+  lector, in order to dispense with the Foes of the Virtuous.
+  See <<hand-grenade-figure>>.
+
+Holy Spear of Antioch::
+  A supposed relic of the crucifixion of Jesus Christ, this is one
+  of at least four claimed instances of the lance that pierced
+  Christ's side. Its historical significance lies in inspiring
+  crusaders to continue their siege of Antioch in 1098.
+
+Sovereign's Orb of the United Kingdom::
+  Part of the Crown Jewels of the United Kingdom, the Sovereign's
+  Orb is a hollow gold sphere set with jewels and topped with a
+  cross.  It was made for Charles II in 1661. See <<sovereign-orb>>.
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-definition-list-v3" keepWithNext="true">EXAMPLE  6: AsciiRFC With Definition Lists (RFC XML v3)</t><sourcecode anchor="_cb167279-ff0d-43b8-9265-76b6ad3e28c3" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/08-lists.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=dl1]
+<CODE ENDS>]]></sourcecode></section>
+<section anchor="_list_continuation"><name>List Continuation</name><t anchor="_b69666c5-ba9f-4596-872e-b157cb088426">A list item by default spans a single paragraph. A following paragraph
+or other block element can be appended to the current list item by
+prefixing it with <tt>+</tt> in a separate line.</t>
+<t anchor="_4bd60f9a-b81b-4f6e-8f51-30730db2391c">See the "List Continuation" section in <xref target="Asciidoctor-Manual"></xref> for more
+information.</t>
+<t anchor="_37b93939-c3a5-498b-8ae9-26f6025d6edb">An example of list continuation with text is shown in
+<xref target="source-asciirfc-list-text"></xref> with its rendered version in
+<xref target="source-asciirfc-list-text-v3"></xref>.</t>
+<t anchor="source-asciirfc-list-text" keepWithNext="true">EXAMPLE  1: AsciiRFC List With Text Continuation</t><sourcecode anchor="_bcf100c2-edf0-41ca-a15b-b1be88c05e34" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+Trojan Rabbit::
+In their siege of the French-occupied castle which may already
+contain an instance of the Grail, Sir Bedevere the Wise proposes to
+use a Trojan Rabbit to infiltrate the castle, with a raiding party
+to take the French "not only by surprise, but totally unarmed."
++
+The proposal, unsurprisingly, proved abortive. The more so as the
+raiding party forgot to hide within the Trojan Rabbit, before the
+French soldiers took the Trojan Rabbit inside the castle.
+
+Killer Rabbit of Caerbannog::
+Guarding the entrance to the Cave of Caerbannog; see <<caerbannog>>.
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-list-text-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC List With Text Continuation (RFC XML v3)</t><sourcecode anchor="_09bb6ae5-a9d4-4486-9f93-dcebad9f90cb" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/08-lists.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuation1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_518e55d4-9051-45f6-9cb3-6aea197f4280">(Multiple paragraphs are not permitted within a list item in RFC XML
+v2.  The RFC XML converter deals with this by converting paragraph
+breaks into line breaks within a list item.)</t>
+<t anchor="_27dfff0b-4293-473e-972d-bb3d48612eb8">List continuations can also be embedded to populate a list item with a
+sequence of blocks as a unit (in an Asciidoctor syntax open block).</t>
+<t anchor="_dceb9ae1-6868-4ee3-8de4-6c46f5c87d13">An example of list continuation with a delimited block is shown in
+<xref target="source-asciirfc-list-block"></xref> with its rendered version in
+<xref target="source-asciirfc-list-block-v3"></xref>.</t>
+<t anchor="source-asciirfc-list-block" keepWithNext="true">EXAMPLE  3: AsciiRFC List With Block Continuation</t><sourcecode anchor="_8be7ddab-5a70-442c-9a36-b27f1cea05af" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+. Take out the Holy Pin
+. The Count
++
+----
+integer count;
+for count := 1 step 1 until 3 do
+  say(count)
+comment Five is Right Out
+----
+. Lob the Holy Hand Grenade of Antioch towards the Foe
+. Foe snuffs it
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-list-block-v3" keepWithNext="true">EXAMPLE  4: AsciiRFC List With Block Continuation (RFC XML v3)</t><sourcecode anchor="_07f9bd05-01df-454c-85bf-fbb7dfbfa2ee" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/08-lists.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=listcontinuationblock1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_c267a5ae-e259-421d-80dc-7a765422d884">AsciiDoc, and thus AsciiRFC, considers paragraphs to be the basic
+level of blocks, and does not permit lists to be nested within them:
+any text after a list is considered to be a new paragraph.</t>
+<t anchor="_04429420-d22b-4b71-958a-199b6a0dea12">Therefore, markup as shown in <xref target="source-asciirfc-list-impossible"></xref>
+cannot be generated via AsciiRFC.</t>
+<t anchor="source-asciirfc-list-impossible" keepWithNext="true">EXAMPLE  5: This RFC XML v3 Output Cannot Be Generated Using AsciiRFC</t><sourcecode anchor="_2522cf34-abe5-4766-bd24-d233780d0c91" type="xml"><![CDATA[<CODE BEGINS>
+<t>
+  This is the start of a paragraph.
+  <ul>
+    <li>List Entry 1</li>
+    <li>
+      <t>List Entry 2</t>
+      <t>Note 2.</t>
+    </li>
+  </ul>
+  And this is the continuation of the paragraph.
+</t>
+<CODE ENDS>]]></sourcecode></section></section>
+    <section anchor="_blockquotes"><name>Blockquotes</name><t anchor="_08b29ba1-2b8a-4a02-82ce-d6f2564b6f0c">Asciidoctor syntax supports blockquotes and quotations of verse; its
+block quotations permit arbitrary levels of quote nesting.  RFC XML
+v3, and thus AsciiRFC, only supports one level of blockquotes.</t>
+<t anchor="_8d187a0b-e0c7-4faf-aece-2952f2de655f">Unlike RFC XML v2, RFC XML v3 does not support line breaks outside of
+tables, so verse quotations are converted to prose in the v3
+converter.</t>
+<t anchor="_f141e30d-1d47-474f-9f0c-8bb9cbb4a704">An example of using AsciiRFC Blockquotes is given in
+<xref target="source-asciirfc-blockquotes"></xref> with its rendered version in
+<xref target="source-asciirfc-blockquotes-v3"></xref>.</t>
+<t anchor="source-asciirfc-blockquotes" keepWithNext="true">EXAMPLE  1: AsciiRFC Blockquote Usage</t><sourcecode anchor="_9cc45cbb-5346-488b-b845-25cfefc4582b" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[quote,attribution="A. Farrel"]
+____
+Although the RFC Editor has recently dragged the IETF kicking and
+screaming into the twentieth century [RFC7990] [RFC7996], there is a
+yearning among all right-thinking Internet architects to "keep it
+simple" and to return to the olden days when pigs could be given
+thrust without anyone taking undue offence.
+____
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-blockquotes-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Blockquote Usage (RFC XML v3)</t><sourcecode anchor="_e5975e8c-3fad-412b-b939-48885caa6e21" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/09-blockquotes.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=quote1]
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="_notes_and_asides"><name>Notes And Asides</name><t anchor="_0cc64b27-1e08-424a-bffe-50f10c6ff1cd">Asciidoctor syntax supports a range of "admonitions", including notes,
+warnings, and tips. They are indicated by a paragraph prefix (e.g.
+<tt>WARNING:</tt>), or as a block with an admonition style attribute.</t>
+<t anchor="_8e135e06-ece6-49ad-bea6-ee801e81ab29">All admonitions are conflated in AsciiRFC, being converted to <tt>note</tt>
+elements in the document preamble, and <tt>cref</tt> elements in the main
+document.</t>
+<t anchor="_0a61e6d4-d316-4b46-9e15-e470c7b94c7d">This means that no admonitions will therefore appear in the
+textual output, unless forced to through the <tt>comments</tt> processing
+instruction. A sample admonition is shown in <xref target="source-asciirfc-note"></xref>,
+with its rendered output in <xref target="source-asciirfc-note-v3"></xref>.</t>
+<t anchor="source-asciirfc-note" keepWithNext="true">EXAMPLE  1: An AsciiRFC Adminition Block</t><sourcecode anchor="_8fd45d55-0f4c-4a41-a12b-338060e785b3" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[NOTE,display=true,source=Author]
+====
+Image courtesy of
+https://camelot.gov.example/creatures-in-ascii/
+====
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-note-v3" keepWithNext="true">EXAMPLE  2: An AsciiRFC Adminition Block (RFC XML v3)</t><sourcecode anchor="_f91529af-1127-4b77-b0c3-f394cddd8396" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/10-notes.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=note1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_5f3a3bb1-23a9-404d-9b52-9ff9712a4f23">With RFC XML v2, note that no inline formatting is permitted for
+<tt>cref</tt> elements, and any such formatting is therefore stripped
+for v2 by the converter.</t>
+<t anchor="_4c0491ab-9339-4cf6-bb38-9974ad9a6937">Because paragraphs in AsciiRFC cannot contain any other blocks, a
+comment at the end of a paragraph is treated as a new block. In the
+document converter, any such comments are moved inside the preceding
+RFC XML paragraph; if the comment is at the start of a section, as in
+the example above, it is wrapped inside a paragraph.</t>
+<t anchor="_5a7d01a4-28af-4fe6-8cea-42aff62200f5">The RFC XML v3 converter also supports <tt>asides</tt> (Asciidoctor syntax
+Sidebars). A sample is shown in <xref target="source-asciirfc-sidebar"></xref>, with its
+rendered output in <xref target="source-asciirfc-sidebar-v3"></xref>.</t>
+<t anchor="source-asciirfc-sidebar" keepWithNext="true">EXAMPLE  3: An AsciiRFC Sidebar Block</t><sourcecode anchor="_57075b93-dd91-4ab6-ac6e-ec9e1a448b01" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+****
+While the exchange at the French-occupied castle is one of
+the more memorable scenes of _Monty Python and the Holy Grail_,
+the Trojan Rabbit has not reached the same level of cultural
+resonance as its more murderous counterpart. Reasons for this
+may include:
+
+* Less overall screen-time dedicated to the Trojan Rabbit.
+
+* The Trojan Rabbit as projectile has already been anticipated
+by the Cow as projectile.
+****
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-sidebar-v3" keepWithNext="true">EXAMPLE  4: An AsciiRFC Sidebar Block Rendered As An Aside (RFC XML v3)</t><sourcecode anchor="_f1b409f8-506d-49a0-bfec-015194e405f6" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/10-notes.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=aside1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_064779ed-bc2b-4f3a-b467-79ef35c6a4bd">Comments given in AsciiDoc syntax (notated with initial <tt>//</tt>) are
+not intended to be shown in the rendered output, and will not appear
+in the output as XML comments. XML comments can be generated by using
+the <tt>[comment]#&#x2026;&#x200B;#</tt> inline formatting macro, or the <tt>[.comment]</tt> role
+attribute on blocks. A sample is shown in <xref target="source-asciirfc-sidebar"></xref> with its
+rendered output in <xref target="source-asciirfc-sidebar-v3"></xref>.</t>
+<t anchor="source-asciirfc-comment" keepWithNext="true">EXAMPLE  5: AsciiRFC delimited text intended as an XML Comment</t><sourcecode anchor="_e60f178a-bd0a-4999-a482-7bee43d4d803" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+The exchange of projectile animals was the beginning of a
+long-running fruitful relationship between the British and the
+French peoples,
+[comment]#TODO: Will need to verify that claim.# which
+arguably predates the traditional English enmity with the
+French. [comment]#Strictly speaking, the Knights are Welsh.#
+
+[.comment]
+--
+This document, as it turns out, has a profusion of XML comments.
+
+As expected, they are ignored in any rendering of the document.
+--
+
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-comment-v3" keepWithNext="true">EXAMPLE  6: AsciiRFC delimited text Rendered As An XML Comment (RFC XML v3)</t><sourcecode anchor="_05bb5c63-ba21-450c-9e5b-c1144c876aba" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/10-notes.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=comment1]
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="_tables"><name>Tables</name><t anchor="_1df42bfc-2f49-44ac-9a63-3da7ba8ee657">AsciiRFC tables, like RFC XML v3, support distinct table heads, bodies
+and feet; cells spanning multiple rows and columns; and horizontal
+alignment. The larger range of table formatting options available in
+RFC XML v2 is also supported.</t>
+<t anchor="_ed7bdd04-94ac-4f5d-a453-2916460e308f">A sample of an AsciiRFC table is shown in <xref target="source-asciirfc-table"></xref>,
+with its rendered output in <xref target="source-asciirfc-table-v3"></xref>.</t>
+<t anchor="_6d46d2c3-ad8d-4884-8d85-5269bde3a8c0">Neither version of RFC XML is as expressive in its table structure as
+Asciidoctor syntax. RFC XML, for example, does not permit blocks
+within table cells.</t>
+<t anchor="source-asciirfc-table" keepWithNext="true">EXAMPLE  1: An AsciiRFC Table</t><sourcecode anchor="_80a4c8b8-d88e-4e8a-88f5-494875ad2446" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+[grid=all,options="footer"]
+|===
+|French Castle | Cave of Caerbannog
+
+2+|King Arthur
+2+|Patsy
+2+|Sir Bedevere the Wise
+2+|Sir Galahad the Pure
+2+|Sir Lancelot the Brave
+2+|Sir Robin the Not-quite-so-brave-as-Sir-Lancelot
+|French Guard with Outrageous Accent| Tim the Enchanter
+|Other French Guards | Brother Maynard
+| | The Lector
+.3+^|not yet recruited
+>|Sir Bors
+>|Sir Gawain
+>|Sir Ector
+
+|Retinue of sundry knights
+|Retinue of sundry more knights than at the French Castle
+|===
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-table-v3" keepWithNext="true">EXAMPLE  2: An AsciiRFC Table (RFC XML v3)</t><sourcecode anchor="_4734801e-c7a7-4008-bbd2-23dbf414a74c" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/11-tables.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=table1]
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="_inline_formatting"><name>Inline Formatting</name><section anchor="_italics_boldface_monospace_subscripts_superscripts"><name>Italics, Boldface, Monospace, Subscripts, Superscripts</name><t anchor="_44e423bb-a9f5-4588-bfa5-f6b993d24213">AsciiRFC supports italics, boldface, monospace, subscripts and
+superscripts, just like RFC XML v3.</t>
+<t anchor="_b4203b84-6d96-4da8-8c40-a01ac8110bb5">The inline formatting syntax given in <xref target="source-asciirfc-inline"></xref>
+produces the RFC XML v3 output given in <xref target="source-asciirfc-inline-v3"></xref>.</t>
+<t anchor="source-asciirfc-inline" keepWithNext="true">EXAMPLE  1: Inline Formatting In AsciiRFC</t><sourcecode anchor="_adada7e1-ec26-45dc-92b5-690da49bf1de" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+The participants of that renowned exercise in cross-cultural
+communication, to wit the exchange between the
+_Knights of the Round Table_
+and the taunting French soldiers serving under *Guy de Lombard* are,
+properly speaking, outside the scope of this `menagerie`, being more
+or less human. Notwithstanding, several^ish^ beasts both animate~d~
+and wooden played a significant part in this encounter; most
+notably:
+
+* The Projectile Cow, see <<projectile-cow>>
+* The Trojan Rabbit, see <<trojan-rabbit>>
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-inline-v3" keepWithNext="true">EXAMPLE  2: Inline Formatting In AsciiRFC (RFC XML v3)</t><sourcecode anchor="_16bf6a1c-31c5-4da4-a89c-5960b268693f" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/12-inline.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=inline_formatting1]
+<CODE ENDS>]]></sourcecode></section>
+<section anchor="_formatting_bcp_14_keywords"><name>Formatting BCP 14 Keywords</name><t anchor="_a2a9ea3f-a714-4106-86d0-edb3cad11839">RFC XML v3 also supports tagging of BCP14 keywords <xref target="RFC2119"></xref>
+<xref target="RFC8174"></xref>; this is done in AsciiRFC either by tagging them with a
+custom formatting span (e.g. <tt><bcp14>MUST NOT</bcp14></tt>), or by converting
+any boldface all-caps words recognised as BCP14 words (unless the
+<tt>:no-rfc-bold-bcp14: false</tt> document attribute is set).</t>
+<t anchor="_5211127b-a5b7-4e93-8556-2df2733b0a66">Any spans of BCP14 text delimited by inline formatting delimiters
+need to be contained within a single line of text; in Asciidoctor
+syntax, formatting spans are broken up across line breaks.</t>
+<t anchor="_95c4e7fa-f7f6-4dcb-b70c-3236fca6c804">This usage is demonstrated in <xref target="source-asciirfc-bcp14"></xref> with the
+rendered output in <xref target="source-asciirfc-bcp14-v3"></xref>.</t>
+<t anchor="source-asciirfc-bcp14" keepWithNext="true">EXAMPLE  1: BCP14 Keywords In AsciiRFC</t><sourcecode anchor="_9f6cbb7c-70c7-478e-a2ea-2e6f26eb6e1f" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+The instructions in the _Book of Armaments_ on the proper deployment
+of the Holy Hand Grenade of Antioch [bcp14]#may# be summarized as
+follows, although this summary *SHALL NOT* be used as a substitute
+for a reading from the Book of Armaments:
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-bcp14-v3" keepWithNext="true">EXAMPLE  2: BCP14 Keywords In AsciiRFC (RFC XML v3)</t><sourcecode anchor="_c83b0dc0-dc58-445a-903c-f78cfdf8ade2" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/12-inline.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bcp14_1]
+<CODE ENDS>]]></sourcecode></section>
+<section anchor="_escaping_asciirfc_syntax"><name>Escaping AsciiRFC Syntax</name><t anchor="_54d11db1-d704-487e-9ea4-90aaf7a1f114">Formatting delimiters like <tt>*</tt> can be escaped with backslash (<tt>\*</tt>);
+double formatting delimiters, like <tt>**</tt> and <tt>__</tt>, need to be
+escaped with double backslash (<tt>\\**</tt>).</t>
+<t anchor="_fb5dfc20-0a87-48b4-b7b5-831bccc490ca">Escaping delimiters is not always reliable, and for double delimiters
+it is preferable to use HTML entities (<tt>**</tt>), or attribute
+references (references to the value of attributes set in the document
+header) as shown in <xref target="source-asciirfc-escaping"></xref>.</t>
+<t anchor="source-asciirfc-escaping" keepWithNext="true">EXAMPLE: Escaping AsciiRFC Syntax Using Attributes</t><sourcecode anchor="_14454ede-0a69-429e-bcff-9051eedeb9e9" type="asciidoc"><![CDATA[<CODE BEGINS>
+:dblast: **
+
+`{dblast}`
+<CODE ENDS>]]></sourcecode>
+<t anchor="_a5dbfec0-7e9e-4e7e-b024-870625ffe2c1">In extreme circumstances (such as quoting AsciiDoc syntax), you may
+need to resort to altering the substitutions behaviour within a given
+block of of AsciiDoc; see the "Applying Substitutions" section of
+<xref target="Asciidoctor-Manual"></xref>.</t></section></section>
+    <section anchor="_links"><name>Links</name><t anchor="_40de6b95-6e88-404d-aa17-db5cb51b7325">Common URL formats are recognised automatically as hyperlinks in
+AsciiRFC, which inherits this excellent feature from AsciiDoc, and are
+rendered as such.</t>
+<t anchor="_a539470f-b687-46b5-94e3-aec6950dca78">Any hyperlinked text is appended after the hyperlink in square
+brackets.</t>
+<t anchor="_53198f1c-e4be-4506-9bea-744dd077eec1">An example is given in <xref target="source-asciirfc-link"></xref> with its rendered
+version in <xref target="source-asciirfc-link-v3"></xref>.</t>
+<t anchor="source-asciirfc-link" keepWithNext="true">EXAMPLE  1: An AsciiRFC Link</t><sourcecode anchor="_5c2da6a7-e748-4287-9415-3bb7c2816b60" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+<<killer-bunny,The following depiction>> of the fearsome beast
+has been sourced from
+http://camelot.gov.example/avatars/rabbit[Rabbit-SCII],
+<<killer-source,accompanied>>
+by C code that was used in this accurate depiction of the
+Killer Rabbit:
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-link-v3" keepWithNext="true">EXAMPLE  2: An AsciiRFC Link (RFC XML v3)</t><sourcecode anchor="_b86b0016-8659-4b23-a689-77f558aeb130" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/13-links.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=hyperlink1]
+<CODE ENDS>]]></sourcecode>
+<t anchor="_45668957-3b5f-4a81-8090-211834b81f12">To prevent hyperlinking of a URL, prefix it with a backslash, as shown
+in <xref target="source-asciirfc-link-lit"></xref> with its rendered version in
+<xref target="source-asciirfc-link-lit-v3"></xref>.</t>
+<t anchor="source-asciirfc-link-lit" keepWithNext="true">EXAMPLE  3: A Literal AsciiRFC Link</t><sourcecode anchor="_8391533c-1602-40ef-bf16-f7ded8ddf287" type="asciidoc"><![CDATA[<CODE BEGINS>
+
+The screaming move into the twenty-*first* century is accompanied by
+a move back to the late twentieth century, with ASCII stylings more
+wonted in haunts like \ftp://ftp.wwa.com/pub/Scarecrow (known to be
+accessible in 1996.)
+
+<CODE ENDS>]]></sourcecode>
+<t anchor="source-asciirfc-link-lit-v3" keepWithNext="true">EXAMPLE  4: A Literal AsciiRFC Link (RFC XML v3)</t><sourcecode anchor="_b1818d42-6be2-4a98-9b82-ee6527ae69be" type="xml"><![CDATA[<CODE BEGINS>
+Unresolved directive in sections/13-links.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=escaped_hyperlink1]
+<CODE ENDS>]]></sourcecode></section>
+    <section anchor="cross-references"><name>Cross-References</name><section anchor="_basic_referencing"><name>Basic Referencing</name><t anchor="_78fd33d8-6a68-4edc-b71f-f1b1b4a450c1">Anchors for cross-references are notated as <tt>[[&#x2026;&#x200B;]]</tt> or <tt>[#&#x2026;&#x200B;]</tt>, and
+can be inserted on their own line in front of most blocks.</t>
+<t anchor="_d591aaa9-d285-48e0-b215-8d44641c603a">Asciidoctor syntax supports anchors in a much wider range of contexts
+than is supported than RFC XML v3 (let alone v2); anchors that are not
+supported for that version of RFC XML are simply ignored by the
+converter.</t>
+<t anchor="_b151a5ff-47e1-479e-8a5b-9b7bdb6b21c9">Note that anchors in RFC XML are constrained to the format
+<tt>[A-Za-z_:][[A-Za-z0-9_:.-]*</tt> (i.e. <tt>xsd:ID</tt>).</t>
+<t anchor="_3a3a9d7a-4cc4-499d-967c-60d996d50def">Cross-references to anchors are notated as <tt>&lt;...&gt;</tt>...&gt;</t>; cross-references
+with custom text as <tt><t>&lt;reference/&gt;</t></tt>.</section>
+<t anchor="_f8d575b9-642f-4712-8431-2e54fb7a4567">An example of using cross-references in AsciiRFC is given in
+<xref target="source-asciirfc-xref"></xref> with its rendered output in
+<xref target="source-asciirfc-xref-v3"></xref>.</t>
+<t anchor="source-asciirfc-xref" keepWithNext="true">EXAMPLE  1: Setting And Referring To Cross-References In AsciiRFC</t><sourcecode anchor="_2801d943-5ecd-4fb6-be36-4d5a60f1b8dd" type="asciidoc"><![CDATA[CODE BEGINS
+
+The _Cave of Caerbannog_ has been well-established in the mythology
+of Camelot (as recounted by Monty Python) as the lair of the
+Legendary Black Beast of Arrrghhh, more commonly known today as the
+*Killer Rabbit of Caerbannog* killer_rabbit_caerbannog.
+It is the encounter between the Killer Rabbit of Caerbannog and the
+Knights of the Round Table, armed with the Holy Hand Grenade of
+Antioch (see the holy_hand_grenade,following section), that we
+recount here through monospace font and multiple spaces.
+
+[[killer_rabbit_caerbannog]]
+=== The Killer Rabbit of Caerbannog
+
+CODE ENDS]]></sourcecode>
+<t anchor="source-asciirfc-xref-v3" keepWithNext="true">EXAMPLE  2: Setting And Referring To Cross-References In AsciiRFC (RFC XML v3)</t><sourcecode anchor="_2353485e-3f12-4c1f-899d-c24de3545776" type="xml"><![CDATA[CODE BEGINS
+Unresolved directive in sections/14-xref.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=xref1]
+CODE ENDS]]></sourcecode></section>
+    <section anchor="_referencing_with_attributes"><name>Referencing With Attributes</name><t anchor="_ab826105-3a12-41d4-bf76-9881e349de00">While Asciidoctor syntax natively does not support attributes on
+cross-references, AsciiRFC works around that by embedding formatting
+information as templated text within cross-references:</t>
+<ul anchor="_a11ba099-e092-44ee-afeb-588bb7d37fe9">
+<li>
+<t anchor="_b25e3e33-4e66-4df3-9575-b0c5cbf5d5e7"><tt>format=x: text</tt> populates the <tt>xref@format</tt> attribute</t>
+</li>
+<li>
+<t anchor="_c3e4ea13-9340-41c8-816d-8a3912c8a379">a section number followed by one of the words <tt>of</tt>, <tt>parens</tt>,
+<tt>bare</tt>, <tt>text</tt> is treated as a <tt>relref</tt> reference to an external
+document.</t>
+</li>
+</ul>
+<t anchor="_5e7eeb5f-0285-4668-b7f0-82aa6298a99b">An example of referencing with attributes is given in
+<xref target="source-asciirfc-xref-att"></xref> with its output in
+<xref target="source-asciirfc-xref-att-v3"></xref>.</t>
+<t anchor="source-asciirfc-xref-att" keepWithNext="true">EXAMPLE  1: Cross-References With Attributes In AsciiRFC</t><sourcecode anchor="_a4aecc6e-69d5-47d3-8209-cd9a5ae40348" type="asciidoc"><![CDATA[CODE BEGINS
+
+The *Killer Rabbit of Caerbannog*, that most formidable foe of
+the Knights and of all that is holy or carrot-like, has been
+depicted diversely in lay and in song. We venture to say,
+_contra_ the claim made in RFC8140,4.1 of: Ze Vompyre,
+that the Killer Rabbit of Caerbannog truly is the most afeared
+of all the creatures. Short of sanctified ordnance such as
+holy_hand_grenade,format=title, there are few remedies
+known against its awful lapine powers.
+
+CODE ENDS]]></sourcecode>
+<t anchor="source-asciirfc-xref-att-v3" keepWithNext="true">EXAMPLE  2: Cross-References With Attributes In AsciiRFC (RFC XML v3)</t><sourcecode anchor="_75b537ec-5b2a-4b61-943e-8c01a762a302" type="xml"><![CDATA[CODE BEGINS
+Unresolved directive in sections/14-xref.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=relref1]
+CODE ENDS]]></sourcecode></section>
+    <section anchor="_indexing"><name>Indexing</name><t anchor="_d2ffd897-c830-4363-882e-f20dd528c383">Inline index entries are notated as <tt>((&#x2026;&#x200B;))</tt>. Index entries
+which do not appear in the text are notated as <tt>(&#x2026;&#x200B;<iref item="&#x2026;&#x200B;"></iref>)</tt>;
+such entries may include a separate sub-entry, separated from
+the main entry by comma.</t>
+<t anchor="source-asciirfc-index" keepWithNext="true">EXAMPLE  1: AsciiRFC Index Entries</t><sourcecode anchor="_4933cc07-cad4-4bd5-adbe-b4619f2088b8" type="asciidoc"><![CDATA[CODE BEGINS
+
+The solution to the impasse at the ((Cave of Caerbannog)) was
+provided by the successful deployment of the
+*Holy Hand Grenade of Antioch* (see hand-grenade-figure)
+(((Holy Hand Grenade of Antioch))).
+Any similarity between the Holy Hand Grenade of Antioch and the
+mythical _Holy Spear of Antioch_ is purely intentional;
+(((relics, Christian))) any similarity between the Holy Hand Grenade
+of Antioch and the _Sovereign's Orb of the United Kingdom_
+(see sovereign-orb) is putatively fortuitous.
+(((relics, monarchic)))
+
+CODE ENDS]]></sourcecode>
+<t anchor="source-asciirfc-index-v3" keepWithNext="true">EXAMPLE  2: AsciiRFC Index Entries (RFC XML v3)</t><sourcecode anchor="_e97c7c78-0771-4a47-9027-b5afd9fae88e" type="xml"><![CDATA[CODE BEGINS
+Unresolved directive in sections/14-xref.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=index1]
+CODE ENDS]]></sourcecode></section>
+  </middle>
+  <back>
+    <section anchor="appendix-a"><name>Examples</name><section anchor="example-1"><name>Example 1: "A Minimal Internet-Draft In AsciiRFC"</name><t anchor="_613fe6db-8d7c-4701-b009-0c0dc22d3b7b">This example is available in the following formats:</t>
+<ul anchor="_42867d06-ccaa-4ff8-b3ed-7cd15282d864">
+<li>
+<t anchor="_a678d229-59e7-47a7-8f9c-9eccfdd266da">AsciiRFC <xref target="git-asciirfc-minimal"></xref></t>
+</li>
+<li>
+<t anchor="_3ac862f9-ef94-4524-b9ca-9d9096c6a25d">Internet-Draft <xref target="I-D.asciirfc-minimal"></xref></t>
+</li>
+<li>
+<t anchor="_7ec1a96b-5cbc-43bd-94d7-3da9f00f309a">Text, RFC XML, PDF and HTML on the IETF Datatracker
+<xref target="datatracker-asciirfc-minimal"></xref></t>
+</li>
+</ul>
+<section anchor="example-1-asciirfc"><name>In AsciiRFC</name><sourcecode anchor="_d5ed033f-2fc7-45d1-af8c-b9718fe4a04e" type="asciidoc"><![CDATA[CODE BEGINS
+= A Minimal Internet-Draft In AsciiRFC
+:doctype: internet-draft
+:name: draft-asciirfc-minimal-02
+:abbrev: AsciiRFC Example
+:status: informational
+:ipr: trust200902
+:submissionType: individual
+:area: Internet
+:intended-series: full-standard
+:revdate: 2018-04-12T00:00:00Z
+:fullname: Josiah Stinkney Carberry
+:lastname: Carberry
+:forename_initials: J. S.
+:organization: Brown University
+:phone: +1 401 863 1000
+:street: Box K, 69 Brown Street
+:city: Providence
+:code: 02912
+:country: United States of America
+:uri: https://www.brown.edu
+:email: josiah.carberry@ribose.com
+:fullname_2: Truman Grayson
+:lastname_2: Grayson
+:forename_initials_2: T.
+:organization_2: Brown University
+:phone_2: +1 401 863 1000
+:street_2: Box G, 69 Brown Street
+:city_2: Providence
+:code_2: 02912
+:country_2: United States of America
+:uri_2: https://www.brown.edu
+:email_2: truman.grayson@ribose.com
+
+[abstract]
+
+This document provides a template on how to author (or migrate!)
+a new Internet-Draft / RFC in the AsciiRFC format.
+
+This template requires usage of the `asciidoctor-rfc` Ruby gem.
+
+[#introduction]
+== Introduction
+
+AsciiRFC I-D.ribose-asciirfc is an extremely simple way to
+author Internet-Drafts and RFCs without needing to manually
+craft RFC XML conforming to RFC7991.
+
+This is a template specifically made for authors to easily
+start with creating an Internet-Draft conforming to RFC7991
+and submittable to the IETF datatracker.
+
+[#conventions]
+== Terms and Definitions
+
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this
+document are to be interpreted as described in BCP 14
+RFC2119 RFC8174 when, and only when, they appear in
+all capitals, as shown here.
+
+This document also refers to the following terms and
+definitions:
+
+AsciiRFC::
+  an AsciiDoc-derived syntax used for authoring RFCs and
+  Internet-Drafts, as defined in I-D.ribose-asciirfc.
+
+[#symbols]
+== Symbols And Abbreviations
+
+ADRFC::
+  abbreviated form of AsciiRFC
+
+
+[#main]
+== Main content
+
+This is where you place the main content, and the following
+serves as a placeholder for your text.
+
+Subsections are used here for demonstration purposes.
+
+=== Getting started
+
+The AsciiRFC and RFC toolchains *MUST* be available locally to
+build this document template.
+
+==== AsciiRFC toolchain
+
+You will need to have:
+
+* Ruby: for running the AsciiRFC toolchain
+* `asciidoctor-rfc` gem: for converting AsciiRFC into XML RFC
+  (v2 or v3)
+
+==== XML RFC toolchain
+
+You will need to have:
+
+* Python: for running `xml2rfc`
+* `xml2rfc`: for converting RFC XML (v2 or v3) into TXT
+* `idnits`: for submission preflight
+
+
+=== Referencing external content
+
+* This is a published RFC RFC7253
+
+* This is an Internet-Draft I-D.ribose-asciirfc
+
+* This is an external reference RNP
+
+
+[#code-snippets]
+=== Code snippets
+
+Code snippets should be wrapped with `CODE BEGINS` and
+`CODE ENDS` blocks, as required by the IETF Trust Legal
+Provisions (TLP) IETF.TLP specified in RFC5378.
+
+[#security]
+== Security Considerations
+
+Any security considerations should be placed here.
+
+As described in main (here's how you refer a local anchor),
+local tools have to be installed before the document template
+can be built.
+
+Running of these local tools *MAY* produce unintended side
+effects that impact security.
+
+[#iana]
+== IANA Considerations
+
+This document does not require any action by IANA.
+
+But if it does, such as proposing changes to IANA registries,
+please include them here.
+
+// References must be given before appendixes
+
+[bibliography]
+== Normative References
+
+//bibliography::norm[]
+++++
+
+reference anchor='RFC2119'
+  target='https://www.rfc-editor.org/info/rfc2119'
+  front
+    titleKey words for use in RFCs to Indicate Requirement
+      Levels/title
+    author initials='S.' surname='Bradner' fullname='S. Bradner'
+      organization /
+    /author
+    date year='1997' month='March' /
+    abstract
+      tIn many standards track documents several words are
+        used to signify the requirements in the specification.
+        These words are often capitalized. This document defines
+        these words as they should be interpreted in IETF
+        documents.  This document specifies an Internet Best
+        Current Practices for the Internet Community, and
+        requests discussion and suggestions for improvements.
+      /t
+    /abstract
+  /front
+  seriesInfo name='BCP' value='14'/
+  seriesInfo name='RFC' value='2119'/
+  seriesInfo name='DOI' value='10.17487/RFC2119'/
+/reference
+
+reference anchor='RFC7991'
+  target='https://www.rfc-editor.org/info/rfc7991'
+  front
+    titleThe quot;xml2rfcquot; Version 3 Vocabulary/title
+    author initials='P.' surname='Hoffman' fullname='P. Hoffman'
+      organization /
+    /author
+    date year='2016' month='December' /
+    abstract
+      tThis document defines the quot;xml2rfcquot;
+        version 3 vocabulary: an XML-based language used for
+        writing RFCs and Internet-Drafts.  It is heavily derived
+        from the version 2 vocabulary that is also under
+        discussion.  This document obsoletes the v2 grammar
+        described in RFC 7749./t
+      /abstract
+  /front
+  seriesInfo name='RFC' value='7991'/
+  seriesInfo name='DOI' value='10.17487/RFC7991'/
+/reference
+
+reference anchor='RFC8174'
+  target='https://www.rfc-editor.org/info/rfc8174'
+  front
+    titleAmbiguity of Uppercase vs Lowercase in RFC 2119
+      Key Words/title
+    author initials='B.' surname='Leiba' fullname='B. Leiba'
+      organization /
+    /author
+    date year='2017' month='May' /
+    abstract
+      tRFC 2119 specifies common key words that may be
+        used in protocol specifications.  This document aims to
+        reduce the ambiguity by clarifying that only UPPERCASE
+        usage of the key words have the defined special
+        meanings./t
+    /abstract
+  /front
+  seriesInfo name='BCP' value='14'/
+  seriesInfo name='RFC' value='8174'/
+  seriesInfo name='DOI' value='10.17487/RFC8174'/
+/reference
+++++
+
+[bibliography]
+== Informative References
+
+//bibliography::info[]
+++++
+
+reference anchor='IETF.TLP'
+  target='https://trustee.ietf.org/trust-legal-provisions.html'
+  front
+  titleIETF Trust Legal Provisions (TLP)/title
+  author
+    organizationIETF/organization
+  /author
+  date month='April' day='12' year='2018' /
+  /front
+/reference
+
+reference anchor='RNP' target='https://github.com/riboseinc/rnp/'
+  front
+    titleRNP: A C library approach to OpenPGP/title
+    author
+      organizationRibose Inc./organization
+      address
+        postal
+          streetSuite 1111, 1 Pedder Street/street
+          cityCentral/city
+          regionHong Kong/city
+          countryHong Kong/country
+        /postal
+        emailopen.source@ribose.com/email
+        urihttps://www.ribose.com/uri
+      /address
+    /author
+    date day='31' month='March' year='2018'/
+  /front
+/reference
+
+reference anchor='I-D.ribose-asciirfc'
+  front
+  title
+    AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc
+  /title
+  author initials="R" surname="Tse" fullname="Ronald Tse"
+    organization/
+  /author
+  author initials="J" surname="Lau" fullname="Jeffrey Lau"
+    organization/
+  /author
+  author initials="N" surname="Nicholas" fullname="Nick Nicholas"
+    organization/
+  /author
+  author initials="P" surname="Brasolin" fullname="Paolo Brasolin"
+    organization/
+  /author
+    date month="March" day="23" year="2018"/
+    abstract
+      tThis document describes an AsciiDoc syntax
+extension called AsciiRFC, designed for authoring IETF
+Internet-Drafts and RFCs.  AsciiDoc is a human readable document
+markup language which affords more granular control over markup
+than comparable schemes such as Markdown.  The AsciiRFC syntax
+is designed to allow the author to entirely focus on text,
+providing the full power of the resulting RFC XML through the
+AsciiDoc language, while abstracting away the need to manually
+edit XML, including references.  This document itself was
+written and generated into RFC XML v2 (RFC7749) and RFC XML v3
+(RFC7991) directly through asciidoctor-rfc, an AsciiRFC
+generator./t
+    /abstract
+  /front
+seriesInfo name="Internet-Draft" value="draft-ribose-asciirfc-04"/
+format type="TXT" target="http://www.ietf.org/internet-drafts/draft-ribose-asciirfc-04.txt"/
+/reference
+
+reference anchor="RFC5378"
+  target="https://www.rfc-editor.org/info/rfc5378"
+  front
+  titleRights Contributors Provide to the IETF Trust/title
+  author initials="S."
+    surname="Bradner" fullname="S. Bradner" role="editor"
+    organization/
+  /author
+  author initials="J."
+    surname="Contreras" fullname="J. Contreras" role="editor"
+    organization/
+  /author
+  date year="2008" month="November"/
+  abstracttThe IETF policies about rights in Contributions
+    to the IETF are designed to ensure that such Contributions
+    can be made available to the IETF and Internet communities
+    while permitting the authors to retain as many rights as
+    possible. This memo details the IETF policies on rights in
+    Contributions to the IETF. It also describes the
+    objectives that the policies are designed to meet. This
+    memo obsoletes RFCs 3978 and 4748 and, with BCP 79 and
+    RFC 5377, replaces Section 10 of RFC 2026. This document
+    specifies an Internet Best Current Practices for the
+    Internet Community, and requests discussion and
+    suggestions for improvements./t/abstract
+  /front
+  seriesInfo name="BCP" value="78"/
+  seriesInfo name="RFC" value="5378"/
+  seriesInfo name="DOI" value="10.17487/RFC5378"/
+/reference
+
+reference anchor='RFC7253'
+  target='https://www.rfc-editor.org/info/rfc7253'
+  front
+    titleThe OCB Authenticated-Encryption Algorithm/title
+    author initials='T.' surname='Krovetz' fullname='T. Krovetz'
+      organization /
+    /author
+    author initials='P.' surname='Rogaway' fullname='P. Rogaway'
+      organization /
+    /author
+    date year='2014' month='May' /
+    abstracttThis document specifies OCB, a shared-key
+        blockcipher-based encryption scheme that provides
+        confidentiality and authenticity for plaintexts and
+        authenticity for associated data.  This document is a product
+        of the Crypto Forum Research Group (CFRG)./t/abstract
+  /front
+  seriesInfo name='RFC' value='7253'/
+  seriesInfo name='DOI' value='10.17487/RFC7253'/
+/reference
+++++
+
+
+[appendix]
+[#appendix-a]
+== Examples
+
+=== Example 1
+
+Here's an example of a properly wrapped code snippet in
+accordance with rules specified in code-snippets.
+
+[source,json]
+----
+CODE BEGINS
+{
+  "code": {
+    "encoding": "ascii",
+    "type":     "rfc",
+    "authors":  [ "Josiah Carberry", "Truman Grayson" ]
+  }
+}
+CODE ENDS
+----
+
+[#acknowledgements]
+== Acknowledgements
+
+The authors would like to thank their families.
+
+CODE ENDS]]></sourcecode>
+</section>
+<section anchor="example-1-xml3"><name>Rendered as RFC XML v3</name><sourcecode anchor="_2358cbf3-185e-4b3b-a37e-4c505262fbf5" type="xml"><![CDATA[CODE BEGINS
+Unresolved directive in sections/97-examples.adoc - include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
+CODE ENDS]]></sourcecode>
+</section></section>
+<section anchor="example-2"><name>Example 2: "The Holy Hand Grenade of Antioch"</name><t anchor="_9b4eccbf-cc1f-4301-af9a-d645c1cb03d1">This example is available in the following formats:</t>
+<ul anchor="_25dc3cd7-29a5-495f-93c1-dea49a5b77ec">
+<li>
+<t anchor="_5b31260a-5e4e-4426-bed2-15e141975995">AsciiRFC <xref target="git-camelot-holy-grenade"></xref></t>
+</li>
+<li>
+<t anchor="_0149bee9-2857-46b8-a940-1cb6ddccc844">Internet-Draft <xref target="I-D.camelot-holy-grenade"></xref></t>
+</li>
+<li>
+<t anchor="_d73cb22a-9a83-4c00-9f70-b1dd72f6a5b8">Text, RFC XML, PDF and HTML on the IETF Datatracker
+<xref target="datatracker-camelot-holy-grenade"></xref></t>
+</li>
+</ul>
+<section anchor="example-2-asciirfc"><name>In AsciiRFC</name><sourcecode anchor="_d8540b63-85e9-47c1-84f8-d018fe5ee799" type="asciidoc"><![CDATA[CODE BEGINS
+= The Holy Hand Grenade of Antioch
+Arthur son of Uther Pendragon
+:doctype: internet-draft
+:abbrev: Hand Grenade of Antioch
+:updates: 8140
+:submission-type: independent
+:name: draft-camelot-holy-grenade-01
+:status: informational
+:consensus: false
+:area: General, Operations and Management
+:keyword: rabbits, grenades, antioch, camelot
+:ipr: trust200902
+:toc-include: true
+:sort-refs: true
+:revdate: 2018-04-15T00:00:00Z
+:fullname: Arthur son of Uther Pendragon
+:forename_initials: A.
+:lastname: Pendragon
+:email: arthur.pendragon@ribose.com
+:organization: Camelot
+:uri: http://camelot.gov.example
+:street: Palace\ Camel Lot 1
+:city: Camelot
+:region: England
+:country: United Kingdom
+:comments: yes
+:notedraftinprogress: yes
+:smart-quotes: false
+
+[.comment]
+tag::preamble1[]
+// tag::preamble[]
+
+[abstract]
+The menagerie of beasts and artefacts depicted in RFC8140
+may be usefully supplemented by other renowned figures of
+Internet and more general lore. This document extends the
+menagerie to the seminal fable of the
+"Holy Hand Grenade of Antioch", as depicted in the
+Monty Python film "Monty Python and the Holy Grail",
+as well as "Spamalot", the musical inspired by the movie.
+
+[NOTE,remove-in-rfc=false]
+.Spamalot
+The relevance of the musical "Spamalot" to Internet lore should be
+obvious to the reader; but in case of doubt, see also
+Section 1 ("What is Spam*?") of RFC2635.
+
+// end::preamble[]
+[.comment]
+end::preamble1[]
+
+[.comment]
+tag::sectnums1[]
+// tag::sectnums[]
+
+[toc=exclude]
+:sectnums!:
+== Terminology
+
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this document
+are to be interpreted as described in BCP 14 RFC2119 RFC8174
+when, and only when, they appear in all capitals, as shown here.
+
+:sectnums:
+== Introduction
+
+RFC8140 refers to the intended move of RFC formatting to
+XML2RFC v3 RFC7990, in the following terms:
+
+// end::sectnums[]
+[.comment]
+end::sectnums1[]
+
+[.comment]
+tag::quote1[]
+// tag::quote[]
+
+[quote,attribution="A. Farrel"]
+____
+Although the RFC Editor has recently dragged the IETF kicking and
+screaming into the twentieth century [RFC7990] [RFC7996], there is a
+yearning among all right-thinking Internet architects to "keep it
+simple" and to return to the olden days when pigs could be given
+thrust without anyone taking undue offence.
+____
+
+// end::quote[]
+[.comment]
+end::quote1[]
+
+While no pigs, flying or otherwise, are involved in the transition
+to RFC XML v3, it is opportune to enhance the RFC8140
+legendarium in the service of RFC XML v3, by illustrating its
+functionality through references to the mythology of Camelot, and
+particularly the incidents at the Cave of Caerbannog.
+
+[.comment]
+tag::escaped_hyperlink1[]
+// tag::escaped_hyperlink[]
+
+The screaming move into the twenty-*first* century is accompanied by
+a move back to the late twentieth century, with ASCII stylings more
+wonted in haunts like \ftp://ftp.wwa.com/pub/Scarecrow (known to be
+accessible in 1996.)
+
+// end::escaped_hyperlink[]
+[.comment]
+end::escaped_hyperlink1[]
+
+There are two references to rabbits in
+_Monty Python and the Holy Grail_ which are expounded on herewith:
+
+[.comment]
+tag::listcontinuation1[]
+// tag::listcontinuation[]
+
+Trojan Rabbit::
+In their siege of the French-occupied castle which may already
+contain an instance of the Grail, Sir Bedevere the Wise proposes to
+use a Trojan Rabbit to infiltrate the castle, with a raiding party
+to take the French "not only by surprise, but totally unarmed."
++
+The proposal, unsurprisingly, proved abortive. The more so as the
+raiding party forgot to hide within the Trojan Rabbit, before the
+French soldiers took the Trojan Rabbit inside the castle.
+
+Killer Rabbit of Caerbannog::
+Guarding the entrance to the Cave of Caerbannog; see caerbannog.
+
+// end::listcontinuation[]
+[.comment]
+end::listcontinuation1[]
+
+== The French-occupied castle
+
+[.comment]
+tag::inline_formatting1[]
+// tag::inline_formatting[]
+
+The participants of that renowned exercise in cross-cultural
+communication, to wit the exchange between the
+_Knights of the Round Table_
+and the taunting French soldiers serving under *Guy de Lombard* are,
+properly speaking, outside the scope of this `menagerie`, being more
+or less human. Notwithstanding, several^ish^ beasts both animate~d~
+and wooden played a significant part in this encounter; most
+notably:
+
+* The Projectile Cow, see projectile-cow
+* The Trojan Rabbit, see trojan-rabbit
+
+// end::inline_formatting[]
+[.comment]
+end::inline_formatting1[]
+
+
+[[projectile-cow]]
+.The Projectile Cow with an accompanying cannon
+====
+[alt=The Projectile Cow with an accompanying cannon in ASCII]
+....
+.-.-.-.-.-.-.-.-.-.-.-.--.-.-.-.-.-.-.--.-.-.-.-.-.-.-.--.-.
+_-_---__--__--___-___-__-____---___-________---____-____-__-
+._.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.--..-.-.-.-.-.-..--.-
+,..,.,.,.,.,..,.,,..,.,.,.,.,.,,  ^^  .,,.,.,  ^^   .,.,.,.=
+_-.-.-.-.____.-.-.-.-.-.-.-.  \\\  .,.,.  ///  .-.-.-.-.
+.,.,.,.,..,.,..,.,.,..,.,.,,..,.,  \ \_______/ /    .,.,.,.,
+.,.,.,.,..,.,.,.,..,,..,,.,.,.,.,.  [ {o} . ]  #   .,.,.,.
+.-.-.--.-.-.-.-.-.--.-.-.-.--.-.-.   [ ______]       .-.-.-.
+.-.--.-.-.-.--.-.-.-.--.-.-.,.,.,  / [ !  ` `]   .,.,..,.,.-
+.,.,.,.-.-,l,-,l.-,.,.,.,-.,*.    /  {_!MOO!_}    . ., . . ,
+.-.-.-.-.-.-.-.-.-.-.-.-.-.-    /M      /    -.-.,.,..-.-,
+.-.-.--.-.-.-.-.-.-.-.-.--..   /MI    LK\____    .-.-.-.-.-.
+.-.-.-.--.-.-.-.-.-.-.-.-.-   /MILK   mil_____k   ,.,.,..-,-
+.-,-.-,-.,-.-,-.`-.-/-..     //    -`  //       .-.p . .-.-.
+.-.--.-.-.-.-.-.-.-.        //   .,   //    .-.-.-.-.-.-.-.-
+.-.-.--.-.-.-.-.-.-.  %____============    .-.-.--.-.-.-.-.-
+-.-.-.-.--.-.-.-.-.-.      !  !           .,-.-.-,-,--,-.-,-
+,--.-.-,--.--.-.,--,        \ \      .-,-,--.-,--,-.---,-.-,
+,-.-.-,-,-.-,-,-.--,         +      .-,--,-.--,-,-.-.-,--,-
+,--.-,--,-,--.---,-               .-,-,--.--,--,-.---,-,-.-.
+.,.,.,.,..,.,.,.{A\      .,.,.,.,..,.,.,.,.,.,..,.,.,.,..,.,
+.,.,.,.,.,.,.{GLASS\   .,..,.,.,.,.,..,.,.,.,.,.,.,..,.,.,.,
+,..,.,,.,,.,{OF|MILK\..,.,.,.,.,..,.,.,.,.,.,..,.,.,.,.,.,.,
+,.,..,.,,.,{ISWORTH},.,.,..,.,.,.,.,..,..,.,.,..,.,.,.,.,.,.
+.,.,.,.,.{EVERYTNG}.-.-.--..-.-.-.-.--..--.-.-.-.-.--.-.-.-.
+-.-.-.-{FORINFANTS}___--___-_-__-___--*(0~`~.,.,.,.,.
+_-__-_{BUTBETTER}-.-,-,-,-,-,-,-,-,.-^^^^.-.-.-.-.^^^7,..
+.._...{WITH_HONEY}-.-.-.-.-.-.-.-.-.-.RANDOM(BUSH)SHRUBS_..
+GRASS_GRASS_GRASS_GRASS_GRASS_SOMEROCKSGRASSGRASSGRASSPC
+SOIL_ROOTS_SOIL_SOIL_ROCKS_SOIL_GRASS_GRASS_GRASS_ROCKS_SOIL
+CLAY_ROCKS_PEBBLES_CLAY_CLAY_CLAY_CLAY_GOLD_CLAY_CLAY_WORM
+ROOTS_CLAY_SKELETON_MORESOIL_CLAY_CLAY_CLAY_CLAY_MUSHROOMS
+....
+====
+
+[[trojan-rabbit]]
+.The Trojan Rabbit with an automatic sliding door
+====
+[alt=The Trojan Rabbit with an automatic sliding door, in ASCII]
+....
+                           ___  ____
+                          //_ \//\__\
+                            || ||  |
+                         -__||_||__|
+                       //         \--_
+                      //     ____     --___
+                     //     //   \         \-_
+                    //      \\  @/        o ||
+                   //        ----      _____||
+                  //                   //
+             //\_//__                 //
+           //--  --- \____           //
+          //          --- \______   //
+         //   , .          ----- \_//_
+        //       ,.               --- \____
+       //              .,v             --- \___
+      //                                 __ -- \_
+     ||  ,         _______________       //||     |-_
+     ||           |   |''''''''''|     // ||     |  |
+     ||     '     |   |          |        ||     |  |
+     ||           |   |          |        ||     |  |
+     ||      "    |   | 0        |     ___||___  |  |
+     ||           |   |          |     --------  |  |
+     ||___        |   |          |        ______ |  |-
+    //     \      |   |          |       //     \| _| \
+   //       \ ____|---|__________|______//       \/    |
+  ||    X    |      /                  ||    X    |   /
+   \\       /\\____/                    \\       /___/
+    \\_____/ -----                       \\_____/---
+     -----                                -----
+....
+====
+
+[.comment]
+tag::aside1[]
+// tag::aside[]
+
+****
+While the exchange at the French-occupied castle is one of
+the more memorable scenes of _Monty Python and the Holy Grail_,
+the Trojan Rabbit has not reached the same level of cultural
+resonance as its more murderous counterpart. Reasons for this
+may include:
+
+* Less overall screen-time dedicated to the Trojan Rabbit.
+
+* The Trojan Rabbit as projectile has already been anticipated
+by the Cow as projectile.
+****
+
+// end::aside[]
+
+[.comment]
+end::aside1[]
+
+[.comment]
+tag::note1[]
+// tag::note[]
+
+[NOTE,display=true,source=Author]
+====
+Image courtesy of
+https://camelot.gov.example/creatures-in-ascii/
+====
+
+// end::note[]
+[.comment]
+end::note1[]
+
+
+[.comment]
+tag::comment1[]
+// tag::comment[]
+
+The exchange of projectile animals was the beginning of a
+long-running fruitful relationship between the British and the
+French peoples,
+[comment]#TODO: Will need to verify that claim.# which
+arguably predates the traditional English enmity with the
+French. [comment]#Strictly speaking, the Knights are Welsh.#
+
+[.comment]
+--
+This document, as it turns out, has a profusion of XML comments.
+
+As expected, they are ignored in any rendering of the document.
+--
+
+
+// end::comment[]
+[.comment]
+end::comment1[]
+
+[[caerbannog]]
+== The Mythos of Caerbannog
+
+[.comment]
+tag::xref1[]
+// tag::xref[]
+
+The _Cave of Caerbannog_ has been well-established in the mythology
+of Camelot (as recounted by Monty Python) as the lair of the
+Legendary Black Beast of Arrrghhh, more commonly known today as the
+*Killer Rabbit of Caerbannog* killer_rabbit_caerbannog.
+It is the encounter between the Killer Rabbit of Caerbannog and the
+Knights of the Round Table, armed with the Holy Hand Grenade of
+Antioch (see the holy_hand_grenade,following section), that we
+recount here through monospace font and multiple spaces.
+
+[[killer_rabbit_caerbannog]]
+=== The Killer Rabbit of Caerbannog
+
+// end::xref[]
+[.comment]
+end::xref1[]
+
+[.comment]
+tag::relref1[]
+// tag::relref[]
+
+The *Killer Rabbit of Caerbannog*, that most formidable foe of
+the Knights and of all that is holy or carrot-like, has been
+depicted diversely in lay and in song. We venture to say,
+_contra_ the claim made in RFC8140,4.1 of: Ze Vompyre,
+that the Killer Rabbit of Caerbannog truly is the most afeared
+of all the creatures. Short of sanctified ordnance such as
+holy_hand_grenade,format=title, there are few remedies
+known against its awful lapine powers.
+
+// end::relref[]
+[.comment]
+end::relref1[]
+
+[.comment]
+tag::hyperlink1[]
+// tag::hyperlink[]
+
+killer-bunny,The following depiction of the fearsome beast
+has been sourced from
+http://camelot.gov.example/avatars/rabbit[Rabbit-SCII],
+killer-source,accompanied
+by C code that was used in this accurate depiction of the
+Killer Rabbit:
+
+// end::hyperlink[]
+[.comment]
+end::hyperlink1[]
+
+[.comment]
+tag::figure1[]
+// tag::figure1a[]
+
+[[killer-bunny]]
+.A Photo Of The Killer Rabbit of Caerbannog Taken In Secret
+====
+[alt=The Killer Bunny, in ASCII]
+....
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\^^^^^^^^^^^^^^^^^^^^^^\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\#MWSHARPMWMWMWTEETHWMWWM\\\\\\\\\\\\
+\\\\\\\\\\\\\\\#WMMWMWDEEPMDARKWCAVEMWWMMWM##\\\\\\\\
+\\\\\\\\\\\\\#WMWMWMWMWWM/^MWMWMWMWMWMW^WMWMWMMW#\\\\\\
+\\\\\\\\\\\\#WMWMBEASTMW// \MWABBITWMW/ \MWMWMWMW##\\\\\\\
+\\\\\\\\\\##MWMWMMWMWMWMWM\\  \MWMWMWMW/  /MWMWMWMWM##\\\\\\
+\\\\\\\\##WMWMWMWMMWMWMWMWM\\  \MWMWMW/  /MWMWMWMMWMWMWM##\\
+\\\\\\\##MWMMRAVENOUSMWMWMWM\\  \====/  /MWMRABBITMWMWMWMW##
+\\\\\\##MWMWMWMWMMWMWMWMWMW[[            ]WMWMWMMWMWMWMWMWMW
+\\\\\##MWMWMWMWCARNIVOROUSW[[   3    3   ]MWMWTOOMDARKWMWMMW
+\\\\##MWMWDARKMWMWMWMWMWMWM//\     o    /MWMWMWMMWMWMWMMWMWM
+\\##MWMWMMKILLERABBITWMWMM//| \___vv___/ \WMPITCHWBLACKWMWMW
+\##MWMWMWMMWMWMWMWMWMMWMW// |   \-^^-/   |MWMWMWMMWMWMWMWMWM
+MWMWMWMMWMWVERYMDARKWMMW//  |            |MWMCAERBANNOGWMWMW
+MWMWMWMMWMWMWMWMWMWMWMM{{  /             /MWMWMMWMWMWMWMWMWM
+MULTRADARKWMWMHELPMWMWMW\\ \  |      |  |MWMCANMMWMWMWMMWMWW
+MWMWMWMWMMWMWMWMWMMWMWMWM\\ | |_     |  |_WMWMMYOUMWMMWWMWMW
+MWMMWMWMWMWMBLACKWMWMWMWWM\_|__-\-----\__-\MWMWMWMREADMWMWWM
+MWMWMWMMWMWMWMWMMWMWMWWMWMWMWMMWMWMWMWMWMWMWMWMWMWMWMMTHISWW
+MWVERYMMSCARYMWMWWMWMMWMWMWMWMWMWMWMWMWMWMWMWWMWMMWMWIWM'.',
+MWMWMMWMW======MWMMCANTWSEEMAMTHINGMMWMWMWMWMWMWMBETMMW` . `
+MWMWMWM// SKULL \MWMWMWMMWSCREAMMMWMWMWMMWMNOTMWMWMWW  ` . \
+MWMWMW|| |X||X| |MWMWCALLMMEWMMWMWMMWMWMWMWWM - ` ~ . , '
+MWMWMW||___ O __|MWMWMWMMWMWMWMWMMW'   ___________//   -_^_-
+MWMWMW \\||_|_||MWMW      '   . .     _|_|_||_|__|     \O/
+MW   \\/\||v v||  -\\-------___     .   .,         \     |
+    \\|  \_CHIN/  ==-(|CARROT/)\     \\/||//         v\/||/
+       )          /--------^-^            ,.            \|//
+ #  \(/ .\\|x//                              " ' '
+  . ,                \\||//        \||\\\//   \\
+....
+====
+
+[[killer-source]]
+.C Code To Lure Killer Rabbit Back To Cave
+====
+[source,c]
+----
+CODE BEGINS
+/* Locate the Killer Rabbit */
+int type;
+unsigned char *killerRabbit =
+  LocateCreature(caerbannog, "killer rabbit");
+if( killerRabbit == 0 ){
+  puts("The Killer Rabbit of Caerbannog is out of town.");
+  return LOST_CREATURE;
+}
+
+/* Load Cave */
+unsigned char *cave = LoadPlace(caerbannog,
+  "The Cave Of Caerbannog");
+if( cave == 0 ){
+  puts("The Cave of Caerbannog must have moved.");
+  return LOST_PLACE;
+}
+
+/* Lure the Killer Rabbit back into the Cave */
+unsigned char *carrot = allocateObjectInPlace(
+  carrot("fresh"), cave);
+if( carrot == 0 ){
+  puts("No carrot, no rabbit.");
+  return LOST_LURE;
+}
+
+/* Finally, notify the Killer Rabbit to act */
+return notifyCreature(killerRabbit, carrot);
+CODE ENDS
+----
+====
+
+
+// end::figure1a[]
+[.comment]
+end::figure1[]
+
+On the beast's encounter with the Knights of the Round Table,
+the following personnel engaged with it in combat:
+
+[.comment]
+tag::ul1[]
+// tag::ul[]
+
+* Killed
+** Sir Bors
+** Sir Gawain
+** Sir Ector
+* Soiled Himself
+** Sir Robin
+* Panicked
+** King Arthur
+* Employed Ordnance
+** The Lector
+** Brother Maynard
+* Scoffed
+** Tim the Enchanter
+
+// end::ul[]
+[.comment]
+end::ul1[]
+
+
+
+
+[[holy_hand_grenade]]
+=== Holy Hand Grenade of Antioch
+
+[.comment]
+tag::figure2[]
+
+// tag::figure2a[]
+
+[[hand-grenade-figure]]
+.The Holy Hand Grenade of Antioch (don't pull the pin)
+====
+[alt=Holy Hand Grenade of Antioch, in ASCII]
+....
+                        ______
+                       \\/  \/
+                      __\\  /__
+                     ||  //\   |
+                     ||__\\/ __|
+                        ||  |    ,---,
+                        ||  |====`\  |
+                        ||  |    '---'
+                      ,--'*`--,
+                    _||#|***|#|
+                 _,/.-'#|* *|#`-._
+               ,,-'#####|   |#####`-.
+             ,,'########|   |########`,
+            //##########| o |##########\
+           ||###########|   |###########|
+          ||############| o |############|
+          ||------------'   '------------|
+          ||o  o  o  o  o   o  o  o  o  o|
+           |-----------------------------|
+           ||###########################|
+            \\#########################/
+             `..#####################,'
+               ``..###############_,'
+                  ``--.._____..--'
+                     `''-----''`
+....
+====
+
+// end::figure2a[]
+
+[.comment]
+end::figure2[]
+
+
+[[sovereign-orb]]
+.The Sovereign's Orb made invisible
+====
+.Outlines of the Sovereign's Orb
+[link=https://camelot.gov.example/sovereigns_orb.jpg,align=right]
+image::https://camelot.gov.example/sovereigns_orb.jpg[Orb,124,135]
+====
+
+[.comment]
+tag::index1[]
+// tag::index[]
+
+The solution to the impasse at the ((Cave of Caerbannog)) was
+provided by the successful deployment of the
+*Holy Hand Grenade of Antioch* (see hand-grenade-figure)
+(((Holy Hand Grenade of Antioch))).
+Any similarity between the Holy Hand Grenade of Antioch and the
+mythical _Holy Spear of Antioch_ is purely intentional;
+(((relics, Christian))) any similarity between the Holy Hand Grenade
+of Antioch and the _Sovereign's Orb of the United Kingdom_
+(see sovereign-orb) is putatively fortuitous.
+(((relics, monarchic)))
+
+// end::index[]
+[.comment]
+end::index1[]
+
+[.comment]
+tag::dl1[]
+// tag::dl[]
+
+Holy Hand Grenade of Antioch::
+  Ordnance deployed by Brother Maynard under the incantation of a
+  lector, in order to dispense with the Foes of the Virtuous.
+  See hand-grenade-figure.
+
+Holy Spear of Antioch::
+  A supposed relic of the crucifixion of Jesus Christ, this is one
+  of at least four claimed instances of the lance that pierced
+  Christ's side. Its historical significance lies in inspiring
+  crusaders to continue their siege of Antioch in 1098.
+
+Sovereign's Orb of the United Kingdom::
+  Part of the Crown Jewels of the United Kingdom, the Sovereign's
+  Orb is a hollow gold sphere set with jewels and topped with a
+  cross.  It was made for Charles II in 1661. See sovereign-orb.
+
+// end::dl[]
+[.comment]
+end::dl1[]
+
+[.comment]
+tag::bcp14_1[]
+// tag::bcp14[]
+
+The instructions in the _Book of Armaments_ on the proper deployment
+of the Holy Hand Grenade of Antioch [bcp14]#may# be summarized as
+follows, although this summary *SHALL NOT* be used as a substitute
+for a reading from the Book of Armaments:
+
+// end::bcp14[]
+[.comment]
+end::bcp14_1[]
+
+
+[.comment]
+tag::ol1[]
+// tag::ol[]
+
+. Preamble: St Attila Benediction
+. Feast of the People on Sundry Foods
+** Lambs
+** Sloths
+** Carp
+** Anchovies
+** Orangutangs
+** Breakfast Cereals
+** Fruit Bats
+** _et hoc genus omne_
+. Take out the Holy Pin
+. The Count
+[upperalpha]
+.. Count is to Three: no more, no less
+.. Not Four
+.. Nor Two, except if the count then proceeds to Three
+.. Five is Right Out
+. Lob the Holy Hand Grenade of Antioch towards the Foe
+. The Foe, being naughty in the *LORD's* sight, [bcp14]#shall# snuff it
+
+// end::ol[]
+[.comment]
+end::ol1[]
+
+This could also be represented in pseudocode as follows:
+
+[.comment]
+tag::listcontinuationblock1[]
+// tag::listcontinuationblock[]
+
+. Take out the Holy Pin
+. The Count
++
+----
+integer count;
+for count := 1 step 1 until 3 do
+  say(count)
+comment Five is Right Out
+----
+. Lob the Holy Hand Grenade of Antioch towards the Foe
+. Foe snuffs it
+
+// end::listcontinuationblock[]
+[.comment]
+end::listcontinuationblock1[]
+
+== Dramatis Personae
+
+The following human (more-or-less) protagonists were involved
+in the two incidents recounted as lore of the Knights of the
+Round Table:
+
+[.comment]
+tag::table1[]
+// tag::table[]
+
+[grid=all,options="footer"]
+|===
+|French Castle | Cave of Caerbannog
+
+2+|King Arthur
+2+|Patsy
+2+|Sir Bedevere the Wise
+2+|Sir Galahad the Pure
+2+|Sir Lancelot the Brave
+2+|Sir Robin the Not-quite-so-brave-as-Sir-Lancelot
+|French Guard with Outrageous Accent| Tim the Enchanter
+|Other French Guards | Brother Maynard
+| | The Lector
+.3+^|not yet recruited
+|Sir Bors
+|Sir Gawain
+|Sir Ector
+
+|Retinue of sundry knights
+|Retinue of sundry more knights than at the French Castle
+|===
+
+// end::table[]
+[.comment]
+end::table1[]
+
+=== Past the Killer Rabbit
+
+Once the Killer Rabbit of Caerbannog (killer-bunny) had been
+dispatched, the Knights of the Round Table uncovered the last
+words of Joseph of Arimathea, inscribed on the Cave of Caerbannog
+in Aramaic.  While the precise Aramaic wording has not survived,
+we trust the following Hebrew subtitles will serve as an
+acceptable substitute:
+
+[.comment]
+tag::hebrew1[]
+// tag::hebrew[]
+
+____
+#x2e;כאן אולי ימצאו המילים האחרונות של יוסף מארמתיה
+#x2e;מי אשר יהיה אמיץ ובעל נפש טהורה יוכל למצוא את הגביע הק]]></sourcecode>
+</section>
+<section anchor="example-2-xml3"><name>Rendered as RFC XML v3</name><sourcecode anchor="_bdf58fb7-6566-439e-873b-9ae39b4b39e3" type="asciidoc"><![CDATA[CODE BEGINS
+Unresolved directive in sections/97-examples.adoc - include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[]
+CODE ENDS]]></sourcecode>
+</section></section>
+<section anchor="example-3"><name>Example 3: "An API For Calendar-Based Fortune Heuristics Services" in AsciiRFC</name><t anchor="_9b10416a-0097-4988-89ab-5451feeb1da1">This example is available in the following formats:</t>
+<ul anchor="_f9405917-0b32-4ed5-9e2a-c60fffccd75b">
+<li>
+<t anchor="_a224a93d-dcd8-4938-bfc7-ba2886eed5c6">AsciiRFC <xref target="git-divination-cfapi"></xref></t>
+</li>
+<li>
+<t anchor="_e59153b6-2dfa-42d4-a1b2-080d3b0ac477">Internet-Draft <xref target="I-D.divination-cfapi"></xref></t>
+</li>
+<li>
+<t anchor="_18e8d37e-aad9-4510-876c-c1909fcfbfd0">Text, RFC XML, PDF and HTML on the IETF Datatracker
+<xref target="datatracker-divination-cfapi"></xref></t>
+</li>
+</ul>
+<section anchor="example-3-asciirfc"><name>In AsciiRFC</name><sourcecode anchor="_54bce9d6-7aa6-4569-89ef-8398ecc31f8b" type="asciidoc"><![CDATA[CODE BEGINS
+= An API For Calendar-Based Fortune Heuristics Services
+Gabriel Destiny; Charise Luck
+:doctype: internet-draft
+:abbrev: Calendar Fortune Heuristics API
+:name: draft-divination-cfapi-00
+:status: informational
+:ipr: trust200902
+:area: Internet
+:submission-type: independent
+:intended-series: informational
+:revdate: 2018-03-23T00:00:00Z
+:lastname: Destiny
+:fullname: Gabriel Destiny
+:forename_initials: G.
+:organization: Divination Inc.
+:email: gabriel.destiny@ribose.com
+:street: 9288 N Divine Street
+:city: Dunn
+:code: 28334
+:region: NC
+:country: United States of America
+:lastname_2: Luck
+:fullname_2: Charise Luck
+:forename_initials_2: C.
+:organization_2: Divination Inc.
+:email_2: charise.luck@ribose.com
+:street_2: 9288 N Divine Street
+:city_2: Dunn
+:code_2: 28334
+:region_2: NC
+:country_2: United States of America
+
+[.comment]
+tag::sample[]
+// tag::sample[]
+
+[abstract]
+
+This document describes a JSON HTTP API for online services that
+provide calendar-based fortune heuristics.
+
+== Introduction
+
+Fortune-telling, the practice of predicting information about a
+person's life, is an activity practiced throughout history.
+
+While there are myriad forms of fortune telling methodologies, this
+document applies to a particular form of service that provides fortune
+heuristics, commonly known as "luck", for a particular subject based
+on a calendar-based input.
+
+Since HTTP RFC7230 status codes are insufficient to convey
+information about fortune heuristics, this specification defines a
+simple JSON RFC8259 document format for this purpose. The
+response can be used by HTTP APIs to deliver results to non-human
+clients or to an end-user.
+
+
+== Conventions Used in This Document
+
+The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*",
+"*SHALL NOT*", "*SHOULD*", "*SHOULD NOT*", "*RECOMMENDED*",
+"*NOT RECOMMENDED*", "*MAY*", and "*OPTIONAL*" in this document
+are to be interpreted as described in BCP 14 RFC2119 RFC8174
+when, and only when, they appear in all capitals, as shown here.
+
+The following definitions apply in this document:
+
+Well-known URI:: This specification makes use of the "well-known URI"
+feature of HTTP servers RFC5785 to provide a bootstrapping URI for
+the client usage of fortune heuristics services.
+
+Root of Fortune:: The service discovery endpoint that provides a URI
+list of available fortune heuristic endpoints available, in accordance
+with service-discovery.
+
+== Fortune Heuristics Service Well-Known URI
+
+A well-known URI called "fortune" is registered by this specification
+for fortune heuristics services (see iana).
+
+Services complying with this document *SHOULD* have its well-known
+URI pointing (directly or through redirection) to the Root of Fortune.
+
+The Root of Fortune can be used by the client for service discovery,
+namely, the available calendar-based fortune heuristics services
+available on the server, as specified in service-discovery.
+
+=== Well-Known URI Redirection
+
+Servers *MUST* redirect HTTP requests for that resource to the
+actual "context path" using one of the available mechanisms provided
+by HTTP RFC7230 (e.g., using a 301, 303, or 307 response).
+
+Clients *MUST* handle HTTP redirects on the well-known URI.
+
+
+=== Well-Known URI Cache Behavior
+
+Servers *SHOULD* set an appropriate Cache-Control header value (as
+according to RFC7234,5.2 of) in the redirect response to set
+caching behavior as required by the type of response generated.
+
+
+== New HTTP Methods: SEEK and DIVINE
+
+This specification defines two new HTTP methods: "SEEK" and "DIVINE"
+methods for HTTP RFC7230.
+
+While HTTP GET requests are treated equivalently as the "SEEK" and
+"DIVINE" requests, its usage is discouraged and therefore *SHOULD NOT*
+be used.
+
+Usage of these methods are defined in the sections below.
+
+
+== Defined Data Types: Date-Time Formats
+
+This specification defines a number of date-time formats as according
+to the conventions of RFC3339 for the unambiguous communication
+between client and server.
+
+The types defined are as follows.
+
+`DATETIME`::
+  As described in RFC3339,5.6 of, with the addition that reduced
+  accuracy representations described in ISO.8601-1.2018 are
+  supported.  Reduced accuracy date and times are accepted where a
+  date or time component (2-digits long) is replaced by "--".
++
+For example, the date time "2018-04---T01:02:00Z" represents the UTC
+time of 1:02am, on an unknown day within April of the year 2018.
+
+`DATE`::
+  As described in "DATETIME", but the "time" component will not be
+  taken into account in the algorithm.
+
+
+[#service-discovery]
+== Fortune Heuristics Service Discovery
+
+[#root-of-fortune]
+=== Root of Fortune Path URI ("/")
+
+The Root of Fortune URI, defined as "/" in this document, is used for
+service discovery on types of calendar-based fortune heuristics
+available.
+
+An empty SEEK request with the "application/json" request type
+*MUST* be sent to this endpoint to retrieve the available endpoints.
+All other HTTP methods *MUST NOT* be supported at this URI.
+
+An example of such a response is as follows:
+
+[source,json]
+----
+HTTP/1.1 200 Success
+Content-Type: application/json
+Content-Language: en
+
+{
+  "diviners" : [
+    "/astrology",
+    "/bazi",
+  ]
+}
+----
+
+A service discovery object *MUST* have the following members:
+
+`diviners`::
+  (JSON array)
+  An array that contains endpoints that conform to this specification.
+  All endpoints listed here are relative to the Root of Fortune path.
+  For example, the path "/astrology" listed in the example has an
+  endpoint path of "[root-of-fortune]/astrology", where
+  "[root-of-fortune]" indicates the real path of the Root of Fortune.
+
+
+// end::sample[]
+[.comment]
+end::sample[]
+
+
+[#service-endpoint]
+== Fortune Heuristics Service Endpoint
+
+An endpoint offering fortune heuristics services *MUST* adhere to
+specifications in this section.
+
+A service *MAY* implement multiple divination services based on
+different divination methods, such as the digital oracle shown
+in digital-oracle.
+
+
+[[digital-oracle]]
+.Dimensional Eye, a digital oracle that communicates through one button
+====
+[alt=An incarnation of the Dimensional Eye, in ASCII]
+....
+                                  __
+                             __===^-\
+                        __===       -\
+                    __===-           -\
+               __===-                 -\
+         ___===-                       -\
+      ===-               ---__          -\
+      \\\              |||^^\ \__        -\
+       \\\             |||       \__      -\
+        \\\            |||    ______\_     -\
+         \\\           |||  _/-******\\__   -\
+          \\\          ||  /-****_****-\ \_  -\
+           \\\         || |-***/   \***-\  \_ -\
+            \\\        || |-***\___/***-|    \ -\
+             \\\       ||  \-*********-/  __--/ -\
+              \\\      ||    \-******/__--       -\
+               \\\     ||        __--             -\
+                \\\    ||    __--                  -\
+                 \\\   ||__--                       -\
+                  \\\                                -\
+                   \\\                                -\
+                    \\\                                -\
+                     \\\                                -\
+                      \\\                  __            -\
+                       \\\               //##\\           -\
+                        \\\              \\##//            -\
+                         \\\               ^^          __--==^
+                          \\\                    __--===
+                           \\\             __--===
+                            \\\      __--===
+                             \\\ __--==
+                              \\=
+
+....
+====
+
+[#endpoint-specification-request]
+=== Service Specification Request
+
+To retrieve capabilities and parameters of an endpoint complying with
+this specification, a service specification JSON object is returned.
+
+An empty SEEK request with the "application/json" request type
+*MUST* be sent to this endpoint to retrieve the service
+specification that describes parameters accepted by this endpoint.
+
+Two examples of such a response are given below.
+
+[source,json]
+----
+HTTP/1.1 200 Success
+Content-Type: application/json
+Content-Language: en
+
+{
+  "description": "Gaze into your upcoming luck!",
+  "details": "https://divine.example.com/manual/astrology-api",
+  "parameters": {
+    "birthday": {
+      "type": "DATE",
+      "description": "Your birth date in UTC"
+    },
+    "targetDateBegin": {
+      "type": "DATE",
+      "description": "Start of the target date range to report on"
+    },
+    "targetDateEnd": {
+      "type": "DATE",
+      "description": "End of the target date range to report on"
+    },
+    "interval": {
+      "values": {
+        "D": "Daily",
+        "M": "Monthly",
+        "Y": "Yearly"
+      },
+      "description": "Available intervals to report on."
+    }
+  }
+}
+----
+
+[source,json]
+----
+HTTP/1.1 200 Success
+Content-Type: application/json
+Content-Language: en
+
+{
+  "description": "Matches and mis-matches according to the "
+    "Yin Yang and Five Elements techniques",
+  "details": "https://divine.example.com/manual/bazi-api",
+  "parameters": {
+    "birthday": {
+      "type": "DATETIME",
+      "description": "Your birth date and time in UTC"
+    },
+    "targetDateBegin": {
+      "type": "DATETIME",
+      "description": "Start of the target date/time range to report on"
+    },
+    "targetDateEnd": {
+      "type": "DATETIME",
+      "description": "End of the target date/time range to report on"
+    },
+    "interval": {
+      "values": {
+        "H": "Hourly",
+        "D": "Daily",
+        "M": "Monthly",
+        "Y": "Yearly"
+      },
+      "description": "Available intervals to report on."
+    }
+  }
+}
+----
+
+[#service-endpoint-specification]
+=== Service Specification Object
+
+A service specification object *MUST* contain the following members.
+
+`description`::
+  (string) A short, human-readable summary of the fortune heuristic
+  service at this endpoint. This *SHOULD* be a stable reference.
+
+`details`::
+  (URI, optional) A URI reference that provides further details for
+  human consumption, such as API documentation that includes details of
+  parameters accepted or response states.
+
+`parameters`::
+  (object, mandatory) An object that specifies what parameters
+  are accepted by this endpoint. Each parameter key within this object
+  specifies an accepted parameter name, and its value is a parameter
+  specification object, which is described below.
+
+A parameter specification object *SHOULD* contain the following
+members:
+
+`type`::
+  (string, optional) The value type accepted by this parameter. Value
+  types are described in this document. This member is mutually
+  exclusive with `values`.
+
+`description`::
+  (string, mandatory) The purpose of this parameter.
+
+`values`::
+  (object, optional) The accepted values of this parameter, unlisted
+  values *SHOULD* not be accepted by the parameter. Each key within
+  this object specifies an accepted value, and its value provides a
+  description of the purpose of the value.
+
+
+[#endpoint-report]
+== Fortune Heuristics Report Request and Response
+
+[#endpoint-report-request]
+=== Fortune Heuristics Report Request
+
+A request using the HTTP "DIVINE" method and the "application/json"
+type *MUST* be sent to the fortune heuristic endpoint to retrieve
+results for a fortune heuristic query.
+
+The request made *MUST* conform to the specifications of the
+endpoint, as retrieved via the "SEEK" method described in
+endpoint-specification-request.
+
+An example of a request is provided below.
+
+[source]
+----
+URI: /divination/astrology
+Method: DIVINE
+Content-Type: application/json
+Content-Language: en
+
+{
+  "birthday": "1976-02-11T00:00:00Z",
+  "targetDateBegin": "2018-01-01T00:00:00Z",
+  "targetDateEnd": "2019-01-01T00:00:00Z",
+  "interval": "M"
+}
+----
+
+
+[#endpoint-report-response]
+=== Fortune Heuristics Report Response
+
+A fortune heuristic query using the "DIVINE" method triggers a
+response that contains a fortune heuristics report.
+
+A successful response returns a JSON object that *MUST* conform
+to the object structure described in this section.
+
+A report object *SHOULD* contain the following members:
+
+`type`::
+  (URI, mandatory) A URI that defines the type of the report located
+  at the `report` key of this object.
+
+`report`::
+  (object, mandatory) An object that contains two keys, `intervals`
+  and `events`. The `intervals` object contains an array of interval
+  objects that matches the demanded intervals in the request within
+  the target date range.
+  The `events` object contains an array of significant event objects
+  within the target date range.
+
+An example of a response is provided below.
+
+[source]
+----
+URI: /divination/astrology
+Method: DIVINE
+HTTP/1.1 200 Success
+Content-Type: application/json
+Content-Language: en
+
+{
+  "type": "https://association-of.astrology/reports/monthly",
+  "report": {
+    "intervals": [
+      {
+        "dateStart": "2018-01-01T00:00:00Z",
+        "dateEnd": "2018-02-01T00:00:00Z",
+        "categories": [
+          {
+            "category":
+              "https://divine.example.com/astrology/categories/health"
+            "value": 80,
+            "description": "Charge ahead with excellent health."
+          },
+          {
+            "category":
+              "https://divine.example.com/astrology/categories/love"
+            "value": 70,
+            "description":
+              "Give a certain person or situation another try!"
+          },
+          {
+            "category":
+              "https://divine.example.com/astrology/categories/finance"
+            "value": 5,
+            "description": "You've just realized that you don't have
+              any cash on hand."
+          }
+        ]
+      },
+      {
+        "dateStart": "2018-02-01T00:00:00Z",
+        "dateEnd": "2018-03-01T00:00:00Z",
+        "..."
+      },
+      "..."
+    ],
+    "events": [
+      {
+        "dateStart": "2018-01-15T03:20:00",
+        "dateEnd": "2018-01-16T20:22:15",
+        "description": "The planet of growth and good luck, Jupiter
+          will make a harmonious connection with power planet Pluto,
+          helping you connect with influential people",
+        "recommendation": "Engage in networking during this time."
+      },
+      {
+        "dateStart": "2018-03-22T00:12:40",
+        "dateEnd": "2018-03-28T02:45:03",
+        "description": "Communication planet Mercury enters your sign,
+          which will find you in a busier and chattier mood.",
+        "recommendation":
+          "Take charge of work with your newfound energy."
+      }
+      "..."
+    ]
+  }
+}
+----
+
+
+Fortune heuristic reports are created by a divination output that
+*MAY* requires quantitative interpretation. A sample representation of
+interpreting a graphical divination output is provided in
+divination-message.
+
+[[divination-message]]
+.Forty-nine yarrow sticks reveals a mystical message on fortune
+====
+[alt=A mystical pattern in ASCII]
+....
+                                    0000000000000000000000000
+        0000000000000000000000001 G 1000000000000000000000000
+        0000000000000000000000011 R 1100000000000000000000000
+        0000000000000000000000111 A 1110000000000000000000000
+        0000000000000000000001111 C 1111000000000000000000000
+        0000000000000000000011111 E 1111100000000000000000000
+        0000000000000000000111111 , 1111110000000000000000000
+        0000000000000000001111111   1111111000000000000000000
+        0000000011111111111111111 M 1111111111111111100000000
+        0000000111111111111111111 E 1111111111111111110000000
+        0000001111111111111111111 R 1111111111111111111000000
+        0000011111111111111111111 C 1111111111111111111100000
+        0000111111111111111111111 Y 1111111111111111111110000
+        0001111111111111111111111 , 1111111111111111111111000
+        0011111111111111111111111   1111111111111111111111100
+        0111111111111111111111111 A 1111111111111111111111110
+        0000000000000000011111111 N 1111111100000000000000000
+        0000000000000000111111111 D 1111111110000000000000000
+        0000000000000001111111111   1111111111000000000000000
+        0000000000000011111111111 P 1111111111100000000000000
+        0000000000000111111111111 E 1111111111110000000000000
+        0000000000001111111111111 A 1111111111111000000000000
+        0000000000011111111111111 C 1111111111111100000000000
+        0000000000111111111111111 E 1111111111111110000000000
+        0000000001111111111111111 . 1111111111111111000000000
+....
+====
+
+
+
+[#endpoint-report-interval-obj]
+=== Report Interval Object
+
+The `intervals` value of a report object contains a number of report
+intervals -- each representing a non-overlapping period of the
+selected interval length. When all of these intervals are put
+together, the combined period *MUST* fully cover the requested
+report target period.
+
+An example interval object is shown below.
+
+[source,json]
+----
+{
+  "dateStart": "2018-01-01T00:00:00Z",
+  "dateEnd": "2018-02-01T00:00:00Z",
+  "categories": [
+    {
+      "category":
+        "https://divine.example.com/astrology/categories/health"
+      "value": 80,
+      "description": "Charge ahead with your excellent health."
+    },
+    {
+      "category":
+        "https://divine.example.com/astrology/categories/love"
+      "value": 70,
+      "description": "Give a certain person or situation another try!"
+    },
+    {
+      "category":
+        "https://divine.example.com/astrology/categories/finance"
+      "value": 5,
+      "description": "You've just realized that you don't have
+        any cash on hand."
+    }
+  ]
+}
+----
+
+An interval object *MUST* contain the following members:
+
+`dateStart`::
+  (datetime, mandatory) This value specifies the start of the period
+  which this interval object applies to.
+
+`dateEnd`::
+  (datetime, mandatory) This value specifies the end of the period
+  which this interval object applies to.
+
+In the given example, the `categories` key is an implementation
+specific object that details heuristic results returned by the
+selected algorithm. This *MAY* differ in different algorithms.
+
+
+[#endpoint-report-event-obj]
+=== Report Events Object
+
+The `events` value of a report object contains a number of event
+objects. Each event object represents an event relevant to the
+calculation of fortune heuristics during a target report period. These
+events *MAY* be of variable time lengths, and *MAY* be overlapping
+amongst each other.
+
+The following example demonstrates two event objects the service
+determines relevant to a user's query.
+
+[source,json]
+----
+{
+  "dateStart": "2018-01-15T03:20:00",
+  "dateEnd": "2018-01-16T20:22:15",
+  "description": "The planet of growth and good luck, Jupiter will
+    make a harmonious connection with power planet Pluto, helping you
+    connect with influential people",
+  "recommendation": "Engage in networking during this time."
+},
+{
+  "dateStart": "2018-03-22T00:12:40",
+  "dateEnd": "2018-03-28T02:45:03",
+  "description": "Communication planet Mercury enters your sign,
+    which will find you in a busier and chattier mood.",
+  "recommendation": "Take charge of work with your newfound energy."
+}
+----
+
+Similar to an interval object, an event object *MUST* contain the
+following members:
+
+`dateStart`::
+  (datetime, mandatory) This value specifies the start of the period
+  described by the event.
+
+`dateEnd`::
+  (datetime, mandatory) This value specifies the end of the period
+  described by the event.
+
+In the given example, the keys `description` and `recommendation`
+are implementation-specific details. This *MAY* differ in different
+algorithms.
+
+
+[#endpoint-report-errors]
+=== Report Generation Errors
+
+This specification makes use of normal HTTP error codes with the
+following extensions.
+
+Errors *MUST* be returned using the Problem JSON Structure as
+accordance with RFC7807.
+
+422 Unprocessable Entity::
+  For example, a malformed date-time parameter, or an illogical input,
+  such as when the subject's birthday occurs after the report target
+  date period.
+
+473 Beyond Existing Capability::
+  The service determines that the outcome is too difficult to predict.
+  For example, in the case where the calculation is too complex to
+  complete in a certain time period. The service *SHOULD* issue this
+  response code to indicate that the client should not try the same
+  request again.
+
+474 Outcome Impossible::
+  The service determines that the outcome is impossible. For example,
+  when the algorithm determines that the subject will have deceased
+  before the start of the requested target period.
+
+
+
+[#security]
+== Security Considerations
+
+* TLS RFC5246 and authenticated HTTP requests should be used to
+protect the DIVINE request and responses due to the personal nature
+of information transmitted.
+
+* A client *SHOULD* verify the identity of the server on every
+request to prevent impersonation or man-in-the-middle attacks, as data
+transmitted to and from the server is sensitive information, and at
+times critical information to the user.
+
+* Synchronization of client and server time *MUST* be
+well-considered in the implementation of this specification. A
+mismatch of client and server time *MAY* lead to algorithm
+miscalculations that can cause mistaken choices of a user that depends
+on the reliability of this system.
+
+
+
+[#iana]
+== IANA Considerations
+
+=== Well-Known URI Registrations
+
+This document defines a well-known URI using the registration
+procedure and template from RFC5785,5.1 of.
+
+==== "fortune" Well-Known URI Registration
+
+URI suffix::  fortune
+
+Change controller::  IETF
+
+Specification document(s)::  This document
+
+Related information::  N/A.
+
+
+[.comment]
+tag::sample[]
+// begin::sample[]
+
+[bibliography]
+== Normative References
+
+++++
+
+reference anchor='RFC2119'
+  target='https://www.rfc-editor.org/info/rfc2119'
+  front
+    titleKey words for use in RFCs to Indicate Requirement
+      Levels/title
+    author initials='S.' surname='Bradner' fullname='S. Bradner'
+      organization /
+    /author
+    date year='1997' month='March' /
+    abstracttIn many standards track documents several words are
+        used to signify the requirements in the specification.  These
+        words are often capitalized. This document defines these words
+        as they should be interpreted in IETF documents.  This
+        document specifies an Internet Best Current Practices for the
+        Internet Community, and requests discussion and suggestions
+        for improvements./t/abstract
+  /front
+  seriesInfo name='BCP' value='14'/
+  seriesInfo name='RFC' value='2119'/
+  seriesInfo name='DOI' value='10.17487/RFC2119'/
+/reference
+
+reference anchor='RFC5785'
+  target='https://www.rfc-editor.org/info/rfc5785'
+  front
+    titleDefining Well-Known Uniform Resource Identifiers
+      (URIs)/title
+    author initials='M.' surname='Nottingham'
+      fullname='M. Nottingham'
+      organization /
+    /author
+    author initials='E.' surname='Hammer-Lahav'
+      fullname='E. Hammer-Lahav'
+      organization /
+    /author
+    date year='2010' month='April' /
+    abstracttThis memo defines a path prefix for quot;well-known
+        locationsquot;, quot;/.well-known/quot;, in selected Uniform
+        Resource Identifier (URI) schemes.
+        [STANDARDS-TRACK]/t/abstract
+  /front
+  seriesInfo name='RFC' value='5785'/
+  seriesInfo name='DOI' value='10.17487/RFC5785'/
+/reference
+
+reference anchor='RFC7230'
+  target='https://www.rfc-editor.org/info/rfc7230'
+  front
+    titleHypertext Transfer Protocol (HTTP/1.1): Message Syntax and
+      Routing/title
+    author initials='R.' surname='Fielding' fullname='R. Fielding'
+      role='editor'
+      organization /
+    /author
+    author initials='J.' surname='Reschke' fullname='J. Reschke'
+      role='editor'
+      organization /
+    /author
+    date year='2014' month='June' /
+    abstracttThe Hypertext Transfer Protocol (HTTP) is a stateless
+        application-level protocol for distributed, collaborative,
+        hypertext information systems.  This document provides an
+        overview of HTTP architecture and its associated terminology,
+        defines the quot;httpquot; and quot;httpsquot; Uniform
+        Resource Identifier (URI) schemes, defines the HTTP/1.1
+        message syntax and parsing requirements, and describes related
+        security concerns for implementations./t/abstract
+  /front
+  seriesInfo name='RFC' value='7230'/
+  seriesInfo name='DOI' value='10.17487/RFC7230'/
+/reference
+
+reference anchor='RFC7234'
+  target='https://www.rfc-editor.org/info/rfc7234'
+  front
+    titleHypertext Transfer Protocol (HTTP/1.1): Caching/title
+    author initials='R.' surname='Fielding' fullname='R. Fielding'
+      role='editor'
+      organization /
+    /author
+    author initials='M.' surname='Nottingham' fullname='M. Nottingham'
+      role='editor'
+      organization /
+    /author
+    author initials='J.' surname='Reschke' fullname='J. Reschke'
+      role='editor'
+      organization /
+    /author
+    date year='2014' month='June' /
+    abstracttThe Hypertext Transfer Protocol (HTTP) is a stateless
+        \%application- level protocol for distributed, collaborative,
+        hypertext information systems.  This document defines HTTP
+        caches and the associated header fields that control cache
+        behavior or indicate cacheable response
+        messages./t/abstract
+  /front
+  seriesInfo name='RFC' value='7234'/
+  seriesInfo name='DOI' value='10.17487/RFC7234'/
+/reference
+
+reference anchor='RFC7807'
+  target='https://www.rfc-editor.org/info/rfc7807'
+  front
+    titleProblem Details for HTTP APIs/title
+    author initials='M.' surname='Nottingham'
+      fullname='M. Nottingham'
+      organization /
+    /author
+    author initials='E.' surname='Wilde' fullname='E. Wilde'
+      organization /
+    /author
+    date year='2016' month='March' /
+    abstracttThis document defines a quot;problem detailquot;
+        as a way to carry machine- readable details of errors in a
+        HTTP response to avoid the need to define new error response
+        formats for HTTP APIs./t/abstract
+  /front
+  seriesInfo name='RFC' value='7807'/
+  seriesInfo name='DOI' value='10.17487/RFC7807'/
+/reference
+
+reference anchor='RFC8174'
+  target='https://www.rfc-editor.org/info/rfc8174'
+  front
+    titleAmbiguity of Uppercase vs Lowercase in RFC 2119 Key
+      Words/title
+    author initials='B.' surname='Leiba' fullname='B. Leiba'
+      organization /
+    /author
+    date year='2017' month='May' /
+    abstracttRFC 2119 specifies common key words that may be used
+        in protocol specifications.  This document aims to reduce
+        the ambiguity by clarifying that only UPPERCASE usage of the
+        key words have the defined special meanings./t/abstract
+  /front
+  seriesInfo name='BCP' value='14'/
+  seriesInfo name='RFC' value='8174'/
+  seriesInfo name='DOI' value='10.17487/RFC8174'/
+/reference
+
+reference anchor='RFC8259'
+  target='https://www.rfc-editor.org/info/rfc8259'
+  front
+    titleThe JavaScript Object Notation (JSON) Data Interchange
+      Format/title
+    author initials='T.' surname='Bray' fullname='T. Bray'
+      role='editor'
+      organization /
+    /author
+    date year='2017' month='December' /
+    abstracttJavaScript Object Notation (JSON) is a lightweight,
+        text-based, language-independent data interchange format.
+        It was derived from the ECMAScript Programming Language
+        Standard.  JSON defines a small set of formatting rules for
+        the portable representation of structured data./t
+      tThis document removes inconsistencies with other
+        specifications of JSON, repairs specification errors, and
+        offers experience-based interoperability
+        guidance./t
+    /abstract
+  /front
+  seriesInfo name='STD' value='90'/
+  seriesInfo name='RFC' value='8259'/
+  seriesInfo name='DOI' value='10.17487/RFC8259'/
+/reference
+++++
+
+[bibliography]
+== Informative References
+
+++++
+
+reference anchor='ISO.8601-1.2018'
+  target='https://www.iso.org/en/standard/70907.html'
+  front
+    titleISO/DIS 8601-1:2018, Data elements and interchange
+      formats -- Information interchange -- Representation of dates
+      and times -- Part 1: Basic rules/title
+    author
+      organizationISO/IEC/organization
+      address
+        urihttp://www.iso.org/uri
+      /address
+    /author
+    date month='January' year='2018'/
+    abstractt/t/abstract
+  /front
+/reference
+
+
+reference anchor='RFC3339'
+  target='https://www.rfc-editor.org/info/rfc3339'
+  front
+    titleDate and Time on the Internet: Timestamps/title
+    author initials='G.' surname='Klyne' fullname='G. Klyne'
+      organization /
+    /author
+    author initials='C.' surname='Newman' fullname='C. Newman'
+      organization /
+    /author
+    date year='2002' month='July' /
+  /front
+  seriesInfo name='RFC' value='3339'/
+  seriesInfo name='DOI' value='10.17487/RFC3339'/
+/reference
+
+reference anchor='RFC5246'
+  target='https://www.rfc-editor.org/info/rfc5246'
+  front
+    titleThe Transport Layer Security (TLS) Protocol
+      Version 1.2/title
+    author initials='T.' surname='Dierks' fullname='T. Dierks'
+      organization /
+    /author
+    author initials='E.' surname='Rescorla' fullname='E. Rescorla'
+      organization /
+    /author
+    date year='2008' month='August' /
+    abstracttThis document specifies Version 1.2 of the Transport
+        Layer Security (TLS) protocol.  The TLS protocol provides
+        communications security over the Internet.  The protocol
+        allows client/server applications to communicate in a way
+        that is designed to prevent eavesdropping, tampering, or
+        message forgery.  [STANDARDS-TRACK]/t/abstract
+  /front
+  seriesInfo name='RFC' value='5246'/
+  seriesInfo name='DOI' value='10.17487/RFC5246'/
+/reference
+++++
+
+
+
+[appendix]
+== Acknowledgements
+
+The authors thank the following individuals for their valuable
+feedback on this specification, and commend them for making fortune
+heuristics more accessible for the benefit of mankind.
+
+// end::sample[]
+[.comment]
+end::sample[]
+CODE ENDS]]></sourcecode>
+</section>
+<section anchor="example-3-xml3"><name>Rendered as RFC XML v3</name><sourcecode anchor="_2b5c8543-fb66-4b56-9598-f64ca8b335a4" type="xml"><![CDATA[CODE BEGINS
+Unresolved directive in sections/97-examples.adoc - include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[]
+CODE ENDS]]></sourcecode>
+</section></section></section>
+  </back>
+</rfc>
