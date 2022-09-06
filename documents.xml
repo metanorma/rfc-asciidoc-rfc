@@ -1,0 +1,76 @@
+<relaton-collection xmlns="https://open.ribose.com/relaton-xml"><title>AsciiRFC Template For Writing RFC / Internet Drafts</title><contributor><role type='author'/><organization><name>Metanorma : AsciiRFC</name></organization></contributor><relation type='partOf'><bibdata type="standard">
+  <fetched>2022-09-06</fetched>
+  <title format="text/plain" language="en" script="Latn">AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc</title>
+  <uri type="xml">documents/draft-ribose-asciirfc.rfc.xml</uri>
+  <docidentifier type="Internet-Draft" primary="true"/>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Internet Engineering Task Force</name>
+      <abbreviation>IETF</abbreviation>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">Ronald Henry Tse</completename>
+      </name>
+      <address>
+        <city/>
+        <country/>
+      </address>
+      <email>ronald.tse@ribose.com</email>
+      <uri/>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">Nick Nicholas</completename>
+      </name>
+      <address>
+        <city/>
+        <country/>
+      </address>
+      <email>nick.nicholas@ribose.com</email>
+      <uri/>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">Jeffrey Lau</completename>
+      </name>
+      <address>
+        <city/>
+        <country/>
+      </address>
+      <email>jeffrey.lau@ribose.com</email>
+      <uri/>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename language="en">Paolo Brasolin</completename>
+      </name>
+      <address>
+        <city/>
+        <country/>
+      </address>
+      <email>paolo.brasolin@ribose.com</email>
+      <uri/>
+    </person>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <abstract format="text/html" language="en" script="Latn">&amp;lt;t&amp;gt;&amp;lt;/&amp;gt;AsciiDoc is a human readable document markup language which affords more granular control over markup than comparable schemes such as Markdown.&amp;lt;/p&amp;gt;&amp;lt;t&amp;gt;&amp;lt;/&amp;gt;The AsciiRFC syntax is designed to allow the author to entirely focus on text, providing the full power of the resulting RFC XML through the AsciiDoc language, while abstracting away the need to manually edit XML, including references.&amp;lt;/p&amp;gt;&amp;lt;t&amp;gt;&amp;lt;/&amp;gt;This document itself was written and generated into RFC XML v2 (RFC7749) and RFC XML v3 (RFC7991) directly through asciidoctor-rfc, an AsciiRFC generator.&amp;lt;/p&amp;gt;</abstract>
+  <ext>
+    <doctype>rfc</doctype>
+  </ext>
+</bibdata></relation>
+</relaton-collection>

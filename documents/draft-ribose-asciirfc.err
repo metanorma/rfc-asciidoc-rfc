@@ -1,0 +1,195 @@
+/__w/rfc-asciidoc-rfc/rfc-asciidoc-rfc/site/documents/draft-ribose-asciirfc.err errors
+
+
+== AsciiDoc Input
+
+(ID _bibliography): Section not marked up as [bibliography]!
+	#<Asciidoctor::Section@520360 {level: 1, title: "Bibliography", blocks: 7}>
+(ID _using_raw_rfc_xml): Section not marked up as [bibliography]!
+	#<Asciidoctor::Section@520400 {level: 2, title: "Using Raw RFC XML", blocks: 5}>
+(Section: Bibliography): no anchor on reference, markup may be malformed: see
+https://www.metanorma.com/author/topics/document-format/bibliography/ ,
+https://www.metanorma.com/author/iso/topics/markup/#bibliographies
+: using raw RFC XML; and
+	#<Asciidoctor::List@520380 {context: :ulist, style: nil, items: 2}>
+(Section: Bibliography): no anchor on reference, markup may be malformed: see
+https://www.metanorma.com/author/topics/document-format/bibliography/ ,
+https://www.metanorma.com/author/iso/topics/markup/#bibliographies
+: assembling bibliographies in preprocessing.
+	#<Asciidoctor::List@520380 {context: :ulist, style: nil, items: 2}>
+
+
+== Anchors
+
+(XML Line 000047): Crossreference target asciidoctor-rfc is undefined
+	<xref target="asciidoctor-rfc"/>
+(XML Line 000054): Crossreference target RFC7749 is undefined
+	<xref target="RFC7749"/>
+(XML Line 000054): Crossreference target RFC7991 is undefined
+	<xref target="RFC7991"/>
+(XML Line 000056): Crossreference target NroffEdit is undefined
+	<xref target="NroffEdit"/>
+(XML Line 000058): Crossreference target RFC5385 is undefined
+	<xref target="RFC5385"/>
+(XML Line 000060): Crossreference target lyx2rfc is undefined
+	<xref target="lyx2rfc"/>
+(XML Line 000062): Crossreference target RFC7328 is undefined
+	<xref target="RFC7328"/>
+(XML Line 000062): Crossreference target pandoc2rfc is undefined
+	<xref target="pandoc2rfc"/>
+(XML Line 000062): Crossreference target draftr is undefined
+	<xref target="draftr"/>
+(XML Line 000064): Crossreference target kramdown-rfc2629 is undefined
+	<xref target="kramdown-rfc2629"/>
+(XML Line 000066): Crossreference target mmark is undefined
+	<xref target="mmark"/>
+(XML Line 000070): Crossreference target RFC7763 is undefined
+	<xref target="RFC7763"/>
+(XML Line 000072): Crossreference target RFC7990 is undefined
+	<xref target="RFC7990"/>
+(XML Line 000073): Crossreference target RFC7991 is undefined
+	<xref target="RFC7991"/>
+(XML Line 000079): Crossreference target RFC7749 is undefined
+	<xref target="RFC7749"/>
+(XML Line 000080): Crossreference target RFC7991 is undefined
+	<xref target="RFC7991"/>
+(XML Line 000086): Crossreference target AsciiDoc is undefined
+	<xref target="AsciiDoc"/>
+(XML Line 000090): Crossreference target Asciidoctor is undefined
+	<xref target="Asciidoctor"/>
+(XML Line 000091): Crossreference target AsciiDoc is undefined
+	<xref target="AsciiDoc"/>
+(XML Line 000094): Crossreference target Asciidoctor is undefined
+	<xref target="Asciidoctor"/>
+(XML Line 000104): Crossreference target RFC7764 is undefined
+	<xref target="RFC7764">1.2 of</xref>
+(XML Line 000176): Crossreference target AsciiDoc is undefined
+	<xref target="AsciiDoc"/>
+(XML Line 000179): Crossreference target Asciidoctor is undefined
+	<xref target="Asciidoctor"/>
+(XML Line 000197): Crossreference target I-D.wu-netmod-yang-xml-doc-conventions is undefined
+	<xref target="I-D.wu-netmod-yang-xml-doc-conventions"/>
+(XML Line 000225): Crossreference target Asciidoctor-Manual is undefined
+	<xref target="Asciidoctor-Manual"/>
+(XML Line 000287): Crossreference target RFC7996 is undefined
+	<xref target="RFC7996"/>
+(XML Line 000303): Crossreference target AsciiMathML is undefined
+	<xref target="AsciiMathML"/>
+(XML Line 000303): Crossreference target TeX-LaTeX is undefined
+	<xref target="TeX-LaTeX"/>
+(XML Line 000303): Crossreference target MathJax is undefined
+	<xref target="MathJax"/>
+(XML Line 000352): Crossreference target asciidoctor-rfc is undefined
+	<xref target="asciidoctor-rfc"/>
+(XML Line 001013): Crossreference target RFC2119 is undefined
+	<xref target="RFC2119"/>
+(XML Line 001498): Crossreference target Asciidoctor-Manual is undefined
+	<xref target="Asciidoctor-Manual"/>
+(XML Line 001853): Crossreference target RFC2119 is undefined
+	<xref target="RFC2119"/>
+(XML Line 001854): Crossreference target RFC8174 is undefined
+	<xref target="RFC8174"/>
+(XML Line 001912): Crossreference target Asciidoctor-Manual is undefined
+	<xref target="Asciidoctor-Manual"/>
+(XML Line 002111): Crossreference target Asciidoctor-Manual is undefined
+	<xref target="Asciidoctor-Manual"/>
+(XML Line 002202): Crossreference target IETF-BibXML is undefined
+	<xref target="IETF-BibXML"/>
+(XML Line 002358): Crossreference target asciidoctor-bibliography is undefined
+	<xref target="asciidoctor-bibliography"/>
+(XML Line 002457): Crossreference target RFC7991 is undefined
+	<xref target="RFC7991"/>
+(XML Line 002457): Crossreference target RFC7749 is undefined
+	<xref target="RFC7749"/>
+(XML Line 002493): Crossreference target Asciidoctor-Manual is undefined
+	<xref target="Asciidoctor-Manual"/>
+(XML Line 002495): Crossreference target asciidoctor-rfc is undefined
+	<xref target="asciidoctor-rfc"/>
+(XML Line 002517): Crossreference target Asciidoctor is undefined
+	<xref target="Asciidoctor"/>
+(XML Line 003207): Crossreference target git-asciirfc-minimal is undefined
+	<xref target="git-asciirfc-minimal"/>
+(XML Line 003209): Crossreference target I-D.asciirfc-minimal is undefined
+	<xref target="I-D.asciirfc-minimal"/>
+(XML Line 003212): Crossreference target datatracker-asciirfc-minimal is undefined
+	<xref target="datatracker-asciirfc-minimal"/>
+(XML Line 003609): Crossreference target git-camelot-holy-grenade is undefined
+	<xref target="git-camelot-holy-grenade"/>
+(XML Line 003611): Crossreference target I-D.camelot-holy-grenade is undefined
+	<xref target="I-D.camelot-holy-grenade"/>
+(XML Line 003614): Crossreference target datatracker-camelot-holy-grenade is undefined
+	<xref target="datatracker-camelot-holy-grenade"/>
+(XML Line 004455): Crossreference target git-divination-cfapi is undefined
+	<xref target="git-divination-cfapi"/>
+(XML Line 004457): Crossreference target I-D.divination-cfapi is undefined
+	<xref target="I-D.divination-cfapi"/>
+(XML Line 004460): Crossreference target datatracker-divination-cfapi is undefined
+	<xref target="datatracker-divination-cfapi"/>
+
+
+== Metanorma XML Style Warning
+
+(XML Line 000040): Hanging paragraph in clause
+	<clause id="_introduction" inline-header="false" obligation="normative">
+	<title>Introduction</title>
+	<p id="_181e8d51-108f-6ddb-f061-f4cb7ac02358">This document describes a markup language called "AsciiRFC", developed
+	specifically for the purpose of generating RFC XML document, based on
+	Asciidoctor syntax.  AsciiRFC can be used to generate compliant RFC
+(XML Line 000219): Hanging paragraph in clause
+	<clause id="_document_structure_and_syntax" inline-header="false" obligation="normative">
+	<title>Document Structure and Syntax</title>
+	<p id="_f1b85ff1-f131-49f4-e63e-96933260c964">AsciiRFC consists of a subset of Asciidoctor syntax
+	with the addition of bibliographic macros
+	(<xref target="asciidoctor_bibliography"/>).
+(XML Line 000800): Hanging paragraph in clause
+	<clause id="header" inline-header="false" obligation="normative">
+	<title>Header And Document Attributes</title>
+	<p id="_36cfa6a9-762b-257c-8833-41f851a6a6b2">The header gives the document title, followed by an optional author
+	attribution, and a series of document attributes, with no empty lines.</p>
+	
+(XML Line 002195): Hanging paragraph in clause
+	<clause id="_bibliography" obligation="informative">
+	<title>Bibliography</title>
+	<p id="_a74c4d34-152f-46ff-001c-1dd45fdc04f0">The simple encoding of bibliography syntax provided by AsciiDoc (and
+	Asciidoctor syntax) is inadequate for the complexity of bibliographic
+	markup required by RFC XML.</p>
+(XML Line 002461): Table should have title
+	<table id="_00c9d5bc-1cf4-dd9b-8eba-3af07aaa9638"><thead><tr><th valign="top" align="left">RFC XML element</th>
+	<th valign="top" align="left">RFC XML v3</th>
+	<th valign="top" align="left">RFC XML v2</th>
+	</tr></thead>
+	<tbody><tr><td valign="top" align="left"><tt>front/boilerplate</tt></td>
+(XML Line 002490): Hanging paragraph in clause
+	<clause id="_authoring" inline-header="false" obligation="normative">
+	<title>Authoring</title>
+	<p id="_464402ee-245a-bac4-bd83-d8a3745eb885">To author an AsciiRFC document, you should first familiarise yourself
+	with the <xref target="Asciidoctor-Manual"/>.</p>
+	
+(XML Line 003203): Hanging paragraph in clause
+	<clause id="example-1" inline-header="false" obligation="normative">
+	<title>Example 1: "A Minimal Internet-Draft In AsciiRFC"</title>
+	<p id="_17a92313-fb3a-dbe4-f526-6e4332eea011">This example is available in the following formats:</p>
+	
+	<ul id="_d3cd1d9e-b237-4c35-f85a-9b02a72308f8"><li><p id="_964a8d53-29be-b7cc-60c8-6f1fdccf5f41">AsciiRFC <xref target="git-asciirfc-minimal"/></p>
+(XML Line 003605): Hanging paragraph in clause
+	<clause id="example-2" inline-header="false" obligation="normative">
+	<title>Example 2: "The Holy Hand Grenade of Antioch"</title>
+	<p id="_e013b308-1b8d-c61b-fe41-65d300c77a55">This example is available in the following formats:</p>
+	
+	<ul id="_52d5b9c2-cbf1-d4a1-0474-2b94731b83e8"><li><p id="_b088e1a3-8f96-ebe2-864a-8241f472f3b2">AsciiRFC <xref target="git-camelot-holy-grenade"/></p>
+(XML Line 004451): Hanging paragraph in clause
+	<clause id="example-3" inline-header="false" obligation="normative">
+	<title>Example 3: "An API For Calendar-Based Fortune Heuristics Services" in AsciiRFC</title>
+	<p id="_01f333b4-9e3d-249c-ad0e-f824b6f1e949">This example is available in the following formats:</p>
+	
+	<ul id="_c7661a1d-27a5-bd66-4a2c-513f605904ca"><li><p id="_18e8e3f5-7bb4-ad04-6616-b8b15f3fd8f3">AsciiRFC <xref target="git-divination-cfapi"/></p>
+
+
+== Metanorma XML Syntax
+
+(XML Line 000007:47): element "contributor" not allowed yet; missing required element "docidentifier"
+(XML Line 000017:123): character content of element "revision-date" invalid; must be a string matching the regular expression "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?"
+(XML Line 000024:88): attribute "obligation" not allowed here; expected attribute "language", "numbered", "removeInRFC", "script" or "toc"
+(XML Line 000756:15): element "RFC7253" not allowed here; expected the element end-tag, text or element "br", "em", "eref", "index", "link", "smallcap", "strike", "strong", "sub", "sup", "tt", "underline" or "xref"
+(XML Line 001226:78): element "CODE" not allowed here; expected the element end-tag, text or element "annotation", "callout", "name" or "note"
+(XML Line 001259:40): The content of elements must consist of well-formed character data or markup.
