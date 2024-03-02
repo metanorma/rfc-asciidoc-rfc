@@ -1,17 +1,15 @@
 = AsciiRFC: Authoring Internet-Drafts And RFCs Using AsciiDoc
-Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :doctype: internet-draft
 :abbrev: AsciiRFC Specifications
 :name: draft-ribose-asciirfc-08
 :status: informational
 :ipr: trust200902
 :area: Internet
-:submission-type: independent
+:submissionType: independent
 :intended-series: informational
-//:workgroup: Network
-:revdate: 2018-04-18T00:00:00Z
-:lastname: Tse
+:revdate: 2018-04-18
 :fullname: Ronald Henry Tse
+:lastname: Tse
 :forename_initials: R. H.
 :organization: Ribose
 :email: ronald.tse@ribose.com
@@ -20,15 +18,15 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :city: Central
 :region: Hong Kong
 :country: Hong Kong
-:lastname_2: Nicholas
 :fullname_2: Nick Nicholas
+:lastname_2: Nicholas
 :forename_initials_2: N.
 :organization_2: Ribose
 :email_2: nick.nicholas@ribose.com
 :uri_2: https://www.ribose.com
 :country_2: Australia
-:lastname_3: Lau
 :fullname_3: Jeffrey Lau
+:lastname_3: Lau
 :forename_initials_3: J.
 :organization_3: Ribose
 :email_3: jeffrey.lau@ribose.com
@@ -37,49 +35,64 @@ Ronald Henry Tse; Nick Nicholas; Jeffrey Lau; Paolo Brasolin
 :city_3: Central
 :region_3: Hong Kong
 :country_3: Hong Kong
-:lastname_4: Brasolin
 :fullname_4: Paolo Brasolin
+:lastname_4: Brasolin
 :forename_initials_4: P.
 :organization_4: Ribose
 :email_4: paolo.brasolin@ribose.com
 :uri_4: https://www.ribose.com
 :country_4: Italy
-:brackethash: [#
-:dblopenangle: <<
-:dblcloseangle: >>
-:fourpluses: ++++
-:fourdashes: ----
-:fourequals: ====
-:dblstar: **
-:backtick: `
 :docfile: draft-ribose-asciirfc.adoc
 :mn-document-class: ietf
 :mn-output-extensions: xmlrfc2,txt,html,nits
 
 include::sections/00-abstract.adoc[]
+
 include::sections/01-intro.adoc[]
+
 include::sections/02-conventions.adoc[]
+
 include::sections/03-asciidoc.adoc[]
+
 include::sections/04-header.adoc[]
+
 include::sections/05-preamble.adoc[]
+
 include::sections/06-sections.adoc[]
+
 include::sections/07-figures.adoc[]
+
 include::sections/08-lists.adoc[]
+
 include::sections/09-blockquotes.adoc[]
+
 include::sections/10-notes.adoc[]
+
 include::sections/11-tables.adoc[]
+
 include::sections/12-inline.adoc[]
+
 include::sections/13-links.adoc[]
+
 include::sections/14-xref.adoc[]
+
 include::sections/15-includes.adoc[]
+
 include::sections/16-encoding.adoc[]
+
 include::sections/17-biblio.adoc[]
+
 include::sections/18-unsupported.adoc[]
+
 include::sections/19-authoring.adoc[]
+
 include::sections/20-security.adoc[]
+
 include::sections/21-iana.adoc[]
 
 include::sections/98-references.adoc[]
+
 include::sections/97-examples.adoc[]
+
 include::sections/99-acknowledgements.adoc[]
 
