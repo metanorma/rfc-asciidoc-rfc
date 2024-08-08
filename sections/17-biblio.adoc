@@ -43,9 +43,9 @@ generate the corresponding RFC XML v3 output in <<source-bib-xml-inline>>.
 ====
 [source,asciidoc]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bibliography]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[tag=bibliography]
+  <CODE ENDS>
 ----
 ====
 
@@ -54,9 +54,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[ta
 ====
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bibliography1]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[tag=bibliography1]
+  <CODE ENDS>
 ----
 ====
 
