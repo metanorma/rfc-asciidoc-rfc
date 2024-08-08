@@ -25,9 +25,9 @@ in AsciiRFC, with its rendering in RFC XML v3 shown in
 ====
 [source,asciidoc]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..15]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..15]
+  <CODE ENDS>
 ----
 ====
 
@@ -36,9 +36,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..23,35,37..40"]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..23,35,37..40"]
+  <CODE ENDS>
 ----
 ====
 
@@ -54,9 +54,9 @@ shown in <<source-asciirfc-header-authors-v3>>.
 ====
 [source,asciidoc]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..25]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines=1..25]
+  <CODE ENDS>
 ----
 ====
 
@@ -65,9 +65,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..40"]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="13..40"]
+  <CODE ENDS>
 ----
 ====
 
@@ -80,9 +80,9 @@ its RFC XML v3 rendering <<source-asciirfc-header-mauthors-v3>>.
 ====
 [source,asciidoc]
 --------
-<CODE BEGINS>
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[lines=1..31]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[lines=1..31]
+  <CODE ENDS>
 --------
 ====
 
@@ -91,9 +91,9 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[lines=1..3
 ====
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[lines=11..47]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[lines=11..47]
+  <CODE ENDS>
 ----
 ====
 
@@ -123,9 +123,9 @@ processor.)
 ====
 [source,asciidoc]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines="1..9,12-15,26..27"]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[lines="1..9,12-15,26..27"]
+  <CODE ENDS>
 ----
 ====
 
@@ -134,9 +134,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[li
 ====
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="1..23,35"]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[lines="1..23,35"]
+  <CODE ENDS>
 ----
 ====
 
