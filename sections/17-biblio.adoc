@@ -1,3 +1,4 @@
+[heading=clause]
 == Bibliography
 
 The simple encoding of bibliography syntax provided by AsciiDoc (and
