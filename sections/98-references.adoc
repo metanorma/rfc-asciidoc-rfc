@@ -14,6 +14,8 @@ include::../references/normative/*.xml[]
 //bibliography::info[]
 [format=rfc]
 ++++
-include::../references/informative/*.xml[]
+include::../references/informative/asciidoctor-manual.xml[]
+
+include::../references/informative/asciidoctor.xml[]
 ++++
 
