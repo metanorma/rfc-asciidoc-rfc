@@ -1,4 +1,4 @@
-[abstract]
+.Abstract
 
 This document describes an AsciiDoc syntax extension called AsciiRFC,
 designed for authoring IETF Internet-Drafts and RFCs.
