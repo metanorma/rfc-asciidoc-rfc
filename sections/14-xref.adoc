@@ -16,8 +16,8 @@ Note that anchors in RFC XML are constrained to the format
 `[A-Za-z_:][[A-Za-z0-9_:.-]*` (i.e. `xsd:ID`).
 
 [subs="quotes"]
-Cross-references to anchors are notated as `<<...>>`; cross-references
-with custom text as `<<reference,text>>`.
+Cross-references to anchors are notated as pass:c[`<<...>>`]; cross-references
+with custom text as pass:c[`<<reference,text>>`].
 
 An example of using cross-references in AsciiRFC is given in
 <<source-asciirfc-xref>> with its rendered output in
