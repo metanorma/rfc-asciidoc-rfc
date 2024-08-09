@@ -60,7 +60,7 @@ generate the corresponding RFC XML v3 output in <<source-bib-xml-inline>>.
 ----
 ====
 
-[#asciidoctor_bibliography]
+[[asciidoctor_bibliography]]
 === Preprocessing Using "asciidoctor-bibliography"
 
 The alternative method is to use a preprocessing tool,
