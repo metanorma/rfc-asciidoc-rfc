@@ -1,5 +1,5 @@
 
-[#figures]
+[[figures]]
 == Figures
 
 AsciiRFC examples (corresponding to RFC XML Figures), source code

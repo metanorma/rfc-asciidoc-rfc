@@ -1,4 +1,4 @@
-[#preamble]
+[[preamble]]
 == Preamble
 
 The preamble in AsciiRFC is the text between the end of the document header
