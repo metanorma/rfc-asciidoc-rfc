@@ -215,7 +215,7 @@ which are not rendered when the document is processed.
 The introductory section in this example
 contains a citation of a reference, which in this
 version of AsciiRFC is treated identically to a cross-reference
-(pass:c[`<<RFC7253>>`]) -- the crossreference being to the references
+(`pass:c[<<RFC7253>>]`) -- the crossreference being to the references
 section of the document. Sections and blocks of texts within the
 document can also be the target of crossreferences; for example,
 the section header `=== Operators`
