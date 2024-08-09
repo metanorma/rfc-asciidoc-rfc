@@ -108,26 +108,26 @@ references file (`:bibliography-database:`), and the bibliography
 style (`:bibliography-style: rfc-v3`).
 
 . References to a normative reference are inserted with the macro
-`cite:norm[id]` instead of pass:q[`<<id>>`], where `id` is the anchor
+`cite:norm[id]` instead of pass:a[`<<id>>`], where `id` is the anchor
 of the reference.
 
 . References to an informative reference are inserted with the macro
-`cite:info[id]` instead of pass:q[`<<id>>`], where `id` is the anchor
+`cite:info[id]` instead of pass:a[`<<id>>`], where `id` is the anchor
 of the reference.
 
 . Formatted crossreferences and `relref` crossreferences are entered
 by inserting the expected raw XML in the `text` attribute. Do not use
 the `{cite}` interpolation of the citation.  For example:
 
-** pass:q[`<<id,words>>`] = `cite:norm[id, text="<xref target='id'>words</xref>"]`
+** pass:a[`<<id,words>>`] = `cite:norm[id, text="<xref target='id'>words</xref>"]`
 
-** pass:q[`<<id,format=counter: words>>`] (processed as a formatted cross-reference) =
+** pass:a[`<<id,format=counter: words>>`] (processed as a formatted cross-reference) =
   `cite:norm[id, text="<xref format='counter' target='id'>words</xref>"]`
 
-** pass:q[`<<id,2.4 comma: words>>`] (processed as relref) =
+** pass:a[`<<id,2.4 comma: words>>`] (processed as relref) =
   `cite:norm[id, text="<relref displayFormat='comma' section='2.4' target='id'}/>"]`
 
-** pass:q[`<<id#section2_4,2.4 comma: words>>`]
+** pass:a[`<<id#section2_4,2.4 comma: words>>`]
   (processed as relref with a cross-document internal reference) =
   `cite:norm[id, text="<relref relative='section2_4' displayFormat='comma' section='2.4' target='id'/>"]`
 
