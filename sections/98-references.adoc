@@ -3,6 +3,7 @@
 == Normative References
 
 //bibliography::norm[]
+[format=rfc]
 ++++
 include::../references/normative/*.xml[]
 ++++
@@ -11,6 +12,7 @@ include::../references/normative/*.xml[]
 == Informative References
 
 //bibliography::info[]
+[format=rfc]
 ++++
 include::../references/informative/*.xml[]
 ++++
