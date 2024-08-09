@@ -211,7 +211,6 @@ indicating that this is a JSON sourcecode listing). The document
 can also include comments (`//` for inline, `////` for blocks),
 which are not rendered when the document is processed.
 
-[subs="quotes"]
 The introductory section in this example
 contains a citation of a reference, which in this
 version of AsciiRFC is treated identically to a cross-reference

@@ -15,7 +15,6 @@ converter.
 Note that anchors in RFC XML are constrained to the format
 `[A-Za-z_:][[A-Za-z0-9_:.-]*` (i.e. `xsd:ID`).
 
-[subs="quotes"]
 Cross-references to anchors are notated as `pass:c[<<...>>]`; cross-references
 with custom text as `pass:c[<<reference,text>>]`.
 
