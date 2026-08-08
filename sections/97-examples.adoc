@@ -1,6 +1,6 @@
 
 [appendix]
-[#appendix-a]
+[[appendix-a]]
 == Examples
 
 [[example-1]]
@@ -21,9 +21,9 @@ This example is available in the following formats:
 
 [source,asciidoc]
 --------
-<CODE BEGINS>
-include::../examples/rfc-asciirfc-minimal/draft-asciirfc-minimal.adoc[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-asciirfc-minimal/draft-asciirfc-minimal.adoc[]
+  <CODE ENDS>
 --------
 
 [[example-1-xml3]]
@@ -31,9 +31,9 @@ include::../examples/rfc-asciirfc-minimal/draft-asciirfc-minimal.adoc[]
 
 [source,xml]
 --------
-<CODE BEGINS>
-include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-asciirfc-minimal/xml3/draft-asciirfc-minimal.xml[]
+  <CODE ENDS>
 --------
 
 
@@ -55,9 +55,9 @@ This example is available in the following formats:
 
 [source,asciidoc]
 --------
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
+  <CODE ENDS>
 --------
 
 [[example-2-xml3]]
@@ -65,9 +65,9 @@ include::../examples/rfc-camelot-holy-grenade/draft-camelot-holy-grenade.adoc[]
 
 [source,asciidoc]
 --------
-<CODE BEGINS>
-include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-camelot-holy-grenade/xml3/draft-camelot-holy-grenade.xml[]
+  <CODE ENDS>
 --------
 
 
@@ -89,9 +89,9 @@ This example is available in the following formats:
 
 [source,asciidoc]
 --------
-<CODE BEGINS>
-include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
+  <CODE ENDS>
 --------
 
 [[example-3-xml3]]
@@ -99,8 +99,8 @@ include::../examples/rfc-divination-cfapi/draft-divination-cfapi.adoc[]
 
 [source,xml]
 ----
-<CODE BEGINS>
-include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[]
-<CODE ENDS>
+  <CODE BEGINS>
+  include::../examples/rfc-divination-cfapi/xml3/draft-divination-cfapi.xml[]
+  <CODE ENDS>
 ----
 
